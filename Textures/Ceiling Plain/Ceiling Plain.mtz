@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<ProjectObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <HFDS>
+    <FinalBiasText>0.0</FinalBiasText>
+    <FinalGainText>0.0</FinalGainText>
+    <SampleColor1>
+      <r>0</r>
+      <g>0</g>
+      <b>0</b>
+      <a>1</a>
+    </SampleColor1>
+    <SampleUV1>
+      <x>0</x>
+      <y>0</y>
+    </SampleUV1>
+    <SampleColor2>
+      <r>0</r>
+      <g>0</g>
+      <b>0</b>
+      <a>1</a>
+    </SampleColor2>
+    <SampleUV2>
+      <x>0</x>
+      <y>0</y>
+    </SampleUV2>
+    <Sample2Height>0.3</Sample2Height>
+  </HFDS>
+  <heightMapPath>Ceiling Plain_height.bmp</heightMapPath>
+  <EDS>
+    <LightMaskPowText>0</LightMaskPowText>
+  </EDS>
+  <diffuseMapPath>null</diffuseMapPath>
+  <diffuseMapOriginalPath>Ceiling Plain_diffuseOriginal.bmp</diffuseMapOriginalPath>
+  <NFHS>
+    <Blur0Weight>1</Blur0Weight>
+    <Blur1Weight>0.9</Blur1Weight>
+    <Blur2Weight>0.6</Blur2Weight>
+    <Blur3Weight>0.4</Blur3Weight>
+    <Blur4Weight>0.25</Blur4Weight>
+    <Blur5Weight>0.15</Blur5Weight>
+    <Blur6Weight>0.1</Blur6Weight>
+    <SlopeBlur>50</SlopeBlur>
+  </NFHS>
+  <normalMapPath>Ceiling Plain_normal.bmp</normalMapPath>
+  <MS>
+    <MetalColor>
+      <r>0</r>
+      <g>0</g>
+      <b>0</b>
+      <a>1</a>
+    </MetalColor>
+    <SampleUV>
+      <x>0</x>
+      <y>0</y>
+    </SampleUV>
+    <BlurSize>100</BlurSize>
+    <BlurSizeText>100</BlurSizeText>
+    <OverlayBlurSize>56</OverlayBlurSize>
+    <OverlayBlurSizeText>56</OverlayBlurSizeText>
+    <BlurOverlay>-0.923077</BlurOverlay>
+    <BlurOverlayText>-0.923</BlurOverlayText>
+    <FinalContrast>0.01923077</FinalContrast>
+    <FinalContrastText>0.0192</FinalContrastText>
+    <FinalBias>0.15384616</FinalBias>
+    <FinalBiasText>0.1538</FinalBiasText>
+  </MS>
+  <metallicMapPath>Ceiling Plain_metallic.bmp</metallicMapPath>
+  <SS>
+    <SampleColor1>
+      <r>0</r>
+      <g>0</g>
+      <b>0</b>
+      <a>1</a>
+    </SampleColor1>
+    <SampleUV1>
+      <x>0</x>
+      <y>0</y>
+    </SampleUV1>
+    <SampleColor2>
+      <r>0</r>
+      <g>0</g>
+      <b>0</b>
+      <a>1</a>
+    </SampleColor2>
+    <SampleUV2>
+      <x>0</x>
+      <y>0</y>
+    </SampleUV2>
+    <SampleColor3>
+      <r>0</r>
+      <g>0</g>
+      <b>0</b>
+      <a>1</a>
+    </SampleColor3>
+    <SampleUV3>
+      <x>0</x>
+      <y>0</y>
+    </SampleUV3>
+    <MetalSmoothness>0.7980769</MetalSmoothness>
+    <MetalSmoothnessText>0.7980</MetalSmoothnessText>
+  </SS>
+  <smoothnessMapPath>Ceiling Plain_smoothness.bmp</smoothnessMapPath>
+  <ES>
+    <Blur0Contrast>1</Blur0Contrast>
+  </ES>
+  <edgeMapPath>Ceiling Plain_edge.bmp</edgeMapPath>
+  <AOS>
+    <Spread>10</Spread>
+    <SpreadText>10</SpreadText>
+    <Depth>0</Depth>
+    <DepthText>0</DepthText>
+    <BlendText>1.0</BlendText>
+  </AOS>
+  <aoMapPath>Ceiling Plain_ao.bmp</aoMapPath>
+  <MatS />
+</ProjectObject>

@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8siumuqiii82"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_3eiuf"]
+[ext_resource type="Script" path="res://Player/Camera3D.gd" id="2_18mlw"]
+[ext_resource type="ArrayMesh" uid="uid://denb23la32360" path="res://Models/lightning.obj" id="2_gwjxy"]
+[ext_resource type="Script" path="res://Player/Reticle.gd" id="4_evipe"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_np3rf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xf7e"]
+size = Vector3(0.736572, 0.372314, 1.59418)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vp7pe"]
+albedo_color = Color(0.258824, 0.309804, 0.270588, 1)
+
+[node name="Player" type="RigidBody3D"]
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_np3rf")
+script = ExtResource("1_3eiuf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+cull_mask = 1048573
+script = ExtResource("2_18mlw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00720215, -0.0965576, -0.430393)
+shape = SubResource("BoxShape3D_6xf7e")
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+layers = 2
+mesh = ExtResource("2_gwjxy")
+surface_material_override/0 = SubResource("StandardMaterial3D_vp7pe")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Reticle" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_evipe")
+
+[node name="Top" type="Line2D" parent="UI/Reticle"]
+points = PackedVector2Array(0, -5, 0, -15)
+width = 2.0
+
+[node name="Right" type="Line2D" parent="UI/Reticle"]
+points = PackedVector2Array(5, 0, 15, 0)
+width = 2.0
+
+[node name="Bottom" type="Line2D" parent="UI/Reticle"]
+points = PackedVector2Array(0, 5, 0, 15)
+width = 2.0
+
+[node name="Left" type="Line2D" parent="UI/Reticle"]
+points = PackedVector2Array(-5, 0, -15, 0)
+width = 2.0

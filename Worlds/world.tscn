@@ -1,0 +1,118 @@
+[gd_scene load_steps=20 format=3 uid="uid://cnlitoks3coif"]
+
+[ext_resource type="Texture2D" uid="uid://cfs4vbqldxtnb" path="res://Textures/Grass/grass1-albedo3.png" id="1_n375i"]
+[ext_resource type="PackedScene" uid="uid://b8siumuqiii82" path="res://Player/player.tscn" id="1_pg6a7"]
+[ext_resource type="Texture2D" uid="uid://dwfom1n8v23r7" path="res://Textures/Grass/grass1-ao.png" id="2_0wcng"]
+[ext_resource type="Texture2D" uid="uid://b6rtnwe56txut" path="res://Textures/Grass/grass1-height.png" id="3_wpv87"]
+[ext_resource type="Texture2D" uid="uid://vore71d3v5hk" path="res://Textures/Grass/grass1-normal1-dx.png" id="4_7m62c"]
+[ext_resource type="Texture2D" uid="uid://ckplea40a6gi7" path="res://Textures/Bricks/Bricks069_1K-PNG_Color.png" id="6_qbh7k"]
+[ext_resource type="Texture2D" uid="uid://bnvlbdjsr0jnw" path="res://Textures/Glitz/Glitz_emmission.bmp" id="7_dhea1"]
+[ext_resource type="Texture2D" uid="uid://bn5a0d4vkjury" path="res://Textures/Bricks/Bricks069_1K-PNG_Displacement.png" id="8_7jxqo"]
+[ext_resource type="Texture2D" uid="uid://q575epmal0d5" path="res://Textures/Bricks/Bricks069_1K-PNG_NormalGL.png" id="9_1opak"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bg0fv"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_48h35"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lgkwy"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22xs7"]
+albedo_texture = ExtResource("1_n375i")
+metallic_specular = 0.0
+roughness = 0.0
+normal_enabled = true
+normal_texture = ExtResource("4_7m62c")
+ao_enabled = true
+ao_texture = ExtResource("2_0wcng")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_wpv87")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hc8ec"]
+size = Vector3(100, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_snri7"]
+size = Vector3(100, 10, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4evrr"]
+albedo_texture = ExtResource("6_qbh7k")
+metallic = 1.0
+metallic_specular = 0.94
+emission_texture = ExtResource("7_dhea1")
+normal_enabled = true
+normal_texture = ExtResource("9_1opak")
+clearcoat = 0.0
+clearcoat_roughness = 0.0
+heightmap_enabled = true
+heightmap_texture = ExtResource("8_7jxqo")
+refraction_scale = 0.09
+uv1_scale = Vector3(100, 10, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kh6yy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o331y"]
+size = Vector3(4, 4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xcbt"]
+size = Vector3(4, 4, 1)
+
+[node name="World" type="Node3D"]
+
+[node name="Floor" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+physics_material_override = SubResource("PhysicsMaterial_bg0fv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_48h35")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_lgkwy")
+surface_material_override/0 = SubResource("StandardMaterial3D_22xs7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.394952, 0.918702, 0, -0.918702, -0.394952, 0, 25.6626, 0)
+
+[node name="Player" parent="." instance=ExtResource("1_pg6a7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.397944, 0)
+
+[node name="block" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="block"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="block/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_hc8ec")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="block"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("BoxMesh_snri7")
+surface_material_override/0 = SubResource("StandardMaterial3D_4evrr")
+
+[node name="block2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="block2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="block2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_hc8ec")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="block2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("BoxMesh_snri7")
+surface_material_override/0 = SubResource("StandardMaterial3D_4evrr")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 4, 0.0226954, -21)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D"]
+physics_material_override = SubResource("PhysicsMaterial_kh6yy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_o331y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_0xcbt")
