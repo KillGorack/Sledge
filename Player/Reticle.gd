@@ -1,6 +1,6 @@
 extends CenterContainer
 
-@export var DOT_RADIUS : float = 1.0
+@export var DOT_RADIUS : float = 4.0
 @export var DOT_COLOR : Color = Color.WHITE
 
 func _ready():

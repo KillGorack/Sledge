@@ -28,8 +28,8 @@ var shooting_audio: AudioStreamPlayer
 
 var target_pitch = 2.0
 var target_volume = -30.0
-var pitch_transition_speed = 5.0  # Speed of pitch transition
-var volume_transition_speed = 5.0  # Speed of volume transition
+var pitch_transition_speed = 5.0
+var volume_transition_speed = 5.0
 
 @export var projectile_scene: PackedScene
 @export var projectile_speed: float = 100.0
@@ -98,7 +98,7 @@ func activate_thrusters(delta):
 	var current_up = transform.basis.y
 	var target_up = Vector3.UP
 	var rotation_axis = current_up.cross(target_up).normalized()
-	var angle_diff = acos(current_up.dot(target_up))  # Renamed to avoid conflict
+	var angle_diff = acos(current_up.dot(target_up))
 	if angle_diff > 0.1:
 		var rotation_matrix = Basis()
 		rotation_matrix = rotation_matrix.rotated(rotation_axis, min(ROTATION_SPEED * delta, angle_diff))
