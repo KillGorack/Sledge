@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://clo1qlxh8eemx"]
+
+[ext_resource type="Script" path="res://Projectiles/projectile.gd" id="1_isp0s"]
+[ext_resource type="PackedScene" uid="uid://by8tnrolxm3j6" path="res://Shaders/Explosion.tscn" id="2_tph34"]
+[ext_resource type="ArrayMesh" uid="uid://d4hc6uo46tls0" path="res://Models/rocket.obj" id="4_l2nei"]
+[ext_resource type="AudioStream" uid="uid://bx43ysf3ucwqr" path="res://Sounds/Explosion.wav" id="5_batxm"]
+[ext_resource type="Material" uid="uid://b3h8p1fpfpqyy" path="res://Materials/Rocket.material" id="5_w8euv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2puu4"]
+friction = 0.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8gnse"]
+radius = 0.1
+
+[node name="Projectile" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 4294967290
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_2puu4")
+gravity_scale = 0.0
+continuous_cd = true
+max_contacts_reported = 999
+contact_monitor = true
+script = ExtResource("1_isp0s")
+explosion_scene = ExtResource("2_tph34")
+sound = ExtResource("5_batxm")
+impulse_strength = 100.0
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -0.6)
+collision_mask = 4278190090
+hit_back_faces = false
+collide_with_areas = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8gnse")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+layers = 4
+light_color = Color(0.996078, 0, 0, 1)
+light_volumetric_fog_energy = 0.0
+light_cull_mask = 4294967291
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0.0882805)
+layers = 4
+mesh = ExtResource("4_l2nei")
+surface_material_override/0 = ExtResource("5_w8euv")

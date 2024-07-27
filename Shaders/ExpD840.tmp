@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://by8tnrolxm3j6"]
+
+[ext_resource type="Material" uid="uid://da5hko6e2dwhc" path="res://Shaders/ExplosionShaderMaterial.tres" id="1_vb7if"]
+[ext_resource type="Script" path="res://Shaders/Explosion.gd" id="2_ceqwg"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_qbgc2"]
+
+[node name="Explosion" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+layers = 4
+mesh = SubResource("QuadMesh_qbgc2")
+surface_material_override/0 = ExtResource("1_vb7if")
+script = ExtResource("2_ceqwg")

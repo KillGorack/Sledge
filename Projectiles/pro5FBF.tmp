@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://clo1qlxh8eemx"]
+
+[ext_resource type="Script" path="res://Projectiles/projectile.gd" id="1_isp0s"]
+[ext_resource type="Material" uid="uid://bpnjy8g1eqq2" path="res://Materials/stone_dark.material" id="2_pihu8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8gnse"]
+radius = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_tux8a"]
+material = ExtResource("2_pihu8")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqw04"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[node name="Projectile" type="RigidBody3D"]
+collision_layer = 7
+gravity_scale = 0.0
+script = ExtResource("1_isp0s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8gnse")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+layers = 4
+light_color = Color(0.996078, 1, 0, 1)
+light_volumetric_fog_energy = 0.0
+light_cull_mask = 4294967291
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 4
+mesh = SubResource("SphereMesh_tux8a")
+surface_material_override/0 = SubResource("StandardMaterial3D_iqw04")

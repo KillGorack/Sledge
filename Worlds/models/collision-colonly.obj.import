@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://crpgo4olda0my"
+path="res://.godot/imported/collision-colonly.obj-a3e9822206b12f740573d8ea202029f6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/collision-colonly.obj-a3e9822206b12f740573d8ea202029f6.mesh"]
+
+source_file="res://Worlds/models/collision-colonly.obj"
+dest_files=["res://.godot/imported/collision-colonly.obj-a3e9822206b12f740573d8ea202029f6.mesh", "res://.godot/imported/collision-colonly.obj-a3e9822206b12f740573d8ea202029f6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dlrnv0yyydn5e"
+path="res://.godot/imported/Quad_Perfect.obj-505f3cc92373c61b32bdf5f44db3a36f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Quad_Perfect.obj-505f3cc92373c61b32bdf5f44db3a36f.mesh"]
+
+source_file="res://Models/Quad_Perfect.obj"
+dest_files=["res://.godot/imported/Quad_Perfect.obj-505f3cc92373c61b32bdf5f44db3a36f.mesh", "res://.godot/imported/Quad_Perfect.obj-505f3cc92373c61b32bdf5f44db3a36f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

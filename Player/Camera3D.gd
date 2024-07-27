@@ -1,4 +1,4 @@
-extends Camera3D
+extends Node3D
 
 const LOOK_SENSITIVITY = 3
 const RECENTER_SPEED = 10
@@ -12,16 +12,16 @@ func _ready():
 	yaw = rotation_degrees.y
 	pitch = rotation_degrees.x
 
-func _process(delta):
-	handle_camera_look(delta)
+func _process(_delta):
+	handle_camera_look()
 	
 	if Input.is_action_just_pressed("ui_recenter"):
 		recentering = true
 
 	if recentering:
-		recenter_camera(delta)
+		recenter_camera()
 
-func handle_camera_look(delta):
+func handle_camera_look():
 	if !recentering:
 		var look_x = Input.get_action_strength("camera_left") - Input.get_action_strength("camera_right")
 		var look_y = Input.get_action_strength("camera_down") - Input.get_action_strength("camera_up")
@@ -39,13 +39,16 @@ func handle_camera_look(delta):
 		rotation_degrees.y = yaw
 		rotation_degrees.x = pitch
 
-func recenter_camera(delta):
-	yaw = lerp(yaw, 0.0, RECENTER_SPEED * delta)
-	pitch = lerp(pitch, 0.0, RECENTER_SPEED * delta)
+func recenter_camera():
+	var target_yaw = 0.0
+	var target_pitch = 0.0
+	
+	yaw = lerp(yaw, target_yaw, RECENTER_SPEED * get_process_delta_time())
+	pitch = lerp(pitch, target_pitch, RECENTER_SPEED * get_process_delta_time())
 	
 	if abs(yaw) < 0.1 and abs(pitch) < 0.1:
-		yaw = 0.0
-		pitch = 0.0
+		yaw = target_yaw
+		pitch = target_pitch
 		recentering = false
 
 	rotation_degrees.y = yaw

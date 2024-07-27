@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://by8tnrolxm3j6"]
+
+[ext_resource type="Script" path="res://Shaders/Lookie.gd" id="1_5clhq"]
+[ext_resource type="Material" uid="uid://buhj7gwig0uci" path="res://Shaders/ExplosionShaderMaterial.tres" id="1_vb7if"]
+[ext_resource type="Script" path="res://Shaders/Explosion.gd" id="2_ceqwg"]
+[ext_resource type="Script" path="res://Shaders/Flasher.gd" id="4_dsxqd"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lgo1f"]
+size = Vector2(2, 2)
+
+[node name="Explosion" type="Node3D"]
+script = ExtResource("1_5clhq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+layers = 4
+mesh = SubResource("QuadMesh_lgo1f")
+surface_material_override/0 = ExtResource("1_vb7if")
+script = ExtResource("2_ceqwg")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+layers = 4
+light_energy = 6.0
+light_indirect_energy = 6.0
+light_volumetric_fog_energy = 3.0
+script = ExtResource("4_dsxqd")
