@@ -24,7 +24,7 @@ contact_monitor = true
 script = ExtResource("1_isp0s")
 explosion_scene = ExtResource("2_tph34")
 sound = ExtResource("5_batxm")
-impulse_strength = 100.0
+impulse_strength = 500.0
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -0.6)
