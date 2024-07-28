@@ -4,6 +4,8 @@ extends RigidBody3D
 @export var explosion_scene: PackedScene
 @export var sound: AudioStream
 @export var impulse_strength: float = 10.0
+@export var explosion_radius: float = 5.0
+@export var force_curve: Curve
 
 var initial_position: Vector3
 var has_started_moving: bool = false
@@ -20,11 +22,10 @@ func _on_body_entered(body: Node):
 	if body != self:
 		raycast.enabled = true
 		if raycast.is_colliding():
-			_apply_impulse(body)
+			#_apply_impulse(body)
 			_create_explosion()
-			_play_sound()
+			_apply_explosive_force()
 		queue_free()
-
 
 func _apply_impulse(body: Node):
 	if body is RigidBody3D:
@@ -33,7 +34,6 @@ func _apply_impulse(body: Node):
 		body.apply_central_impulse(impulse)
 		body.angular_velocity = Vector3.ZERO
 
-
 func _create_explosion():
 	if explosion_scene:
 		var explosion_instance = explosion_scene.instantiate()
@@ -41,10 +41,20 @@ func _create_explosion():
 			get_parent().add_child(explosion_instance)
 			explosion_instance.global_transform.origin = global_transform.origin
 
-
-func _play_sound():
-	var audio_player = AudioStreamPlayer3D.new()
-	audio_player.stream = sound
-	get_parent().add_child(audio_player)
-	audio_player.global_transform.origin = global_transform.origin
-	audio_player.play(0)
+func _apply_explosive_force():
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsShapeQueryParameters3D.new()
+	query.transform = Transform3D(Basis(), global_transform.origin)
+	query.shape = SphereShape3D.new()
+	query.shape.radius = explosion_radius
+	var result = space_state.intersect_shape(query, 1000)
+	for item in result:
+		var body = item.collider
+		if body is RigidBody3D and body != self:
+			var distance = global_transform.origin.distance_to(body.global_transform.origin)
+			var normalized_distance = distance / explosion_radius
+			var force_magnitude = impulse_strength
+			if force_curve:
+				force_magnitude *= force_curve.sample(normalized_distance)
+			var force_direction = (body.global_transform.origin - global_transform.origin).normalized()
+			body.apply_central_impulse(force_direction * force_magnitude)

@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var destruction_delay: float = 1.2
+@export var destruction_delay: float = 5
 
 @onready var timer: Timer = Timer.new()
 
