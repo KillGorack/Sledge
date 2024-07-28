@@ -78,12 +78,18 @@ weapon_change={
 3d_physics/layer_1="Player"
 3d_physics/layer_2="World"
 3d_physics/layer_3="Projectile"
+3d_physics/layer_4="NPC"
 
 [physics]
 
 common/physics_ticks_per_second=100
 3d/default_gravity=9.81
+3d/layer_4=""
+3d/quality/msaa_2d=2
+3d/quality/screen_space_aa=0
+3d/quality/use_taa=true
 
 [rendering]
 
-anti_aliasing/quality/msaa_2d=2
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true

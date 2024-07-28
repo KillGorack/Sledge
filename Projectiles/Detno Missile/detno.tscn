@@ -13,12 +13,12 @@ _data = [Vector2(0, 1), 0.0, -0.0293155, 0, 0, Vector2(0.239286, 0.914723), -1.2
 point_count = 4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8gnse"]
+margin = 0.0
 radius = 0.1
 
 [node name="Projectile" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 4294967290
-mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_2puu4")
 gravity_scale = 0.0
 continuous_cd = true
@@ -32,7 +32,7 @@ force_curve = SubResource("Curve_jlkyh")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -0.6)
-collision_mask = 4278190090
+collision_mask = 4294967290
 hit_back_faces = false
 collide_with_areas = true
 

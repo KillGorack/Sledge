@@ -19,10 +19,8 @@ func _physics_process(_delta: float):
 
 func _on_body_entered(body: Node):
 	if body != self:
-		raycast.enabled = true
-		if raycast.is_colliding():
-			_create_explosion()
-			_apply_explosive_force()
+		_create_explosion()
+		_apply_explosive_force()
 		queue_free()
 
 func _create_explosion():
