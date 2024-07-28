@@ -37,23 +37,19 @@ func _on_body_entered(body: Node):
 		var collision_normal = collision_info["normal"]
 		
 		force_direction = initial_position.direction_to(collision_position)
-		_apply_impulse(body)
-		
 		var reflection = -force_direction.reflect(collision_info["normal"])
-
-		if BounceCount > 0:
+		_create_explosion(collision_position)
+		
+		if BounceCount > 0 && coll_layer == 2:
 			BounceCount -= 1
 			global_transform.origin += reflection * BounceOffset
 			linear_velocity = reflection * initial_speed
 			global_transform = global_transform.looking_at(global_transform.origin + reflection, Vector3.UP)
 			initial_position = global_transform.origin
-			_create_explosion(collision_position)
 		else:
-			_create_explosion(collision_position)
+			_apply_impulse(body)
 			queue_free()
 		
-		if coll_layer != 2:
-			queue_free()
 
 func _apply_impulse(body: Node):
 	if body is RigidBody3D:
