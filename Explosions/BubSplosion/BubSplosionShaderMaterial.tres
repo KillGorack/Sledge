@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bu5dxlgmad33g"]
+
+[ext_resource type="Shader" path="res://Explosions/BubSplosion/BubSplosionShader.gdshader" id="1_k8lsq"]
+[ext_resource type="Texture2D" uid="uid://c5yb4n0fs5ofh" path="res://Textures/Explosion/FlipBook.png" id="2_ys6pq"]
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_k8lsq")
+shader_parameter/frame_size = Vector2(0.167, 0.167)
+shader_parameter/columns = 6
+shader_parameter/rows = 6
+shader_parameter/frame = null
+shader_parameter/texture_sheet = ExtResource("2_ys6pq")

@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://buhj7gwig0uci"]
+
+[ext_resource type="Shader" path="res://Explosions/Explosion/ExplosionShader.gdshader" id="1_kuhxh"]
+[ext_resource type="Texture2D" uid="uid://cj8l5f06kjkx4" path="res://Textures/Explosion/Explosion.png" id="2_ulikx"]
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_kuhxh")
+shader_parameter/frame_size = Vector2(0.167, 0.167)
+shader_parameter/columns = 6
+shader_parameter/rows = 6
+shader_parameter/frame = null
+shader_parameter/texture_sheet = ExtResource("2_ulikx")

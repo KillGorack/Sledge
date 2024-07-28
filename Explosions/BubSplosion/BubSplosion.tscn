@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://cedhmeorv8qc8"]
+
+[ext_resource type="Script" path="res://Explosions/Lookie.gd" id="1_s4q54"]
+[ext_resource type="Material" uid="uid://bu5dxlgmad33g" path="res://Explosions/BubSplosion/BubSplosionShaderMaterial.tres" id="2_cnu4f"]
+[ext_resource type="Script" path="res://Explosions/BubSplosion/BubSplosion.gd" id="3_wncoh"]
+[ext_resource type="Script" path="res://Explosions/Flasher.gd" id="4_b2vy8"]
+[ext_resource type="AudioStream" uid="uid://i4bc4ox0cm71" path="res://Sounds/Repulsor.mp3" id="5_5eboq"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lgo1f"]
+size = Vector2(2, 2)
+
+[node name="Explosion" type="Node3D"]
+script = ExtResource("1_s4q54")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -0.25)
+layers = 4
+mesh = SubResource("QuadMesh_lgo1f")
+surface_material_override/0 = ExtResource("2_cnu4f")
+script = ExtResource("3_wncoh")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+layers = 4
+light_color = Color(0, 0, 1, 1)
+light_energy = 10.0
+light_indirect_energy = 10.0
+script = ExtResource("4_b2vy8")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_5eboq")
+autoplay = true
+area_mask = 4
