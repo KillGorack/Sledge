@@ -36,7 +36,7 @@ shape = SubResource("ConvexPolygonShape3D_33prw")
 script = ExtResource("2_t3pxx")
 projectile_scene_1 = ExtResource("3_oegrt")
 projectile_scene_2 = ExtResource("4_i4x53")
-projectile_speed = 40.0
+projectile_speed = 25.0
 camera_node_path = NodePath("../Camera3D")
 shooting_audio_path = NodePath("../AudioStreamPlayer2")
 

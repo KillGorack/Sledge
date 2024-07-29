@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://clo1qlxh8eemx"]
+[gd_scene load_steps=17 format=3 uid="uid://clo1qlxh8eemx"]
 
 [ext_resource type="Script" path="res://Projectiles/Detno Missile/detno.gd" id="1_isp0s"]
 [ext_resource type="PackedScene" uid="uid://by8tnrolxm3j6" path="res://Explosions/Explosion/Explosion.tscn" id="2_qvuo3"]
 [ext_resource type="ArrayMesh" uid="uid://d4hc6uo46tls0" path="res://Models/rocket.obj" id="4_l2nei"]
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trailB.gdshader" id="5_sa45m"]
 [ext_resource type="Material" uid="uid://b3h8p1fpfpqyy" path="res://Materials/Rocket.material" id="5_w8euv"]
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail_draw_pass.gdshader" id="6_p77dg"]
+[ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://GPUTrail-main/defaults/texture.tres" id="7_fmi7i"]
+[ext_resource type="Texture2D" uid="uid://ct31fhxvcragr" path="res://GPUTrail-main/defaults/curve.tres" id="8_u835f"]
+[ext_resource type="Script" path="res://GPUTrail-main/GPUTrail3D.gd" id="9_6abux"]
+[ext_resource type="Texture2D" uid="uid://bvkjpkg03nq8m" path="res://Textures/Flash/particles-single.png" id="9_7dvko"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2puu4"]
 friction = 0.0
@@ -15,6 +21,22 @@ point_count = 4
 [sub_resource type="SphereShape3D" id="SphereShape3D_8gnse"]
 margin = 0.0
 radius = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxpav"]
+shader = ExtResource("5_sa45m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwaxi"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_p77dg")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 41
+shader_parameter/tex = ExtResource("9_7dvko")
+shader_parameter/color_ramp = ExtResource("7_fmi7i")
+shader_parameter/curve = ExtResource("8_u835f")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4n8ta"]
+material = SubResource("ShaderMaterial_mwaxi")
 
 [node name="Projectile" type="RigidBody3D"]
 collision_layer = 4
@@ -50,3 +72,71 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 
 layers = 4
 mesh = ExtResource("4_l2nei")
 surface_material_override/0 = ExtResource("5_w8euv")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.02, 0, 0.254)
+layers = 4
+amount = 10
+lifetime = 10.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_kxpav")
+draw_pass_1 = SubResource("QuadMesh_4n8ta")
+script = ExtResource("9_6abux")
+length = 10
+texture = ExtResource("9_7dvko")
+color_ramp = ExtResource("7_fmi7i")
+curve = ExtResource("8_u835f")
+vertical_texture = true
+_defaults_have_been_set = true
+
+[node name="GPUTrail3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.02, 0, 0.254)
+layers = 4
+amount = 10
+lifetime = 10.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_kxpav")
+draw_pass_1 = SubResource("QuadMesh_4n8ta")
+script = ExtResource("9_6abux")
+length = 10
+texture = ExtResource("9_7dvko")
+color_ramp = ExtResource("7_fmi7i")
+curve = ExtResource("8_u835f")
+vertical_texture = true
+_defaults_have_been_set = true
+
+[node name="GPUTrail3D3" type="GPUParticles3D" parent="."]
+transform = Transform3D(0, -0.1, 0, 0.1, 0, 0, 0, 0, 0.1, 0, -0.02, 0.254)
+layers = 4
+amount = 10
+lifetime = 10.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_kxpav")
+draw_pass_1 = SubResource("QuadMesh_4n8ta")
+script = ExtResource("9_6abux")
+length = 10
+texture = ExtResource("9_7dvko")
+color_ramp = ExtResource("7_fmi7i")
+curve = ExtResource("8_u835f")
+vertical_texture = true
+_defaults_have_been_set = true
+
+[node name="GPUTrail3D4" type="GPUParticles3D" parent="."]
+transform = Transform3D(0, -0.1, 0, 0.1, 0, 0, 0, 0, 0.1, 0, 0.02, 0.254)
+layers = 4
+amount = 10
+lifetime = 10.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_kxpav")
+draw_pass_1 = SubResource("QuadMesh_4n8ta")
+script = ExtResource("9_6abux")
+length = 10
+texture = ExtResource("9_7dvko")
+color_ramp = ExtResource("7_fmi7i")
+curve = ExtResource("8_u835f")
+vertical_texture = true
+_defaults_have_been_set = true

@@ -1,16 +1,51 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhbn084ynla8a"]
+[gd_scene load_steps=19 format=3 uid="uid://dhbn084ynla8a"]
 
 [ext_resource type="Script" path="res://Projectiles/Force Missile/force.gd" id="1_10h2e"]
 [ext_resource type="Material" uid="uid://dhfys530aklu1" path="res://Materials/Rocket_blue.material" id="2_4extj"]
 [ext_resource type="PackedScene" uid="uid://cedhmeorv8qc8" path="res://Explosions/BubSplosion/BubSplosion.tscn" id="2_i5wxm"]
 [ext_resource type="ArrayMesh" uid="uid://d4hc6uo46tls0" path="res://Models/rocket.obj" id="3_ltfwa"]
 [ext_resource type="Material" uid="uid://b3h8p1fpfpqyy" path="res://Materials/Rocket.material" id="4_vouqw"]
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trailB.gdshader" id="6_ybeg4"]
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail_draw_pass.gdshader" id="7_g56tp"]
+[ext_resource type="Texture2D" uid="uid://bvkjpkg03nq8m" path="res://Textures/Flash/particles-single.png" id="10_bis3t"]
+[ext_resource type="Script" path="res://GPUTrail-main/GPUTrail3DB.gd" id="12_ukgea"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2puu4"]
 friction = 0.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8gnse"]
 radius = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8ndv"]
+shader = ExtResource("6_ybeg4")
+
+[sub_resource type="Gradient" id="Gradient_15q1j"]
+offsets = PackedFloat32Array(0, 0.726899, 1)
+colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_npfht"]
+gradient = SubResource("Gradient_15q1j")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_cxmdl"]
+_data = [Vector2(0, 1), 0.0, 0.0935406, 0, 0, Vector2(0.607767, 0.817757), -0.941691, -0.941691, 0, 0, Vector2(1, 0.00467288), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vx5pe"]
+curve = SubResource("Curve_cxmdl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgstq"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("7_g56tp")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 40
+shader_parameter/tex = ExtResource("10_bis3t")
+shader_parameter/color_ramp = SubResource("GradientTexture1D_npfht")
+shader_parameter/curve = SubResource("CurveTexture_vx5pe")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4gfk3"]
+material = SubResource("ShaderMaterial_qgstq")
 
 [node name="Projectile" type="RigidBody3D"]
 collision_layer = 4
@@ -45,3 +80,67 @@ layers = 4
 material_override = ExtResource("2_4extj")
 mesh = ExtResource("3_ltfwa")
 surface_material_override/0 = ExtResource("4_vouqw")
+
+[node name="GPUTrail3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.02, 0, 0.254)
+layers = 4
+amount = 10
+lifetime = 10.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_h8ndv")
+draw_pass_1 = SubResource("QuadMesh_4gfk3")
+script = ExtResource("12_ukgea")
+length = 10
+texture = ExtResource("10_bis3t")
+color_ramp = SubResource("GradientTexture1D_npfht")
+curve = SubResource("CurveTexture_vx5pe")
+_defaults_have_been_set = true
+
+[node name="GPUTrail3D3" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.02, 0, 0.254)
+layers = 4
+amount = 10
+lifetime = 10.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_h8ndv")
+draw_pass_1 = SubResource("QuadMesh_4gfk3")
+script = ExtResource("12_ukgea")
+length = 10
+texture = ExtResource("10_bis3t")
+color_ramp = SubResource("GradientTexture1D_npfht")
+curve = SubResource("CurveTexture_vx5pe")
+_defaults_have_been_set = true
+
+[node name="GPUTrail3D4" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, 0, 0.1, -8.74228e-10, 0.02, 0.254)
+layers = 4
+amount = 10
+lifetime = 10.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_h8ndv")
+draw_pass_1 = SubResource("QuadMesh_4gfk3")
+script = ExtResource("12_ukgea")
+length = 10
+texture = ExtResource("10_bis3t")
+color_ramp = SubResource("GradientTexture1D_npfht")
+curve = SubResource("CurveTexture_vx5pe")
+_defaults_have_been_set = true
+
+[node name="GPUTrail3D5" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, 0, 0.1, 8.74228e-10, -0.02, 0.254)
+layers = 4
+amount = 10
+lifetime = 10.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_h8ndv")
+draw_pass_1 = SubResource("QuadMesh_4gfk3")
+script = ExtResource("12_ukgea")
+length = 10
+texture = ExtResource("10_bis3t")
+color_ramp = SubResource("GradientTexture1D_npfht")
+curve = SubResource("CurveTexture_vx5pe")
+_defaults_have_been_set = true
