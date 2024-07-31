@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c84y4mbn8rlvw"
+path="res://.godot/imported/Hull.obj-abc3aa3f2cd73eec4dd959023aef830a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Hull.obj-abc3aa3f2cd73eec4dd959023aef830a.mesh"]
+
+source_file="res://Models/Lightning Pieces/Hull.obj"
+dest_files=["res://.godot/imported/Hull.obj-abc3aa3f2cd73eec4dd959023aef830a.mesh", "res://.godot/imported/Hull.obj-abc3aa3f2cd73eec4dd959023aef830a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

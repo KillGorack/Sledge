@@ -18,6 +18,8 @@ var initial_speed: float
 
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
+	initial_position = global_transform.origin
+	initial_speed = linear_velocity.length()
 
 func _physics_process(_delta: float):
 	if not has_started_moving and linear_velocity.length_squared() > 0.01:
@@ -40,7 +42,7 @@ func _on_body_entered(body: Node):
 		var reflection = -force_direction.reflect(collision_info["normal"])
 		_create_explosion(collision_position)
 		
-		if BounceCount > 0 && coll_layer == 2:
+		if BounceCount > 0 and coll_layer == 2:
 			BounceCount -= 1
 			global_transform.origin += reflection * BounceOffset
 			linear_velocity = reflection * initial_speed
@@ -49,13 +51,12 @@ func _on_body_entered(body: Node):
 		else:
 			_apply_impulse(body)
 			queue_free()
-		
 
 func _apply_impulse(body: Node):
 	if body is RigidBody3D:
 		var impulse = force_direction * impulse_strength
 		body.apply_central_impulse(impulse)
-		body.angular_velocity = Vector3.ZERO 
+
 
 func _create_explosion(collision_position: Vector3):
 	if explosion_scene:

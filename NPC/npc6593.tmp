@@ -1,0 +1,151 @@
+[gd_scene load_steps=19 format=3 uid="uid://d3ow1d8c5883k"]
+
+[ext_resource type="ArrayMesh" uid="uid://cbisdcec5jih8" path="res://Models/Lightning Pieces/barrel.obj" id="1_3ck5l"]
+[ext_resource type="Script" path="res://NPC/npc_light.gd" id="1_pylr4"]
+[ext_resource type="Material" uid="uid://clj5jh6v7iyl0" path="res://Materials/glitz_gray.material" id="2_7tc21"]
+[ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_red.material" id="2_mbij2"]
+[ext_resource type="ArrayMesh" uid="uid://g82a0ojca6vc" path="res://Models/Lightning Pieces/turret.obj" id="2_o0mth"]
+[ext_resource type="Material" uid="uid://bb5au6shernuv" path="res://Materials/gun_metal.material" id="4_yqbe7"]
+[ext_resource type="ArrayMesh" uid="uid://bcutxi678sb3i" path="res://Models/Lightning Pieces/Body_01_Bezels.obj" id="6_mw8pi"]
+[ext_resource type="ArrayMesh" uid="uid://cdu04vuvdignt" path="res://Models/Lightning Pieces/Body_02_Hull.obj" id="7_05dnx"]
+[ext_resource type="ArrayMesh" uid="uid://c348bl3n7retl" path="res://Models/Lightning Pieces/Body_03_Lens.obj" id="8_qf0k1"]
+[ext_resource type="ArrayMesh" uid="uid://dorempenkqe7s" path="res://Models/Lightning Pieces/Body_04_Rocker.obj" id="9_lvjkd"]
+[ext_resource type="ArrayMesh" uid="uid://b8lwyx3g5tcql" path="res://Models/Lightning Pieces/Body_05_Sills.obj" id="10_eo7db"]
+[ext_resource type="Material" uid="uid://pfaidv5deiuc" path="res://Materials/Rubber.material" id="10_x7tv1"]
+[ext_resource type="ArrayMesh" uid="uid://b8th3ivr32tkx" path="res://Models/Lightning Pieces/Body_06_Stripe.obj" id="11_6jp4g"]
+[ext_resource type="ArrayMesh" uid="uid://b4ipvg8ev6ecu" path="res://Models/Lightning Pieces/Body_07_HoverPads.obj" id="12_ly3wd"]
+[ext_resource type="ArrayMesh" uid="uid://b02ahkvmaskbt" path="res://Models/Lightning Pieces/Body_08_Underbody.obj" id="13_no6wg"]
+[ext_resource type="Script" path="res://NPC/Shooting.gd" id="14_nq3g4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nvhxf"]
+friction = 0.4
+bounce = 0.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ey1u6"]
+size = Vector3(0.724609, 0.39212, 1.58069)
+
+[node name="NPC Light" type="RigidBody3D" node_paths=PackedStringArray("left_raycast", "right_raycast", "ground_raycast")]
+collision_layer = 8
+collision_mask = 65519
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_nvhxf")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.25, -0.25)
+continuous_cd = true
+max_contacts_reported = 55
+contact_monitor = true
+script = ExtResource("1_pylr4")
+force = 400.0
+max_speed = 6.0
+turn_rate = 50.0
+left_raycast = NodePath("LeftCast")
+right_raycast = NodePath("RightCast")
+ground_raycast = NodePath("GroundCast")
+
+[node name="Body" type="Node3D" parent="."]
+
+[node name="Bezels" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+layers = 8
+material_override = ExtResource("4_yqbe7")
+mesh = ExtResource("6_mw8pi")
+skeleton = NodePath("../..")
+
+[node name="Hull" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+layers = 8
+material_override = ExtResource("2_7tc21")
+mesh = ExtResource("7_05dnx")
+skeleton = NodePath("../..")
+
+[node name="Lens" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+layers = 8
+material_override = ExtResource("2_mbij2")
+mesh = ExtResource("8_qf0k1")
+skeleton = NodePath("../..")
+
+[node name="Rocker" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+layers = 8
+material_override = ExtResource("10_x7tv1")
+mesh = ExtResource("9_lvjkd")
+skeleton = NodePath("../..")
+
+[node name="Sills" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+layers = 8
+material_override = ExtResource("4_yqbe7")
+mesh = ExtResource("10_eo7db")
+skeleton = NodePath("../..")
+
+[node name="Stripe" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+layers = 8
+material_override = ExtResource("4_yqbe7")
+mesh = ExtResource("11_6jp4g")
+skeleton = NodePath("../..")
+
+[node name="Hoverpad" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+layers = 8
+material_override = ExtResource("2_mbij2")
+mesh = ExtResource("12_ly3wd")
+skeleton = NodePath("../..")
+
+[node name="Underbody" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+layers = 8
+material_override = ExtResource("4_yqbe7")
+mesh = ExtResource("13_no6wg")
+skeleton = NodePath("../..")
+
+[node name="Turret Handler" type="Node3D" parent="." node_paths=PackedStringArray("turret", "barrel")]
+script = ExtResource("14_nq3g4")
+turret = NodePath("../Turret")
+barrel = NodePath("../Turret/Barrel")
+
+[node name="Turret" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+layers = 16
+material_override = ExtResource("2_7tc21")
+mesh = ExtResource("2_o0mth")
+
+[node name="Barrel" type="MeshInstance3D" parent="Turret"]
+layers = 16
+material_override = ExtResource("4_yqbe7")
+mesh = ExtResource("1_3ck5l")
+skeleton = NodePath("../..")
+
+[node name="ShootCast" type="RayCast3D" parent="Turret/Barrel"]
+transform = Transform3D(-1, 4.72937e-11, 8.74228e-08, -2.72848e-10, 1, 4.65661e-10, -8.74228e-08, 4.13455e-18, -1, -8.74228e-08, -4.65661e-10, 1)
+target_position = Vector3(0, 0, -10)
+collision_mask = 65511
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+process_physics_priority = 1
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.71596e-09, -0.101212, -0.433594)
+shape = SubResource("BoxShape3D_ey1u6")
+
+[node name="LeftCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.320407, -0.206865, -1.17218)
+target_position = Vector3(0, 0, -4)
+collision_mask = 65535
+
+[node name="RightCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, -0.207, -1.172)
+target_position = Vector3(0, 0, -4)
+collision_mask = 65535
+
+[node name="GroundCast" type="RayCast3D" parent="."]
+transform = Transform3D(-0.999949, 0.00775691, -0.00648742, 0.00771101, 0.999945, 0.00706732, 0.0065419, 0.00701692, -0.999954, 0, -0.255959, -0.24708)
+target_position = Vector3(0, -0.25, 0)
+collision_mask = 65535
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.255558, -0.211056, -1.12146)
+layers = 8
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.262376, -0.211056, -1.12146)
+layers = 8

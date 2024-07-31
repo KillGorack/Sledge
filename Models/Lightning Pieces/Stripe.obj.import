@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://tyt6esh6hmlp"
+path="res://.godot/imported/Stripe.obj-325efab210d46fc06ae1504436c37752.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Stripe.obj-325efab210d46fc06ae1504436c37752.mesh"]
+
+source_file="res://Models/Lightning Pieces/Stripe.obj"
+dest_files=["res://.godot/imported/Stripe.obj-325efab210d46fc06ae1504436c37752.mesh", "res://.godot/imported/Stripe.obj-325efab210d46fc06ae1504436c37752.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

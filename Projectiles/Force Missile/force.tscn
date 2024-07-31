@@ -57,7 +57,8 @@ max_contacts_reported = 999
 contact_monitor = true
 script = ExtResource("1_10h2e")
 explosion_scene = ExtResource("2_i5wxm")
-impulse_strength = 1000.0
+impulse_strength = 3000.0
+BounceCount = 10
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -0.6)
