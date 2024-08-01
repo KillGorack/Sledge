@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d3ow1d8c5883k"]
+[gd_scene load_steps=22 format=3 uid="uid://d3ow1d8c5883k"]
 
 [ext_resource type="Script" path="res://NPC/npc_light.gd" id="1_pylr4"]
 [ext_resource type="Material" uid="uid://clj5jh6v7iyl0" path="res://Materials/glitz_gray.material" id="2_7tc21"]
@@ -6,6 +6,8 @@
 [ext_resource type="ArrayMesh" uid="uid://bwf1rbmq735wv" path="res://Models/Lightning Pieces/Barrel.obj" id="4_v36np"]
 [ext_resource type="Material" uid="uid://bb5au6shernuv" path="res://Materials/gun_metal.material" id="4_yqbe7"]
 [ext_resource type="ArrayMesh" uid="uid://dxrq6clmfhf8s" path="res://Models/Lightning Pieces/Bezels.obj" id="6_keeg3"]
+[ext_resource type="Script" path="res://NPC/health.gd" id="7_rfnxc"]
+[ext_resource type="PackedScene" uid="uid://by8tnrolxm3j6" path="res://Explosions/Explosion/Explosion.tscn" id="8_tewk1"]
 [ext_resource type="ArrayMesh" uid="uid://bihmriydtugre" path="res://Models/Lightning Pieces/Hover Pads.obj" id="8_xv4ba"]
 [ext_resource type="ArrayMesh" uid="uid://c84y4mbn8rlvw" path="res://Models/Lightning Pieces/Hull.obj" id="10_eqkhq"]
 [ext_resource type="Material" uid="uid://pfaidv5deiuc" path="res://Materials/Rubber.material" id="10_x7tv1"]
@@ -38,10 +40,14 @@ contact_monitor = true
 script = ExtResource("1_pylr4")
 force = 400.0
 max_speed = 6.0
-turn_rate = 50.0
+turn_rate = 75.0
 left_raycast = NodePath("LeftCast")
 right_raycast = NodePath("RightCast")
 ground_raycast = NodePath("GroundCast")
+
+[node name="Health Handler" type="Node3D" parent="."]
+script = ExtResource("7_rfnxc")
+explosion_scene = ExtResource("8_tewk1")
 
 [node name="Turret" type="MeshInstance3D" parent="."]
 layers = 8
@@ -66,12 +72,12 @@ shape = SubResource("BoxShape3D_ey1u6")
 
 [node name="LeftCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.320407, -0.206865, -1.17218)
-target_position = Vector3(0, 0, -4)
+target_position = Vector3(0, 0, -5)
 collision_mask = 65535
 
 [node name="RightCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, -0.207, -1.172)
-target_position = Vector3(0, 0, -4)
+target_position = Vector3(0, 0, -5)
 collision_mask = 65535
 
 [node name="GroundCast" type="RayCast3D" parent="."]

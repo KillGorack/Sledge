@@ -51,6 +51,7 @@ explosion_scene = ExtResource("2_qvuo3")
 impulse_strength = 500.0
 explosion_radius = 10.0
 force_curve = SubResource("Curve_jlkyh")
+damage = 25
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -0.6)

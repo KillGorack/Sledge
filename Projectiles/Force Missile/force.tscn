@@ -50,6 +50,7 @@ material = SubResource("ShaderMaterial_qgstq")
 [node name="Projectile" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 4294967290
+mass = 50.0
 physics_material_override = SubResource("PhysicsMaterial_2puu4")
 gravity_scale = 0.0
 continuous_cd = true
@@ -57,7 +58,7 @@ max_contacts_reported = 999
 contact_monitor = true
 script = ExtResource("1_10h2e")
 explosion_scene = ExtResource("2_i5wxm")
-impulse_strength = 3000.0
+impulse_strength = 1500.0
 BounceCount = 10
 
 [node name="RayCast3D" type="RayCast3D" parent="."]

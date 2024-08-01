@@ -56,7 +56,9 @@ func _apply_impulse(body: Node):
 	if body is RigidBody3D:
 		var impulse = force_direction * impulse_strength
 		body.apply_central_impulse(impulse)
-
+		if "stop_forces" in body:
+			body.stop_forces = true
+			body.apply_projectile_impulse(impulse, force_direction)
 
 func _create_explosion(collision_position: Vector3):
 	if explosion_scene:

@@ -5,6 +5,7 @@ extends RigidBody3D
 @export var impulse_strength: float = 10.0
 @export var explosion_radius: float = 5.0
 @export var force_curve: Curve
+@export var damage: int = 55
 
 var initial_position: Vector3
 var has_started_moving: bool = false
@@ -37,6 +38,7 @@ func _apply_explosive_force():
 	query.shape = SphereShape3D.new()
 	query.shape.radius = explosion_radius
 	var result = space_state.intersect_shape(query, 150)
+
 	for item in result:
 		var body = item.collider
 		if body is RigidBody3D and body != self:
@@ -46,4 +48,11 @@ func _apply_explosive_force():
 			if force_curve:
 				force_magnitude *= force_curve.sample(normalized_distance)
 			var force_direction = (body.global_transform.origin - global_transform.origin).normalized()
-			body.apply_central_impulse(force_direction * force_magnitude)
+			if body.has_method("apply_projectile_impulse"):
+				body.call("apply_projectile_impulse", force_direction * force_magnitude, force_direction)
+			var child_node = body.get_child(0)
+			if child_node and child_node.has_method("apply_damage"):
+				var scaled_damage = damage * (1.0 - normalized_distance)
+				child_node.apply_damage(scaled_damage)
+
+
