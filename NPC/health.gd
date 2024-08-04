@@ -8,7 +8,7 @@ var parent_node: Node
 func _ready():
 	parent_node = get_parent()
 
-func _process(delta):
+func _process(_delta):
 	if parent_node.global_transform.origin.y < -10:
 		die()
 

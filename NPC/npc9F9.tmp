@@ -1,0 +1,138 @@
+[gd_scene load_steps=22 format=3 uid="uid://d3ow1d8c5883k"]
+
+[ext_resource type="Script" path="res://NPC/npc_light.gd" id="1_pylr4"]
+[ext_resource type="Material" uid="uid://clj5jh6v7iyl0" path="res://Materials/glitz_gray.material" id="2_7tc21"]
+[ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_red.material" id="2_mbij2"]
+[ext_resource type="ArrayMesh" uid="uid://bwf1rbmq735wv" path="res://Models/Lightning Pieces/Barrel.obj" id="4_v36np"]
+[ext_resource type="Material" uid="uid://bb5au6shernuv" path="res://Materials/gun_metal.material" id="4_yqbe7"]
+[ext_resource type="ArrayMesh" uid="uid://dxrq6clmfhf8s" path="res://Models/Lightning Pieces/Bezels.obj" id="6_keeg3"]
+[ext_resource type="Script" path="res://NPC/health.gd" id="7_rfnxc"]
+[ext_resource type="PackedScene" uid="uid://by8tnrolxm3j6" path="res://Explosions/Explosion/Explosion.tscn" id="8_tewk1"]
+[ext_resource type="ArrayMesh" uid="uid://bihmriydtugre" path="res://Models/Lightning Pieces/Hover Pads.obj" id="8_xv4ba"]
+[ext_resource type="ArrayMesh" uid="uid://c84y4mbn8rlvw" path="res://Models/Lightning Pieces/Hull.obj" id="10_eqkhq"]
+[ext_resource type="Material" uid="uid://pfaidv5deiuc" path="res://Materials/Rubber.material" id="10_x7tv1"]
+[ext_resource type="ArrayMesh" uid="uid://y1swefgabk3w" path="res://Models/Lightning Pieces/Lens.obj" id="11_5rdf0"]
+[ext_resource type="ArrayMesh" uid="uid://74xuqb0s088c" path="res://Models/Lightning Pieces/Rocker.obj" id="12_c2gnk"]
+[ext_resource type="ArrayMesh" uid="uid://oh1hptau7vtv" path="res://Models/Lightning Pieces/Sills.obj" id="13_36q0v"]
+[ext_resource type="Material" uid="uid://cgfcprehhicsy" path="res://Materials/base_pad_red.material" id="14_ip1jl"]
+[ext_resource type="Script" path="res://NPC/Shooting.gd" id="14_nq3g4"]
+[ext_resource type="ArrayMesh" uid="uid://tyt6esh6hmlp" path="res://Models/Lightning Pieces/Stripe.obj" id="15_vck5s"]
+[ext_resource type="ArrayMesh" uid="uid://do73tb6ukjftq" path="res://Models/Lightning Pieces/Turret.obj" id="16_nvjwl"]
+[ext_resource type="ArrayMesh" uid="uid://d33lgnte1pdkl" path="res://Models/Lightning Pieces/Underbody.obj" id="17_jic1f"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nvhxf"]
+friction = 0.4
+bounce = 0.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ey1u6"]
+size = Vector3(0.724609, 0.39212, 1.58069)
+
+[node name="NPC Light" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 65519
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_nvhxf")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.25, -0.25)
+continuous_cd = true
+max_contacts_reported = 55
+contact_monitor = true
+script = ExtResource("1_pylr4")
+
+[node name="Health Handler" type="Node3D" parent="."]
+script = ExtResource("7_rfnxc")
+explosion_scene = ExtResource("8_tewk1")
+
+[node name="Turret" type="MeshInstance3D" parent="."]
+layers = 8
+material_override = ExtResource("2_7tc21")
+mesh = ExtResource("16_nvjwl")
+
+[node name="Barrel" type="MeshInstance3D" parent="Turret"]
+layers = 8
+material_override = ExtResource("4_yqbe7")
+mesh = ExtResource("4_v36np")
+skeleton = NodePath("../..")
+
+[node name="Turret Handler" type="Node3D" parent="." node_paths=PackedStringArray("turret", "barrel")]
+script = ExtResource("14_nq3g4")
+turret = NodePath("../Turret")
+barrel = NodePath("../Turret/Barrel")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+process_physics_priority = 1
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.71596e-09, -0.101212, -0.433594)
+shape = SubResource("BoxShape3D_ey1u6")
+
+[node name="LeftCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.320407, -0.206865, -1.17218)
+target_position = Vector3(0, 0, -5)
+collision_mask = 65535
+
+[node name="RightCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, -0.207, -1.172)
+target_position = Vector3(0, 0, -5)
+collision_mask = 65535
+
+[node name="GroundCast" type="RayCast3D" parent="."]
+transform = Transform3D(-0.999949, 0.00775691, -0.00648742, 0.00771101, 0.999945, 0.00706732, 0.0065419, 0.00701692, -0.999954, 0, -0.255959, -0.24708)
+target_position = Vector3(0, -0.25, 0)
+collision_mask = 65535
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.255558, -0.211056, -1.12146)
+layers = 8
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.262376, -0.211056, -1.12146)
+layers = 8
+
+[node name="Body" type="Node3D" parent="."]
+
+[node name="Bezels" type="MeshInstance3D" parent="Body"]
+layers = 8
+material_override = ExtResource("10_x7tv1")
+mesh = ExtResource("6_keeg3")
+skeleton = NodePath("../..")
+
+[node name="Hover Pad" type="MeshInstance3D" parent="Body"]
+layers = 8
+material_override = ExtResource("2_mbij2")
+mesh = ExtResource("8_xv4ba")
+skeleton = NodePath("../..")
+
+[node name="Hull" type="MeshInstance3D" parent="Body"]
+layers = 8
+material_override = ExtResource("2_7tc21")
+mesh = ExtResource("10_eqkhq")
+skeleton = NodePath("../..")
+
+[node name="Lens" type="MeshInstance3D" parent="Body"]
+layers = 8
+material_override = ExtResource("2_mbij2")
+mesh = ExtResource("11_5rdf0")
+skeleton = NodePath("../..")
+
+[node name="Rocker" type="MeshInstance3D" parent="Body"]
+layers = 8
+material_override = ExtResource("10_x7tv1")
+mesh = ExtResource("12_c2gnk")
+skeleton = NodePath("../..")
+
+[node name="Sills" type="MeshInstance3D" parent="Body"]
+layers = 8
+material_override = ExtResource("4_yqbe7")
+mesh = ExtResource("13_36q0v")
+skeleton = NodePath("../..")
+
+[node name="Stripe" type="MeshInstance3D" parent="Body"]
+layers = 8
+material_override = ExtResource("14_ip1jl")
+mesh = ExtResource("15_vck5s")
+skeleton = NodePath("../..")
+
+[node name="Underbody" type="MeshInstance3D" parent="Body"]
+layers = 8
+material_override = ExtResource("10_x7tv1")
+mesh = ExtResource("17_jic1f")
+skeleton = NodePath("../..")

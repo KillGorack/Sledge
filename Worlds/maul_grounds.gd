@@ -21,7 +21,7 @@ func _ready():
 	# Place NPCs at random positions within the bounds
 	for i in range(npc_count):
 		var random_position = Vector3(
-			randf_range(min_x, max_x), 0, randf_range(min_z, max_z)
+			randf_range(min_x, max_x), 20, randf_range(min_z, max_z)
 		)
 		place_npc(random_position)
 

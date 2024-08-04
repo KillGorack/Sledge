@@ -21,11 +21,12 @@
 [ext_resource type="ArrayMesh" uid="uid://d33lgnte1pdkl" path="res://Models/Lightning Pieces/Underbody.obj" id="17_jic1f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nvhxf"]
-friction = 0.4
+friction = 0.1
 bounce = 0.4
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ey1u6"]
-size = Vector3(0.724609, 0.39212, 1.58069)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y03q7"]
+custom_solver_bias = 1.0
+points = PackedVector3Array(0.359919, -0.234853, 1.21184, 0.349981, -0.178604, 1.15553, 0.012328, 0.0257322, 1.14286, 0.343991, -0.25771, 1.23483, 0.359919, -0.234853, -0.363079, 0.343145, -0.166282, 1.14333, 0.349981, -0.178604, -0.336958, 0.00633746, 0.0278542, 1.14286, 0.161738, 0.0572631, 0.181394, 0.150533, 0.0881983, -0.0917027, -5.42402e-06, 0.0285615, 1.14286, -0.344072, -0.25771, 1.23483, 0.131363, -0.272527, 1.20918, 0.320029, -0.291996, 1.1754, 0.320029, -0.291996, -0.305988, 0.351955, -0.246282, 0.137442, -0.36, -0.234853, -0.363079, 0.285777, -0.0634252, -0.199628, 0.285777, -0.0634252, 0.320289, 0.285707, -0.0634252, 0.493751, -0.350063, -0.178604, -0.336958, 0.181472, -2.8491e-05, -0.234351, 0.181895, 0.000864953, -0.232944, 0.186617, 0.0518653, -0.0890436, 0.150039, 0.08831, -0.0926411, -0.00641879, 0.0278542, 1.14286, -0.150121, 0.08831, -0.0926411, -0.150614, 0.0881983, -0.0917027, -0.32011, -0.291996, 1.1754, -0.131444, -0.272527, 1.20918, -0.0124093, 0.0257322, 1.14286, -0.36, -0.234853, 1.21184, -0.352036, -0.246282, 0.137442, -0.32011, -0.291996, -0.305988, -0.285788, -0.0634252, -0.199628, -0.181976, 0.000864953, -0.232944, -0.181553, -2.8491e-05, -0.234351, -0.350063, -0.178604, 1.15553, -0.343227, -0.166282, 1.14333, -0.16182, 0.0572631, 0.181394, -0.186698, 0.0518653, -0.0890436, -0.285788, -0.0634252, 0.493751)
 
 [node name="NPC Light" type="RigidBody3D" node_paths=PackedStringArray("left_raycast", "right_raycast", "ground_raycast")]
 collision_layer = 8
@@ -38,9 +39,7 @@ continuous_cd = true
 max_contacts_reported = 55
 contact_monitor = true
 script = ExtResource("1_pylr4")
-force = 400.0
-max_speed = 6.0
-turn_rate = 75.0
+turn_rate = 25.0
 left_raycast = NodePath("LeftCast")
 right_raycast = NodePath("RightCast")
 ground_raycast = NodePath("GroundCast")
@@ -48,6 +47,11 @@ ground_raycast = NodePath("GroundCast")
 [node name="Health Handler" type="Node3D" parent="."]
 script = ExtResource("7_rfnxc")
 explosion_scene = ExtResource("8_tewk1")
+
+[node name="Turret Handler" type="Node3D" parent="." node_paths=PackedStringArray("turret", "barrel")]
+script = ExtResource("14_nq3g4")
+turret = NodePath("../Turret")
+barrel = NodePath("../Turret/Barrel")
 
 [node name="Turret" type="MeshInstance3D" parent="."]
 layers = 8
@@ -60,38 +64,9 @@ material_override = ExtResource("4_yqbe7")
 mesh = ExtResource("4_v36np")
 skeleton = NodePath("../..")
 
-[node name="Turret Handler" type="Node3D" parent="." node_paths=PackedStringArray("turret", "barrel")]
-script = ExtResource("14_nq3g4")
-turret = NodePath("../Turret")
-barrel = NodePath("../Turret/Barrel")
-
 [node name="Collider" type="CollisionShape3D" parent="."]
-process_physics_priority = 1
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.71596e-09, -0.101212, -0.433594)
-shape = SubResource("BoxShape3D_ey1u6")
-
-[node name="LeftCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.320407, -0.206865, -1.17218)
-target_position = Vector3(0, 0, -5)
-collision_mask = 65535
-
-[node name="RightCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, -0.207, -1.172)
-target_position = Vector3(0, 0, -5)
-collision_mask = 65535
-
-[node name="GroundCast" type="RayCast3D" parent="."]
-transform = Transform3D(-0.999949, 0.00775691, -0.00648742, 0.00771101, 0.999945, 0.00706732, 0.0065419, 0.00701692, -0.999954, 0, -0.255959, -0.24708)
-target_position = Vector3(0, -0.25, 0)
-collision_mask = 65535
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.255558, -0.211056, -1.12146)
-layers = 8
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.262376, -0.211056, -1.12146)
-layers = 8
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_y03q7")
 
 [node name="Body" type="Node3D" parent="."]
 
@@ -142,3 +117,26 @@ layers = 8
 material_override = ExtResource("10_x7tv1")
 mesh = ExtResource("17_jic1f")
 skeleton = NodePath("../..")
+
+[node name="LeftCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.320407, -0.206865, -1.17218)
+target_position = Vector3(0, 0, -5)
+collision_mask = 65535
+
+[node name="RightCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, -0.207, -1.172)
+target_position = Vector3(0, 0, -5)
+collision_mask = 65535
+
+[node name="GroundCast" type="RayCast3D" parent="."]
+transform = Transform3D(-0.999949, 0.00775691, -0.00648742, 0.00771101, 0.999945, 0.00706732, 0.0065419, 0.00701692, -0.999954, 0, -0.255959, -0.24708)
+target_position = Vector3(0, -0.25, 0)
+collision_mask = 65535
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.255558, -0.211056, -1.12146)
+layers = 8
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.262376, -0.211056, -1.12146)
+layers = 8

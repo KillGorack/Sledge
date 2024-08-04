@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://bx43ysf3ucwqr" path="res://Sounds/Explosion.wav" id="5_u0ccc"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_lgo1f"]
-size = Vector2(2, 2)
 
 [node name="Explosion" type="Node3D"]
 script = ExtResource("1_jjcua")
@@ -21,9 +20,9 @@ script = ExtResource("3_hsj4d")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 layers = 4
-light_color = Color(1, 0, 0, 1)
-light_energy = 3.0
-light_indirect_energy = 3.0
+light_color = Color(0.95449, 0.953069, 1, 1)
+light_energy = 4.0
+light_indirect_energy = 4.0
 script = ExtResource("4_rsvpw")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

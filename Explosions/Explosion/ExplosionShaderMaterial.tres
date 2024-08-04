@@ -1,7 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://buhj7gwig0uci"]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://buhj7gwig0uci"]
 
 [ext_resource type="Shader" path="res://Explosions/Explosion/ExplosionShader.gdshader" id="1_kuhxh"]
-[ext_resource type="Texture2D" uid="uid://cj8l5f06kjkx4" path="res://Textures/Explosion/Explosion.png" id="2_ulikx"]
+[ext_resource type="Texture2D" uid="uid://du6ucmonp34yw" path="res://Textures/Explosion/boom_normal.bmp" id="2_fesxa"]
+[ext_resource type="Texture2D" uid="uid://crwlwl7serfks" path="res://Textures/Explosion/Explosion.png" id="2_ulikx"]
 
 [resource]
 render_priority = 1
@@ -10,4 +11,8 @@ shader_parameter/frame_size = Vector2(0.167, 0.167)
 shader_parameter/columns = 6
 shader_parameter/rows = 6
 shader_parameter/frame = null
+shader_parameter/specular_intensity = 1.0
+shader_parameter/glossiness = 1.0
+shader_parameter/detail_mix = 1.0
 shader_parameter/texture_sheet = ExtResource("2_ulikx")
+shader_parameter/normal_map = ExtResource("2_fesxa")

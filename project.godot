@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sledge"
-run/main_scene="res://Worlds/maul_grounds.tscn"
+run/main_scene="res://Worlds/symmetry.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
 [display]
@@ -24,7 +24,7 @@ project/assembly_name="Sledge"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/zylann.atmosphere/tools/plugin.cfg")
+enabled=PackedStringArray()
 
 [filesystem]
 

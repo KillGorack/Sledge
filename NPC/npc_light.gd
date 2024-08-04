@@ -1,8 +1,8 @@
 extends RigidBody3D
 
-@export var force: float = 10.0
-@export var max_speed: float = 20.0
-@export var turn_rate: float = 10.0
+@export var force: float = 400.0
+@export var max_speed: float = 6.0
+@export var turn_rate: float = 75.0
 @export var turn_duration: float = 0.5
 
 @export var left_raycast: RayCast3D
@@ -14,6 +14,8 @@ var turn_timer = 0.0
 var turn_direction = 1.0
 var stop_forces = false
 
+var health: Node
+
 func _ready():
 	if left_raycast:
 		left_raycast.enabled = true
@@ -21,6 +23,9 @@ func _ready():
 		right_raycast.enabled = true
 	if ground_raycast:
 		ground_raycast.enabled = true
+
+	# Get the health script from the first child Node3D
+	health = get_child(0)
 
 func _physics_process(delta):
 	if stop_forces:
@@ -44,8 +49,17 @@ func _physics_process(delta):
 		if linear_velocity.length() > max_speed:
 			linear_velocity = linear_velocity.normalized() * max_speed
 
-func apply_projectile_impulse(impulse: Vector3, direction: Vector3):
+func apply_projectile_impulse(impulse: Vector3, _direction: Vector3):
 	stop_forces = true
 	apply_central_impulse(impulse)
 	await get_tree().create_timer(0.1).timeout
 	stop_forces = false
+
+func _integrate_forces(state):
+	if state.get_contact_count() > 0:
+		for i in range(state.get_contact_count()):
+			var collider = state.get_contact_collider_object(i)
+			if collider.is_in_group("Driveable"):
+				var collision_impact = state.get_contact_impulse(i).length() / 2
+				if health && collision_impact > 50:
+					health.apply_damage(collision_impact - 50)
