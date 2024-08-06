@@ -14,7 +14,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bwf1rbmq735wv" path="res://Models/Lightning Pieces/Barrel.obj" id="9_147nv"]
 [ext_resource type="Material" uid="uid://pfaidv5deiuc" path="res://Materials/Rubber.material" id="10_punc7"]
 [ext_resource type="ArrayMesh" uid="uid://dxrq6clmfhf8s" path="res://Models/Lightning Pieces/Bezels.obj" id="11_gekii"]
-[ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_red.material" id="12_w1kfg"]
+[ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_gelb.material" id="12_w1kfg"]
 [ext_resource type="ArrayMesh" uid="uid://bihmriydtugre" path="res://Models/Lightning Pieces/Hover Pads.obj" id="13_u2agb"]
 [ext_resource type="ArrayMesh" uid="uid://c84y4mbn8rlvw" path="res://Models/Lightning Pieces/Hull.obj" id="14_6pp70"]
 [ext_resource type="ArrayMesh" uid="uid://y1swefgabk3w" path="res://Models/Lightning Pieces/Lens.obj" id="15_4mct6"]

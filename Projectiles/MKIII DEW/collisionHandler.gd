@@ -38,9 +38,9 @@ func _integrate_forces(state: PhysicsDirectBodyState3D):
 		
 func _on_body_entered(body: Node):
 	if body != self:
-		var coll_layer = body.collision_layer
+		#var coll_layer = body.collision_layer
 		var collision_position = collision_info["position"]
-		var collision_normal = collision_info["normal"]
+		#var collision_normal = collision_info["normal"]
 		
 		
 		_create_explosion(collision_position)

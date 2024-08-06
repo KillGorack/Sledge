@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dlcrpu41wfvdn"]
+
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail.gdshader" id="1_3apl2"]
+
+[resource]
+shader = ExtResource("1_3apl2")

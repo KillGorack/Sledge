@@ -45,7 +45,7 @@ func _on_body_entered(body: Node):
 	if body != self:
 		var coll_layer = body.collision_layer
 		var collision_position = collision_info["position"]
-		var collision_normal = collision_info["normal"]
+		#var collision_normal = collision_info["normal"]
 		
 		force_direction = initial_position.direction_to(collision_position)
 		var reflection = -force_direction.reflect(collision_info["normal"])

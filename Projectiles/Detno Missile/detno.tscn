@@ -53,6 +53,7 @@ impulse_strength = 500.0
 explosion_radius = 10.0
 force_curve = SubResource("Curve_jlkyh")
 damage = 25
+projectileVelocity = 35.0
 launch_sound = ExtResource("11_dsw12")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]

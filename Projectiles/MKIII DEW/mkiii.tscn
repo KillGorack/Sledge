@@ -1,11 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://lmcxmfe0ggy6"]
+[gd_scene load_steps=8 format=3 uid="uid://lmcxmfe0ggy6"]
 
-[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trailB.gdshader" id="1_17vrf"]
 [ext_resource type="Script" path="res://Projectiles/MKIII DEW/collisionHandler.gd" id="1_i0lfx"]
 [ext_resource type="PackedScene" uid="uid://cpdclkirqx0q2" path="res://Explosions/LaserHit/laser_hit.tscn" id="2_fiv0f"]
-[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail_draw_pass.gdshader" id="2_yhf3v"]
-[ext_resource type="Texture2D" uid="uid://bvkjpkg03nq8m" path="res://Textures/Flash/particles-single.png" id="3_5xn0l"]
-[ext_resource type="Script" path="res://GPUTrail-main/GPUTrail3DB.gd" id="4_segvj"]
+[ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_gelb.material" id="4_3p83v"]
 [ext_resource type="AudioStream" uid="uid://dtyjnib5p7s2u" path="res://Sounds/laser3.mp3" id="6_5rggj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v0alj"]
@@ -13,36 +10,10 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_hcw7q"]
 radius = 0.1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhemm"]
-shader = ExtResource("1_17vrf")
-
-[sub_resource type="Gradient" id="Gradient_15q1j"]
-offsets = PackedFloat32Array(0, 0.726899, 1)
-colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_eg3k1"]
-gradient = SubResource("Gradient_15q1j")
-use_hdr = true
-
-[sub_resource type="Curve" id="Curve_cxmdl"]
-_data = [Vector2(0, 1), 0.0, 0.0935406, 0, 0, Vector2(0.607767, 0.817757), -0.941691, -0.941691, 0, 0, Vector2(1, 0.00467288), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_clijx"]
-curve = SubResource("Curve_cxmdl")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgstq"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("2_yhf3v")
-shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-shader_parameter/flags = 40
-shader_parameter/tex = ExtResource("3_5xn0l")
-shader_parameter/color_ramp = SubResource("GradientTexture1D_eg3k1")
-shader_parameter/curve = SubResource("CurveTexture_clijx")
-
-[sub_resource type="QuadMesh" id="QuadMesh_kvkie"]
-material = SubResource("ShaderMaterial_qgstq")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bxaxe"]
+material = ExtResource("4_3p83v")
+radius = 0.01
+height = 0.2
 
 [node name="MKIII" type="RigidBody3D"]
 collision_layer = 4
@@ -54,7 +25,9 @@ max_contacts_reported = 99
 contact_monitor = true
 script = ExtResource("1_i0lfx")
 explosion_scene = ExtResource("2_fiv0f")
-cooldown = 0.5
+damage = 10
+projectileVelocity = 75.0
+cooldown = 0.25
 launch_sound = ExtResource("6_5rggj")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
@@ -64,49 +37,34 @@ hit_back_faces = false
 collide_with_areas = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("SphereShape3D_hcw7q")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, -0.05, 0)
+shape = SubResource("SphereShape3D_hcw7q")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, -0.05, 0)
 shape = SubResource("SphereShape3D_hcw7q")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 layers = 4
-light_color = Color(0, 0, 1, 1)
-light_energy = 55.0
-light_indirect_energy = 55.0
+light_color = Color(1, 1, 0, 1)
 light_volumetric_fog_energy = 0.0
 light_cull_mask = 4294967291
 
-[node name="GPUTrail3D2" type="GPUParticles3D" parent="."]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.06, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.05, -0.05, -0.0778862)
 layers = 4
-amount = 10
-lifetime = 10.0
-explosiveness = 1.0
-fixed_fps = 0
-process_material = SubResource("ShaderMaterial_hhemm")
-draw_pass_1 = SubResource("QuadMesh_kvkie")
-script = ExtResource("4_segvj")
-length = 10
-texture = ExtResource("3_5xn0l")
-color_ramp = SubResource("GradientTexture1D_eg3k1")
-curve = SubResource("CurveTexture_clijx")
-_defaults_have_been_set = true
+mesh = SubResource("CapsuleMesh_bxaxe")
 
-[node name="GPUTrail3D3" type="GPUParticles3D" parent="."]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.06, 0, 0)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.05, -0.05, -0.0778862)
 layers = 4
-amount = 10
-lifetime = 10.0
-explosiveness = 1.0
-fixed_fps = 0
-process_material = SubResource("ShaderMaterial_hhemm")
-draw_pass_1 = SubResource("QuadMesh_kvkie")
-script = ExtResource("4_segvj")
-length = 10
-texture = ExtResource("3_5xn0l")
-color_ramp = SubResource("GradientTexture1D_eg3k1")
-curve = SubResource("CurveTexture_clijx")
-_defaults_have_been_set = true
+mesh = SubResource("CapsuleMesh_bxaxe")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.05, -0.0778862)
+layers = 4
+mesh = SubResource("CapsuleMesh_bxaxe")

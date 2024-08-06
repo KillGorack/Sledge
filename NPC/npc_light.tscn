@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://NPC/npc_light.gd" id="1_pylr4"]
 [ext_resource type="Material" uid="uid://clj5jh6v7iyl0" path="res://Materials/glitz_gray.material" id="2_7tc21"]
-[ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_red.material" id="2_mbij2"]
+[ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_gelb.material" id="2_mbij2"]
 [ext_resource type="ArrayMesh" uid="uid://bwf1rbmq735wv" path="res://Models/Lightning Pieces/Barrel.obj" id="4_v36np"]
 [ext_resource type="Material" uid="uid://bb5au6shernuv" path="res://Materials/gun_metal.material" id="4_yqbe7"]
 [ext_resource type="ArrayMesh" uid="uid://dxrq6clmfhf8s" path="res://Models/Lightning Pieces/Bezels.obj" id="6_keeg3"]
@@ -39,7 +39,7 @@ continuous_cd = true
 max_contacts_reported = 55
 contact_monitor = true
 script = ExtResource("1_pylr4")
-turn_rate = 25.0
+turn_rate = 20.0
 left_raycast = NodePath("LeftCast")
 right_raycast = NodePath("RightCast")
 ground_raycast = NodePath("GroundCast")

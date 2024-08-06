@@ -1,7 +1,7 @@
 [gd_scene load_steps=315 format=3 uid="uid://dxg2elmph1u1i"]
 
 [ext_resource type="Material" uid="uid://cjx3tugs85ut2" path="res://Materials/turf.material" id="1_4etd5"]
-[ext_resource type="Script" path="res://Worlds/maul_grounds.gd" id="1_muu4f"]
+[ext_resource type="Script" path="res://Worlds/NPC.gd" id="1_j3fbo"]
 [ext_resource type="Texture2D" uid="uid://chefvtvnkm5v8" path="res://skybox/AllSkyFree_Sky_AnotherPlanet_Equirect.png" id="1_q4gs6"]
 [ext_resource type="Material" uid="uid://mqag85jtsael" path="res://Materials/ceiling_ligted.material" id="1_txyek"]
 [ext_resource type="Material" uid="uid://nww7en7lvg17" path="res://Materials/water.material" id="2_2ptwv"]
@@ -23,7 +23,7 @@
 [ext_resource type="Material" uid="uid://cgfcprehhicsy" path="res://Materials/base_pad_red.material" id="11_hwwp7"]
 [ext_resource type="Material" uid="uid://rkm6e0aks5m1" path="res://Materials/endSign.material" id="16_vjdqn"]
 [ext_resource type="Material" uid="uid://ble4cndeywll2" path="res://Materials/block_deco.material" id="17_wi8rk"]
-[ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_red.material" id="18_24l0x"]
+[ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_gelb.material" id="18_24l0x"]
 [ext_resource type="Material" uid="uid://c173e482rtw33" path="res://Materials/center.material" id="18_604ik"]
 [ext_resource type="Material" uid="uid://dsod826ud1trt" path="res://Materials/pad_neutral.material" id="19_4403m"]
 [ext_resource type="Material" uid="uid://bdqno5amsvn33" path="res://Materials/brick_muted.material" id="20_lgw82"]
@@ -3088,14 +3088,14 @@ backface_collision = true
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5c12u"]
 panorama = ExtResource("1_q4gs6")
 
-[sub_resource type="Sky" id="Sky_ltcy6"]
+[sub_resource type="Sky" id="Sky_lhj0u"]
 sky_material = SubResource("PanoramaSkyMaterial_5c12u")
 process_mode = 1
 
 [sub_resource type="Environment" id="Environment_t3lyu"]
 background_mode = 2
 background_energy_multiplier = 0.14
-sky = SubResource("Sky_ltcy6")
+sky = SubResource("Sky_lhj0u")
 sky_custom_fov = 47.6
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
@@ -3116,8 +3116,9 @@ volumetric_fog_density = 0.01
 adjustment_enabled = true
 
 [node name="Symmetry" type="Node3D"]
-script = ExtResource("1_muu4f")
+script = ExtResource("1_j3fbo")
 npc_scene = ExtResource("2_g6isc")
+height = 25.0
 world_min_x = -85.0
 world_max_x = 36.0
 world_min_z = -28.0
@@ -4599,4 +4600,4 @@ light_volumetric_fog_energy = 0.0
 environment = SubResource("Environment_t3lyu")
 
 [node name="Player" parent="." instance=ExtResource("2_u3n7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.6598, 15.6817, 94.1471)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0897, 14.4669, 93.0095)
