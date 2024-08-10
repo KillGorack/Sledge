@@ -237,14 +237,14 @@ albedo_texture = ExtResource("25_g63gy")
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_keo6o"]
 panorama = ExtResource("22_x7n0p")
 
-[sub_resource type="Sky" id="Sky_ltcy6"]
+[sub_resource type="Sky" id="Sky_xt0jv"]
 sky_material = SubResource("PanoramaSkyMaterial_keo6o")
 process_mode = 1
 
 [sub_resource type="Environment" id="Environment_b54p7"]
 background_mode = 2
 background_energy_multiplier = 0.14
-sky = SubResource("Sky_ltcy6")
+sky = SubResource("Sky_xt0jv")
 sky_custom_fov = 47.6
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)

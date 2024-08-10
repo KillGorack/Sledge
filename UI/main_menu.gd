@@ -1,12 +1,13 @@
 extends Node2D
 
-@onready var play_button = $CanvasLayer/PlayButton
-@onready var world_dropdown = $CanvasLayer/WorldDropdown
+@onready var play_button = $CanvasLayer/PlayGameGroup/PlayButton
+@onready var world_dropdown = $CanvasLayer/PlayGameGroup/WorldDropdown
 @onready var quit_button = $CanvasLayer/QuitButton
 
 @export var world_scene_1: PackedScene
 @export var world_scene_2: PackedScene
 @export var world_scene_3: PackedScene
+@export var world_scene_4: PackedScene
 
 var world_instance: Node = null
 
@@ -29,7 +30,9 @@ func load_selected_world():
 			selected_scene = world_scene_2
 		2:
 			selected_scene = world_scene_3
-
+		3:
+			selected_scene = world_scene_4
+			
 	if selected_scene:
 		world_instance = selected_scene.instantiate()
 		get_tree().root.add_child(world_instance)

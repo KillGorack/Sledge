@@ -1,24 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpj7bj0uyvbm6"]
+[gd_scene load_steps=12 format=3 uid="uid://bpj7bj0uyvbm6"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_c5s4v"]
 [ext_resource type="Texture2D" uid="uid://oaynngbptk72" path="res://UI/cooltext461307199921802.png" id="2_14ie0"]
 [ext_resource type="PackedScene" uid="uid://0vb3g3dk4mll" path="res://Worlds/maul_grounds.tscn" id="2_qkf7c"]
 [ext_resource type="PackedScene" uid="uid://dxg2elmph1u1i" path="res://Worlds/symmetry.tscn" id="2_v67yg"]
 [ext_resource type="PackedScene" uid="uid://dhf7w44m4eus4" path="res://Worlds/pack_four_xl.tscn" id="3_irfcc"]
-[ext_resource type="Texture2D" uid="uid://c1ku2xdpon50u" path="res://UI/MaulGrounds.png" id="3_klp25"]
-[ext_resource type="Texture2D" uid="uid://58u6ijp673y7" path="res://UI/MaulGrounds_ICO.png" id="7_4rcwv"]
-[ext_resource type="Texture2D" uid="uid://dk138jmtvswd" path="res://UI/Proving Grounds_ICO.png" id="8_lb8wv"]
-[ext_resource type="Texture2D" uid="uid://bdf3l2cvebku3" path="res://UI/Symmetry_ICO.png" id="9_2pjoo"]
+[ext_resource type="Texture2D" uid="uid://c1ku2xdpon50u" path="res://UI/Splash/MaulGrounds.png" id="3_klp25"]
+[ext_resource type="PackedScene" uid="uid://ellv18u8rl4h" path="res://Worlds/pack_iv.tscn" id="5_6tf0i"]
+[ext_resource type="Texture2D" uid="uid://58u6ijp673y7" path="res://UI/icons/MaulGrounds_ICO.png" id="7_4rcwv"]
+[ext_resource type="Texture2D" uid="uid://dk138jmtvswd" path="res://UI/icons/Proving Grounds_ICO.png" id="8_lb8wv"]
+[ext_resource type="Texture2D" uid="uid://bdf3l2cvebku3" path="res://UI/icons/Symmetry_ICO.png" id="9_2pjoo"]
+[ext_resource type="Texture2D" uid="uid://bw4kt6vldcqvp" path="res://UI/icons/packIV_ICO.png" id="11_jsoab"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_c5s4v")
 world_scene_1 = ExtResource("2_qkf7c")
 world_scene_2 = ExtResource("3_irfcc")
 world_scene_3 = ExtResource("2_v67yg")
+world_scene_4 = ExtResource("5_6tf0i")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BackDrop" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -49,40 +53,6 @@ grow_vertical = 2
 texture = ExtResource("2_14ie0")
 stretch_mode = 5
 
-[node name="PlayButton" type="Button" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -127.0
-offset_top = -33.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Load World
-"
-
-[node name="WorldDropdown" type="OptionButton" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -229.0
-offset_right = 230.0
-offset_bottom = 181.0
-grow_horizontal = 2
-item_count = 3
-popup/item_0/text = "Maul Grounds"
-popup/item_0/icon = ExtResource("7_4rcwv")
-popup/item_0/id = 0
-popup/item_1/text = "Pack Four XL"
-popup/item_1/icon = ExtResource("8_lb8wv")
-popup/item_1/id = 1
-popup/item_2/text = "Symmetry"
-popup/item_2/icon = ExtResource("9_2pjoo")
-popup/item_2/id = 2
-
 [node name="QuitButton" type="Button" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
@@ -94,3 +64,42 @@ offset_bottom = 35.0
 grow_horizontal = 0
 text = "Quit
 "
+
+[node name="LoginGroup" type="CanvasGroup" parent="CanvasLayer"]
+
+[node name="PlayGameGroup" type="CanvasGroup" parent="CanvasLayer"]
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/PlayGameGroup"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1043.0
+offset_top = 369.0
+offset_right = 1168.0
+offset_bottom = 400.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Load World
+"
+
+[node name="WorldDropdown" type="OptionButton" parent="CanvasLayer/PlayGameGroup"]
+offset_left = 659.0
+offset_top = 369.0
+offset_right = 1039.0
+offset_bottom = 447.0
+item_count = 4
+fit_to_longest_item = false
+popup/item_0/text = "Maul Grounds"
+popup/item_0/icon = ExtResource("7_4rcwv")
+popup/item_0/id = 0
+popup/item_1/text = "Pack Four XL"
+popup/item_1/icon = ExtResource("8_lb8wv")
+popup/item_1/id = 1
+popup/item_2/text = "Symmetry"
+popup/item_2/icon = ExtResource("9_2pjoo")
+popup/item_2/id = 2
+popup/item_3/text = "Pack IV"
+popup/item_3/icon = ExtResource("11_jsoab")
+popup/item_3/id = 3

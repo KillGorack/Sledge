@@ -9,6 +9,7 @@ uniform sampler2D normal_map : hint_normal;
 uniform float specular_intensity = 0.5;
 uniform float glossiness = 0.5;
 uniform float detail_mix = 0.5;
+uniform sampler2D emission_map; // Emission map texture
 
 void fragment() {
     int column = frame % columns;
@@ -38,5 +39,8 @@ void fragment() {
 
     ALBEDO = result_color * gradient_color;
     ALPHA = intensity < 0.1 ? 0.0 : intensity;
-    EMISSION = gradient_color * (intensity * 0.4);
+
+    // Emission
+    vec3 emission_color = texture(emission_map, frame_uv).rgb;
+    EMISSION = emission_color * gradient_color * (intensity * 2.4);
 }

@@ -1,6 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://buhj7gwig0uci"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://buhj7gwig0uci"]
 
 [ext_resource type="Shader" path="res://Explosions/Explosion/ExplosionShader.gdshader" id="1_kuhxh"]
+[ext_resource type="Texture2D" uid="uid://dmhhxi7q2rg03" path="res://Textures/Explosion/Explosion_emit.png" id="2_41f13"]
 [ext_resource type="Texture2D" uid="uid://du6ucmonp34yw" path="res://Textures/Explosion/boom_normal.bmp" id="2_fesxa"]
 [ext_resource type="Texture2D" uid="uid://crwlwl7serfks" path="res://Textures/Explosion/Explosion.png" id="2_ulikx"]
 
@@ -16,3 +17,4 @@ shader_parameter/glossiness = 1.0
 shader_parameter/detail_mix = 1.0
 shader_parameter/texture_sheet = ExtResource("2_ulikx")
 shader_parameter/normal_map = ExtResource("2_fesxa")
+shader_parameter/emission_map = ExtResource("2_41f13")
