@@ -61,25 +61,9 @@ grow_horizontal = 0
 text = "Quit
 "
 
-[node name="Registration" type="Button" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -126.0
-offset_top = 38.0
-offset_right = -3.0
-offset_bottom = 69.0
-grow_horizontal = 0
-text = "Register"
-
-[node name="Welcome" type="Label" parent="CanvasLayer"]
-offset_left = 52.0
-offset_top = 175.0
-offset_right = 713.0
-offset_bottom = 198.0
-
 [node name="LoginGroup" type="CanvasGroup" parent="CanvasLayer"]
 script = ExtResource("8_e6htc")
+apiKey = "2eeSWSAMUuMAeVM4TVwTmGtootEuFMKo"
 
 [node name="Container" type="TextureRect" parent="CanvasLayer/LoginGroup"]
 anchors_preset = 8
@@ -96,18 +80,17 @@ grow_vertical = 2
 texture = ExtResource("8_s7jc2")
 expand_mode = 1
 
-[node name="Username" type="LineEdit" parent="CanvasLayer/LoginGroup"]
-offset_left = 774.0
-offset_top = 483.0
-offset_right = 1133.0
-offset_bottom = 518.0
-
-[node name="Password" type="LineEdit" parent="CanvasLayer/LoginGroup"]
+[node name="Password" type="TextEdit" parent="CanvasLayer/LoginGroup"]
 offset_left = 774.0
 offset_top = 533.0
 offset_right = 1133.0
 offset_bottom = 568.0
-secret = true
+
+[node name="Username" type="TextEdit" parent="CanvasLayer/LoginGroup"]
+offset_left = 774.0
+offset_top = 483.0
+offset_right = 1133.0
+offset_bottom = 518.0
 
 [node name="LoginButton" type="Button" parent="CanvasLayer/LoginGroup"]
 anchors_preset = 1
@@ -123,9 +106,9 @@ text = "Submit
 
 [node name="Label" type="Label" parent="CanvasLayer/LoginGroup"]
 offset_left = 774.0
-offset_top = 444.0
-offset_right = 911.0
-offset_bottom = 467.0
+offset_top = 446.0
+offset_right = 821.0
+offset_bottom = 469.0
 text = "Login credentials:"
 
 [node name="PlayGameGroup" type="CanvasGroup" parent="CanvasLayer"]

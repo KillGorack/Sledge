@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://lmcxmfe0ggy6"]
 
 [ext_resource type="Script" path="res://Projectiles/MKIII DEW/collisionHandler.gd" id="1_i0lfx"]
-[ext_resource type="PackedScene" uid="uid://cpdclkirqx0q2" path="res://Explosions/LaserHit/laser_hit.tscn" id="2_fiv0f"]
+[ext_resource type="PackedScene" uid="uid://do5ibr8y72sm0" path="res://Explosions/Explosion/Variant 2/Explosion2.tscn" id="2_wbadk"]
 [ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_gelb.material" id="4_3p83v"]
 [ext_resource type="AudioStream" uid="uid://dtyjnib5p7s2u" path="res://Sounds/laser3.mp3" id="6_5rggj"]
 
@@ -24,7 +24,7 @@ continuous_cd = true
 max_contacts_reported = 99
 contact_monitor = true
 script = ExtResource("1_i0lfx")
-explosion_scene = ExtResource("2_fiv0f")
+explosion_scene = ExtResource("2_wbadk")
 damage = 10
 projectileVelocity = 75.0
 cooldown = 0.25

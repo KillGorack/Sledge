@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var play_button = $CanvasLayer/PlayGameGroup/PlayButton
-@onready var world_dropdown = $CanvasLayer/PlayGameGroup/WorldDropdown
-@onready var quit_button = $CanvasLayer/QuitButton
+@onready var play_button = $PlayButton
+@onready var world_dropdown = $WorldDropdown
+@onready var quit_button = get_parent().get_node("QuitButton")
 
 @export var world_scene_1: PackedScene
 @export var world_scene_2: PackedScene
@@ -18,7 +18,7 @@ func _ready():
 	quit_button.connect("pressed", Callable(self, "_on_QuitButton_pressed"))
 
 func _on_PlayButton_pressed():
-	$CanvasLayer.hide()
+	get_parent().hide()
 	load_selected_world()
 
 func load_selected_world():
@@ -43,7 +43,7 @@ func load_selected_world():
 func _input(event):
 	if event.is_action_pressed("MainMenu"):
 		unload_world()
-		$CanvasLayer.show()
+		get_parent().show()
 
 func unload_world():
 	if world_instance:

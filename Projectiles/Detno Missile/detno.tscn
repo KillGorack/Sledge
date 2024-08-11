@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://clo1qlxh8eemx"]
 
 [ext_resource type="Script" path="res://Projectiles/Detno Missile/collisionHandler.gd" id="1_q11wm"]
-[ext_resource type="PackedScene" uid="uid://by8tnrolxm3j6" path="res://Explosions/Explosion/Explosion.tscn" id="2_qvuo3"]
+[ext_resource type="PackedScene" uid="uid://by8tnrolxm3j6" path="res://Explosions/Explosion/Variant 1/Explosion.tscn" id="2_qvuo3"]
 [ext_resource type="ArrayMesh" uid="uid://d4hc6uo46tls0" path="res://Models/rocket.obj" id="4_l2nei"]
 [ext_resource type="Shader" path="res://GPUTrail-main/shaders/trailB.gdshader" id="5_sa45m"]
 [ext_resource type="Material" uid="uid://b3h8p1fpfpqyy" path="res://Materials/Rocket.material" id="5_w8euv"]
@@ -52,7 +52,7 @@ explosion_scene = ExtResource("2_qvuo3")
 impulse_strength = 500.0
 explosion_radius = 10.0
 force_curve = SubResource("Curve_jlkyh")
-damage = 25
+damage = 75
 projectileVelocity = 35.0
 launch_sound = ExtResource("11_dsw12")
 

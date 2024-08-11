@@ -7,7 +7,7 @@
 [ext_resource type="Material" uid="uid://bb5au6shernuv" path="res://Materials/gun_metal.material" id="4_yqbe7"]
 [ext_resource type="ArrayMesh" uid="uid://dxrq6clmfhf8s" path="res://Models/Lightning Pieces/Bezels.obj" id="6_keeg3"]
 [ext_resource type="Script" path="res://NPC/health.gd" id="7_rfnxc"]
-[ext_resource type="PackedScene" uid="uid://by8tnrolxm3j6" path="res://Explosions/Explosion/Explosion.tscn" id="8_tewk1"]
+[ext_resource type="PackedScene" uid="uid://by8tnrolxm3j6" path="res://Explosions/Explosion/Variant 1/Explosion.tscn" id="8_tewk1"]
 [ext_resource type="ArrayMesh" uid="uid://bihmriydtugre" path="res://Models/Lightning Pieces/Hover Pads.obj" id="8_xv4ba"]
 [ext_resource type="ArrayMesh" uid="uid://c84y4mbn8rlvw" path="res://Models/Lightning Pieces/Hull.obj" id="10_eqkhq"]
 [ext_resource type="Material" uid="uid://pfaidv5deiuc" path="res://Materials/Rubber.material" id="10_x7tv1"]

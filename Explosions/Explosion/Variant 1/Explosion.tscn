@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Explosions/Lookie.gd" id="1_jjcua"]
 [ext_resource type="Material" uid="uid://bu5dxlgmad33g" path="res://Explosions/BubSplosion/BubSplosionShaderMaterial.tres" id="2_h7fc7"]
-[ext_resource type="Script" path="res://Explosions/Explosion/Explosion.gd" id="3_hsj4d"]
+[ext_resource type="Script" path="res://Explosions/Explosion/Variant 1/Explosion.gd" id="3_hsj4d"]
 [ext_resource type="Script" path="res://Explosions/Flasher.gd" id="4_rsvpw"]
 [ext_resource type="AudioStream" uid="uid://bx43ysf3ucwqr" path="res://Sounds/Explosion.wav" id="5_u0ccc"]
 
