@@ -45,7 +45,7 @@ func _physics_process(delta):
 func apply_projectile_impulse(impulse: Vector3, _direction: Vector3):
 	stop_forces = true
 	apply_central_impulse(impulse)
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(1.0).timeout
 	stop_forces = false
 
 func _integrate_forces(state):
@@ -55,4 +55,5 @@ func _integrate_forces(state):
 			if collider.is_in_group("Driveable"):
 				var collision_impact = state.get_contact_impulse(i).length() / 2
 				if health && collision_impact > 50:
-					health.apply_damage(collision_impact - 50)
+					pass
+					#health.apply_damage(collision_impact - 50)

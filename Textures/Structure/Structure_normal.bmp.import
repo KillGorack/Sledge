@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d34dqq2i1l75x"
 path.s3tc="res://.godot/imported/Structure_normal.bmp-9706054fdd7aae6b36851e7685efe50f.s3tc.ctex"
+path.etc2="res://.godot/imported/Structure_normal.bmp-9706054fdd7aae6b36851e7685efe50f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Structure/Structure_normal.bmp"
-dest_files=["res://.godot/imported/Structure_normal.bmp-9706054fdd7aae6b36851e7685efe50f.s3tc.ctex"]
+dest_files=["res://.godot/imported/Structure_normal.bmp-9706054fdd7aae6b36851e7685efe50f.s3tc.ctex", "res://.godot/imported/Structure_normal.bmp-9706054fdd7aae6b36851e7685efe50f.etc2.ctex"]
 
 [params]
 

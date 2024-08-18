@@ -1,11 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://lmcxmfe0ggy6"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://bwm66u3tk5o2" path="res://Physics/Physics_Projectile.tres" id="1_4kiiy"]
 [ext_resource type="Script" path="res://Projectiles/MKIII DEW/collisionHandler.gd" id="1_i0lfx"]
-[ext_resource type="PackedScene" uid="uid://do5ibr8y72sm0" path="res://Explosions/Explosion/Variant 2/Explosion2.tscn" id="2_wbadk"]
+[ext_resource type="PackedScene" uid="uid://d0vc4tlbrhf3g" path="res://Explosions/Explosion/Variant 3/Explosion3.tscn" id="2_lcwb6"]
 [ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_gelb.material" id="4_3p83v"]
 [ext_resource type="AudioStream" uid="uid://dtyjnib5p7s2u" path="res://Sounds/laser3.mp3" id="6_5rggj"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v0alj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hcw7q"]
 radius = 0.1
@@ -18,15 +17,15 @@ height = 0.2
 [node name="MKIII" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 65530
-physics_material_override = SubResource("PhysicsMaterial_v0alj")
+physics_material_override = ExtResource("1_4kiiy")
 gravity_scale = 0.0
 continuous_cd = true
 max_contacts_reported = 99
 contact_monitor = true
 script = ExtResource("1_i0lfx")
-explosion_scene = ExtResource("2_wbadk")
+explosion_scene = ExtResource("2_lcwb6")
 damage = 10
-projectileVelocity = 75.0
+projectileVelocity = 50.0
 cooldown = 0.25
 launch_sound = ExtResource("6_5rggj")
 
@@ -55,16 +54,16 @@ light_volumetric_fog_energy = 0.0
 light_cull_mask = 4294967291
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.05, -0.05, -0.0778862)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.072, -0.078)
 layers = 4
 mesh = SubResource("CapsuleMesh_bxaxe")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.05, -0.05, -0.0778862)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.062, -0.036, -0.078)
 layers = 4
 mesh = SubResource("CapsuleMesh_bxaxe")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.05, -0.0778862)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.063, -0.036, -0.078)
 layers = 4
 mesh = SubResource("CapsuleMesh_bxaxe")

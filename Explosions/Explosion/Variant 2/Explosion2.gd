@@ -13,8 +13,6 @@ var shader_material: ShaderMaterial
 func _ready() -> void:
 
 	frame_size = Vector2(1.0 / columns, 1.0 / rows)
-	
-	# f'n chicken or egg. for now we put this here.. ;-/
 	shader_material = preload("res://Explosions/Explosion/Variant 2/ExplosionShaderMaterial2.tres").duplicate()
 
 	if shader_material:
@@ -23,6 +21,9 @@ func _ready() -> void:
 		shader_material.set_shader_parameter("rows", rows)
 		shader_material.set_shader_parameter("frame", current_frame)
 		self.material_override = shader_material
+		
+	var random_z_rotation = randf() * 360.0
+	rotate_z(deg_to_rad(random_z_rotation))
 
 func _process(delta: float) -> void:
 
@@ -36,6 +37,5 @@ func _process(delta: float) -> void:
 			current_frame = 0
 			queue_free()
 
-		# Update the shader parameter
 		if shader_material:
 			shader_material.set_shader_parameter("frame", current_frame)

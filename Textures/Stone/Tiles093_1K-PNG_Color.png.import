@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnrxpunypycoi"
 path.s3tc="res://.godot/imported/Tiles093_1K-PNG_Color.png-8698d5df77965e2b4c2df97d0f34bc44.s3tc.ctex"
+path.etc2="res://.godot/imported/Tiles093_1K-PNG_Color.png-8698d5df77965e2b4c2df97d0f34bc44.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Stone/Tiles093_1K-PNG_Color.png"
-dest_files=["res://.godot/imported/Tiles093_1K-PNG_Color.png-8698d5df77965e2b4c2df97d0f34bc44.s3tc.ctex"]
+dest_files=["res://.godot/imported/Tiles093_1K-PNG_Color.png-8698d5df77965e2b4c2df97d0f34bc44.s3tc.ctex", "res://.godot/imported/Tiles093_1K-PNG_Color.png-8698d5df77965e2b4c2df97d0f34bc44.etc2.ctex"]
 
 [params]
 

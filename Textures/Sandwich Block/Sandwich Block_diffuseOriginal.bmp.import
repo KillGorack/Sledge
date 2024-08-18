@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://uf41s5uwb4j5"
 path.s3tc="res://.godot/imported/Sandwich Block_diffuseOriginal.bmp-8253dc0f90acdd0325263087d07d5b6e.s3tc.ctex"
+path.etc2="res://.godot/imported/Sandwich Block_diffuseOriginal.bmp-8253dc0f90acdd0325263087d07d5b6e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Sandwich Block/Sandwich Block_diffuseOriginal.bmp"
-dest_files=["res://.godot/imported/Sandwich Block_diffuseOriginal.bmp-8253dc0f90acdd0325263087d07d5b6e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Sandwich Block_diffuseOriginal.bmp-8253dc0f90acdd0325263087d07d5b6e.s3tc.ctex", "res://.godot/imported/Sandwich Block_diffuseOriginal.bmp-8253dc0f90acdd0325263087d07d5b6e.etc2.ctex"]
 
 [params]
 

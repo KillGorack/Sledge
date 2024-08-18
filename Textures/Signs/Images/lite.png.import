@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ct2n300s6xgcg"
 path.s3tc="res://.godot/imported/lite.png-d34d24bced569ca0636656d24dcb4154.s3tc.ctex"
+path.etc2="res://.godot/imported/lite.png-d34d24bced569ca0636656d24dcb4154.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Signs/Images/lite.png"
-dest_files=["res://.godot/imported/lite.png-d34d24bced569ca0636656d24dcb4154.s3tc.ctex"]
+dest_files=["res://.godot/imported/lite.png-d34d24bced569ca0636656d24dcb4154.s3tc.ctex", "res://.godot/imported/lite.png-d34d24bced569ca0636656d24dcb4154.etc2.ctex"]
 
 [params]
 

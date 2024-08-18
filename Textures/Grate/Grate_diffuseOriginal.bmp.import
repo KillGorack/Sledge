@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://djqongm75xy2q"
 path.s3tc="res://.godot/imported/Grate_diffuseOriginal.bmp-7f1e0a3cc6e3da1aeb96fb676950c507.s3tc.ctex"
+path.etc2="res://.godot/imported/Grate_diffuseOriginal.bmp-7f1e0a3cc6e3da1aeb96fb676950c507.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Grate/Grate_diffuseOriginal.bmp"
-dest_files=["res://.godot/imported/Grate_diffuseOriginal.bmp-7f1e0a3cc6e3da1aeb96fb676950c507.s3tc.ctex"]
+dest_files=["res://.godot/imported/Grate_diffuseOriginal.bmp-7f1e0a3cc6e3da1aeb96fb676950c507.s3tc.ctex", "res://.godot/imported/Grate_diffuseOriginal.bmp-7f1e0a3cc6e3da1aeb96fb676950c507.etc2.ctex"]
 
 [params]
 

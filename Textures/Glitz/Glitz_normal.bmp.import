@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://7js4row6tmhb"
 path.s3tc="res://.godot/imported/Glitz_normal.bmp-6592ab8aad39dedfc56ad57c5a48e7ff.s3tc.ctex"
+path.etc2="res://.godot/imported/Glitz_normal.bmp-6592ab8aad39dedfc56ad57c5a48e7ff.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Glitz/Glitz_normal.bmp"
-dest_files=["res://.godot/imported/Glitz_normal.bmp-6592ab8aad39dedfc56ad57c5a48e7ff.s3tc.ctex"]
+dest_files=["res://.godot/imported/Glitz_normal.bmp-6592ab8aad39dedfc56ad57c5a48e7ff.s3tc.ctex", "res://.godot/imported/Glitz_normal.bmp-6592ab8aad39dedfc56ad57c5a48e7ff.etc2.ctex"]
 
 [params]
 

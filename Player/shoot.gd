@@ -5,22 +5,27 @@ var camera: Camera3D
 var shooting_audio: AudioStreamPlayer
 var current_speed = Vector3.ZERO
 var current_turn_speed = 0.0
+var weapon_label: RichTextLabel
+var current_projectile_index = 0
+var weapon_name = ""
 var projectile_speed = 0.0
 
-@export var projectile_scene_1: PackedScene
-@export var projectile_scene_2: PackedScene
-@export var projectile_scene_3: PackedScene
-var projectile_scenes: Array
-
+@export var projectile_scenes: Array[PackedScene]
+@export var weapon_label_path: NodePath
 @export var camera_node_path: NodePath
 @export var projectile_offset: Vector3 = Vector3(0, 0, 0)
 @export var shooting_audio_path: NodePath
-var current_projectile_index = 0
 
 func _ready():
 	camera = get_node(camera_node_path) as Camera3D
 	shooting_audio = get_node(shooting_audio_path) as AudioStreamPlayer
-	projectile_scenes = [projectile_scene_1, projectile_scene_2, projectile_scene_3]
+	weapon_label = get_node(weapon_label_path) as RichTextLabel
+
+	if projectile_scenes.size() > 0:
+		var initial_projectile = projectile_scenes[current_projectile_index].instantiate()
+		if initial_projectile and initial_projectile.has_method("get_weapon_name"):
+			weapon_name = initial_projectile.get_weapon_name()
+		update_weapon_label()
 
 func _physics_process(delta):
 	if shoot_timer > 0:
@@ -41,8 +46,6 @@ func shoot_projectile():
 			var camera_right = camera.global_transform.basis.x
 			var camera_up = camera.global_transform.basis.y
 			projectile_instance.global_transform.basis = Basis(camera_right, camera_up, -camera_forward)
-			
-			# Retrieve values from projectile script
 			if projectile_instance.has_method("get_cooldown"):
 				shoot_timer = projectile_instance.get_cooldown()
 			if projectile_instance.has_method("get_projectile_speed"):
@@ -57,3 +60,13 @@ func shoot_projectile():
 
 func switch_projectile():
 	current_projectile_index = (current_projectile_index + 1) % projectile_scenes.size()
+	var projectile_scene = projectile_scenes[current_projectile_index]
+	var projectile_instance = projectile_scene.instantiate()
+	if projectile_instance and projectile_instance.has_method("get_weapon_name"):
+		weapon_name = projectile_instance.get_weapon_name()
+	update_weapon_label()
+
+func update_weapon_label():
+	if weapon_label:
+		var projectile_name = " Weapon: " + str(weapon_name)
+		weapon_label.text = projectile_name

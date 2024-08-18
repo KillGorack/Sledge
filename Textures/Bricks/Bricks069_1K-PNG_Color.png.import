@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckplea40a6gi7"
 path.s3tc="res://.godot/imported/Bricks069_1K-PNG_Color.png-9baa6d48301bef26c14f60b59428175b.s3tc.ctex"
+path.etc2="res://.godot/imported/Bricks069_1K-PNG_Color.png-9baa6d48301bef26c14f60b59428175b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Bricks/Bricks069_1K-PNG_Color.png"
-dest_files=["res://.godot/imported/Bricks069_1K-PNG_Color.png-9baa6d48301bef26c14f60b59428175b.s3tc.ctex"]
+dest_files=["res://.godot/imported/Bricks069_1K-PNG_Color.png-9baa6d48301bef26c14f60b59428175b.s3tc.ctex", "res://.godot/imported/Bricks069_1K-PNG_Color.png-9baa6d48301bef26c14f60b59428175b.etc2.ctex"]
 
 [params]
 

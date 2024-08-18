@@ -1,21 +1,18 @@
-extends CanvasGroup
+extends Control
 
-@onready var login_button = $LoginButton
-@onready var username_input = $Username
-@onready var password_input = $Password
+
 @onready var registration_button = get_node("..").get_node("Registration")
 @onready var login_group = get_node("..").get_node("LoginGroup")
 @onready var play_game_group = get_node("..").get_node("PlayGameGroup")
 @onready var welcome_message = get_node("..").get_node("Welcome")
-
+@onready var username_input = $Username
+@onready var password_input = $Password
+@onready var login_button = $LoginButton
 @export var apiKey: String = ""
 
 var error
 var serverUrlBase = "https://www.killgorack.com/PX4/api.php?ap=sledge&apikeyid=4&api=json&vc="
 var registrationUrl = "https://www.killgorack.com/PX4/index.php?ap=hme&ala=register"
-
-
-
 
 
 func _ready():
@@ -86,7 +83,7 @@ func _on_request_completed(result, response_code, headers, body):
 						login_group.visible = false
 						play_game_group.visible = true
 						registration_button.visible = false
-						welcome_message.text = "Welcome: " + Global.get_user_data().get("usr_login")
+						welcome_message.text = "  Welcome: " + Global.get_user_data().get("usr_login")
 
 
 
@@ -94,16 +91,8 @@ func _on_request_completed(result, response_code, headers, body):
 
 func _on_gui_input(event):
 	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_TAB:
-			if username_input.has_focus():
-				password_input.grab_focus()
-			elif password_input.has_focus():
-				login_button.grab_focus()
-			elif login_button.has_focus():
-				username_input.grab_focus()
-		elif event.pressed and event.keycode == KEY_ENTER:
+		if event.pressed and event.keycode == KEY_ENTER:
 			_on_LoginButton_pressed()
-
 
 
 

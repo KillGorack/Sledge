@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://x30ebarkosfl"
 path.s3tc="res://.godot/imported/Ceiling Plain_ao.bmp-51758399f1bcd3ce7ec207d1d1262a1c.s3tc.ctex"
+path.etc2="res://.godot/imported/Ceiling Plain_ao.bmp-51758399f1bcd3ce7ec207d1d1262a1c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Ceiling Plain/Ceiling Plain_ao.bmp"
-dest_files=["res://.godot/imported/Ceiling Plain_ao.bmp-51758399f1bcd3ce7ec207d1d1262a1c.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ceiling Plain_ao.bmp-51758399f1bcd3ce7ec207d1d1262a1c.s3tc.ctex", "res://.godot/imported/Ceiling Plain_ao.bmp-51758399f1bcd3ce7ec207d1d1262a1c.etc2.ctex"]
 
 [params]
 

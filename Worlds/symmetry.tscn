@@ -11,10 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://b8siumuqiii82" path="res://Player/player.tscn" id="2_u3n7j"]
 [ext_resource type="Material" uid="uid://i4lrx4s025a8" path="res://Materials/stone.material" id="3_1y47u"]
 [ext_resource type="Material" uid="uid://bpnjy8g1eqq2" path="res://Materials/stone_dark.material" id="3_vbjlo"]
+[ext_resource type="PhysicsMaterial" uid="uid://b1l4ud574d75r" path="res://Physics/Physics_Ceiling.tres" id="4_fmd4s"]
 [ext_resource type="Material" uid="uid://d3so0uf5vdp45" path="res://Materials/tile_dark.material" id="4_w1ugp"]
 [ext_resource type="Material" uid="uid://di2od31wueoji" path="res://Materials/stone_light.material" id="6_g73f5"]
 [ext_resource type="Material" uid="uid://co0fl1dxv48pm" path="res://Materials/sandwich_block.material" id="7_arv0p"]
 [ext_resource type="Material" uid="uid://cjie37y85670v" path="res://Materials/shingle.material" id="7_bbajg"]
+[ext_resource type="PhysicsMaterial" uid="uid://dh2rif6n2skrg" path="res://Physics/Physics_Floor.tres" id="7_j0ahm"]
 [ext_resource type="Material" uid="uid://cnelrfja185ir" path="res://Materials/tile_light.material" id="8_mrojh"]
 [ext_resource type="Material" uid="uid://dt8oxakqp7tta" path="res://Materials/base_pad_gray.material" id="8_vmjbl"]
 [ext_resource type="Material" uid="uid://cj7h5gmt3lmnm" path="res://Materials/base_pad_blue.material" id="9_6b2gu"]
@@ -23,14 +25,17 @@
 [ext_resource type="Material" uid="uid://cgfcprehhicsy" path="res://Materials/base_pad_red.material" id="11_hwwp7"]
 [ext_resource type="Material" uid="uid://rkm6e0aks5m1" path="res://Materials/endSign.material" id="16_vjdqn"]
 [ext_resource type="Material" uid="uid://ble4cndeywll2" path="res://Materials/block_deco.material" id="17_wi8rk"]
+[ext_resource type="PhysicsMaterial" uid="uid://dnqako4d4uswu" path="res://Physics/Physics_Ramps.tres" id="17_xng15"]
 [ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_gelb.material" id="18_24l0x"]
 [ext_resource type="Material" uid="uid://c173e482rtw33" path="res://Materials/center.material" id="18_604ik"]
 [ext_resource type="Material" uid="uid://dsod826ud1trt" path="res://Materials/pad_neutral.material" id="19_4403m"]
 [ext_resource type="Material" uid="uid://bdqno5amsvn33" path="res://Materials/brick_muted.material" id="20_lgw82"]
 [ext_resource type="Material" uid="uid://ccmfmitsv1jw7" path="res://Materials/cham.material" id="21_fg77m"]
 [ext_resource type="Material" uid="uid://6y3hlaxibndi" path="res://Materials/heavy.material" id="22_alc0n"]
+[ext_resource type="PhysicsMaterial" uid="uid://0sp7q4t6oufs" path="res://Physics/Physics_Tips.tres" id="23_2iw0b"]
 [ext_resource type="Material" uid="uid://cl620ruli77it" path="res://Materials/glitz_blue.material" id="23_82dnk"]
 [ext_resource type="Material" uid="uid://clj5jh6v7iyl0" path="res://Materials/glitz_gray.material" id="24_p7h83"]
+[ext_resource type="PhysicsMaterial" uid="uid://2kde5d2xtkbe" path="res://Physics/Physics_Walls.tres" id="25_0r0e5"]
 [ext_resource type="Material" uid="uid://bkxfjukd212nj" path="res://Materials/glitz_green.material" id="25_jipkb"]
 [ext_resource type="Material" uid="uid://cdi5u6q5tvypl" path="res://Materials/glitz_red.material" id="26_c0kwh"]
 [ext_resource type="Material" uid="uid://c1q3v6en60d14" path="res://Materials/Grate.material" id="27_7brvd"]
@@ -85,10 +90,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_r7wo7")
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ogpiu"]
-friction = 0.0
-bounce = 0.4
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wvt82"]
 custom_solver_bias = 1.0
@@ -189,10 +190,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_dg8e3")
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ctxbo"]
-friction = 0.4
-bounce = 0.1
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wwn28"]
 custom_solver_bias = 1.0
@@ -735,9 +732,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3mwxe")
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0aby2"]
-friction = 0.4
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yayhq"]
 custom_solver_bias = 1.0
@@ -1990,9 +1984,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yj110")
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5bbst"]
-friction = 0.2
-
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gr30t"]
 custom_solver_bias = 1.0
 data = PackedVector3Array(2399.97, -70.165, -30, -0.0359, -70.165, -30, -0.0359, -100.079, 0, 2399.97, -70.165, -30, -0.0359, -100.079, 0, 2399.97, -100.079, 0, -300.059, -70.165, -30, -1900, -69.9883, -30, -1900, -100.079, 0, -300.059, -70.165, -30, -1900, -100.079, 0, -300.059, -100.079, 0, 2399.97, -330.009, -30, 2399.97, -300.095, 0, -0.0359, -300.095, 0, 2399.97, -330.009, -30, -0.0359, -300.095, 0, -0.0359, -330.009, -30, -300.059, -330.009, -30, -300.059, -300.095, 0, -1900, -300.095, 0, -300.059, -330.009, -30, -1900, -300.095, 0, -1900, -330.186, -30, 4029.83, 1299.85, -30, 4029.83, 3699.86, -30, 3999.91, 3699.86, 0, 4029.83, 1299.85, -30, 3999.91, 3699.86, 0, 3999.91, 1299.85, 0, 4029.83, 3999.89, -30, 4030, 5599.84, -30, 3999.91, 5599.84, 0, 4029.83, 3999.89, -30, 3999.91, 5599.84, 0, 3999.91, 3999.89, 0, 3769.81, 1299.85, -30, 3799.9, 1299.85, 0, 3799.9, 3699.86, 0, 3769.81, 1299.85, -30, 3799.9, 3699.86, 0, 3769.98, 3699.86, -30, 3769.98, 3999.89, -30, 3799.9, 3999.89, 0, 3799.9, 5599.84, 0, 3769.98, 3999.89, -30, 3799.9, 5599.84, 0, 3769.98, 5600.01, -30, 5399.84, -330.009, -30, 7799.84, -330.186, -30, 7799.84, -300.095, 0, 5399.84, -330.009, -30, 7799.84, -300.095, 0, 5399.84, -300.095, 0, 8099.87, -330.186, -30, 9699.81, -330.186, -30, 9699.81, -300.095, 0, 8099.87, -330.186, -30, 9699.81, -300.095, 0, 8099.87, -300.095, 0, 5399.84, -70.165, -30, 5399.84, -100.079, 0, 7799.84, -100.079, 0, 5399.84, -70.165, -30, 7799.84, -100.079, 0, 7799.84, -70.165, -30, 8099.87, -70.165, -30, 8099.87, -100.079, 0, 9699.99, -100.079, 0, 8099.87, -70.165, -30, 9699.99, -100.079, 0, 9699.99, -70.165, -30, 3769.81, -1700.03, -30, 3769.81, -4100.04, -30, 3799.9, -4100.04, 0, 3769.81, -1700.03, -30, 3799.9, -4100.04, 0, 3799.9, -1700.03, 0, 3769.81, -4400.06, -30, 3769.81, -6000.01, -30, 3799.9, -6000.01, 0, 3769.81, -4400.06, -30, 3799.9, -6000.01, 0, 3799.9, -4400.06, 0, 4029.83, -1700.03, -30, 3999.91, -1700.03, 0, 3999.91, -4100.04, 0, 4029.83, -1700.03, -30, 3999.91, -4100.04, 0, 4029.83, -4100.04, -30, 4029.83, -4400.06, -30, 3999.91, -4400.06, 0, 3999.91, -6000.01, 0, 4029.83, -4400.06, -30, 3999.91, -6000.01, 0, 4029.83, -6000.01, -30, 5469.93, 4199.9, -30, 5469.93, 3999.89, -30, 5499.85, 3999.89, 0, 5469.93, 4199.9, -30, 5499.85, 3999.89, 0, 5499.85, 4199.9, 0, 6199.9, 4229.82, -30, 5999.88, 4229.82, -30, 5999.88, 4199.9, 0, 6199.9, 4229.82, -30, 5999.88, 4199.9, 0, 6199.9, 4199.9, 0, 6229.99, 3999.89, -30, 6229.99, 4199.9, -30, 6199.9, 4199.9, 0, 6229.99, 3999.89, -30, 6199.9, 4199.9, 0, 6199.9, 3999.89, 0, 6229.99, 3499.85, -30, 6229.99, 3699.86, -30, 6199.9, 3699.86, 0, 6229.99, 3499.85, -30, 6199.9, 3699.86, 0, 6199.9, 3499.85, 0, 5999.88, 3469.94, -30, 6199.9, 3469.94, -30, 6199.9, 3499.85, 0, 5999.88, 3469.94, -30, 6199.9, 3499.85, 0, 5999.88, 3499.85, 0, 5499.85, 3469.94, -30, 5699.86, 3469.94, -30, 5699.86, 3499.85, 0, 5499.85, 3469.94, -30, 5699.86, 3499.85, 0, 5499.85, 3499.85, 0, 5469.93, 3699.86, -30, 5469.93, 3499.85, -30, 5499.85, 3499.85, 0, 5469.93, 3699.86, -30, 5499.85, 3499.85, 0, 5499.85, 3699.86, 0, 5699.86, 4229.82, -30, 5499.85, 4229.82, -30, 5499.85, 4199.9, 0, 5699.86, 4229.82, -30, 5499.85, 4199.9, 0, 5699.86, 4199.9, 0, 7569.91, -1800.21, -30, 7569.91, -2000.05, -30, 7599.83, -2000.05, 0, 7569.91, -1800.21, -30, 7599.83, -2000.05, 0, 7599.83, -1800.21, 0, 8299.88, -1770.12, -30, 8099.87, -1770.12, -30, 8099.87, -1800.21, 0, 8299.88, -1770.12, -30, 8099.87, -1800.21, 0, 8299.88, -1800.21, 0, 8329.97, -2000.05, -30, 8329.97, -1800.21, -30, 8299.88, -1800.21, 0, 8329.97, -2000.05, -30, 8299.88, -1800.21, 0, 8299.88, -2000.05, 0, 8329.97, -2500.09, -30, 8329.97, -2300.07, -30, 8299.88, -2300.07, 0, 8329.97, -2500.09, -30, 8299.88, -2300.07, 0, 8299.88, -2500.09, 0, 8099.87, -2530.18, -30, 8299.88, -2530.18, -30, 8299.88, -2500.09, 0, 8099.87, -2530.18, -30, 8299.88, -2500.09, 0, 8099.87, -2500.09, 0, 7599.83, -2530.18, -30, 7799.84, -2530.18, -30, 7799.84, -2500.09, 0, 7599.83, -2530.18, -30, 7799.84, -2500.09, 0, 7599.83, -2500.09, 0, 7569.91, -2300.07, -30, 7569.91, -2500.09, -30, 7599.83, -2500.09, 0, 7569.91, -2300.07, -30, 7599.83, -2500.09, 0, 7599.83, -2300.07, 0, 7799.84, -1770.12, -30, 7599.83, -1770.12, -30, 7599.83, -1800.21, 0, 7799.84, -1770.12, -30, 7599.83, -1800.21, 0, 7799.84, -1800.21, 0, 1569.82, -3900.02, -30, 1569.82, -4100.04, -30, 1599.91, -4100.04, 0, 1569.82, -3900.02, -30, 1599.91, -4100.04, 0, 1599.91, -3900.02, 0, 2299.96, -3870.11, -30, 2099.95, -3870.11, -30, 2099.95, -3900.02, 0, 2299.96, -3870.11, -30, 2099.95, -3900.02, 0, 2299.96, -3900.02, 0, 2329.87, -4100.04, -30, 2329.87, -3900.02, -30, 2299.96, -3900.02, 0, 2329.87, -4100.04, -30, 2299.96, -3900.02, 0, 2299.96, -4100.04, 0, 2329.87, -4600.08, -30, 2329.87, -4400.06, -30, 2299.96, -4400.06, 0, 2329.87, -4600.08, -30, 2299.96, -4400.06, 0, 2299.96, -4600.08, 0, 2099.95, -4630.17, -30, 2299.96, -4630.17, -30, 2299.96, -4600.08, 0, 2099.95, -4630.17, -30, 2299.96, -4600.08, 0, 2099.95, -4600.08, 0, 1599.91, -4630.17, -30, 1799.92, -4630.17, -30, 1799.92, -4600.08, 0, 1599.91, -4630.17, -30, 1799.92, -4600.08, 0, 1599.91, -4600.08, 0, 1569.82, -4400.06, -30, 1569.82, -4600.08, -30, 1599.91, -4600.08, 0, 1569.82, -4400.06, -30, 1599.91, -4600.08, 0, 1599.91, -4400.06, 0, 1799.92, -3870.11, -30, 1599.91, -3870.11, -30, 1599.91, -3900.02, 0, 1799.92, -3870.11, -30, 1599.91, -3900.02, 0, 1799.92, -3900.02, 0, -530.164, 2099.92, -30, -530.164, 1899.9, -30, -500.074, 1899.9, 0, -530.164, 2099.92, -30, -500.074, 1899.9, 0, -500.074, 2099.92, 0, 199.979, 2129.83, -30, -0.0359, 2129.83, -30, -0.0359, 2099.92, 0, 199.979, 2129.83, -30, -0.0359, 2099.92, 0, 199.979, 2099.92, 0, 229.893, 1899.9, -30, 229.893, 2099.92, -30, 199.979, 2099.92, 0, 229.893, 1899.9, -30, 199.979, 2099.92, 0, 199.979, 1899.9, 0, 229.893, 1399.86, -30, 229.893, 1599.88, -30, 199.979, 1599.88, 0, 229.893, 1399.86, -30, 199.979, 1599.88, 0, 199.979, 1399.86, 0, -0.0359, 1369.95, -30, 199.979, 1369.95, -30, 199.979, 1399.86, 0, -0.0359, 1369.95, -30, 199.979, 1399.86, 0, -0.0359, 1399.86, 0, -500.074, 1369.95, -30, -300.059, 1369.95, -30, -300.059, 1399.86, 0, -500.074, 1369.95, -30, -300.059, 1399.86, 0, -500.074, 1399.86, 0, -530.164, 1599.88, -30, -530.164, 1399.86, -30, -500.074, 1399.86, 0, -530.164, 1599.88, -30, -500.074, 1399.86, 0, -500.074, 1599.88, 0, -300.059, 2129.83, -30, -500.074, 2129.83, -30, -500.074, 2099.92, 0, -300.059, 2129.83, -30, -500.074, 2099.92, 0, -300.059, 2099.92, 0)
@@ -2112,10 +2103,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j8v1h")
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nt8sf"]
-friction = 0.0
-bounce = 0.1
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5svx0"]
 custom_solver_bias = 1.0
@@ -3118,6 +3105,7 @@ adjustment_enabled = true
 [node name="Symmetry" type="Node3D"]
 script = ExtResource("1_j3fbo")
 npc_scene = ExtResource("2_g6isc")
+npc_count = 50
 height = 25.0
 world_min_x = -85.0
 world_max_x = 36.0
@@ -3139,7 +3127,7 @@ surface_material_override/0 = ExtResource("1_txyek")
 transform = Transform3D(1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_ogpiu")
+physics_material_override = ExtResource("4_fmd4s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Ceiling/Ceiling__Ceiling_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wvt82")
@@ -3153,7 +3141,7 @@ mesh = SubResource("ArrayMesh_ss1bl")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Ceiling/Ceiling__Ceiling_Plain_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_ogpiu")
+physics_material_override = ExtResource("4_fmd4s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Ceiling/Ceiling__Ceiling_Plain_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0b3oj")
@@ -3170,7 +3158,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Floor/Floor__Grass_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_ctxbo")
+physics_material_override = ExtResource("7_j0ahm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Floor/Floor__Grass_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wwn28")
@@ -3185,7 +3173,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Floor/Floor__Hex_Paver_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_ctxbo")
+physics_material_override = ExtResource("7_j0ahm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Floor/Floor__Hex_Paver_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_b4stu")
@@ -3200,7 +3188,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Floor/Floor__Tile_Dark_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_ctxbo")
+physics_material_override = ExtResource("7_j0ahm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Floor/Floor__Tile_Dark_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_v8x8p")
@@ -3215,7 +3203,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Floor/Floor__Tile_Light_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_ctxbo")
+physics_material_override = ExtResource("7_j0ahm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Floor/Floor__Tile_Light_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4k3yr")
@@ -3230,7 +3218,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Floor/Floor__Water_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_ctxbo")
+physics_material_override = ExtResource("7_j0ahm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Floor/Floor__Water_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sfk7w")
@@ -3338,7 +3326,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_0aby2")
+physics_material_override = ExtResource("17_xng15")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Ramp/Ramp__Brick_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_yayhq")
@@ -3354,7 +3342,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 5.42101e-20, 0, 1, 1.42109e-14, -5.42101e-20, -1.42109e-14, 1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_0aby2")
+physics_material_override = ExtResource("17_xng15")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Ramp/Ramp__Shingle_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_rw2pl")
@@ -3370,7 +3358,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_0aby2")
+physics_material_override = ExtResource("17_xng15")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Ramp/Ramp__Stone_Dark_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_t5e7v")
@@ -3386,7 +3374,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, -9.09495e-13, -1.42109e-14, 9.09495e-13, 1, 0, 1.42109e-14, -1.0842e-19, 1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_0aby2")
+physics_material_override = ExtResource("17_xng15")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Ramp/Ramp__Stone_Light_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_d5v1a")
@@ -3403,7 +3391,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad" type="MeshInstance3D" parent="Geometry/ReconStations/Recon"]
+[node name="Recon_Pad" type="MeshInstance3D" parent="Geometry/ReconStations/Recon" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3426,7 +3414,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_28" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__10_"]
+[node name="Recon_Pad_28" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__10_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3449,7 +3437,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_30" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__11_"]
+[node name="Recon_Pad_30" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__11_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3472,7 +3460,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_24" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__12_"]
+[node name="Recon_Pad_24" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__12_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3495,7 +3483,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_27" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__13_"]
+[node name="Recon_Pad_27" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__13_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3518,7 +3506,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_29" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__14_"]
+[node name="Recon_Pad_29" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__14_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3541,7 +3529,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_31" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__15_"]
+[node name="Recon_Pad_31" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__15_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3564,7 +3552,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_9" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__16_"]
+[node name="Recon_Pad_9" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__16_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3587,7 +3575,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_10" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__17_"]
+[node name="Recon_Pad_10" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__17_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3610,7 +3598,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_12" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__18_"]
+[node name="Recon_Pad_12" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__18_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3633,7 +3621,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_14" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__19_"]
+[node name="Recon_Pad_14" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__19_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3656,7 +3644,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_1" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__1_"]
+[node name="Recon_Pad_1" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__1_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3679,7 +3667,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_23" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__20_"]
+[node name="Recon_Pad_23" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__20_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3702,7 +3690,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_20" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__21_"]
+[node name="Recon_Pad_20" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__21_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3725,7 +3713,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_18" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__22_"]
+[node name="Recon_Pad_18" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__22_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3748,7 +3736,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_16" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__23_"]
+[node name="Recon_Pad_16" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__23_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3771,7 +3759,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_8" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__24_"]
+[node name="Recon_Pad_8" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__24_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3794,7 +3782,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_11" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__25_"]
+[node name="Recon_Pad_11" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__25_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3817,7 +3805,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_13" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__26_"]
+[node name="Recon_Pad_13" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__26_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3840,7 +3828,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_15" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__27_"]
+[node name="Recon_Pad_15" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__27_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3863,7 +3851,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_22" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__28_"]
+[node name="Recon_Pad_22" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__28_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3886,7 +3874,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_21" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__29_"]
+[node name="Recon_Pad_21" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__29_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3909,7 +3897,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_2" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__2_"]
+[node name="Recon_Pad_2" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__2_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3932,7 +3920,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_19" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__30_"]
+[node name="Recon_Pad_19" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__30_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3955,7 +3943,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_17" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__31_"]
+[node name="Recon_Pad_17" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__31_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -3978,7 +3966,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_3" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__3_"]
+[node name="Recon_Pad_3" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__3_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -4001,7 +3989,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_4" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__4_"]
+[node name="Recon_Pad_4" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__4_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -4024,7 +4012,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_5" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__5_"]
+[node name="Recon_Pad_5" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__5_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -4047,7 +4035,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_6" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__6_"]
+[node name="Recon_Pad_6" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__6_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -4070,7 +4058,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_7" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__7_"]
+[node name="Recon_Pad_7" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__7_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -4093,7 +4081,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_25" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__8_"]
+[node name="Recon_Pad_25" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__8_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -4116,7 +4104,7 @@ mesh = SubResource("ArrayMesh_m2eh7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("18_24l0x")
 
-[node name="Recon_Pad_26" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__9_"]
+[node name="Recon_Pad_26" type="MeshInstance3D" parent="Geometry/ReconStations/Recon__9_" groups=["Recon"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 2
 material_override = ExtResource("19_4403m")
@@ -4141,7 +4129,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Tip/Tip__Brick_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_5bbst")
+physics_material_override = ExtResource("23_2iw0b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Tip/Tip__Brick_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_gr30t")
@@ -4156,7 +4144,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Tip/Tip__Stone_Dark_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_5bbst")
+physics_material_override = ExtResource("23_2iw0b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Tip/Tip__Stone_Dark_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_yjm5t")
@@ -4171,7 +4159,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Tip/Tip__Stone_Light_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_5bbst")
+physics_material_override = ExtResource("23_2iw0b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Tip/Tip__Stone_Light_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_40ysn")
@@ -4188,7 +4176,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Area_For_Rez_Sign"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Area_For_Rez_Sign/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5svx0")
@@ -4203,7 +4191,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Block_Deco_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Block_Deco_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8o83b")
@@ -4218,7 +4206,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__boom_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__boom_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_tup2p")
@@ -4233,7 +4221,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Brick_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Brick_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_60ixe")
@@ -4248,7 +4236,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Brick_Muted_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Brick_Muted_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3dvi5")
@@ -4263,7 +4251,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Cham_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Cham_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xegkm")
@@ -4358,7 +4346,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Devastator_Pic_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Devastator_Pic_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2nmxq")
@@ -4373,7 +4361,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Glitz_Blue_Glow_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Glitz_Blue_Glow_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_tjuek")
@@ -4388,7 +4376,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Glitz_Gray_Glow_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Glitz_Gray_Glow_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0b71b")
@@ -4403,7 +4391,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Glitz_Green_Glow_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Glitz_Green_Glow_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_20akc")
@@ -4418,7 +4406,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Glitz_Red_Glow_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Glitz_Red_Glow_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1j2d5")
@@ -4433,7 +4421,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Grate_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Grate_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_s70wb")
@@ -4448,7 +4436,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Jackal_Image_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Jackal_Image_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ywyr2")
@@ -4463,7 +4451,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Lite_Image_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Lite_Image_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_tmc1l")
@@ -4478,7 +4466,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Pillow_Pic_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Pillow_Pic_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_me7rw")
@@ -4493,7 +4481,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Sandwich_Block_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Sandwich_Block_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_880qf")
@@ -4509,7 +4497,7 @@ skeleton = NodePath("")
 visible = false
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Sandwich_Block__Collider_Only/StaticBody3D"]
 visible = false
@@ -4525,7 +4513,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Sandwich_Block__Material_Only"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Sandwich_Block__Material_Only/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1bv32")
@@ -4540,7 +4528,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Stone_Dark_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Stone_Dark_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ln0cm")
@@ -4555,7 +4543,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Tile_Dark_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Tile_Dark_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ftt2o")
@@ -4570,7 +4558,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Tile_Dark___1_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Tile_Dark___1_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sc2jd")
@@ -4585,7 +4573,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Wall/Wall__Tile_Light_"]
 collision_layer = 2
 collision_mask = 65535
-physics_material_override = SubResource("PhysicsMaterial_nt8sf")
+physics_material_override = ExtResource("25_0r0e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Wall/Wall__Tile_Light_/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_l6n4t")

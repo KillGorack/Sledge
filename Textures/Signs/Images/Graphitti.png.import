@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhvo2nlasxb8y"
 path.s3tc="res://.godot/imported/Graphitti.png-373f10b08e8851acfd35900427ccbe09.s3tc.ctex"
+path.etc2="res://.godot/imported/Graphitti.png-373f10b08e8851acfd35900427ccbe09.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Signs/Images/Graphitti.png"
-dest_files=["res://.godot/imported/Graphitti.png-373f10b08e8851acfd35900427ccbe09.s3tc.ctex"]
+dest_files=["res://.godot/imported/Graphitti.png-373f10b08e8851acfd35900427ccbe09.s3tc.ctex", "res://.godot/imported/Graphitti.png-373f10b08e8851acfd35900427ccbe09.etc2.ctex"]
 
 [params]
 

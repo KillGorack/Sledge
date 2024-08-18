@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dyugowcewmcrh"
 path.s3tc="res://.godot/imported/Hex Paver AmbientOcclusion.jpg-6fa31a7ea29e0b3388cfa04462f52a95.s3tc.ctex"
+path.etc2="res://.godot/imported/Hex Paver AmbientOcclusion.jpg-6fa31a7ea29e0b3388cfa04462f52a95.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Hex Pavers/Hex Paver AmbientOcclusion.jpg"
-dest_files=["res://.godot/imported/Hex Paver AmbientOcclusion.jpg-6fa31a7ea29e0b3388cfa04462f52a95.s3tc.ctex"]
+dest_files=["res://.godot/imported/Hex Paver AmbientOcclusion.jpg-6fa31a7ea29e0b3388cfa04462f52a95.s3tc.ctex", "res://.godot/imported/Hex Paver AmbientOcclusion.jpg-6fa31a7ea29e0b3388cfa04462f52a95.etc2.ctex"]
 
 [params]
 

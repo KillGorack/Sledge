@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8c7t0lv5ya2h"
 path.s3tc="res://.godot/imported/RubberTile_normal.bmp-c4718278985b35aa5b42db48002c7a51.s3tc.ctex"
+path.etc2="res://.godot/imported/RubberTile_normal.bmp-c4718278985b35aa5b42db48002c7a51.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/RubberTile/RubberTile_normal.bmp"
-dest_files=["res://.godot/imported/RubberTile_normal.bmp-c4718278985b35aa5b42db48002c7a51.s3tc.ctex"]
+dest_files=["res://.godot/imported/RubberTile_normal.bmp-c4718278985b35aa5b42db48002c7a51.s3tc.ctex", "res://.godot/imported/RubberTile_normal.bmp-c4718278985b35aa5b42db48002c7a51.etc2.ctex"]
 
 [params]
 

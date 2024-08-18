@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bs8hrl1nb0a8p"
 path.s3tc="res://.godot/imported/Tiles093_1K-PNG_AmbientOcclusion.png-073135b1e0f58462d58be8f61523e317.s3tc.ctex"
+path.etc2="res://.godot/imported/Tiles093_1K-PNG_AmbientOcclusion.png-073135b1e0f58462d58be8f61523e317.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Stone/Tiles093_1K-PNG_AmbientOcclusion.png"
-dest_files=["res://.godot/imported/Tiles093_1K-PNG_AmbientOcclusion.png-073135b1e0f58462d58be8f61523e317.s3tc.ctex"]
+dest_files=["res://.godot/imported/Tiles093_1K-PNG_AmbientOcclusion.png-073135b1e0f58462d58be8f61523e317.s3tc.ctex", "res://.godot/imported/Tiles093_1K-PNG_AmbientOcclusion.png-073135b1e0f58462d58be8f61523e317.etc2.ctex"]
 
 [params]
 

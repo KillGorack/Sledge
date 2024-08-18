@@ -76,3 +76,6 @@ func get_projectile_speed() -> float:
 
 func get_launch_sound() -> AudioStream:
 	return launch_sound
+	
+func get_weapon_name() -> StringName:
+	return StringName("Detno Missile")

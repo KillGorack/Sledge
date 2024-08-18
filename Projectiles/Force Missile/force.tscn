@@ -1,5 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dhbn084ynla8a"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://bwm66u3tk5o2" path="res://Physics/Physics_Projectile.tres" id="1_8qqy0"]
 [ext_resource type="Script" path="res://Projectiles/Force Missile/collisionHandler.gd" id="1_eokgr"]
 [ext_resource type="Material" uid="uid://dhfys530aklu1" path="res://Materials/Rocket_blue.material" id="2_4extj"]
 [ext_resource type="PackedScene" uid="uid://cedhmeorv8qc8" path="res://Explosions/BubSplosion/BubSplosion.tscn" id="2_i5wxm"]
@@ -10,9 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://brdgfui8jin0d" path="res://Sounds/Launch.mp3" id="10_aljqg"]
 [ext_resource type="Texture2D" uid="uid://bvkjpkg03nq8m" path="res://Textures/Flash/particles-single.png" id="10_bis3t"]
 [ext_resource type="Script" path="res://GPUTrail-main/GPUTrail3DB.gd" id="12_ukgea"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2puu4"]
-friction = 0.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8gnse"]
 radius = 0.1
@@ -52,14 +50,14 @@ material = SubResource("ShaderMaterial_l1j6u")
 collision_layer = 4
 collision_mask = 4294967290
 mass = 50.0
-physics_material_override = SubResource("PhysicsMaterial_2puu4")
+physics_material_override = ExtResource("1_8qqy0")
 gravity_scale = 0.0
 continuous_cd = true
 max_contacts_reported = 999
 contact_monitor = true
 script = ExtResource("1_eokgr")
 explosion_scene = ExtResource("2_i5wxm")
-impulse_strength = 1500.0
+impulse_strength = 500.0
 BounceCount = 10
 launch_sound = ExtResource("10_aljqg")
 

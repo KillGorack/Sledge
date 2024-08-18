@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var play_button = $PlayButton
 @onready var world_dropdown = $WorldDropdown

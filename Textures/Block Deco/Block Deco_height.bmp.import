@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpoxem0ifskli"
 path.s3tc="res://.godot/imported/Block Deco_height.bmp-4b902fa4f51336e1ffbc84473f3ce188.s3tc.ctex"
+path.etc2="res://.godot/imported/Block Deco_height.bmp-4b902fa4f51336e1ffbc84473f3ce188.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Block Deco/Block Deco_height.bmp"
-dest_files=["res://.godot/imported/Block Deco_height.bmp-4b902fa4f51336e1ffbc84473f3ce188.s3tc.ctex"]
+dest_files=["res://.godot/imported/Block Deco_height.bmp-4b902fa4f51336e1ffbc84473f3ce188.s3tc.ctex", "res://.godot/imported/Block Deco_height.bmp-4b902fa4f51336e1ffbc84473f3ce188.etc2.ctex"]
 
 [params]
 

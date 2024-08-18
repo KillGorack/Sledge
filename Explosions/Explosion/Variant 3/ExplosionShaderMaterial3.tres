@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d3r8wgsytyw25"]
+
+[ext_resource type="Shader" path="res://Explosions/Explosion/Variant 3/ExplosionShader3.gdshader" id="1_chcib"]
+[ext_resource type="Texture2D" uid="uid://bxnjnemndklx3" path="res://Textures/Explosion/toon.png" id="2_liqyn"]
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_chcib")
+shader_parameter/frame_size = Vector2(0.1, 0.2)
+shader_parameter/columns = 4
+shader_parameter/rows = 4
+shader_parameter/frame = null
+shader_parameter/specular_intensity = 0.0
+shader_parameter/glossiness = 0.0
+shader_parameter/detail_mix = 0.0
+shader_parameter/texture_sheet = ExtResource("2_liqyn")

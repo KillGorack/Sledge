@@ -19,15 +19,9 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BackDrop" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1248.0
-offset_top = -540.0
-offset_right = 1248.0
-offset_bottom = 540.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_klp25")
@@ -35,17 +29,8 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Title" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -933.0
-offset_top = -519.0
-offset_right = -448.0
-offset_bottom = -353.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 485.0
+offset_bottom = 166.0
 texture = ExtResource("2_14ie0")
 stretch_mode = 5
 
@@ -73,104 +58,105 @@ grow_horizontal = 0
 text = "Register"
 
 [node name="Welcome" type="Label" parent="CanvasLayer"]
-offset_left = 52.0
-offset_top = 175.0
-offset_right = 713.0
-offset_bottom = 198.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "  Please login"
 
-[node name="LoginGroup" type="CanvasGroup" parent="CanvasLayer"]
-script = ExtResource("8_e6htc")
-
-[node name="Container" type="TextureRect" parent="CanvasLayer/LoginGroup"]
+[node name="LoginGroup" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 756.0
-offset_top = 434.0
-offset_right = 1151.0
-offset_bottom = 627.0
+offset_left = -197.0
+offset_top = -96.0
+offset_right = 198.0
+offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_s7jc2")
 expand_mode = 1
+script = ExtResource("8_e6htc")
 
 [node name="Username" type="LineEdit" parent="CanvasLayer/LoginGroup"]
-offset_left = 774.0
-offset_top = 483.0
-offset_right = 1133.0
-offset_bottom = 518.0
+layout_mode = 0
+offset_left = 20.5
+offset_top = 42.5
+offset_right = 379.5
+offset_bottom = 73.5
 
 [node name="Password" type="LineEdit" parent="CanvasLayer/LoginGroup"]
-offset_left = 774.0
-offset_top = 533.0
-offset_right = 1133.0
-offset_bottom = 568.0
+layout_mode = 0
+offset_left = 21.5
+offset_top = 84.5
+offset_right = 378.5
+offset_bottom = 115.5
 secret = true
 
 [node name="LoginButton" type="Button" parent="CanvasLayer/LoginGroup"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 1009.0
-offset_top = 579.0
-offset_right = 1132.0
-offset_bottom = 610.0
-grow_horizontal = 0
-text = "Submit
-"
+layout_mode = 0
+offset_left = 293.5
+offset_top = 127.5
+offset_right = 378.5
+offset_bottom = 158.5
+text = "Submit"
 
 [node name="Label" type="Label" parent="CanvasLayer/LoginGroup"]
-offset_left = 774.0
-offset_top = 444.0
-offset_right = 911.0
-offset_bottom = 467.0
+layout_mode = 0
+offset_left = 18.0
+offset_top = 10.0
+offset_right = 155.0
+offset_bottom = 33.0
 text = "Login credentials:"
 
-[node name="PlayGameGroup" type="CanvasGroup" parent="CanvasLayer"]
+[node name="PlayGameGroup" type="TextureRect" parent="CanvasLayer"]
 visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -269.0
+offset_top = -59.0
+offset_right = 269.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_s7jc2")
+expand_mode = 1
 script = ExtResource("1_c5s4v")
 world_scene_1 = ExtResource("2_qkf7c")
 world_scene_2 = ExtResource("3_irfcc")
 world_scene_3 = ExtResource("2_v67yg")
 world_scene_4 = ExtResource("5_6tf0i")
 
-[node name="Container" type="TextureRect" parent="CanvasLayer/PlayGameGroup"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 643.0
-offset_top = 348.0
-offset_right = 1181.0
-offset_bottom = 466.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_s7jc2")
-expand_mode = 1
-
 [node name="PlayButton" type="Button" parent="CanvasLayer/PlayGameGroup"]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1043.0
-offset_top = 369.0
-offset_right = 1168.0
-offset_bottom = 400.0
+offset_left = -138.0
+offset_top = -97.0
+offset_right = -13.0
+offset_bottom = -66.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Load World
 "
 
 [node name="WorldDropdown" type="OptionButton" parent="CanvasLayer/PlayGameGroup"]
-offset_left = 659.0
-offset_top = 369.0
-offset_right = 1039.0
-offset_bottom = 447.0
+layout_mode = 0
+offset_left = 16.0
+offset_top = 21.0
+offset_right = 396.0
+offset_bottom = 99.0
 item_count = 4
 fit_to_longest_item = false
 popup/item_0/text = "Maul Grounds"

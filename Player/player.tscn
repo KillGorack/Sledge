@@ -1,17 +1,19 @@
-[gd_scene load_steps=27 format=3 uid="uid://b8siumuqiii82"]
+[gd_scene load_steps=30 format=3 uid="uid://b8siumuqiii82"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://deru0wsiqkst8" path="res://Physics/Physics_Player.tres" id="1_k4c56"]
 [ext_resource type="Script" path="res://Player/movement.gd" id="1_p06na"]
 [ext_resource type="Script" path="res://Player/Camera3D.gd" id="2_18mlw"]
 [ext_resource type="Script" path="res://Player/shoot.gd" id="2_t3pxx"]
-[ext_resource type="PackedScene" uid="uid://clo1qlxh8eemx" path="res://Projectiles/Detno Missile/detno.tscn" id="3_oegrt"]
 [ext_resource type="Script" path="res://Player/Reticle.gd" id="4_evipe"]
-[ext_resource type="PackedScene" uid="uid://dhbn084ynla8a" path="res://Projectiles/Force Missile/force.tscn" id="4_i4x53"]
-[ext_resource type="PackedScene" uid="uid://lmcxmfe0ggy6" path="res://Projectiles/MKIII DEW/mkiii.tscn" id="5_m4vav"]
+[ext_resource type="PackedScene" uid="uid://lmcxmfe0ggy6" path="res://Projectiles/MKIII DEW/mkiii.tscn" id="6_cnycn"]
 [ext_resource type="Material" uid="uid://clj5jh6v7iyl0" path="res://Materials/glitz_gray.material" id="6_dbl5a"]
 [ext_resource type="AudioStream" uid="uid://kwjh0wp5qftc" path="res://Sounds/vehicle.wav" id="6_oqamv"]
+[ext_resource type="PackedScene" uid="uid://clo1qlxh8eemx" path="res://Projectiles/Detno Missile/detno.tscn" id="7_beo63"]
 [ext_resource type="ArrayMesh" uid="uid://do73tb6ukjftq" path="res://Models/Lightning Pieces/Turret.obj" id="7_rsxoa"]
 [ext_resource type="Material" uid="uid://bb5au6shernuv" path="res://Materials/gun_metal.material" id="8_mlpij"]
+[ext_resource type="PackedScene" uid="uid://dhbn084ynla8a" path="res://Projectiles/Force Missile/force.tscn" id="8_qhju0"]
 [ext_resource type="ArrayMesh" uid="uid://bwf1rbmq735wv" path="res://Models/Lightning Pieces/Barrel.obj" id="9_147nv"]
+[ext_resource type="PackedScene" uid="uid://b1fu86so13lm5" path="res://Projectiles/Howitser/Howitser.tscn" id="9_iwiib"]
 [ext_resource type="Material" uid="uid://pfaidv5deiuc" path="res://Materials/Rubber.material" id="10_punc7"]
 [ext_resource type="ArrayMesh" uid="uid://dxrq6clmfhf8s" path="res://Models/Lightning Pieces/Bezels.obj" id="11_gekii"]
 [ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_gelb.material" id="12_w1kfg"]
@@ -23,9 +25,8 @@
 [ext_resource type="Material" uid="uid://dt8oxakqp7tta" path="res://Materials/base_pad_gray.material" id="18_qm6vg"]
 [ext_resource type="ArrayMesh" uid="uid://tyt6esh6hmlp" path="res://Models/Lightning Pieces/Stripe.obj" id="19_4y42y"]
 [ext_resource type="ArrayMesh" uid="uid://d33lgnte1pdkl" path="res://Models/Lightning Pieces/Underbody.obj" id="20_g5t2d"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_np3rf"]
-bounce = 0.3
+[ext_resource type="Texture2D" uid="uid://b3dla0g25yow0" path="res://UI/Elements/Circle_(transparent).png" id="23_fvv6o"]
+[ext_resource type="Script" path="res://Player/Radar.gd" id="24_1c8sm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vvwp3"]
 size = Vector3(0.712, 0.04, 1.598)
@@ -37,7 +38,7 @@ points = PackedVector3Array(0.359919, -0.234853, 1.21184, 0.349981, -0.178604, 1
 [node name="Player" type="RigidBody3D" groups=["Player"]]
 collision_mask = 65531
 mass = 50.0
-physics_material_override = SubResource("PhysicsMaterial_np3rf")
+physics_material_override = ExtResource("1_k4c56")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.25, -0.25)
 continuous_cd = true
@@ -67,9 +68,8 @@ shape = SubResource("ConvexPolygonShape3D_33prw")
 
 [node name="ShootingNode" type="Node3D" parent="."]
 script = ExtResource("2_t3pxx")
-projectile_scene_1 = ExtResource("3_oegrt")
-projectile_scene_2 = ExtResource("4_i4x53")
-projectile_scene_3 = ExtResource("5_m4vav")
+projectile_scenes = Array[PackedScene]([ExtResource("6_cnycn"), ExtResource("7_beo63"), ExtResource("8_qhju0"), ExtResource("9_iwiib")])
+weapon_label_path = NodePath("../UI/RichTextLabel")
 camera_node_path = NodePath("../Camera3D")
 shooting_audio_path = NodePath("../AudioStreamPlayer")
 
@@ -132,39 +132,79 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 12.0
-offset_right = 1.0
-offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
 [node name="Reticle" type="CenterContainer" parent="UI"]
 clip_contents = true
-layout_direction = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -62.0
-offset_right = 49.0
-offset_bottom = 38.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 use_top_left = true
 script = ExtResource("4_evipe")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 1033.0
-offset_right = 366.0
-offset_bottom = 1060.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 356.0
+grow_vertical = 0
 text = "Weapon: "
+
+[node name="Radar" type="TextureRect" parent="UI"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 250.0
+grow_horizontal = 0
+texture = ExtResource("23_fvv6o")
+expand_mode = 1
+script = ExtResource("24_1c8sm")
+recon_dot_color = Color(1, 1, 1, 1)
+dot_radius = 3.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI/Radar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="UI/Radar/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(240, 240)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="UI/Radar/SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 visible = false

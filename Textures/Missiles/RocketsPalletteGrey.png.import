@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dydlow531cma0"
 path.s3tc="res://.godot/imported/RocketsPalletteGrey.png-0d98f67a9921b23bb25b152d21fa7ef7.s3tc.ctex"
+path.etc2="res://.godot/imported/RocketsPalletteGrey.png-0d98f67a9921b23bb25b152d21fa7ef7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Missiles/RocketsPalletteGrey.png"
-dest_files=["res://.godot/imported/RocketsPalletteGrey.png-0d98f67a9921b23bb25b152d21fa7ef7.s3tc.ctex"]
+dest_files=["res://.godot/imported/RocketsPalletteGrey.png-0d98f67a9921b23bb25b152d21fa7ef7.s3tc.ctex", "res://.godot/imported/RocketsPalletteGrey.png-0d98f67a9921b23bb25b152d21fa7ef7.etc2.ctex"]
 
 [params]
 

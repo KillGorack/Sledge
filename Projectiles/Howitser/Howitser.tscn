@@ -1,0 +1,104 @@
+[gd_scene load_steps=19 format=3 uid="uid://b1fu86so13lm5"]
+
+[ext_resource type="Script" path="res://Projectiles/Howitser/collisionHandler.gd" id="1_41sba"]
+[ext_resource type="PhysicsMaterial" uid="uid://bwm66u3tk5o2" path="res://Physics/Physics_Projectile.tres" id="1_qv1ul"]
+[ext_resource type="Material" uid="uid://bb5au6shernuv" path="res://Materials/gun_metal.material" id="1_vqxtp"]
+[ext_resource type="PackedScene" uid="uid://d204cg28f2qwt" path="res://Explosions/Heat/Heat.tscn" id="2_2gypk"]
+[ext_resource type="AudioStream" uid="uid://0ewaid0q62cj" path="res://Sounds/shot.wav" id="2_2yxfn"]
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trailC.gdshader" id="5_ileid"]
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail_draw_pass.gdshader" id="6_82lo7"]
+[ext_resource type="Texture2D" uid="uid://ct31fhxvcragr" path="res://GPUTrail-main/defaults/curve.tres" id="8_fjmu8"]
+[ext_resource type="Texture2D" uid="uid://bvkjpkg03nq8m" path="res://Textures/Flash/particles-single.png" id="9_iaggf"]
+[ext_resource type="Script" path="res://GPUTrail-main/GPUTrail3DC.gd" id="10_ws17s"]
+
+[sub_resource type="Curve" id="Curve_540dy"]
+_data = [Vector2(0, 1), 0.0, -0.214286, 0, 1, Vector2(0.333333, 0.928571), -0.758333, -0.758333, 0, 0, Vector2(0.77551, 0.160714), -1.6275, -1.6275, 0, 0, Vector2(1, 0.00892866), -0.154412, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="SphereMesh" id="SphereMesh_3y8oh"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bx8eo"]
+radius = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7eadt"]
+shader = ExtResource("5_ileid")
+
+[sub_resource type="Gradient" id="Gradient_0y4pf"]
+offsets = PackedFloat32Array(0, 0.792763, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ccivo"]
+gradient = SubResource("Gradient_0y4pf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3qav"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_82lo7")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 41
+shader_parameter/tex = ExtResource("9_iaggf")
+shader_parameter/color_ramp = SubResource("GradientTexture1D_ccivo")
+shader_parameter/curve = ExtResource("8_fjmu8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_82vyy"]
+material = SubResource("ShaderMaterial_w3qav")
+
+[node name="Howitser" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 65534
+mass = 5.0
+physics_material_override = ExtResource("1_qv1ul")
+continuous_cd = true
+max_contacts_reported = 999
+contact_monitor = true
+script = ExtResource("1_41sba")
+explosion_scene = ExtResource("2_2gypk")
+impulse_strength = 250.0
+explosion_radius = 15.0
+force_curve = SubResource("Curve_540dy")
+projectileVelocity = 25.0
+launch_sound = ExtResource("2_2yxfn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 4
+material_override = ExtResource("1_vqxtp")
+mesh = SubResource("SphereMesh_3y8oh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_bx8eo")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0, -0.1, 0, 0.1, 0, 0, 0, 0, 0.1, 0, 0, 0.0818051)
+layers = 4
+amount = 10
+lifetime = 10.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_7eadt")
+draw_pass_1 = SubResource("QuadMesh_82vyy")
+script = ExtResource("10_ws17s")
+length = 10
+texture = ExtResource("9_iaggf")
+color_ramp = SubResource("GradientTexture1D_ccivo")
+curve = ExtResource("8_fjmu8")
+vertical_texture = true
+_defaults_have_been_set = true
+
+[node name="GPUTrail3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.1, 4.37114e-09, 0, -4.37114e-09, -0.1, 0, 0, 0, 0.1, 0, 0, 0.0818051)
+layers = 4
+amount = 10
+lifetime = 10.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_7eadt")
+draw_pass_1 = SubResource("QuadMesh_82vyy")
+script = ExtResource("10_ws17s")
+length = 10
+texture = ExtResource("9_iaggf")
+color_ramp = SubResource("GradientTexture1D_ccivo")
+curve = ExtResource("8_fjmu8")
+vertical_texture = true
+_defaults_have_been_set = true

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://uq668j6qsiy6"
 path.s3tc="res://.godot/imported/Hex Paver _NormalGL.jpg-25e1170cc8d60676e78919798b5fa3a7.s3tc.ctex"
+path.etc2="res://.godot/imported/Hex Paver _NormalGL.jpg-25e1170cc8d60676e78919798b5fa3a7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Hex Pavers/Hex Paver _NormalGL.jpg"
-dest_files=["res://.godot/imported/Hex Paver _NormalGL.jpg-25e1170cc8d60676e78919798b5fa3a7.s3tc.ctex"]
+dest_files=["res://.godot/imported/Hex Paver _NormalGL.jpg-25e1170cc8d60676e78919798b5fa3a7.s3tc.ctex", "res://.godot/imported/Hex Paver _NormalGL.jpg-25e1170cc8d60676e78919798b5fa3a7.etc2.ctex"]
 
 [params]
 

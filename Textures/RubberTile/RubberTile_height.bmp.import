@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://0ilba4bhp1uk"
 path.s3tc="res://.godot/imported/RubberTile_height.bmp-e913154323c71a332c1d73ec7bbdc9e9.s3tc.ctex"
+path.etc2="res://.godot/imported/RubberTile_height.bmp-e913154323c71a332c1d73ec7bbdc9e9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/RubberTile/RubberTile_height.bmp"
-dest_files=["res://.godot/imported/RubberTile_height.bmp-e913154323c71a332c1d73ec7bbdc9e9.s3tc.ctex"]
+dest_files=["res://.godot/imported/RubberTile_height.bmp-e913154323c71a332c1d73ec7bbdc9e9.s3tc.ctex", "res://.godot/imported/RubberTile_height.bmp-e913154323c71a332c1d73ec7bbdc9e9.etc2.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 extends OmniLight3D
 
-var delay_time = 0.05
+var delay_time = 0.075
 
 func _ready():
 	start_timer()

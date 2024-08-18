@@ -9,7 +9,11 @@ uniform sampler2D normal_map : hint_normal;
 uniform float specular_intensity = 0.5;
 uniform float glossiness = 0.5;
 uniform float detail_mix = 0.5;
-uniform sampler2D emission_map; // Emission map texture
+uniform sampler2D emission_map;
+
+uniform vec4 color1 : source_color = vec4(1.0, 0.5, 0.0, 1.0);
+uniform vec4 color2 : source_color = vec4(1.0, 0.0, 0.0, 1.0);
+uniform vec4 color3 : source_color = vec4(1.0, 1.0, 1.0, 1.0);
 
 void fragment() {
     int column = frame % columns;
@@ -20,27 +24,27 @@ void fragment() {
 
     // Normal Mapping
     vec3 normal = texture(normal_map, frame_uv).rgb;
-    normal = normalize((normal * 2.0) - 1.0);
+    normal = normalize((normal * 2.0) - 0.25);
 
     // Basic Lighting
-    vec3 light_dir = normalize(vec3(1.0, 1.0, 1.0)); // Light direction
+    vec3 light_dir = normalize(vec3(1.0, 1.0, 1.0));
     float diff = max(dot(normal, light_dir), 0.0);
 
     // Specular Highlights
-    vec3 view_dir = normalize(-FRAGCOORD.xyz); // View direction
-    vec3 reflect_dir = reflect(-light_dir, normal); // Reflection direction
+    vec3 view_dir = normalize(-FRAGCOORD.xyz);
+    vec3 reflect_dir = reflect(-light_dir, normal);
     float spec = pow(max(dot(view_dir, reflect_dir), 0.0), glossiness);
     vec3 specular = vec3(specular_intensity) * spec;
 
     // Final Color
     vec3 result_color = (color.rgb * diff) + specular;
     float intensity = (color.r + color.g + color.b) / 3.0;
-    vec3 gradient_color = mix(mix(vec3(1.0, 0.5, 0.0), vec3(1.0, 0.0, 0.0), intensity), vec3(1.0, 1.0, 1.0), intensity);
+    vec3 gradient_color = mix(mix(color1.rgb, color2.rgb, intensity), color3.rgb, intensity);
 
     ALBEDO = result_color * gradient_color;
-    ALPHA = intensity < 0.1 ? 0.0 : intensity;
+    ALPHA = color.a * color1.a;
 
     // Emission
     vec3 emission_color = texture(emission_map, frame_uv).rgb;
-    EMISSION = emission_color * gradient_color * (intensity * 2.4);
+    EMISSION = emission_color * gradient_color * (intensity * 1.0);
 }

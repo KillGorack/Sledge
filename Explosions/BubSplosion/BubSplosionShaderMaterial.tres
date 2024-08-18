@@ -10,7 +10,4 @@ shader_parameter/frame_size = Vector2(0.167, 0.167)
 shader_parameter/columns = 6
 shader_parameter/rows = 6
 shader_parameter/frame = null
-shader_parameter/specular_intensity = 0.5
-shader_parameter/glossiness = 0.5
-shader_parameter/detail_mix = 0.5
 shader_parameter/texture_sheet = ExtResource("2_ys6pq")

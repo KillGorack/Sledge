@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://djjtmuxmmxowt"
 path.s3tc="res://.godot/imported/Ceiling_normal.bmp-d65e44f8b30171a7a63e8622f220e085.s3tc.ctex"
+path.etc2="res://.godot/imported/Ceiling_normal.bmp-d65e44f8b30171a7a63e8622f220e085.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Ceiling/Ceiling_normal.bmp"
-dest_files=["res://.godot/imported/Ceiling_normal.bmp-d65e44f8b30171a7a63e8622f220e085.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ceiling_normal.bmp-d65e44f8b30171a7a63e8622f220e085.s3tc.ctex", "res://.godot/imported/Ceiling_normal.bmp-d65e44f8b30171a7a63e8622f220e085.etc2.ctex"]
 
 [params]
 

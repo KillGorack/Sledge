@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://besmoa74ty2jd"]
 
 [ext_resource type="Shader" path="res://Explosions/Explosion/Variant 2/ExplosionShader2.gdshader" id="1_5d4u8"]
-[ext_resource type="Texture2D" uid="uid://ir6kad5vqsrh" path="res://Textures/Explosion/Explosion02_5x5.png" id="2_htmmr"]
+[ext_resource type="Texture2D" uid="uid://b7otv472mnshv" path="res://Textures/Explosion/cartSplosion.png" id="2_48r21"]
 
 [resource]
 render_priority = 1
@@ -10,7 +10,4 @@ shader_parameter/frame_size = Vector2(0.2, 0.2)
 shader_parameter/columns = 5
 shader_parameter/rows = 5
 shader_parameter/frame = null
-shader_parameter/specular_intensity = 0.0
-shader_parameter/glossiness = 0.0
-shader_parameter/detail_mix = 0.0
-shader_parameter/texture_sheet = ExtResource("2_htmmr")
+shader_parameter/texture_sheet = ExtResource("2_48r21")

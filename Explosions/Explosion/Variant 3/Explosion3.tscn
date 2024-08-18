@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0vc4tlbrhf3g"]
+
+[ext_resource type="Script" path="res://Explosions/Lookie.gd" id="1_hnckx"]
+[ext_resource type="Material" uid="uid://d3r8wgsytyw25" path="res://Explosions/Explosion/Variant 3/ExplosionShaderMaterial3.tres" id="2_8ixr8"]
+[ext_resource type="Script" path="res://Explosions/Explosion/Variant 3/Explosion3.gd" id="3_gfapr"]
+[ext_resource type="AudioStream" uid="uid://dn8be8m46ejyh" path="res://Sounds/hit.wav" id="3_vo8tt"]
+[ext_resource type="Script" path="res://Explosions/Flasher.gd" id="4_4ibuy"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lgo1f"]
+size = Vector2(0.35, 0.35)
+
+[node name="Explosion" type="Node3D"]
+script = ExtResource("1_hnckx")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+layers = 4
+light_color = Color(0.95449, 0.953069, 1, 1)
+light_energy = 4.0
+light_indirect_energy = 4.0
+script = ExtResource("4_4ibuy")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_vo8tt")
+autoplay = true
+area_mask = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.072, -0.25)
+layers = 4
+mesh = SubResource("QuadMesh_lgo1f")
+surface_material_override/0 = ExtResource("2_8ixr8")
+script = ExtResource("3_gfapr")
+total_frames = 50
+fps = 256
+columns = 10
+rows = 5
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.062, -0.036, -0.25)
+layers = 4
+mesh = SubResource("QuadMesh_lgo1f")
+surface_material_override/0 = ExtResource("2_8ixr8")
+script = ExtResource("3_gfapr")
+total_frames = 50
+fps = 256
+columns = 10
+rows = 5
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.063, -0.036, -0.25)
+layers = 4
+mesh = SubResource("QuadMesh_lgo1f")
+surface_material_override/0 = ExtResource("2_8ixr8")
+script = ExtResource("3_gfapr")
+total_frames = 50
+fps = 256
+columns = 10
+rows = 5

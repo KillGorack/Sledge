@@ -55,11 +55,19 @@ func _on_body_entered(body: Node):
 			BounceCount -= 1
 			global_transform.origin += reflection * BounceOffset
 			linear_velocity = reflection * projectileVelocity
-			global_transform = global_transform.looking_at(global_transform.origin + reflection, Vector3.UP)
+			
+			# Ensure that the up vector is not parallel to the reflection vector
+			var up_vector = Vector3.UP
+			if reflection.is_zero_approx() or reflection.dot(up_vector) == 1.0 or reflection.dot(up_vector) == -1.0:
+				# Choose a different up vector if reflection is collinear with the default up vector
+				up_vector = Vector3.RIGHT if up_vector.dot(Vector3.RIGHT) != 1.0 else Vector3.FORWARD
+			
+			global_transform = global_transform.looking_at(global_transform.origin + reflection, up_vector)
 			initial_position = global_transform.origin
 		else:
 			_apply_impulse(body)
 			queue_free()
+
 
 func _apply_impulse(body: Node):
 	if body is RigidBody3D:
@@ -84,3 +92,6 @@ func get_projectile_speed() -> float:
 
 func get_launch_sound() -> AudioStream:
 	return launch_sound
+
+func get_weapon_name() -> StringName:
+	return StringName("Repulsor Missile")

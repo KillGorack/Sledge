@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://binwhkqw4sv2o"
 path.s3tc="res://.godot/imported/Tile_normal.bmp-23a8c677ffbf90dd96bcb5dd57d5a0d8.s3tc.ctex"
+path.etc2="res://.godot/imported/Tile_normal.bmp-23a8c677ffbf90dd96bcb5dd57d5a0d8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Floor Tile/Tile_normal.bmp"
-dest_files=["res://.godot/imported/Tile_normal.bmp-23a8c677ffbf90dd96bcb5dd57d5a0d8.s3tc.ctex"]
+dest_files=["res://.godot/imported/Tile_normal.bmp-23a8c677ffbf90dd96bcb5dd57d5a0d8.s3tc.ctex", "res://.godot/imported/Tile_normal.bmp-23a8c677ffbf90dd96bcb5dd57d5a0d8.etc2.ctex"]
 
 [params]
 

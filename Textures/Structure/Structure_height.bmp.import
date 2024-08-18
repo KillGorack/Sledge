@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpetex6c1532c"
 path.s3tc="res://.godot/imported/Structure_height.bmp-8d8c57c18474dd5fc1e1fc302aad134c.s3tc.ctex"
+path.etc2="res://.godot/imported/Structure_height.bmp-8d8c57c18474dd5fc1e1fc302aad134c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Structure/Structure_height.bmp"
-dest_files=["res://.godot/imported/Structure_height.bmp-8d8c57c18474dd5fc1e1fc302aad134c.s3tc.ctex"]
+dest_files=["res://.godot/imported/Structure_height.bmp-8d8c57c18474dd5fc1e1fc302aad134c.s3tc.ctex", "res://.godot/imported/Structure_height.bmp-8d8c57c18474dd5fc1e1fc302aad134c.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ybfqvmik0kel"
 path.s3tc="res://.godot/imported/others_0020_height_1k.png-c355307f563e3c13aafcb28742f2b647.s3tc.ctex"
+path.etc2="res://.godot/imported/others_0020_height_1k.png-c355307f563e3c13aafcb28742f2b647.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Water/others_0020_height_1k.png"
-dest_files=["res://.godot/imported/others_0020_height_1k.png-c355307f563e3c13aafcb28742f2b647.s3tc.ctex"]
+dest_files=["res://.godot/imported/others_0020_height_1k.png-c355307f563e3c13aafcb28742f2b647.s3tc.ctex", "res://.godot/imported/others_0020_height_1k.png-c355307f563e3c13aafcb28742f2b647.etc2.ctex"]
 
 [params]
 

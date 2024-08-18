@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyorjdwxalomv"
 path.s3tc="res://.godot/imported/dot_gaus.png-412b36eae786f3ee55acd211e7fb87ca.s3tc.ctex"
+path.etc2="res://.godot/imported/dot_gaus.png-412b36eae786f3ee55acd211e7fb87ca.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Flash/dot_gaus.png"
-dest_files=["res://.godot/imported/dot_gaus.png-412b36eae786f3ee55acd211e7fb87ca.s3tc.ctex"]
+dest_files=["res://.godot/imported/dot_gaus.png-412b36eae786f3ee55acd211e7fb87ca.s3tc.ctex", "res://.godot/imported/dot_gaus.png-412b36eae786f3ee55acd211e7fb87ca.etc2.ctex"]
 
 [params]
 
