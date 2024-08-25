@@ -1707,7 +1707,7 @@ backface_collision = true
 [node name="MaulGrounds" type="Node3D"]
 script = ExtResource("1_ooxma")
 npc_scene = ExtResource("25_iidyh")
-npc_count = 25
+npc_count = 100
 world_min_x = -47.0
 world_max_x = 47.0
 world_min_z = -47.0

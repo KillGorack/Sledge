@@ -66,7 +66,7 @@ func escape_string(value: String) -> String:
 
 
 
-func _on_request_completed(result, response_code, headers, body):
+func _on_request_completed(_result, response_code, _headers, body):
 	var body_string = body.get_string_from_utf8()
 	if response_code == 200:
 		if body_string.strip_edges() == "":

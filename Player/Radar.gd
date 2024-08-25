@@ -16,46 +16,51 @@ var current_scale_index = 3
 var camera: Camera3D
 var radar_center: Vector2
 
-
-
+@export var update_interval: float = 0.1  # Time in seconds between radar updates
+var update_timer: Timer
 
 
 func _ready():
 	camera = get_parent().get_parent().get_node("Camera3D")
 	radar_center = size / 2
 	set_pivot_offset(radar_center)
+	
+	# Initialize the timer
+	update_timer = Timer.new()
+	update_timer.set_wait_time(update_interval)
+	update_timer.set_one_shot(false)
+	update_timer.connect("timeout", Callable(self, "_on_timer_timeout"))
+	add_child(update_timer)
+	update_timer.start()
+
 	queue_redraw()
 
 
-
-
-
-func _process(delta):
-	if Input.is_action_just_pressed("RadarZoom"):
-		current_scale_index = (current_scale_index + 1) % radar_scales.size()
-		radar_radius = radar_scales[current_scale_index]
-		queue_redraw()
+func _on_timer_timeout():
 	if camera:
 		var camera_forward = camera.global_transform.basis.z.normalized()
 		rotation = atan2(camera_forward.x, camera_forward.z)
 	queue_redraw()
 
 
-
+func _process(_delta):
+	if Input.is_action_just_pressed("RadarZoom"):
+		current_scale_index = (current_scale_index + 1) % radar_scales.size()
+		radar_radius = radar_scales[current_scale_index]
+		queue_redraw()
 
 
 func _draw():
 	var player_position = get_parent().get_parent().global_transform.origin
 	draw_dot(radar_center, player_dot_color)
+
 	var npc_nodes = get_tree().get_nodes_in_group("NPC")
 	for node in npc_nodes:
 		draw_node_on_radar(node, player_position, npc_dot_color)
+
 	var recon_nodes = find_recon_nodes(get_tree().root)
 	for node in recon_nodes:
 		draw_node_on_radar(node, player_position, recon_dot_color)
-
-
-
 
 
 func draw_node_on_radar(node: Node3D, player_position: Vector3, color: Color):
@@ -64,14 +69,8 @@ func draw_node_on_radar(node: Node3D, player_position: Vector3, color: Color):
 		draw_dot(radar_position, color)
 
 
-
-
-
-func draw_dot(position: Vector2, color: Color):
-	draw_circle(position, dot_radius, color)
-
-
-
+func draw_dot(positionFLORB: Vector2, color: Color):
+	draw_circle(positionFLORB, dot_radius, color)
 
 
 func position_on_radar(node_position: Vector3, player_position: Vector3) -> Vector2:
@@ -79,9 +78,6 @@ func position_on_radar(node_position: Vector3, player_position: Vector3) -> Vect
 	if relative_position.length_squared() <= radar_radius * radar_radius:
 		return radar_center + (relative_position / radar_radius) * radar_center
 	return Vector2.INF
-
-
-
 
 
 func find_recon_nodes(node: Node) -> Array:

@@ -48,10 +48,11 @@ contact_monitor = true
 script = ExtResource("1_q11wm")
 explosion_scene = ExtResource("2_o67yn")
 impulse_strength = 500.0
-explosion_radius = 10.0
+explosion_radius = 15.0
 force_curve = SubResource("Curve_jlkyh")
-damage = 75
-projectileVelocity = 35.0
+damage = 50
+projectileVelocity = 50.0
+cooldown = 0.5
 launch_sound = ExtResource("11_dsw12")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]

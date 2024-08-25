@@ -179,6 +179,7 @@ expand_mode = 1
 script = ExtResource("24_1c8sm")
 recon_dot_color = Color(1, 1, 1, 1)
 dot_radius = 3.0
+update_interval = 0.05
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="UI/Radar"]
 layout_mode = 1
