@@ -48,12 +48,12 @@ func apply_projectile_impulse(impulse: Vector3, _direction: Vector3):
 	await get_tree().create_timer(1.0).timeout
 	stop_forces = false
 
-func _integrate_forces(state):
-	if state.get_contact_count() > 0:
-		for i in range(state.get_contact_count()):
-			var collider = state.get_contact_collider_object(i)
-			if collider.is_in_group("Driveable"):
-				var collision_impact = state.get_contact_impulse(i).length() / 2
-				if health && collision_impact > 50:
-					pass
+func _integrate_forces(_state):
+	#if state.get_contact_count() > 0:
+		#for i in range(state.get_contact_count()):
+			#var collider = state.get_contact_collider_object(i)
+			#if collider.is_wwwwin_group("Driveable"):
+				#var collision_impact = state.get_contact_impulse(i).length() / 2
+				#if health && collision_impact > 50:
+	pass
 					#health.apply_damage(collision_impact - 50)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bpj7bj0uyvbm6"]
+[gd_scene load_steps=15 format=3 uid="uid://bpj7bj0uyvbm6"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_c5s4v"]
 [ext_resource type="Texture2D" uid="uid://oaynngbptk72" path="res://UI/cooltext461307199921802.png" id="2_14ie0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dk138jmtvswd" path="res://UI/icons/Proving Grounds_ICO.png" id="8_lb8wv"]
 [ext_resource type="Texture2D" uid="uid://caycxb8qf7ocb" path="res://UI/CP_Back.png" id="8_s7jc2"]
 [ext_resource type="Texture2D" uid="uid://bdf3l2cvebku3" path="res://UI/icons/Symmetry_ICO.png" id="9_2pjoo"]
+[ext_resource type="PackedScene" uid="uid://ckeq6qwefvpcy" path="res://Worlds/Empty Arena.tscn" id="10_3y6ky"]
 [ext_resource type="Texture2D" uid="uid://bw4kt6vldcqvp" path="res://UI/icons/packIV_ICO.png" id="11_jsoab"]
 
 [node name="MainMenu" type="Node2D"]
@@ -134,6 +135,7 @@ world_scene_1 = ExtResource("2_qkf7c")
 world_scene_2 = ExtResource("3_irfcc")
 world_scene_3 = ExtResource("2_v67yg")
 world_scene_4 = ExtResource("5_6tf0i")
+world_scene_5 = ExtResource("10_3y6ky")
 
 [node name="PlayButton" type="Button" parent="CanvasLayer/PlayGameGroup"]
 layout_mode = 1
@@ -157,7 +159,7 @@ offset_left = 16.0
 offset_top = 21.0
 offset_right = 396.0
 offset_bottom = 99.0
-item_count = 4
+item_count = 5
 fit_to_longest_item = false
 popup/item_0/text = "Maul Grounds"
 popup/item_0/icon = ExtResource("7_4rcwv")
@@ -171,3 +173,5 @@ popup/item_2/id = 2
 popup/item_3/text = "Pack IV"
 popup/item_3/icon = ExtResource("11_jsoab")
 popup/item_3/id = 3
+popup/item_4/text = "Empty Arena"
+popup/item_4/id = 4

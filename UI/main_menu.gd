@@ -8,6 +8,7 @@ extends Control
 @export var world_scene_2: PackedScene
 @export var world_scene_3: PackedScene
 @export var world_scene_4: PackedScene
+@export var world_scene_5: PackedScene
 
 var world_instance: Node = null
 
@@ -32,6 +33,8 @@ func load_selected_world():
 			selected_scene = world_scene_3
 		3:
 			selected_scene = world_scene_4
+		4:
+			selected_scene = world_scene_5
 			
 	if selected_scene:
 		world_instance = selected_scene.instantiate()

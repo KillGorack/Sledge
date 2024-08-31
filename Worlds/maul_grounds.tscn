@@ -1671,14 +1671,14 @@ emission = Color(1, 1, 0, 1)
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e4xsv"]
 panorama = ExtResource("24_nhrci")
 
-[sub_resource type="Sky" id="Sky_mob1u"]
+[sub_resource type="Sky" id="Sky_n06tp"]
 sky_material = SubResource("PanoramaSkyMaterial_e4xsv")
 process_mode = 1
 
 [sub_resource type="Environment" id="Environment_qii4d"]
 background_mode = 2
 background_energy_multiplier = 0.14
-sky = SubResource("Sky_mob1u")
+sky = SubResource("Sky_n06tp")
 sky_custom_fov = 47.6
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)

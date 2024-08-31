@@ -1,0 +1,2821 @@
+[gd_scene load_steps=30 format=3 uid="uid://ckeq6qwefvpcy"]
+
+[ext_resource type="Material" uid="uid://cjx3tugs85ut2" path="res://Materials/turf.material" id="1_nvwl8"]
+[ext_resource type="Script" path="res://Worlds/NPC.gd" id="1_rkn17"]
+[ext_resource type="PhysicsMaterial" uid="uid://dh2rif6n2skrg" path="res://Physics/Physics_Floor.tres" id="1_tomfs"]
+[ext_resource type="PhysicsMaterial" uid="uid://0sp7q4t6oufs" path="res://Physics/Physics_Tips.tres" id="2_1sisp"]
+[ext_resource type="PackedScene" uid="uid://d3ow1d8c5883k" path="res://NPC/npc_light.tscn" id="2_mpr5t"]
+[ext_resource type="Material" uid="uid://d3so0uf5vdp45" path="res://Materials/tile_dark.material" id="3_gyhqb"]
+[ext_resource type="PhysicsMaterial" uid="uid://2kde5d2xtkbe" path="res://Physics/Physics_Walls.tres" id="3_rm6ti"]
+[ext_resource type="Material" uid="uid://cnelrfja185ir" path="res://Materials/tile_light.material" id="4_e3v0s"]
+[ext_resource type="Texture2D" uid="uid://chefvtvnkm5v8" path="res://skybox/AllSkyFree_Sky_AnotherPlanet_Equirect.png" id="8_083n3"]
+[ext_resource type="Material" uid="uid://bdqno5amsvn33" path="res://Materials/brick_muted.material" id="8_rup7u"]
+[ext_resource type="PackedScene" uid="uid://b8siumuqiii82" path="res://Player/player.tscn" id="9_ahef0"]
+[ext_resource type="PackedScene" uid="uid://mrfm4783hg8x" path="res://Creative/creative_block.tscn" id="12_iis0y"]
+[ext_resource type="PackedScene" uid="uid://cqsin6qrmoma4" path="res://Creative/creative_ramp_1X1.tscn" id="12_w7xlq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5i78l"]
+resource_name = "defaultMat"
+cull_mode = 2
+albedo_color = Color(0.957641, 0.957641, 0.957641, 1)
+roughness = 0.552786
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6ksvy"]
+_surfaces = [{
+"aabb": AABB(100, -12800, -100, 12700, 12700, 7.62939e-06),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0),
+"name": "defaultMat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bw256"]
+resource_name = "empty_Scene_001"
+_surfaces = [{
+"aabb": AABB(100, -12800, -100, 12700, 12700, 7.62939e-06),
+"attribute_data": PackedByteArray(255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 3, 129, 255, 255, 3, 129),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0),
+"material": SubResource("StandardMaterial3D_5i78l"),
+"name": "defaultMat",
+"primitive": 3,
+"uv_scale": Vector4(254, 252, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_6ksvy")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_we2g2"]
+custom_solver_bias = 1.0
+data = PackedVector3Array(100, -100, -100, 12800, -12800, -100, 12800, -100, -100, 100, -100, -100, 100, -12800, -100, 12800, -12800, -100)
+backface_collision = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dfp3g"]
+_surfaces = [{
+"aabb": AABB(0, -12900, -1600, 12900, 12900, 0),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 0, 0, 4, 0, 3, 0, 0, 0, 5, 0, 4, 0, 1, 0, 7, 0, 6, 0, 1, 0, 2, 0, 7, 0, 5, 0, 7, 0, 4, 0, 5, 0, 6, 0, 7, 0),
+"name": "defaultMat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 252, 1, 252, 1, 0, 0, 0, 0, 2, 254, 252, 1, 0, 0, 0, 0, 2, 254, 2, 254, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 252, 1, 2, 254, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jbwkv"]
+resource_name = "empty_Scene_003"
+_surfaces = [{
+"aabb": AABB(0, -12900, -1600, 12900, 12900, 0),
+"attribute_data": PackedByteArray(255, 127, 255, 128, 255, 255, 255, 128, 0, 255, 255, 127, 253, 128, 255, 127, 253, 128, 255, 0, 255, 127, 0, 0, 255, 255, 0, 0, 0, 255, 255, 0),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 0, 0, 4, 0, 3, 0, 0, 0, 5, 0, 4, 0, 1, 0, 7, 0, 6, 0, 1, 0, 2, 0, 7, 0, 5, 0, 7, 0, 4, 0, 5, 0, 6, 0, 7, 0),
+"material": SubResource("StandardMaterial3D_5i78l"),
+"name": "defaultMat",
+"primitive": 3,
+"uv_scale": Vector4(258, 256, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 252, 1, 252, 1, 0, 0, 255, 255, 2, 254, 252, 1, 0, 0, 255, 255, 2, 254, 2, 254, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 252, 1, 2, 254, 0, 0, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_dfp3g")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qr5g3"]
+custom_solver_bias = 1.0
+data = PackedVector3Array(12900, -12900, -1600, 99.9954, -12800, -1600, 0, -12900, -1600, 12900, -12900, -1600, 12799.8, -12800, -1600, 99.9954, -12800, -1600, 12900, -12900, -1600, 12799.8, -100.192, -1600, 12799.8, -12800, -1600, 12900, -12900, -1600, 12900, 0, -1600, 12799.8, -100.192, -1600, 0, -12900, -1600, 99.9954, -100.192, -1600, 0, 0, -1600, 0, -12900, -1600, 99.9954, -12800, -1600, 99.9954, -100.192, -1600, 12900, 0, -1600, 99.9954, -100.192, -1600, 12799.8, -100.192, -1600, 12900, 0, -1600, 0, 0, -1600, 99.9954, -100.192, -1600)
+backface_collision = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bcnxk"]
+_surfaces = [{
+"aabb": AABB(0, -12900, -1600, 12900, 12900, 1600),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 1, 0, 2, 0, 4, 0, 5, 0, 1, 0, 6, 0, 2, 0, 3, 0, 6, 0, 4, 0, 2, 0, 5, 0, 0, 0, 1, 0, 5, 0, 7, 0, 0, 0, 7, 0, 3, 0, 0, 0, 7, 0, 6, 0, 3, 0),
+"name": "defaultMat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xmuy0"]
+resource_name = "empty_Scene_002"
+_surfaces = [{
+"aabb": AABB(0, -12900, -1600, 12900, 12900, 1600),
+"attribute_data": PackedByteArray(255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 255, 128, 255, 255, 255, 128, 255, 127, 255, 112, 255, 127, 255, 128, 255, 255, 255, 128, 255, 255, 255, 112, 255, 127, 255, 112, 255, 127, 255, 128, 255, 255, 255, 128, 255, 255, 255, 112, 255, 127, 255, 112, 255, 127, 255, 128, 255, 255, 255, 128, 255, 255, 255, 112, 255, 127, 255, 112, 255, 127, 255, 128, 255, 255, 255, 128, 255, 255, 255, 112),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 10, 0, 9, 0, 8, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 12, 0, 15, 0, 14, 0, 16, 0, 18, 0, 17, 0, 16, 0, 19, 0, 18, 0),
+"material": SubResource("StandardMaterial3D_5i78l"),
+"name": "defaultMat",
+"primitive": 3,
+"uv_scale": Vector4(258, 256, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray(255, 255, 255, 255, 255, 255, 0, 128, 0, 0, 255, 255, 255, 255, 0, 128, 0, 0, 0, 0, 255, 255, 0, 128, 255, 255, 0, 0, 255, 255, 0, 128, 0, 0, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 255, 255, 84, 213, 0, 0, 255, 255, 255, 255, 84, 213, 0, 0, 255, 255, 0, 0, 84, 213, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 191, 0, 0, 255, 255, 255, 255, 255, 191, 255, 255, 255, 255, 255, 255, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 84, 213, 255, 255, 255, 255, 255, 255, 84, 213, 255, 255, 0, 0, 255, 255, 84, 213, 255, 255, 0, 0, 0, 0, 84, 213, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 84, 213, 84, 213, 84, 213, 84, 213, 84, 213, 84, 213, 84, 213, 84, 213, 255, 127, 255, 63, 255, 127, 255, 63, 255, 127, 255, 63, 255, 127, 255, 63, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 170, 170, 84, 85, 170, 170, 84, 85, 170, 170, 84, 85, 170, 170, 84, 85)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_bcnxk")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ighk3"]
+data = PackedVector3Array(12900, 0, 0, 0, -12900, 0, 0, 0, 0, 12900, 0, 0, 12900, -12900, 0, 0, -12900, 0, 0, -12900, -1600, 0, 0, 0, 0, -12900, 0, 0, -12900, -1600, 0, 0, -1600, 0, 0, 0, 12900, -12900, -1600, 0, -12900, 0, 12900, -12900, 0, 12900, -12900, -1600, 0, -12900, -1600, 0, -12900, 0, 0, 0, -1600, 12900, 0, 0, 0, 0, 0, 0, 0, -1600, 12900, 0, -1600, 12900, 0, 0, 12900, 0, -1600, 12900, -12900, 0, 12900, 0, 0, 12900, 0, -1600, 12900, -12900, -1600, 12900, -12900, 0)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fbcum"]
+_surfaces = [{
+"aabb": AABB(100, -12800, -1600, 12700, 12700, 1500),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 3, 0, 5, 0, 4, 0, 2, 0, 3, 0, 5, 0, 6, 0, 4, 0, 5, 0, 7, 0, 6, 0, 1, 0, 7, 0, 0, 0, 1, 0, 6, 0, 7, 0),
+"name": "defaultMat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vjtmx"]
+resource_name = "empty_Scene"
+_surfaces = [{
+"aabb": AABB(100, -12800, -1600, 12700, 12700, 1500),
+"attribute_data": PackedByteArray(255, 255, 36, 137, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 36, 137, 255, 127, 0, 0, 255, 127, 36, 137, 255, 255, 36, 137, 255, 255, 0, 0, 255, 255, 36, 137, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 36, 137, 255, 127, 0, 0, 255, 127, 36, 137, 255, 255, 36, 137, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 10, 0, 9, 0, 8, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 12, 0, 15, 0, 14, 0),
+"material": SubResource("StandardMaterial3D_5i78l"),
+"name": "defaultMat",
+"primitive": 3,
+"uv_scale": Vector4(254, 28, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 84, 213, 0, 0, 0, 0, 0, 0, 84, 213, 0, 0, 255, 255, 0, 0, 84, 213, 0, 0, 255, 255, 255, 255, 84, 213, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 84, 213, 255, 255, 255, 255, 0, 0, 84, 213, 255, 255, 0, 0, 0, 0, 84, 213, 255, 255, 0, 0, 255, 255, 84, 213, 0, 0, 0, 0, 0, 0, 255, 191, 0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 170, 170, 84, 85, 170, 170, 84, 85, 170, 170, 84, 85, 170, 170, 84, 85, 255, 127, 255, 63, 255, 127, 255, 63, 255, 127, 255, 63, 255, 127, 255, 63, 84, 213, 84, 213, 84, 213, 84, 213, 84, 213, 84, 213, 84, 213, 84, 213, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_fbcum")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5g7tv"]
+custom_solver_bias = 1.0
+data = PackedVector3Array(100, -12800, -100, 100, -100, -1600, 100, -12800, -1600, 100, -12800, -100, 100, -100, -100, 100, -100, -1600, 12800, -100, -1600, 100, -100, -100, 12800, -100, -100, 12800, -100, -1600, 100, -100, -1600, 100, -100, -100, 12800, -100, -100, 12800, -12800, -1600, 12800, -100, -1600, 12800, -100, -100, 12800, -12800, -100, 12800, -12800, -1600, 100, -12800, -1600, 12800, -12800, -100, 100, -12800, -100, 100, -12800, -1600, 12800, -12800, -1600, 12800, -12800, -100)
+backface_collision = true
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v3nhn"]
+panorama = ExtResource("8_083n3")
+
+[sub_resource type="Sky" id="Sky_mob1u"]
+sky_material = SubResource("PanoramaSkyMaterial_v3nhn")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_6fiik"]
+background_mode = 2
+background_energy_multiplier = 0.14
+sky = SubResource("Sky_mob1u")
+sky_custom_fov = 47.6
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.92
+ambient_light_energy = 2.38
+reflected_light_source = 2
+tonemap_mode = 3
+ssil_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_min_cell_size = 9.76563e-05
+sdfgi_cascade0_distance = 0.00625
+sdfgi_max_distance = 0.1
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+
+[node name="Empty" type="Node3D"]
+script = ExtResource("1_rkn17")
+npc_scene = ExtResource("2_mpr5t")
+npc_count = 5
+world_min_x = 0.0
+world_max_z = 0.0
+
+[node name="Empty" type="Node3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, -1.19209e-09, -0.01, 0, 0.01, -1.19209e-09, 0, 0, 0)
+
+[node name="Ground" type="MeshInstance3D" parent="Empty"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0)
+layers = 2
+material_override = ExtResource("1_nvwl8")
+mesh = SubResource("ArrayMesh_bw256")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty/Ground" groups=["Driveable"]]
+collision_layer = 2
+collision_mask = 16777213
+physics_material_override = ExtResource("1_tomfs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty/Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_we2g2")
+
+[node name="Toppers" type="MeshInstance3D" parent="Empty"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0)
+layers = 2
+material_override = ExtResource("3_gyhqb")
+mesh = SubResource("ArrayMesh_jbwkv")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty/Toppers"]
+collision_layer = 2
+collision_mask = 16777213
+physics_material_override = ExtResource("1_tomfs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty/Toppers/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qr5g3")
+
+[node name="Unused" type="MeshInstance3D" parent="Empty"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0)
+layers = 2
+material_override = ExtResource("4_e3v0s")
+mesh = SubResource("ArrayMesh_xmuy0")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty/Unused"]
+collision_layer = 2
+collision_mask = 16777213
+physics_material_override = ExtResource("2_1sisp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty/Unused/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ighk3")
+
+[node name="Walls" type="MeshInstance3D" parent="Empty"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0)
+layers = 2
+material_override = ExtResource("8_rup7u")
+mesh = SubResource("ArrayMesh_vjtmx")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty/Walls"]
+collision_layer = 2
+collision_mask = 16777213
+physics_material_override = ExtResource("3_rm6ti")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty/Walls/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_5g7tv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.175006, 0.984567, 0, -0.984567, 0.175006, 0, 8.70812, 0)
+light_energy = 0.1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6fiik")
+
+[node name="Player" parent="." instance=ExtResource("9_ahef0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4651, 1.33115, -34.8494)
+
+[node name="Base" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -29)
+
+[node name="Creative_Block" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 22.5)
+
+[node name="Creative_Block2" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 22.5)
+
+[node name="Creative_Block3" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 22.5)
+
+[node name="Creative_Block4" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 23.5)
+
+[node name="Creative_Block5" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 23.5)
+
+[node name="Creative_Block6" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 23.5)
+
+[node name="Creative_Block7" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 24.5)
+
+[node name="Creative_Block8" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 24.5)
+
+[node name="Creative_Block9" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 24.5)
+
+[node name="Creative_Block10" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 25.5)
+
+[node name="Creative_Block11" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 25.5)
+
+[node name="Creative_Block12" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 25.5)
+
+[node name="Creative_Block13" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 26.5)
+
+[node name="Creative_Block14" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 26.5)
+
+[node name="Creative_Block15" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 26.5)
+
+[node name="Creative_Block16" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 27.5)
+
+[node name="Creative_Block17" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 27.5)
+
+[node name="Creative_Block18" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 27.5)
+
+[node name="Creative_Block19" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 22.5)
+
+[node name="Creative_Block20" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 22.5)
+
+[node name="Creative_Block21" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 22.5)
+
+[node name="Creative_Block22" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 23.5)
+
+[node name="Creative_Block23" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 23.5)
+
+[node name="Creative_Block24" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 23.5)
+
+[node name="Creative_Block25" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 24.5)
+
+[node name="Creative_Block26" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 24.5)
+
+[node name="Creative_Block27" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 24.5)
+
+[node name="Creative_Block28" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 25.5)
+
+[node name="Creative_Block29" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 25.5)
+
+[node name="Creative_Block30" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 25.5)
+
+[node name="Creative_Block31" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 26.5)
+
+[node name="Creative_Block32" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 26.5)
+
+[node name="Creative_Block33" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 26.5)
+
+[node name="Creative_Block34" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 27.5)
+
+[node name="Creative_Block35" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 27.5)
+
+[node name="Creative_Block36" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 27.5)
+
+[node name="Creative_Block37" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 21.5)
+
+[node name="Creative_Block38" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 21.5)
+
+[node name="Creative_Block39" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 21.5)
+
+[node name="Creative_Block40" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 22.5)
+
+[node name="Creative_Block41" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 22.5)
+
+[node name="Creative_Block42" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 22.5)
+
+[node name="Creative_Block43" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 21.5)
+
+[node name="Creative_Block44" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 21.5)
+
+[node name="Creative_Block45" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 21.5)
+
+[node name="Creative_Block46" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 22.5)
+
+[node name="Creative_Block47" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 23.5)
+
+[node name="Creative_Block48" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 24.5)
+
+[node name="Creative_Block49" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 25.5)
+
+[node name="Creative_Block50" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 26.5)
+
+[node name="Creative_Block51" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 27.5)
+
+[node name="Creative_Block52" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 21.5)
+
+[node name="Creative_Ramp" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 3, 21)
+
+[node name="Creative_Ramp2" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, 21)
+
+[node name="Creative_Ramp3" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3, 21)
+
+[node name="Creative_Ramp4" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 3, 25)
+
+[node name="Creative_Ramp5" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 3, 26)
+
+[node name="Creative_Ramp6" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 3, 27)
+
+[node name="Creative_Block53" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 21.5)
+
+[node name="Creative_Block54" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1.5, 21.5)
+
+[node name="Creative_Block55" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 21.5)
+
+[node name="Creative_Block56" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 22.5)
+
+[node name="Creative_Block57" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 23.5)
+
+[node name="Creative_Block58" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 24.5)
+
+[node name="Creative_Block59" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 21.5)
+
+[node name="Creative_Block60" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 2.5, 21.5)
+
+[node name="Creative_Block61" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 2.5, 21.5)
+
+[node name="Creative_Block62" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 21.5)
+
+[node name="Creative_Block63" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 22.5)
+
+[node name="Creative_Block64" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 23.5)
+
+[node name="Creative_Block65" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 24.5)
+
+[node name="Creative_Block66" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 21.5)
+
+[node name="Creative_Block67" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 25.5)
+
+[node name="Creative_Block68" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 25.5)
+
+[node name="Creative_Block69" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 26.5)
+
+[node name="Creative_Block70" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 26.5)
+
+[node name="Creative_Block71" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 27.5)
+
+[node name="Creative_Block72" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 27.5)
+
+[node name="Creative_Block73" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 25.5)
+
+[node name="Creative_Block74" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 26.5)
+
+[node name="Creative_Block75" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 27.5)
+
+[node name="Creative_Block76" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 15.5)
+
+[node name="Creative_Block77" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 15.5)
+
+[node name="Creative_Block78" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 16.5)
+
+[node name="Creative_Block79" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 16.5)
+
+[node name="Creative_Block80" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 17.5)
+
+[node name="Creative_Block81" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 17.5)
+
+[node name="Creative_Block82" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 15.5)
+
+[node name="Creative_Block83" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 16.5)
+
+[node name="Creative_Block84" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 17.5)
+
+[node name="Creative_Ramp7" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 25)
+
+[node name="Creative_Ramp8" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 26)
+
+[node name="Creative_Ramp9" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 27)
+
+[node name="Creative_Block85" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 25.5)
+
+[node name="Creative_Block86" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 25.5)
+
+[node name="Creative_Block87" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 26.5)
+
+[node name="Creative_Block88" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 26.5)
+
+[node name="Creative_Block89" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 27.5)
+
+[node name="Creative_Block90" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 27.5)
+
+[node name="Creative_Block91" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 25.5)
+
+[node name="Creative_Block92" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 26.5)
+
+[node name="Creative_Block93" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 27.5)
+
+[node name="Creative_Ramp10" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 15)
+
+[node name="Creative_Ramp11" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, 15)
+
+[node name="Creative_Ramp12" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2, 15)
+
+[node name="Creative_Block94" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 9.5)
+
+[node name="Creative_Block95" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 9.5)
+
+[node name="Creative_Block96" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 10.5)
+
+[node name="Creative_Block97" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 10.5)
+
+[node name="Creative_Block98" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 11.5)
+
+[node name="Creative_Block99" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 11.5)
+
+[node name="Creative_Block100" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 9.5)
+
+[node name="Creative_Block101" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 10.5)
+
+[node name="Creative_Block102" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 11.5)
+
+[node name="Creative_Ramp13" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 25)
+
+[node name="Creative_Ramp14" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 25)
+
+[node name="Creative_Ramp15" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 25)
+
+[node name="Creative_Ramp16" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 9)
+
+[node name="Creative_Ramp17" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 10)
+
+[node name="Creative_Ramp18" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 11)
+
+[node name="Creative_Ramp19" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 4, 21)
+
+[node name="Creative_Block103" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 15.5)
+
+[node name="Creative_Block104" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 16.5)
+
+[node name="Creative_Block105" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 17.5)
+
+[node name="Creative_Ramp20" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 3, 15)
+
+[node name="Creative_Ramp21" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 4, 24)
+
+[node name="Creative_Block106" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3.5, 24.5)
+
+[node name="Creative_Block107" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3.5, 24.5)
+
+[node name="Creative_Block108" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 3.5, 24.5)
+
+[node name="Creative_Ramp22" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 3, 24)
+
+[node name="Creative_Block109" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 4.5, 21.5)
+
+[node name="Creative_Block110" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 4.5, 21.5)
+
+[node name="Creative_Block111" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 4.5, 21.5)
+
+[node name="Creative_Block112" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 22.5)
+
+[node name="Creative_Block113" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 23.5)
+
+[node name="Creative_Block114" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 24.5)
+
+[node name="Creative_Block115" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 21.5)
+
+[node name="Creative_Block116" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 3.5, 24.5)
+
+[node name="Creative_Block117" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 3.5, 24.5)
+
+[node name="Creative_Block118" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 3.5, 24.5)
+
+[node name="Creative_Block119" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 24.5)
+
+[node name="Creative_Block120" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 2.5, 24.5)
+
+[node name="Creative_Block121" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 2.5, 24.5)
+
+[node name="Creative_Block122" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 1.5, 24.5)
+
+[node name="Creative_Block123" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 1.5, 24.5)
+
+[node name="Creative_Block124" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 1.5, 24.5)
+
+[node name="Creative_Block125" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 24.5)
+
+[node name="Creative_Block126" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 24.5)
+
+[node name="Creative_Block127" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 24.5)
+
+[node name="Creative_Block128" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 24.5)
+
+[node name="Creative_Block129" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.5, 24.5)
+
+[node name="Creative_Block130" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 24.5)
+
+[node name="Creative_Block131" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.5, 24.5)
+
+[node name="Creative_Block132" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2.5, 24.5)
+
+[node name="Creative_Block133" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.5, 24.5)
+
+[node name="Creative_Block134" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.5, 24.5)
+
+[node name="Creative_Block135" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 24.5)
+
+[node name="Creative_Block136" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 24.5)
+
+[node name="Creative_Block137" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 18.5)
+
+[node name="Creative_Block138" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 18.5)
+
+[node name="Creative_Block139" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 18.5)
+
+[node name="Creative_Block140" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 20.5)
+
+[node name="Creative_Block141" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 20.5)
+
+[node name="Creative_Block142" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 20.5)
+
+[node name="Creative_Block143" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 19.5)
+
+[node name="Creative_Block144" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 19.5)
+
+[node name="Creative_Block145" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 19.5)
+
+[node name="Creative_Block146" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 15.5)
+
+[node name="Creative_Block147" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 15.5)
+
+[node name="Creative_Block148" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 17.5)
+
+[node name="Creative_Block149" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 17.5)
+
+[node name="Creative_Block150" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 16.5)
+
+[node name="Creative_Block151" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 16.5)
+
+[node name="Creative_Block152" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 12.5)
+
+[node name="Creative_Block153" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 12.5)
+
+[node name="Creative_Block154" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 14.5)
+
+[node name="Creative_Block155" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 14.5)
+
+[node name="Creative_Block156" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 13.5)
+
+[node name="Creative_Block157" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 13.5)
+
+[node name="Creative_Block158" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 23.5)
+
+[node name="Creative_Block159" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 22.5)
+
+[node name="Creative_Block160" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 21.5)
+
+[node name="Creative_Ramp23" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 24)
+
+[node name="Creative_Block161" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 24.5)
+
+[node name="Creative_Block162" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 24.5)
+
+[node name="Creative_Block163" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 23.5)
+
+[node name="Creative_Block164" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 22.5)
+
+[node name="Creative_Block165" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 21.5)
+
+[node name="Creative_Ramp24" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 24)
+
+[node name="Creative_Block166" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 27.5)
+
+[node name="Creative_Block167" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 27.5)
+
+[node name="Creative_Block168" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 26.5)
+
+[node name="Creative_Block169" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 26.5)
+
+[node name="Creative_Block170" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 25.5)
+
+[node name="Creative_Block171" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 25.5)
+
+[node name="Creative_Block172" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 8.5)
+
+[node name="Creative_Block173" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 8.5)
+
+[node name="Creative_Block174" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 8.5)
+
+[node name="Creative_Ramp25" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16, 2, 8)
+
+[node name="Creative_Block175" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 8.5)
+
+[node name="Creative_Block176" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 8.5)
+
+[node name="Creative_Block177" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 8.5)
+
+[node name="Creative_Block178" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 8.5)
+
+[node name="Creative_Block179" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1.5, 8.5)
+
+[node name="Creative_Block180" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 8.5)
+
+[node name="Creative_Block181" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 8.5)
+
+[node name="Creative_Block182" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 8.5)
+
+[node name="Creative_Ramp26" parent="Base" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16, 2, 12)
+
+[node name="Creative_Block183" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 12.5)
+
+[node name="Creative_Block184" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1.5, 12.5)
+
+[node name="Creative_Block185" parent="Base" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 12.5)
+
+[node name="Base2" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 108, 0, -100)
+
+[node name="Creative_Block" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 22.5)
+
+[node name="Creative_Block2" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 22.5)
+
+[node name="Creative_Block3" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 22.5)
+
+[node name="Creative_Block4" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 23.5)
+
+[node name="Creative_Block5" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 23.5)
+
+[node name="Creative_Block6" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 23.5)
+
+[node name="Creative_Block7" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 24.5)
+
+[node name="Creative_Block8" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 24.5)
+
+[node name="Creative_Block9" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 24.5)
+
+[node name="Creative_Block10" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 25.5)
+
+[node name="Creative_Block11" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 25.5)
+
+[node name="Creative_Block12" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 25.5)
+
+[node name="Creative_Block13" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 26.5)
+
+[node name="Creative_Block14" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 26.5)
+
+[node name="Creative_Block15" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 26.5)
+
+[node name="Creative_Block16" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 27.5)
+
+[node name="Creative_Block17" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 27.5)
+
+[node name="Creative_Block18" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 27.5)
+
+[node name="Creative_Block19" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 22.5)
+
+[node name="Creative_Block20" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 22.5)
+
+[node name="Creative_Block21" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 22.5)
+
+[node name="Creative_Block22" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 23.5)
+
+[node name="Creative_Block23" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 23.5)
+
+[node name="Creative_Block24" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 23.5)
+
+[node name="Creative_Block25" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 24.5)
+
+[node name="Creative_Block26" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 24.5)
+
+[node name="Creative_Block27" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 24.5)
+
+[node name="Creative_Block28" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 25.5)
+
+[node name="Creative_Block29" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 25.5)
+
+[node name="Creative_Block30" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 25.5)
+
+[node name="Creative_Block31" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 26.5)
+
+[node name="Creative_Block32" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 26.5)
+
+[node name="Creative_Block33" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 26.5)
+
+[node name="Creative_Block34" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 27.5)
+
+[node name="Creative_Block35" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 27.5)
+
+[node name="Creative_Block36" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 27.5)
+
+[node name="Creative_Block37" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 21.5)
+
+[node name="Creative_Block38" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 21.5)
+
+[node name="Creative_Block39" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 21.5)
+
+[node name="Creative_Block40" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 22.5)
+
+[node name="Creative_Block41" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 22.5)
+
+[node name="Creative_Block42" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 22.5)
+
+[node name="Creative_Block43" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 21.5)
+
+[node name="Creative_Block44" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 21.5)
+
+[node name="Creative_Block45" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 21.5)
+
+[node name="Creative_Block46" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 22.5)
+
+[node name="Creative_Block47" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 23.5)
+
+[node name="Creative_Block48" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 24.5)
+
+[node name="Creative_Block49" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 25.5)
+
+[node name="Creative_Block50" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 26.5)
+
+[node name="Creative_Block51" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 27.5)
+
+[node name="Creative_Block52" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 21.5)
+
+[node name="Creative_Ramp" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 3, 21)
+
+[node name="Creative_Ramp2" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, 21)
+
+[node name="Creative_Ramp3" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3, 21)
+
+[node name="Creative_Ramp4" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 3, 25)
+
+[node name="Creative_Ramp5" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 3, 26)
+
+[node name="Creative_Ramp6" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 3, 27)
+
+[node name="Creative_Block53" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 21.5)
+
+[node name="Creative_Block54" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1.5, 21.5)
+
+[node name="Creative_Block55" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 21.5)
+
+[node name="Creative_Block56" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 22.5)
+
+[node name="Creative_Block57" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 23.5)
+
+[node name="Creative_Block58" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 24.5)
+
+[node name="Creative_Block59" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 21.5)
+
+[node name="Creative_Block60" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 2.5, 21.5)
+
+[node name="Creative_Block61" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 2.5, 21.5)
+
+[node name="Creative_Block62" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 21.5)
+
+[node name="Creative_Block63" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 22.5)
+
+[node name="Creative_Block64" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 23.5)
+
+[node name="Creative_Block65" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 24.5)
+
+[node name="Creative_Block66" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 21.5)
+
+[node name="Creative_Block67" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 25.5)
+
+[node name="Creative_Block68" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 25.5)
+
+[node name="Creative_Block69" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 26.5)
+
+[node name="Creative_Block70" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 26.5)
+
+[node name="Creative_Block71" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 27.5)
+
+[node name="Creative_Block72" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 27.5)
+
+[node name="Creative_Block73" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 25.5)
+
+[node name="Creative_Block74" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 26.5)
+
+[node name="Creative_Block75" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 27.5)
+
+[node name="Creative_Block76" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 15.5)
+
+[node name="Creative_Block77" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 15.5)
+
+[node name="Creative_Block78" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 16.5)
+
+[node name="Creative_Block79" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 16.5)
+
+[node name="Creative_Block80" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 17.5)
+
+[node name="Creative_Block81" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 17.5)
+
+[node name="Creative_Block82" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 15.5)
+
+[node name="Creative_Block83" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 16.5)
+
+[node name="Creative_Block84" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 17.5)
+
+[node name="Creative_Ramp7" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 25)
+
+[node name="Creative_Ramp8" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 26)
+
+[node name="Creative_Ramp9" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 27)
+
+[node name="Creative_Block85" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 25.5)
+
+[node name="Creative_Block86" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 25.5)
+
+[node name="Creative_Block87" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 26.5)
+
+[node name="Creative_Block88" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 26.5)
+
+[node name="Creative_Block89" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 27.5)
+
+[node name="Creative_Block90" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 27.5)
+
+[node name="Creative_Block91" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 25.5)
+
+[node name="Creative_Block92" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 26.5)
+
+[node name="Creative_Block93" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 27.5)
+
+[node name="Creative_Ramp10" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 15)
+
+[node name="Creative_Ramp11" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, 15)
+
+[node name="Creative_Ramp12" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2, 15)
+
+[node name="Creative_Block94" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 9.5)
+
+[node name="Creative_Block95" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 9.5)
+
+[node name="Creative_Block96" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 10.5)
+
+[node name="Creative_Block97" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 10.5)
+
+[node name="Creative_Block98" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 11.5)
+
+[node name="Creative_Block99" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 11.5)
+
+[node name="Creative_Block100" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 9.5)
+
+[node name="Creative_Block101" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 10.5)
+
+[node name="Creative_Block102" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 11.5)
+
+[node name="Creative_Ramp13" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 25)
+
+[node name="Creative_Ramp14" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 25)
+
+[node name="Creative_Ramp15" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 25)
+
+[node name="Creative_Ramp16" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 9)
+
+[node name="Creative_Ramp17" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 10)
+
+[node name="Creative_Ramp18" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 11)
+
+[node name="Creative_Ramp19" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 4, 21)
+
+[node name="Creative_Block103" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 15.5)
+
+[node name="Creative_Block104" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 16.5)
+
+[node name="Creative_Block105" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 17.5)
+
+[node name="Creative_Ramp20" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 3, 15)
+
+[node name="Creative_Ramp21" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 4, 24)
+
+[node name="Creative_Block106" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3.5, 24.5)
+
+[node name="Creative_Block107" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3.5, 24.5)
+
+[node name="Creative_Block108" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 3.5, 24.5)
+
+[node name="Creative_Ramp22" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 3, 24)
+
+[node name="Creative_Block109" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 4.5, 21.5)
+
+[node name="Creative_Block110" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 4.5, 21.5)
+
+[node name="Creative_Block111" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 4.5, 21.5)
+
+[node name="Creative_Block112" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 22.5)
+
+[node name="Creative_Block113" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 23.5)
+
+[node name="Creative_Block114" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 24.5)
+
+[node name="Creative_Block115" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 21.5)
+
+[node name="Creative_Block116" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 3.5, 24.5)
+
+[node name="Creative_Block117" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 3.5, 24.5)
+
+[node name="Creative_Block118" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 3.5, 24.5)
+
+[node name="Creative_Block119" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 24.5)
+
+[node name="Creative_Block120" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 2.5, 24.5)
+
+[node name="Creative_Block121" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 2.5, 24.5)
+
+[node name="Creative_Block122" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 1.5, 24.5)
+
+[node name="Creative_Block123" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 1.5, 24.5)
+
+[node name="Creative_Block124" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 1.5, 24.5)
+
+[node name="Creative_Block125" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 24.5)
+
+[node name="Creative_Block126" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 24.5)
+
+[node name="Creative_Block127" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 24.5)
+
+[node name="Creative_Block128" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 24.5)
+
+[node name="Creative_Block129" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.5, 24.5)
+
+[node name="Creative_Block130" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 24.5)
+
+[node name="Creative_Block131" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.5, 24.5)
+
+[node name="Creative_Block132" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2.5, 24.5)
+
+[node name="Creative_Block133" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.5, 24.5)
+
+[node name="Creative_Block134" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.5, 24.5)
+
+[node name="Creative_Block135" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 24.5)
+
+[node name="Creative_Block136" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 24.5)
+
+[node name="Creative_Block137" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 18.5)
+
+[node name="Creative_Block138" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 18.5)
+
+[node name="Creative_Block139" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 18.5)
+
+[node name="Creative_Block140" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 20.5)
+
+[node name="Creative_Block141" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 20.5)
+
+[node name="Creative_Block142" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 20.5)
+
+[node name="Creative_Block143" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 19.5)
+
+[node name="Creative_Block144" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 19.5)
+
+[node name="Creative_Block145" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 19.5)
+
+[node name="Creative_Block146" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 15.5)
+
+[node name="Creative_Block147" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 15.5)
+
+[node name="Creative_Block148" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 17.5)
+
+[node name="Creative_Block149" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 17.5)
+
+[node name="Creative_Block150" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 16.5)
+
+[node name="Creative_Block151" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 16.5)
+
+[node name="Creative_Block152" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 12.5)
+
+[node name="Creative_Block153" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 12.5)
+
+[node name="Creative_Block154" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 14.5)
+
+[node name="Creative_Block155" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 14.5)
+
+[node name="Creative_Block156" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 13.5)
+
+[node name="Creative_Block157" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 13.5)
+
+[node name="Creative_Block158" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 23.5)
+
+[node name="Creative_Block159" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 22.5)
+
+[node name="Creative_Block160" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 21.5)
+
+[node name="Creative_Ramp23" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 24)
+
+[node name="Creative_Block161" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 24.5)
+
+[node name="Creative_Block162" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 24.5)
+
+[node name="Creative_Block163" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 23.5)
+
+[node name="Creative_Block164" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 22.5)
+
+[node name="Creative_Block165" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 21.5)
+
+[node name="Creative_Ramp24" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 24)
+
+[node name="Creative_Block166" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 27.5)
+
+[node name="Creative_Block167" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 27.5)
+
+[node name="Creative_Block168" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 26.5)
+
+[node name="Creative_Block169" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 26.5)
+
+[node name="Creative_Block170" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 25.5)
+
+[node name="Creative_Block171" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 25.5)
+
+[node name="Creative_Block172" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 8.5)
+
+[node name="Creative_Block173" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 8.5)
+
+[node name="Creative_Block174" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 8.5)
+
+[node name="Creative_Ramp25" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16, 2, 8)
+
+[node name="Creative_Block175" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 8.5)
+
+[node name="Creative_Block176" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 8.5)
+
+[node name="Creative_Block177" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 8.5)
+
+[node name="Creative_Block178" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 8.5)
+
+[node name="Creative_Block179" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1.5, 8.5)
+
+[node name="Creative_Block180" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 8.5)
+
+[node name="Creative_Block181" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 8.5)
+
+[node name="Creative_Block182" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 8.5)
+
+[node name="Creative_Ramp26" parent="Base2" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16, 2, 12)
+
+[node name="Creative_Block183" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 12.5)
+
+[node name="Creative_Block184" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1.5, 12.5)
+
+[node name="Creative_Block185" parent="Base2" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 12.5)
+
+[node name="Base3" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 100, 0, -21)
+
+[node name="Creative_Block" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 22.5)
+
+[node name="Creative_Block2" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 22.5)
+
+[node name="Creative_Block3" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 22.5)
+
+[node name="Creative_Block4" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 23.5)
+
+[node name="Creative_Block5" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 23.5)
+
+[node name="Creative_Block6" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 23.5)
+
+[node name="Creative_Block7" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 24.5)
+
+[node name="Creative_Block8" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 24.5)
+
+[node name="Creative_Block9" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 24.5)
+
+[node name="Creative_Block10" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 25.5)
+
+[node name="Creative_Block11" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 25.5)
+
+[node name="Creative_Block12" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 25.5)
+
+[node name="Creative_Block13" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 26.5)
+
+[node name="Creative_Block14" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 26.5)
+
+[node name="Creative_Block15" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 26.5)
+
+[node name="Creative_Block16" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 27.5)
+
+[node name="Creative_Block17" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 27.5)
+
+[node name="Creative_Block18" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 27.5)
+
+[node name="Creative_Block19" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 22.5)
+
+[node name="Creative_Block20" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 22.5)
+
+[node name="Creative_Block21" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 22.5)
+
+[node name="Creative_Block22" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 23.5)
+
+[node name="Creative_Block23" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 23.5)
+
+[node name="Creative_Block24" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 23.5)
+
+[node name="Creative_Block25" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 24.5)
+
+[node name="Creative_Block26" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 24.5)
+
+[node name="Creative_Block27" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 24.5)
+
+[node name="Creative_Block28" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 25.5)
+
+[node name="Creative_Block29" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 25.5)
+
+[node name="Creative_Block30" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 25.5)
+
+[node name="Creative_Block31" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 26.5)
+
+[node name="Creative_Block32" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 26.5)
+
+[node name="Creative_Block33" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 26.5)
+
+[node name="Creative_Block34" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 27.5)
+
+[node name="Creative_Block35" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 27.5)
+
+[node name="Creative_Block36" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 27.5)
+
+[node name="Creative_Block37" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 21.5)
+
+[node name="Creative_Block38" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 21.5)
+
+[node name="Creative_Block39" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 21.5)
+
+[node name="Creative_Block40" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 22.5)
+
+[node name="Creative_Block41" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 22.5)
+
+[node name="Creative_Block42" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 22.5)
+
+[node name="Creative_Block43" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 21.5)
+
+[node name="Creative_Block44" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 21.5)
+
+[node name="Creative_Block45" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 21.5)
+
+[node name="Creative_Block46" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 22.5)
+
+[node name="Creative_Block47" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 23.5)
+
+[node name="Creative_Block48" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 24.5)
+
+[node name="Creative_Block49" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 25.5)
+
+[node name="Creative_Block50" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 26.5)
+
+[node name="Creative_Block51" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 27.5)
+
+[node name="Creative_Block52" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 21.5)
+
+[node name="Creative_Ramp" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 3, 21)
+
+[node name="Creative_Ramp2" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, 21)
+
+[node name="Creative_Ramp3" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3, 21)
+
+[node name="Creative_Ramp4" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 3, 25)
+
+[node name="Creative_Ramp5" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 3, 26)
+
+[node name="Creative_Ramp6" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 3, 27)
+
+[node name="Creative_Block53" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 21.5)
+
+[node name="Creative_Block54" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1.5, 21.5)
+
+[node name="Creative_Block55" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 21.5)
+
+[node name="Creative_Block56" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 22.5)
+
+[node name="Creative_Block57" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 23.5)
+
+[node name="Creative_Block58" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 24.5)
+
+[node name="Creative_Block59" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 21.5)
+
+[node name="Creative_Block60" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 2.5, 21.5)
+
+[node name="Creative_Block61" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 2.5, 21.5)
+
+[node name="Creative_Block62" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 21.5)
+
+[node name="Creative_Block63" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 22.5)
+
+[node name="Creative_Block64" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 23.5)
+
+[node name="Creative_Block65" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 24.5)
+
+[node name="Creative_Block66" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 21.5)
+
+[node name="Creative_Block67" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 25.5)
+
+[node name="Creative_Block68" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 25.5)
+
+[node name="Creative_Block69" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 26.5)
+
+[node name="Creative_Block70" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 26.5)
+
+[node name="Creative_Block71" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 27.5)
+
+[node name="Creative_Block72" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 27.5)
+
+[node name="Creative_Block73" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 25.5)
+
+[node name="Creative_Block74" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 26.5)
+
+[node name="Creative_Block75" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 27.5)
+
+[node name="Creative_Block76" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 15.5)
+
+[node name="Creative_Block77" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 15.5)
+
+[node name="Creative_Block78" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 16.5)
+
+[node name="Creative_Block79" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 16.5)
+
+[node name="Creative_Block80" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 17.5)
+
+[node name="Creative_Block81" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 17.5)
+
+[node name="Creative_Block82" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 15.5)
+
+[node name="Creative_Block83" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 16.5)
+
+[node name="Creative_Block84" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 17.5)
+
+[node name="Creative_Ramp7" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 25)
+
+[node name="Creative_Ramp8" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 26)
+
+[node name="Creative_Ramp9" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 27)
+
+[node name="Creative_Block85" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 25.5)
+
+[node name="Creative_Block86" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 25.5)
+
+[node name="Creative_Block87" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 26.5)
+
+[node name="Creative_Block88" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 26.5)
+
+[node name="Creative_Block89" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 27.5)
+
+[node name="Creative_Block90" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 27.5)
+
+[node name="Creative_Block91" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 25.5)
+
+[node name="Creative_Block92" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 26.5)
+
+[node name="Creative_Block93" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 27.5)
+
+[node name="Creative_Ramp10" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 15)
+
+[node name="Creative_Ramp11" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, 15)
+
+[node name="Creative_Ramp12" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2, 15)
+
+[node name="Creative_Block94" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 9.5)
+
+[node name="Creative_Block95" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 9.5)
+
+[node name="Creative_Block96" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 10.5)
+
+[node name="Creative_Block97" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 10.5)
+
+[node name="Creative_Block98" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 11.5)
+
+[node name="Creative_Block99" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 11.5)
+
+[node name="Creative_Block100" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 9.5)
+
+[node name="Creative_Block101" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 10.5)
+
+[node name="Creative_Block102" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 11.5)
+
+[node name="Creative_Ramp13" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 25)
+
+[node name="Creative_Ramp14" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 25)
+
+[node name="Creative_Ramp15" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 25)
+
+[node name="Creative_Ramp16" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 9)
+
+[node name="Creative_Ramp17" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 10)
+
+[node name="Creative_Ramp18" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 11)
+
+[node name="Creative_Ramp19" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 4, 21)
+
+[node name="Creative_Block103" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 15.5)
+
+[node name="Creative_Block104" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 16.5)
+
+[node name="Creative_Block105" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 17.5)
+
+[node name="Creative_Ramp20" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 3, 15)
+
+[node name="Creative_Ramp21" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 4, 24)
+
+[node name="Creative_Block106" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3.5, 24.5)
+
+[node name="Creative_Block107" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3.5, 24.5)
+
+[node name="Creative_Block108" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 3.5, 24.5)
+
+[node name="Creative_Ramp22" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 3, 24)
+
+[node name="Creative_Block109" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 4.5, 21.5)
+
+[node name="Creative_Block110" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 4.5, 21.5)
+
+[node name="Creative_Block111" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 4.5, 21.5)
+
+[node name="Creative_Block112" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 22.5)
+
+[node name="Creative_Block113" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 23.5)
+
+[node name="Creative_Block114" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 24.5)
+
+[node name="Creative_Block115" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 21.5)
+
+[node name="Creative_Block116" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 3.5, 24.5)
+
+[node name="Creative_Block117" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 3.5, 24.5)
+
+[node name="Creative_Block118" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 3.5, 24.5)
+
+[node name="Creative_Block119" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 24.5)
+
+[node name="Creative_Block120" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 2.5, 24.5)
+
+[node name="Creative_Block121" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 2.5, 24.5)
+
+[node name="Creative_Block122" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 1.5, 24.5)
+
+[node name="Creative_Block123" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 1.5, 24.5)
+
+[node name="Creative_Block124" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 1.5, 24.5)
+
+[node name="Creative_Block125" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 24.5)
+
+[node name="Creative_Block126" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 24.5)
+
+[node name="Creative_Block127" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 24.5)
+
+[node name="Creative_Block128" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 24.5)
+
+[node name="Creative_Block129" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.5, 24.5)
+
+[node name="Creative_Block130" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 24.5)
+
+[node name="Creative_Block131" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.5, 24.5)
+
+[node name="Creative_Block132" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2.5, 24.5)
+
+[node name="Creative_Block133" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.5, 24.5)
+
+[node name="Creative_Block134" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.5, 24.5)
+
+[node name="Creative_Block135" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 24.5)
+
+[node name="Creative_Block136" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 24.5)
+
+[node name="Creative_Block137" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 18.5)
+
+[node name="Creative_Block138" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 18.5)
+
+[node name="Creative_Block139" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 18.5)
+
+[node name="Creative_Block140" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 20.5)
+
+[node name="Creative_Block141" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 20.5)
+
+[node name="Creative_Block142" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 20.5)
+
+[node name="Creative_Block143" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 19.5)
+
+[node name="Creative_Block144" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 19.5)
+
+[node name="Creative_Block145" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 19.5)
+
+[node name="Creative_Block146" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 15.5)
+
+[node name="Creative_Block147" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 15.5)
+
+[node name="Creative_Block148" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 17.5)
+
+[node name="Creative_Block149" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 17.5)
+
+[node name="Creative_Block150" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 16.5)
+
+[node name="Creative_Block151" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 16.5)
+
+[node name="Creative_Block152" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 12.5)
+
+[node name="Creative_Block153" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 12.5)
+
+[node name="Creative_Block154" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 14.5)
+
+[node name="Creative_Block155" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 14.5)
+
+[node name="Creative_Block156" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 13.5)
+
+[node name="Creative_Block157" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 13.5)
+
+[node name="Creative_Block158" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 23.5)
+
+[node name="Creative_Block159" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 22.5)
+
+[node name="Creative_Block160" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 21.5)
+
+[node name="Creative_Ramp23" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 24)
+
+[node name="Creative_Block161" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 24.5)
+
+[node name="Creative_Block162" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 24.5)
+
+[node name="Creative_Block163" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 23.5)
+
+[node name="Creative_Block164" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 22.5)
+
+[node name="Creative_Block165" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 21.5)
+
+[node name="Creative_Ramp24" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 24)
+
+[node name="Creative_Block166" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 27.5)
+
+[node name="Creative_Block167" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 27.5)
+
+[node name="Creative_Block168" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 26.5)
+
+[node name="Creative_Block169" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 26.5)
+
+[node name="Creative_Block170" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 25.5)
+
+[node name="Creative_Block171" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 25.5)
+
+[node name="Creative_Block172" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 8.5)
+
+[node name="Creative_Block173" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 8.5)
+
+[node name="Creative_Block174" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 8.5)
+
+[node name="Creative_Ramp25" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16, 2, 8)
+
+[node name="Creative_Block175" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 8.5)
+
+[node name="Creative_Block176" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 8.5)
+
+[node name="Creative_Block177" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 8.5)
+
+[node name="Creative_Block178" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 8.5)
+
+[node name="Creative_Block179" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1.5, 8.5)
+
+[node name="Creative_Block180" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 8.5)
+
+[node name="Creative_Block181" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 8.5)
+
+[node name="Creative_Block182" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 8.5)
+
+[node name="Creative_Ramp26" parent="Base3" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16, 2, 12)
+
+[node name="Creative_Block183" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 12.5)
+
+[node name="Creative_Block184" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1.5, 12.5)
+
+[node name="Creative_Block185" parent="Base3" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 12.5)
+
+[node name="Base4" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29, 0, -108)
+
+[node name="Creative_Block" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 22.5)
+
+[node name="Creative_Block2" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 22.5)
+
+[node name="Creative_Block3" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 22.5)
+
+[node name="Creative_Block4" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 23.5)
+
+[node name="Creative_Block5" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 23.5)
+
+[node name="Creative_Block6" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 23.5)
+
+[node name="Creative_Block7" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 24.5)
+
+[node name="Creative_Block8" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 24.5)
+
+[node name="Creative_Block9" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 24.5)
+
+[node name="Creative_Block10" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 25.5)
+
+[node name="Creative_Block11" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 25.5)
+
+[node name="Creative_Block12" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 25.5)
+
+[node name="Creative_Block13" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 26.5)
+
+[node name="Creative_Block14" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 26.5)
+
+[node name="Creative_Block15" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 26.5)
+
+[node name="Creative_Block16" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 27.5)
+
+[node name="Creative_Block17" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 27.5)
+
+[node name="Creative_Block18" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 27.5)
+
+[node name="Creative_Block19" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 22.5)
+
+[node name="Creative_Block20" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 22.5)
+
+[node name="Creative_Block21" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 22.5)
+
+[node name="Creative_Block22" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 23.5)
+
+[node name="Creative_Block23" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 23.5)
+
+[node name="Creative_Block24" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 23.5)
+
+[node name="Creative_Block25" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 24.5)
+
+[node name="Creative_Block26" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 24.5)
+
+[node name="Creative_Block27" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 24.5)
+
+[node name="Creative_Block28" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 25.5)
+
+[node name="Creative_Block29" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 25.5)
+
+[node name="Creative_Block30" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 25.5)
+
+[node name="Creative_Block31" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 26.5)
+
+[node name="Creative_Block32" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 26.5)
+
+[node name="Creative_Block33" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 26.5)
+
+[node name="Creative_Block34" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 27.5)
+
+[node name="Creative_Block35" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 27.5)
+
+[node name="Creative_Block36" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 27.5)
+
+[node name="Creative_Block37" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 21.5)
+
+[node name="Creative_Block38" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 21.5)
+
+[node name="Creative_Block39" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 21.5)
+
+[node name="Creative_Block40" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.5, 22.5)
+
+[node name="Creative_Block41" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 3.5, 22.5)
+
+[node name="Creative_Block42" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 22.5)
+
+[node name="Creative_Block43" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 3.5, 21.5)
+
+[node name="Creative_Block44" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 3.5, 21.5)
+
+[node name="Creative_Block45" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.5, 21.5)
+
+[node name="Creative_Block46" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 22.5)
+
+[node name="Creative_Block47" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 23.5)
+
+[node name="Creative_Block48" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 24.5)
+
+[node name="Creative_Block49" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 25.5)
+
+[node name="Creative_Block50" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 26.5)
+
+[node name="Creative_Block51" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 27.5)
+
+[node name="Creative_Block52" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.5, 21.5)
+
+[node name="Creative_Ramp" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 3, 21)
+
+[node name="Creative_Ramp2" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, 21)
+
+[node name="Creative_Ramp3" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3, 21)
+
+[node name="Creative_Ramp4" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 3, 25)
+
+[node name="Creative_Ramp5" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 3, 26)
+
+[node name="Creative_Ramp6" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 3, 27)
+
+[node name="Creative_Block53" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 21.5)
+
+[node name="Creative_Block54" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1.5, 21.5)
+
+[node name="Creative_Block55" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 21.5)
+
+[node name="Creative_Block56" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 22.5)
+
+[node name="Creative_Block57" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 23.5)
+
+[node name="Creative_Block58" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 24.5)
+
+[node name="Creative_Block59" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 21.5)
+
+[node name="Creative_Block60" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 2.5, 21.5)
+
+[node name="Creative_Block61" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 2.5, 21.5)
+
+[node name="Creative_Block62" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 21.5)
+
+[node name="Creative_Block63" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 22.5)
+
+[node name="Creative_Block64" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 23.5)
+
+[node name="Creative_Block65" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 24.5)
+
+[node name="Creative_Block66" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.5, 21.5)
+
+[node name="Creative_Block67" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 25.5)
+
+[node name="Creative_Block68" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 25.5)
+
+[node name="Creative_Block69" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 26.5)
+
+[node name="Creative_Block70" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 26.5)
+
+[node name="Creative_Block71" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 27.5)
+
+[node name="Creative_Block72" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 27.5)
+
+[node name="Creative_Block73" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 25.5)
+
+[node name="Creative_Block74" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 26.5)
+
+[node name="Creative_Block75" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 27.5)
+
+[node name="Creative_Block76" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 15.5)
+
+[node name="Creative_Block77" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 15.5)
+
+[node name="Creative_Block78" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 16.5)
+
+[node name="Creative_Block79" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 16.5)
+
+[node name="Creative_Block80" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 17.5)
+
+[node name="Creative_Block81" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 17.5)
+
+[node name="Creative_Block82" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 15.5)
+
+[node name="Creative_Block83" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 16.5)
+
+[node name="Creative_Block84" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 17.5)
+
+[node name="Creative_Ramp7" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 25)
+
+[node name="Creative_Ramp8" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 26)
+
+[node name="Creative_Ramp9" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 27)
+
+[node name="Creative_Block85" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 25.5)
+
+[node name="Creative_Block86" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 25.5)
+
+[node name="Creative_Block87" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 26.5)
+
+[node name="Creative_Block88" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 26.5)
+
+[node name="Creative_Block89" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 27.5)
+
+[node name="Creative_Block90" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 27.5)
+
+[node name="Creative_Block91" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 25.5)
+
+[node name="Creative_Block92" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 26.5)
+
+[node name="Creative_Block93" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 27.5)
+
+[node name="Creative_Ramp10" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 15)
+
+[node name="Creative_Ramp11" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, 15)
+
+[node name="Creative_Ramp12" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2, 15)
+
+[node name="Creative_Block94" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 9.5)
+
+[node name="Creative_Block95" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 9.5)
+
+[node name="Creative_Block96" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 10.5)
+
+[node name="Creative_Block97" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 10.5)
+
+[node name="Creative_Block98" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 11.5)
+
+[node name="Creative_Block99" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 11.5)
+
+[node name="Creative_Block100" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 9.5)
+
+[node name="Creative_Block101" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 10.5)
+
+[node name="Creative_Block102" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 11.5)
+
+[node name="Creative_Ramp13" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 25)
+
+[node name="Creative_Ramp14" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 25)
+
+[node name="Creative_Ramp15" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 25)
+
+[node name="Creative_Ramp16" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 9)
+
+[node name="Creative_Ramp17" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 10)
+
+[node name="Creative_Ramp18" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 11)
+
+[node name="Creative_Ramp19" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 4, 21)
+
+[node name="Creative_Block103" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 15.5)
+
+[node name="Creative_Block104" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 16.5)
+
+[node name="Creative_Block105" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 17.5)
+
+[node name="Creative_Ramp20" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 3, 15)
+
+[node name="Creative_Ramp21" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 4, 24)
+
+[node name="Creative_Block106" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3.5, 24.5)
+
+[node name="Creative_Block107" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3.5, 24.5)
+
+[node name="Creative_Block108" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 3.5, 24.5)
+
+[node name="Creative_Ramp22" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 3, 24)
+
+[node name="Creative_Block109" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 4.5, 21.5)
+
+[node name="Creative_Block110" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 4.5, 21.5)
+
+[node name="Creative_Block111" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 4.5, 21.5)
+
+[node name="Creative_Block112" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 22.5)
+
+[node name="Creative_Block113" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 23.5)
+
+[node name="Creative_Block114" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 24.5)
+
+[node name="Creative_Block115" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.5, 21.5)
+
+[node name="Creative_Block116" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 3.5, 24.5)
+
+[node name="Creative_Block117" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 3.5, 24.5)
+
+[node name="Creative_Block118" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 3.5, 24.5)
+
+[node name="Creative_Block119" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2.5, 24.5)
+
+[node name="Creative_Block120" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 2.5, 24.5)
+
+[node name="Creative_Block121" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 2.5, 24.5)
+
+[node name="Creative_Block122" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 1.5, 24.5)
+
+[node name="Creative_Block123" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 1.5, 24.5)
+
+[node name="Creative_Block124" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 1.5, 24.5)
+
+[node name="Creative_Block125" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 24.5)
+
+[node name="Creative_Block126" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.5, 24.5)
+
+[node name="Creative_Block127" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 24.5)
+
+[node name="Creative_Block128" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.5, 24.5)
+
+[node name="Creative_Block129" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.5, 24.5)
+
+[node name="Creative_Block130" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 24.5)
+
+[node name="Creative_Block131" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.5, 24.5)
+
+[node name="Creative_Block132" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2.5, 24.5)
+
+[node name="Creative_Block133" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.5, 24.5)
+
+[node name="Creative_Block134" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.5, 24.5)
+
+[node name="Creative_Block135" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 24.5)
+
+[node name="Creative_Block136" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 24.5)
+
+[node name="Creative_Block137" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 18.5)
+
+[node name="Creative_Block138" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 18.5)
+
+[node name="Creative_Block139" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 18.5)
+
+[node name="Creative_Block140" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 20.5)
+
+[node name="Creative_Block141" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 20.5)
+
+[node name="Creative_Block142" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 20.5)
+
+[node name="Creative_Block143" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3.5, 19.5)
+
+[node name="Creative_Block144" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 19.5)
+
+[node name="Creative_Block145" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 19.5)
+
+[node name="Creative_Block146" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 15.5)
+
+[node name="Creative_Block147" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 15.5)
+
+[node name="Creative_Block148" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 17.5)
+
+[node name="Creative_Block149" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 17.5)
+
+[node name="Creative_Block150" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 16.5)
+
+[node name="Creative_Block151" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 16.5)
+
+[node name="Creative_Block152" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 12.5)
+
+[node name="Creative_Block153" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 12.5)
+
+[node name="Creative_Block154" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 14.5)
+
+[node name="Creative_Block155" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 14.5)
+
+[node name="Creative_Block156" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 13.5)
+
+[node name="Creative_Block157" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 13.5)
+
+[node name="Creative_Block158" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 23.5)
+
+[node name="Creative_Block159" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 22.5)
+
+[node name="Creative_Block160" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 21.5)
+
+[node name="Creative_Ramp23" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 24)
+
+[node name="Creative_Block161" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 24.5)
+
+[node name="Creative_Block162" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 24.5)
+
+[node name="Creative_Block163" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 23.5)
+
+[node name="Creative_Block164" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 22.5)
+
+[node name="Creative_Block165" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 21.5)
+
+[node name="Creative_Ramp24" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 24)
+
+[node name="Creative_Block166" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 27.5)
+
+[node name="Creative_Block167" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 27.5)
+
+[node name="Creative_Block168" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 26.5)
+
+[node name="Creative_Block169" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 26.5)
+
+[node name="Creative_Block170" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 25.5)
+
+[node name="Creative_Block171" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 25.5)
+
+[node name="Creative_Block172" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, 8.5)
+
+[node name="Creative_Block173" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 2.5, 8.5)
+
+[node name="Creative_Block174" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.5, 8.5)
+
+[node name="Creative_Ramp25" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16, 2, 8)
+
+[node name="Creative_Block175" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 1.5, 8.5)
+
+[node name="Creative_Block176" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 1.5, 8.5)
+
+[node name="Creative_Block177" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 8.5)
+
+[node name="Creative_Block178" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 8.5)
+
+[node name="Creative_Block179" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1.5, 8.5)
+
+[node name="Creative_Block180" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 8.5)
+
+[node name="Creative_Block181" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.5, 8.5)
+
+[node name="Creative_Block182" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, 8.5)
+
+[node name="Creative_Ramp26" parent="Base4" instance=ExtResource("12_w7xlq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16, 2, 12)
+
+[node name="Creative_Block183" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 12.5)
+
+[node name="Creative_Block184" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1.5, 12.5)
+
+[node name="Creative_Block185" parent="Base4" instance=ExtResource("12_iis0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.5, 12.5)

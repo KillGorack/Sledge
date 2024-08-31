@@ -2,7 +2,7 @@
 
 [ext_resource type="PhysicsMaterial" uid="uid://bwm66u3tk5o2" path="res://Physics/Physics_Projectile.tres" id="1_4kiiy"]
 [ext_resource type="Script" path="res://Projectiles/MKIII DEW/collisionHandler.gd" id="1_i0lfx"]
-[ext_resource type="PackedScene" uid="uid://bts65qds6dd65" path="res://test.tscn" id="3_7ubtd"]
+[ext_resource type="PackedScene" uid="uid://d0vc4tlbrhf3g" path="res://Explosions/Explosion/Variant 3/Explosion3.tscn" id="3_y2ld4"]
 [ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_gelb.material" id="4_3p83v"]
 [ext_resource type="AudioStream" uid="uid://dtyjnib5p7s2u" path="res://Sounds/laser3.mp3" id="6_5rggj"]
 
@@ -23,7 +23,7 @@ continuous_cd = true
 max_contacts_reported = 99
 contact_monitor = true
 script = ExtResource("1_i0lfx")
-explosion_scene = ExtResource("3_7ubtd")
+explosion_scene = ExtResource("3_y2ld4")
 damage = 10
 projectileVelocity = 50.0
 cooldown = 0.25

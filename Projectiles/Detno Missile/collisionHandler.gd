@@ -18,7 +18,6 @@ var initial_position: Vector3
 var has_started_moving: bool = false
 var initial_direction: Vector3
 
-
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
@@ -28,8 +27,6 @@ func _physics_process(_delta: float):
 		initial_direction = linear_velocity.normalized()
 		has_started_moving = true
 		linear_velocity = initial_direction.normalized() * projectileVelocity
-		
-
 
 func _on_body_entered(body: Node):
 	if body != self:
@@ -44,6 +41,7 @@ func _create_explosion():
 			get_parent().add_child(explosion_instance)
 			explosion_instance.global_transform.origin = global_transform.origin
 
+
 func _apply_explosive_force():
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsShapeQueryParameters3D.new()
@@ -51,7 +49,6 @@ func _apply_explosive_force():
 	query.shape = SphereShape3D.new()
 	query.shape.radius = explosion_radius
 	var result = space_state.intersect_shape(query, 150)
-
 	for item in result:
 		var body = item.collider
 		if body is RigidBody3D and body != self:
@@ -60,13 +57,15 @@ func _apply_explosive_force():
 			var force_magnitude = impulse_strength
 			if force_curve:
 				force_magnitude *= force_curve.sample(normalized_distance)
+			var child_node = body.get_child(0)
+			if child_node and child_node.has_method("apply_damage"):
+				var scaled_damage = damage * force_curve.sample(normalized_distance)
+				child_node.apply_damage(scaled_damage)
 			var force_direction = (body.global_transform.origin - global_transform.origin).normalized()
 			if body.has_method("apply_projectile_impulse"):
 				body.call("apply_projectile_impulse", force_direction * force_magnitude, force_direction)
-			var child_node = body.get_child(0)
-			if child_node and child_node.has_method("apply_damage"):
-				var scaled_damage = damage * (1.0 - normalized_distance)
-				child_node.apply_damage(scaled_damage)
+
+
 
 func get_cooldown() -> float:
 	return cooldown

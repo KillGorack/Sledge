@@ -11,39 +11,50 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_n56gn")
 heightmap_enabled = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="Curve" id="Curve_6kd2j"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_5kf8m"]
+max_value = 0.5
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_qlx3g"]
+[sub_resource type="Curve" id="Curve_vtwmj"]
+max_value = 0.5
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_l2jxb"]
 max_value = 5.0
-_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_n3v0c"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_iq7ac"]
-curve_x = SubResource("Curve_6kd2j")
-curve_y = SubResource("Curve_qlx3g")
-curve_z = SubResource("Curve_n3v0c")
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_0u8hq"]
+curve_x = SubResource("Curve_5kf8m")
+curve_y = SubResource("Curve_vtwmj")
+curve_z = SubResource("Curve_l2jxb")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ueyol"]
 particle_flag_align_y = true
+particle_flag_rotate_y = true
 emission_shape = 1
 emission_sphere_radius = 0.2
+direction = Vector3(0, 0, 0)
 spread = 0.0
 radial_velocity_min = 1.0
 radial_velocity_max = 5.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.05
-scale_max = 0.05
-scale_curve = SubResource("CurveXYZTexture_iq7ac")
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveXYZTexture_0u8hq")
 color = Color(5, 2, 1, 1)
 
-[sub_resource type="QuadMesh" id="QuadMesh_x4p1d"]
+[sub_resource type="SphereMesh" id="SphereMesh_xm67c"]
+radius = 0.25
+height = 0.5
 
 [node name="Sparks" type="Node3D"]
 script = ExtResource("1_3tgpp")
@@ -53,11 +64,11 @@ destruction_delay = 1.0
 layers = 4
 material_override = SubResource("StandardMaterial3D_eeasd")
 amount = 50
-lifetime = 0.31
+lifetime = 0.26
 explosiveness = 1.0
 fixed_fps = 60
-transform_align = 1
+trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_ueyol")
-draw_pass_1 = SubResource("QuadMesh_x4p1d")
+draw_pass_1 = SubResource("SphereMesh_xm67c")
 script = ExtResource("1_2gllb")
-destroy_time = 0.3
+destroy_time = 0.25
