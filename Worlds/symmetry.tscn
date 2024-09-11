@@ -3105,7 +3105,7 @@ adjustment_enabled = true
 [node name="Symmetry" type="Node3D"]
 script = ExtResource("1_j3fbo")
 npc_scene = ExtResource("2_g6isc")
-npc_count = 100
+npc_count = 25
 height = 25.0
 world_min_x = -85.0
 world_max_x = 36.0

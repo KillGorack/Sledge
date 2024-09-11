@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsna86pre2kcl"]
+
+[ext_resource type="Script" path="res://garbageCollector.gd" id="1_d7e8j"]
+[ext_resource type="Texture2D" uid="uid://dywxp6kge65h0" path="res://Textures/BulletHoles/cracked.png" id="2_oahjp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txifg"]
+transparency = 1
+albedo_texture = ExtResource("2_oahjp")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6065d"]
+material = SubResource("StandardMaterial3D_txifg")
+
+[node name="Cracked" type="Node3D"]
+script = ExtResource("1_d7e8j")
+destroy_time = 3.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -0.001)
+layers = 4
+mesh = SubResource("QuadMesh_6065d")

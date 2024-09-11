@@ -6,6 +6,7 @@ extends RigidBody3D
 
 @onready var raycast = $RayCast3D
 @export var explosion_scene: PackedScene
+@export var bullet_hole_scene: PackedScene
 @export var impulse_strength: float = 10.0
 @export var BounceCount: int = 5
 @export var BounceOffset: float = 0.25
@@ -29,39 +30,55 @@ func _ready():
 	initial_speed = linear_velocity.length()
 
 func _physics_process(_delta: float):
+	if Input.is_action_pressed("Reverso"):
+		impulse_strength *= -1
 	if not has_started_moving and linear_velocity.length_squared() > 0.01:
 		initial_position = global_transform.origin
 		initial_speed = linear_velocity.length()
 		initial_direction = linear_velocity.normalized()
 		has_started_moving = true
 		linear_velocity = initial_direction.normalized() * projectileVelocity
+		
+func _create_bullet_hole(decal_position: Vector3, normal: Vector3):
+	if bullet_hole_scene:
+		var bullet_hole_instance = bullet_hole_scene.instantiate()
+		if get_parent():
+			get_parent().add_child(bullet_hole_instance)
+			bullet_hole_instance.global_transform.origin = decal_position
+			var direction = decal_position + normal - bullet_hole_instance.global_transform.origin
+			if direction.is_zero_approx() or decal_position.is_equal_approx(decal_position + normal):
+				var arbitrary_up_vector = Vector3.UP
+				bullet_hole_instance.global_transform.basis = Basis(Vector3.RIGHT, arbitrary_up_vector, Vector3.FORWARD)
+			else:
+				var up_vector = Vector3.UP
+				if direction.is_zero_approx() or direction.cross(up_vector).is_zero_approx():
+					up_vector = Vector3.RIGHT if up_vector.dot(Vector3.RIGHT) != 1.0 else Vector3.FORWARD
+				bullet_hole_instance.look_at(decal_position + normal, up_vector)
 
+
+		
 func _integrate_forces(state: PhysicsDirectBodyState3D):
 	if state.get_contact_count() > 0:
-		collision_info["position"] = state.get_contact_local_position(0)
-		collision_info["normal"] = state.get_contact_local_normal(0)
-
+		collision_info["position"] = raycast.get_collision_point()
+		collision_info["normal"] = raycast.get_collision_normal()
+		
 func _on_body_entered(body: Node):
 	if body != self:
 		var coll_layer = body.collision_layer
 		var collision_position = collision_info["position"]
-		#var collision_normal = collision_info["normal"]
-		
+		var collision_normal = collision_info["normal"]
+		if coll_layer == 2:
+			_create_bullet_hole(collision_position, collision_normal)
 		force_direction = initial_position.direction_to(collision_position)
 		var reflection = -force_direction.reflect(collision_info["normal"])
 		_create_explosion(collision_position)
-		
 		if BounceCount > 0 and coll_layer == 2:
 			BounceCount -= 1
 			global_transform.origin += reflection * BounceOffset
 			linear_velocity = reflection * projectileVelocity
-			
-			# Ensure that the up vector is not parallel to the reflection vector
 			var up_vector = Vector3.UP
 			if reflection.is_zero_approx() or reflection.dot(up_vector) == 1.0 or reflection.dot(up_vector) == -1.0:
-				# Choose a different up vector if reflection is collinear with the default up vector
 				up_vector = Vector3.RIGHT if up_vector.dot(Vector3.RIGHT) != 1.0 else Vector3.FORWARD
-			
 			global_transform = global_transform.looking_at(global_transform.origin + reflection, up_vector)
 			initial_position = global_transform.origin
 		else:

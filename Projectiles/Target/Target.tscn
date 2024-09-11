@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://lqfae7nwi7re"]
+
+[ext_resource type="Script" path="res://garbageCollector.gd" id="3_mlfgs"]
+[ext_resource type="Material" uid="uid://bkxfjukd212nj" path="res://Materials/glitz_green.material" id="6_blymf"]
+[ext_resource type="Material" uid="uid://b3h8p1fpfpqyy" path="res://Materials/Rocket.material" id="7_2u0yk"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_b6pk5"]
+radius = 0.25
+height = 0.5
+
+[node name="Target Ball" type="Node3D" groups=["Target_Beacon"]]
+script = ExtResource("3_mlfgs")
+destroy_time = 20.0
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -10)
+collision_mask = 4294967290
+hit_back_faces = false
+collide_with_areas = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+layers = 4
+light_color = Color(0, 1, 0, 1)
+light_energy = 3.0
+light_indirect_energy = 3.0
+light_volumetric_fog_energy = 0.0
+light_size = 3.0
+light_cull_mask = 4294967291
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+layers = 4
+material_override = ExtResource("6_blymf")
+mesh = SubResource("SphereMesh_b6pk5")
+surface_material_override/0 = ExtResource("7_2u0yk")

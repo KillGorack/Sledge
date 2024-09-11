@@ -10,7 +10,6 @@ var is_static: bool = true
 var health_script: GDScript
 
 func _ready():
-	switch_body_mode("STATIC")
 	health_script = healthNode.get_script() as GDScript
 
 

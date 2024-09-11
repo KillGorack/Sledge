@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://cqsin6qrmoma4"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://dh2rif6n2skrg" path="res://Physics/Physics_Floor.tres" id="1_rwlxt"]
+[ext_resource type="PhysicsMaterial" uid="uid://0sp7q4t6oufs" path="res://Physics/Physics_Tips.tres" id="1_egbp0"]
 [ext_resource type="Script" path="res://Creative/creative_block.gd" id="2_ki87e"]
 [ext_resource type="PackedScene" uid="uid://by8tnrolxm3j6" path="res://Explosions/Explosion/Variant 1/Explosion.tscn" id="3_x8g2p"]
 [ext_resource type="Script" path="res://Creative/creative_health.gd" id="4_c6fht"]
@@ -178,28 +178,29 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l7g8v")
 
-[node name="Creative_Ramp" type="RigidBody3D"]
-collision_layer = 2
+[node name="Creative_Ramp" type="RigidBody3D" groups=["Driveable"]]
+collision_layer = 16
 collision_mask = 16777215
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_linear_z = true
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 mass = 20.0
-physics_material_override = ExtResource("1_rwlxt")
+physics_material_override = ExtResource("1_egbp0")
+center_of_mass_mode = 1
+continuous_cd = true
+max_contacts_reported = 5
+contact_monitor = true
 script = ExtResource("2_ki87e")
 explosion_scene = ExtResource("3_x8g2p")
 
 [node name="Health" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 1.5)
 script = ExtResource("4_c6fht")
 explosion_scene = ExtResource("3_x8g2p")
 
-[node name="Collider" type="CollisionShape3D" parent="."]
+[node name="Collider" type="CollisionShape3D" parent="." groups=["Driveable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 1.5)
 shape = SubResource("ConvexPolygonShape3D_gutil")
 
 [node name="Mesh" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 1.5)
 
 [node name="Side Left" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0.000416279, -0.00208652, 0.00792527)
@@ -208,7 +209,7 @@ material_override = ExtResource("6_eptae")
 mesh = SubResource("ArrayMesh_pcdvp")
 skeleton = NodePath("")
 
-[node name="Ramp" type="MeshInstance3D" parent="Mesh"]
+[node name="Ramp" type="MeshInstance3D" parent="Mesh" groups=["Driveable"]]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 layers = 16
 material_override = ExtResource("7_cbgcs")

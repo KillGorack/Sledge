@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d3ow1d8c5883k"]
+[gd_scene load_steps=23 format=3 uid="uid://d3ow1d8c5883k"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://deru0wsiqkst8" path="res://Physics/Physics_Player.tres" id="1_4a7wf"]
 [ext_resource type="Script" path="res://NPC/npc_light.gd" id="1_pylr4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://bb5au6shernuv" path="res://Materials/gun_metal.material" id="4_yqbe7"]
 [ext_resource type="ArrayMesh" uid="uid://dxrq6clmfhf8s" path="res://Models/Lightning Pieces/Bezels.obj" id="6_keeg3"]
 [ext_resource type="Script" path="res://NPC/health.gd" id="7_rfnxc"]
+[ext_resource type="PackedScene" uid="uid://0br4yfgv812d" path="res://Projectiles/Detno Missile/detno_npc.tscn" id="8_haw7f"]
 [ext_resource type="PackedScene" uid="uid://by8tnrolxm3j6" path="res://Explosions/Explosion/Variant 1/Explosion.tscn" id="8_tewk1"]
 [ext_resource type="ArrayMesh" uid="uid://bihmriydtugre" path="res://Models/Lightning Pieces/Hover Pads.obj" id="8_xv4ba"]
 [ext_resource type="ArrayMesh" uid="uid://c84y4mbn8rlvw" path="res://Models/Lightning Pieces/Hull.obj" id="10_eqkhq"]
@@ -27,7 +28,7 @@ points = PackedVector3Array(0.359919, -0.234853, 1.21184, 0.349981, -0.178604, 1
 
 [node name="NPC Light" type="RigidBody3D" node_paths=PackedStringArray("left_raycast", "right_raycast", "ground_raycast") groups=["NPC"]]
 collision_layer = 8
-collision_mask = 65519
+collision_mask = 16776959
 mass = 50.0
 physics_material_override = ExtResource("1_4a7wf")
 center_of_mass_mode = 1
@@ -46,21 +47,27 @@ ground_raycast = NodePath("GroundCast")
 script = ExtResource("7_rfnxc")
 explosion_scene = ExtResource("8_tewk1")
 
-[node name="Turret Handler" type="Node3D" parent="." node_paths=PackedStringArray("turret", "barrel")]
-script = ExtResource("14_nq3g4")
-turret = NodePath("../Turret")
-barrel = NodePath("../Turret/Barrel")
+[node name="Turret Handler" type="Node3D" parent="."]
 
-[node name="Turret" type="MeshInstance3D" parent="."]
+[node name="Turret" type="MeshInstance3D" parent="." node_paths=PackedStringArray("turret", "barrel")]
 layers = 8
 material_override = ExtResource("2_7tc21")
 mesh = ExtResource("16_nvjwl")
+script = ExtResource("14_nq3g4")
+turret = NodePath(".")
+barrel = NodePath("Barrel")
+projectile_scene = ExtResource("8_haw7f")
 
 [node name="Barrel" type="MeshInstance3D" parent="Turret"]
 layers = 8
 material_override = ExtResource("4_yqbe7")
 mesh = ExtResource("4_v36np")
 skeleton = NodePath("../..")
+
+[node name="ShootCast" type="RayCast3D" parent="Turret/Barrel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.14569)
+target_position = Vector3(0, 0, -15)
+collision_mask = 65535
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

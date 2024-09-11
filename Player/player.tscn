@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://b8siumuqiii82"]
+[gd_scene load_steps=33 format=3 uid="uid://b8siumuqiii82"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://deru0wsiqkst8" path="res://Physics/Physics_Player.tres" id="1_k4c56"]
 [ext_resource type="Script" path="res://Player/movement.gd" id="1_p06na"]
 [ext_resource type="Script" path="res://Player/Camera3D.gd" id="2_18mlw"]
 [ext_resource type="Script" path="res://Player/shoot.gd" id="2_t3pxx"]
+[ext_resource type="Script" path="res://Player/Health Handler.gd" id="3_bymak"]
 [ext_resource type="Script" path="res://Player/Reticle.gd" id="4_evipe"]
 [ext_resource type="PackedScene" uid="uid://lmcxmfe0ggy6" path="res://Projectiles/MKIII DEW/mkiii.tscn" id="6_cnycn"]
 [ext_resource type="Material" uid="uid://clj5jh6v7iyl0" path="res://Materials/glitz_gray.material" id="6_dbl5a"]
@@ -16,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://b1fu86so13lm5" path="res://Projectiles/Howitser/Howitser.tscn" id="9_iwiib"]
 [ext_resource type="Material" uid="uid://pfaidv5deiuc" path="res://Materials/Rubber.material" id="10_punc7"]
 [ext_resource type="ArrayMesh" uid="uid://dxrq6clmfhf8s" path="res://Models/Lightning Pieces/Bezels.obj" id="11_gekii"]
+[ext_resource type="PackedScene" uid="uid://dhku84vedj08c" path="res://Projectiles/Albatross/Albatross.tscn" id="11_p3tst"]
+[ext_resource type="PackedScene" uid="uid://lqfae7nwi7re" path="res://Projectiles/Target/Target.tscn" id="12_40ifp"]
 [ext_resource type="Material" uid="uid://dnyvoh8p38dpe" path="res://Materials/projectile_gelb.material" id="12_w1kfg"]
 [ext_resource type="ArrayMesh" uid="uid://bihmriydtugre" path="res://Models/Lightning Pieces/Hover Pads.obj" id="13_u2agb"]
 [ext_resource type="ArrayMesh" uid="uid://c84y4mbn8rlvw" path="res://Models/Lightning Pieces/Hull.obj" id="14_6pp70"]
@@ -47,6 +50,9 @@ contact_monitor = true
 script = ExtResource("1_p06na")
 engine_audio_path = NodePath("Engine Sound")
 
+[node name="Health Handler" type="Node3D" parent="."]
+script = ExtResource("3_bymak")
+
 [node name="GroundCheck" type="Area3D" parent="."]
 collision_mask = 3854
 priority = 1
@@ -66,18 +72,24 @@ shape = SubResource("BoxShape3D_vvwp3")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_33prw")
 
-[node name="ShootingNode" type="Node3D" parent="."]
-script = ExtResource("2_t3pxx")
-projectile_scenes = Array[PackedScene]([ExtResource("6_cnycn"), ExtResource("7_beo63"), ExtResource("8_qhju0"), ExtResource("9_iwiib")])
-weapon_label_path = NodePath("../UI/RichTextLabel")
-camera_node_path = NodePath("../Camera3D")
-shooting_audio_path = NodePath("../AudioStreamPlayer")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 cull_mask = 1048574
 current = true
 fov = 65.0
 script = ExtResource("2_18mlw")
+
+[node name="ShootingNode" type="Node3D" parent="Camera3D"]
+script = ExtResource("2_t3pxx")
+projectile_scenes = Array[PackedScene]([ExtResource("6_cnycn"), ExtResource("7_beo63"), ExtResource("8_qhju0"), ExtResource("9_iwiib"), ExtResource("11_p3tst")])
+weapon_label_path = NodePath("../../UI/RichTextLabel")
+camera_node_path = NodePath("..")
+shooting_audio_path = NodePath("../../AudioStreamPlayer")
+target_scene = ExtResource("12_40ifp")
+
+[node name="TargetCast" type="RayCast3D" parent="Camera3D/ShootingNode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.16531)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 254
 
 [node name="Geometry" type="Node3D" parent="."]
 

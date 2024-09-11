@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce4vcbeilmhpm"]
+
+[ext_resource type="Script" path="res://garbageCollector.gd" id="1_p5ovo"]
+[ext_resource type="Texture2D" uid="uid://y0fpoejomoln" path="res://Textures/BulletHoles/explosion.png" id="2_n2fg3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txifg"]
+transparency = 1
+albedo_texture = ExtResource("2_n2fg3")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6065d"]
+material = SubResource("StandardMaterial3D_txifg")
+
+[node name="Scorch" type="Node3D"]
+script = ExtResource("1_p5ovo")
+destroy_time = 3.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -0.001)
+layers = 4
+mesh = SubResource("QuadMesh_6065d")

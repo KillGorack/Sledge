@@ -119,3 +119,10 @@ func update_engine_sound():
 			target_volume = -20.0
 		engine_audio.pitch_scale = lerp(engine_audio.pitch_scale, target_pitch, pitch_transition_speed * get_process_delta_time())
 		engine_audio.volume_db = lerp(engine_audio.volume_db, target_volume, volume_transition_speed * get_process_delta_time())
+
+
+
+
+
+func apply_projectile_impulse(impulse: Vector3, _direction: Vector3):
+	apply_central_impulse(impulse)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://dhbn084ynla8a"]
+[gd_scene load_steps=21 format=3 uid="uid://dhbn084ynla8a"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://bwm66u3tk5o2" path="res://Physics/Physics_Projectile.tres" id="1_8qqy0"]
 [ext_resource type="Script" path="res://Projectiles/Force Missile/collisionHandler.gd" id="1_eokgr"]
 [ext_resource type="Material" uid="uid://dhfys530aklu1" path="res://Materials/Rocket_blue.material" id="2_4extj"]
 [ext_resource type="PackedScene" uid="uid://cedhmeorv8qc8" path="res://Explosions/BubSplosion/BubSplosion.tscn" id="2_i5wxm"]
 [ext_resource type="ArrayMesh" uid="uid://d4hc6uo46tls0" path="res://Models/rocket.obj" id="3_ltfwa"]
+[ext_resource type="PackedScene" uid="uid://dsna86pre2kcl" path="res://Explosions/Hit marks/cracked.tscn" id="4_fmwpq"]
 [ext_resource type="Material" uid="uid://b3h8p1fpfpqyy" path="res://Materials/Rocket.material" id="4_vouqw"]
 [ext_resource type="Shader" path="res://GPUTrail-main/shaders/trailB.gdshader" id="6_ybeg4"]
 [ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail_draw_pass.gdshader" id="7_g56tp"]
@@ -18,22 +19,22 @@ radius = 0.1
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h8ndv"]
 shader = ExtResource("6_ybeg4")
 
-[sub_resource type="Gradient" id="Gradient_hakuw"]
+[sub_resource type="Gradient" id="Gradient_86ktn"]
 offsets = PackedFloat32Array(0, 0.726899, 1)
 colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_npfht"]
-gradient = SubResource("Gradient_hakuw")
+gradient = SubResource("Gradient_86ktn")
 use_hdr = true
 
-[sub_resource type="Curve" id="Curve_hhnhe"]
+[sub_resource type="Curve" id="Curve_4h80q"]
 _data = [Vector2(0, 1), 0.0, 0.0935406, 0, 0, Vector2(0.607767, 0.817757), -0.941691, -0.941691, 0, 0, Vector2(1, 0.00467288), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_vx5pe"]
-curve = SubResource("Curve_hhnhe")
+curve = SubResource("Curve_4h80q")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l1j6u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xchvg"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("7_g56tp")
@@ -44,9 +45,9 @@ shader_parameter/color_ramp = SubResource("GradientTexture1D_npfht")
 shader_parameter/curve = SubResource("CurveTexture_vx5pe")
 
 [sub_resource type="QuadMesh" id="QuadMesh_4gfk3"]
-material = SubResource("ShaderMaterial_l1j6u")
+material = SubResource("ShaderMaterial_xchvg")
 
-[node name="Projectile" type="RigidBody3D"]
+[node name="Force" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 4294967290
 mass = 50.0
@@ -57,6 +58,7 @@ max_contacts_reported = 999
 contact_monitor = true
 script = ExtResource("1_eokgr")
 explosion_scene = ExtResource("2_i5wxm")
+bullet_hole_scene = ExtResource("4_fmwpq")
 impulse_strength = 500.0
 BounceCount = 10
 launch_sound = ExtResource("10_aljqg")
