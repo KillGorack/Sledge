@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b50l47csfvat5"]
+
+[ext_resource type="Texture2D" uid="uid://kto1usw73dfy" path="res://materials/_textures/Rockets/RocketsPalletteGreen.png" id="1_akjbr"]
+
+[resource]
+albedo_texture = ExtResource("1_akjbr")
+emission_enabled = true
+emission_texture = ExtResource("1_akjbr")

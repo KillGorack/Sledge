@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dje6cr8koqoly"]
+
+[ext_resource type="Shader" uid="uid://d0mrhcpsma8cp" path="res://materials/_shaders/Shield.gdshader" id="1_d8jjw"]
+[ext_resource type="Texture2D" uid="uid://c2vqvl3ib0gsy" path="res://materials/_textures/Water/Water_height.bmp" id="2_d8jjw"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_d8jjw")
+shader_parameter/noise_texture = ExtResource("2_d8jjw")
+shader_parameter/noise_intensity = 0.5
+shader_parameter/noise_speed_x = 0.25
+shader_parameter/noise_speed_y = 0.25
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_alpha = 0.3
+shader_parameter/emission_color = Vector3(1, 1, 1)
+shader_parameter/emission_intensity = 4.0

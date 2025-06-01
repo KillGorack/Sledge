@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb4t3if3mb7w7"]
+
+[ext_resource type="Material" uid="uid://dje6cr8koqoly" path="res://materials/Shields/Shield.tres" id="1_byrde"]
+[ext_resource type="Material" uid="uid://0syydsb7fhwm" path="res://materials/_textures/particles/Particles_Pink.tres" id="2_ir8sx"]
+[ext_resource type="Script" uid="uid://b2b1qfxulwicj" path="res://weapons/Weapons/_scripts/Twirl.gd" id="2_q54ei"]
+[ext_resource type="Material" uid="uid://dkod3mmvbo3el" path="res://materials/_textures/particles/Particles_Blue.tres" id="4_q54ei"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ir8sx"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q54ei"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_mwyf4"]
+size = Vector2(0.05, 0.05)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q54ei"]
+
+[node name="ReconCaptureDevice" type="RigidBody3D" groups=["Recon"]]
+collision_layer = 2147483648
+collision_mask = 2147483648
+gravity_scale = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_byrde")
+mesh = SubResource("SphereMesh_ir8sx")
+skeleton = NodePath("../Emmiter")
+
+[node name="Emmiter" type="Node3D" parent="."]
+visible = false
+script = ExtResource("2_q54ei")
+spin_speed = 5.0
+enable_x = false
+enable_z = false
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Emmiter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.500469, 0, 0)
+material_override = ExtResource("2_ir8sx")
+amount = 129
+lifetime = 2.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_q54ei")
+draw_pass_1 = SubResource("QuadMesh_mwyf4")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Emmiter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+material_override = ExtResource("2_ir8sx")
+amount = 120
+lifetime = 2.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_q54ei")
+draw_pass_1 = SubResource("QuadMesh_mwyf4")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Emmiter"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.000234493, 0, 0.500234)
+material_override = ExtResource("4_q54ei")
+amount = 129
+lifetime = 2.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_q54ei")
+draw_pass_1 = SubResource("QuadMesh_mwyf4")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Emmiter"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.000234536, 0, -0.500234)
+material_override = ExtResource("4_q54ei")
+amount = 120
+lifetime = 2.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_q54ei")
+draw_pass_1 = SubResource("QuadMesh_mwyf4")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_q54ei")

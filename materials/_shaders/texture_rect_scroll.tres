@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cexmtab463ixe"]
+
+[ext_resource type="Shader" uid="uid://cwqfdkjxitpia" path="res://materials/_shaders/texture_rect_scroll.gdshader" id="1_rxatw"]
+
+[resource]
+shader = ExtResource("1_rxatw")
+shader_parameter/scroll_speed = Vector2(0.02, 0.01)

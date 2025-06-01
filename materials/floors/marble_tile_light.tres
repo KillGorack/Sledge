@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://b2jxasudnyxal"]
+
+[ext_resource type="Texture2D" uid="uid://dajeg8t2s3q8t" path="res://materials/_textures/marble_tile/Marble_Tile_diffuseOriginal.bmp" id="1_bxmb4"]
+[ext_resource type="Texture2D" uid="uid://c586fk6dx0was" path="res://materials/_textures/marble_tile/Marble_Tile_ao.bmp" id="2_5fr70"]
+[ext_resource type="Texture2D" uid="uid://gf75c18btav0" path="res://materials/_textures/marble_tile/Marble_Tile_height.bmp" id="3_jcqdd"]
+[ext_resource type="Texture2D" uid="uid://c0jbd7pejxaa4" path="res://materials/_textures/marble_tile/Marble_Tile_normal.bmp" id="4_23lyb"]
+[ext_resource type="Texture2D" uid="uid://07nwyrwilf37" path="res://materials/_textures/marble_tile/Marble_Tile_metallic.bmp" id="4_jcqdd"]
+[ext_resource type="Texture2D" uid="uid://cf61tavhchagy" path="res://materials/_textures/marble_tile/Marble_Tile_smoothness.bmp" id="6_23lyb"]
+
+[resource]
+albedo_texture = ExtResource("1_bxmb4")
+metallic = 1.0
+metallic_texture = ExtResource("4_jcqdd")
+roughness_texture = ExtResource("6_23lyb")
+normal_enabled = true
+normal_scale = -2.0
+normal_texture = ExtResource("4_23lyb")
+ao_enabled = true
+ao_texture = ExtResource("2_5fr70")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_jcqdd")

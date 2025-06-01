@@ -1,0 +1,334 @@
+[gd_scene load_steps=14 format=3 uid="uid://cvtyko5ojxihp"]
+
+[ext_resource type="Script" uid="uid://cy36kha8hdrh7" path="res://UI/_scripts/index.gd" id="1_nqqff"]
+[ext_resource type="Texture2D" uid="uid://tok7vv1bcutw" path="res://UI/splash/Symmetry.png" id="1_ohvpi"]
+[ext_resource type="AudioStream" uid="uid://b74bw2watgj4v" path="res://sounds/ambient/cinematic.mp3" id="2_k76bh"]
+[ext_resource type="Texture2D" uid="uid://crpdcajocfl6f" path="res://UI/images/SledgeTitle.png" id="4_k76bh"]
+[ext_resource type="Script" uid="uid://bgenclkuo5bdf" path="res://UI/_scripts/load_game.gd" id="5_jjqsn"]
+[ext_resource type="Script" uid="uid://t3xx41omqkey" path="res://UI/_scripts/pnl_keymaps.gd" id="5_rp8jl"]
+[ext_resource type="Resource" uid="uid://dvct1ac40fvm8" path="res://levels/settings/Proving Grounds.tres" id="6_eksob"]
+[ext_resource type="Resource" uid="uid://d6fpp6640m1" path="res://levels/settings/MaulGrounds.tres" id="6_f3bia"]
+[ext_resource type="PackedScene" uid="uid://dtw2ryuq7qccr" path="res://crafts/scenes/_Vehicle_Main.tscn" id="7_implm"]
+[ext_resource type="Resource" uid="uid://cb3845mf30p8i" path="res://levels/settings/PackIV.tres" id="7_rp8jl"]
+[ext_resource type="Resource" uid="uid://nqs436lq1fbf" path="res://levels/settings/RattleCage.tres" id="9_7ahb7"]
+[ext_resource type="Resource" uid="uid://cu0q3mli8uta8" path="res://levels/settings/Symmetry.tres" id="10_fgkc5"]
+[ext_resource type="Resource" uid="uid://crv4exxx1cq14" path="res://levels/settings/Whompus.tres" id="11_ainq6"]
+
+[node name="Index" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nqqff")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="AmbientMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_k76bh")
+volume_db = -30.0
+autoplay = true
+
+[node name="txtr_bacground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ohvpi")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="lbl_welcome" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -350.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 119.0
+grow_horizontal = 0
+
+[node name="lbl_usrstats" type="Label" parent="."]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 132.0
+offset_right = 365.0
+offset_bottom = 241.0
+
+[node name="txtr_title" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 376.0
+offset_bottom = 131.0
+texture = ExtResource("4_k76bh")
+stretch_mode = 4
+
+[node name="btn_quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -145.0
+offset_top = -41.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Quit"
+
+[node name="btn_register" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -290.0
+offset_top = -41.0
+offset_right = -155.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Register"
+
+[node name="btn_settings" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -435.0
+offset_top = -41.0
+offset_right = -300.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Settings"
+
+[node name="sld_musicVolume" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = -30.0
+offset_right = 174.0
+offset_bottom = -10.0
+grow_vertical = 0
+min_value = -50.0
+max_value = 0.0
+value = -30.0
+
+[node name="pnl_login_group" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -132.0
+offset_right = 192.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="margin" type="MarginContainer" parent="pnl_login_group"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="vbox_login_form" type="VBoxContainer" parent="pnl_login_group/margin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="pnl_login_group/margin/vbox_login_form"]
+layout_mode = 2
+text = "Welcome! Please log in."
+
+[node name="div" type="HSeparator" parent="pnl_login_group/margin/vbox_login_form"]
+layout_mode = 2
+
+[node name="hbox_username" type="HBoxContainer" parent="pnl_login_group/margin/vbox_login_form"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="lbl_username" type="Label" parent="pnl_login_group/margin/vbox_login_form/hbox_username"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "User Name: "
+
+[node name="txt_username" type="LineEdit" parent="pnl_login_group/margin/vbox_login_form/hbox_username"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="hbox_password" type="HBoxContainer" parent="pnl_login_group/margin/vbox_login_form"]
+layout_mode = 2
+
+[node name="lbl_password" type="Label" parent="pnl_login_group/margin/vbox_login_form/hbox_password"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Password:"
+
+[node name="txt_password" type="LineEdit" parent="pnl_login_group/margin/vbox_login_form/hbox_password"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+secret = true
+
+[node name="div2" type="HSeparator" parent="pnl_login_group/margin/vbox_login_form"]
+layout_mode = 2
+
+[node name="btn_login" type="Button" parent="pnl_login_group/margin/vbox_login_form"]
+layout_mode = 2
+text = "Login"
+
+[node name="pnl_load_game" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -407.0
+offset_top = -219.0
+offset_right = 407.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jjqsn")
+levelSettings = Array[Resource]([ExtResource("6_f3bia"), ExtResource("7_rp8jl"), ExtResource("6_eksob"), ExtResource("9_7ahb7"), ExtResource("10_fgkc5"), ExtResource("11_ainq6")])
+_vehicle_main = ExtResource("7_implm")
+
+[node name="margin" type="MarginContainer" parent="pnl_load_game"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="hbox" type="HBoxContainer" parent="pnl_load_game/margin"]
+layout_mode = 2
+
+[node name="lst_worlds" type="ItemList" parent="pnl_load_game/margin/hbox"]
+custom_minimum_size = Vector2(682, 0)
+layout_mode = 2
+theme_override_constants/line_separation = 5
+theme_override_constants/icon_margin = 5
+max_text_lines = 2
+fixed_icon_size = Vector2i(64, 64)
+
+[node name="VSeparator" type="VSeparator" parent="pnl_load_game/margin/hbox"]
+layout_mode = 2
+
+[node name="btn_load_game" type="Button" parent="pnl_load_game/margin/hbox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Load 
+Level"
+
+[node name="Settings" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -478.5
+offset_top = -260.0
+offset_right = 478.5
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+current_tab = 2
+
+[node name="Graphics" type="PanelContainer" parent="Settings/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Sounds" type="PanelContainer" parent="Settings/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Inputs" type="PanelContainer" parent="Settings/MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="pnl_keymaps" type="PanelContainer" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Inputs"]
+layout_mode = 2
+script = ExtResource("5_rp8jl")
+
+[node name="margin" type="MarginContainer" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Inputs/pnl_keymaps"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Inputs/pnl_keymaps/margin"]
+layout_mode = 2
+
+[node name="opt_bindings" type="ItemList" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Inputs/pnl_keymaps/margin/HBoxContainer"]
+custom_minimum_size = Vector2(300, 413)
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Inputs/pnl_keymaps/margin/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Inputs/pnl_keymaps/margin/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Inputs/pnl_keymaps/margin/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Action name"
+
+[node name="line_action" type="LineEdit" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Inputs/pnl_keymaps/margin/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Inputs/pnl_keymaps/margin/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Current binding"
+
+[node name="line_key" type="LineEdit" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Inputs/pnl_keymaps/margin/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Inputs/pnl_keymaps/margin/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="rebind_button" type="Button" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Inputs/pnl_keymaps/margin/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Rebind this action"
+
+[node name="btn_return" type="Button" parent="Settings/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Return"

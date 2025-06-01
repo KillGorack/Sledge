@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="LootSettings" load_steps=4 format=3 uid="uid://slxobf6ynkwf"]
+
+[ext_resource type="Script" uid="uid://btk0u0qpvrdfq" path="res://items/drops/_scripts/lootSettings.gd" id="1_o5u1e"]
+[ext_resource type="Texture2D" uid="uid://con7jkcpmthg7" path="res://items/drops/icons/bully_proper.png" id="1_ryi0p"]
+[ext_resource type="AudioStream" uid="uid://dmadehd4htypq" path="res://sounds/up.wav" id="2_l42sk"]
+
+[resource]
+script = ExtResource("1_o5u1e")
+loot_type = 10
+loot_target = 1
+loot_name = "Bulldog"
+loot_icon = ExtResource("1_ryi0p")
+loot_param_increase = 5.0
+loot_drop_rate = 0.01
+loot_life = 30.0
+loot_temp_effect = true
+loot_duration = 120.0
+loot_sound = ExtResource("2_l42sk")
+loot_level = 1
+metadata/_custom_type_script = "uid://btk0u0qpvrdfq"

@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cil6knroy7myn"]
+
+[ext_resource type="Shader" uid="uid://d0mrhcpsma8cp" path="res://materials/_shaders/Shield.gdshader" id="1_ex0tq"]
+[ext_resource type="Texture2D" uid="uid://di8pohaol6iy1" path="res://materials/Shields/Standard_Noise.png" id="2_lwjr2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ex0tq")
+shader_parameter/noise_texture = ExtResource("2_lwjr2")
+shader_parameter/noise_intensity = 0.5
+shader_parameter/noise_speed_x = 0.25
+shader_parameter/noise_speed_y = 0.25
+shader_parameter/noise_scale = 0.3
+shader_parameter/noise_alpha = 0.3
+shader_parameter/emission_color = Vector3(1, 1, 1)
+shader_parameter/emission_intensity = 4.0

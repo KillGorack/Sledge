@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://cg5uw70n4r232"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://bwm66u3tk5o2" path="res://physics/Physics_Projectile.tres" id="1_vfj3i"]
+[ext_resource type="Script" uid="uid://d4m55fnyclkl4" path="res://weapons/Weapons/_scripts/collisionHandler.gd" id="2_a4tqi"]
+[ext_resource type="Script" uid="uid://b2b1qfxulwicj" path="res://weapons/Weapons/_scripts/Twirl.gd" id="3_x3yt8"]
+[ext_resource type="Script" uid="uid://d0h2mterilqjg" path="res://weapons/Weapons/_scripts/TrailEffect.gd" id="4_54khg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n5qrt"]
+radius = 0.04
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_se5mi"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[node name="DE_Yellow" type="RigidBody3D"]
+physics_interpolation_mode = 1
+collision_layer = 0
+collision_mask = 0
+mass = 0.1
+physics_material_override = ExtResource("1_vfj3i")
+gravity_scale = 0.0
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 15
+script = ExtResource("2_a4tqi")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -0.5)
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("SphereShape3D_n5qrt")
+
+[node name="Twirl" type="Node3D" parent="."]
+script = ExtResource("3_x3yt8")
+spin_speed = 66.0
+enable_x = false
+enable_y = false
+
+[node name="Trail3D2" type="MeshInstance3D" parent="Twirl"]
+layers = 1023
+material_override = SubResource("StandardMaterial3D_se5mi")
+skeleton = NodePath("../..")
+script = ExtResource("4_54khg")
+_lifeSpan = 0.2
+_startColor = Color(1, 1, 0, 1)
+_endColor = Color(1, 1, 0, 0)
+_fromWidth = 0.1
+metadata/_custom_type_script = "uid://d0h2mterilqjg"
+
+[node name="Trail3D3" type="MeshInstance3D" parent="Twirl"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+layers = 1023
+material_override = SubResource("StandardMaterial3D_se5mi")
+skeleton = NodePath("../..")
+script = ExtResource("4_54khg")
+_lifeSpan = 0.2
+_startColor = Color(1, 1, 0, 1)
+_endColor = Color(1, 1, 0, 0)
+_fromWidth = 0.1
+metadata/_custom_type_script = "uid://d0h2mterilqjg"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0.6, 1)
+omni_range = 3.0

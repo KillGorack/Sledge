@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b7s1n2em27g2j"]
+
+[ext_resource type="Texture2D" uid="uid://gk7obab8ujrh" path="res://items/drops/icons/wings.png" id="1_1qqvf"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_1qqvf")
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_texture = ExtResource("1_1qqvf")
+billboard_mode = 1

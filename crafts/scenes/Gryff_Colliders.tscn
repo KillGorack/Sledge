@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbnnm76sjwibl"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qy2qe"]
+points = PackedVector3Array(0.3, 0.3, 0.8, -0.3, 0.3, 0.8, 0.3, 0.0249902, 0.8, 0.3, 0.3, -0.8, -0.3, 0.0249902, 0.8, -0.3, 0.3, -0.8, 0.278328, 0.00334769, 0.77823, 0.3, 0.0249902, -0.8, -0.3, 0.0249902, -0.8, -0.278387, 0.00334769, 0.77823, 0.262471, 0, 0.762412, 0.278328, 0.00334769, -0.778387, -0.278387, 0.00334769, -0.778387, -0.262529, 0, 0.762412, 0.262471, 0, -0.762569, -0.262529, 0, -0.762569)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qy2qe"]
+size = Vector3(0.605, 0.1, 1.605)
+
+[node name="Gryff_Colliders" type="Area3D"]
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_qy2qe")
+
+[node name="Ground_Check" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qy2qe")

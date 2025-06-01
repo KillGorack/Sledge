@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="WeaponSettings" load_steps=6 format=3 uid="uid://b216wfbjy07kt"]
+
+[ext_resource type="PackedScene" uid="uid://ce0s4ae2mgehn" path="res://particles/sparks/sparks_orange.tscn" id="1_djel2"]
+[ext_resource type="Script" uid="uid://34kmkndar7qb" path="res://weapons/Weapons/_scripts/WeaponSettings.gd" id="1_nnmg7"]
+[ext_resource type="Texture2D" uid="uid://eqo41i3mwy28" path="res://weapons/Weapons/icons/Laser epoc III.png" id="2_i7i56"]
+[ext_resource type="AudioStream" uid="uid://weupn5euarcc" path="res://sounds/Weapons/laser3.mp3" id="2_teof3"]
+[ext_resource type="PackedScene" uid="uid://c5xscd6s01bj7" path="res://weapons/Weapons/scenes/DE_Orange.tscn" id="3_85h51"]
+
+[resource]
+script = ExtResource("1_nnmg7")
+weapon_type = 0
+weapon_name = "Directed Energy Epoc III"
+weapon_icon = ExtResource("2_i7i56")
+level_req = 0
+sizing_scale = 1
+hit_points = 40.0
+crit_chance = 0.1
+crit_multiplier = 2.0
+cool_down = 0.125
+projectile_prefab = ExtResource("3_85h51")
+explosion_prefab = ExtResource("1_djel2")
+launch_sound = ExtResource("2_teof3")
+power_consumption = 1.0
+projectile_count_capacity = 0
+projectile_count_actual = 0
+projectile_pierce_count = 0
+projectile_ricochet_count = 0
+bounce_count = 0
+freeze_timer = 0.0
+unfreeze = false
+projectile_force = 0.0
+bi_directional = false
+explosive_force = 0.0
+explosive_force_distance = 0.0
+body_collection_max = 0
+targeting_system = false
+targeting_system_require_marker = true
+target_rotation_speed = 0.0
+target_system_scan_radius = 40.0
+projectile_count = 3
+projectile_spacing = 0.125
+projectile_start_angle = 30.0
+projectile_recoil = 0.0
+projectile_range = 75.0
+projectile_speed = 45.0
+projectile_spin = 0.0
+launch_offset = 0.0
+projectile_fire_delay = 0.0
+projectile_destruction_delay = 0.0
+friendly_fire = false
+turncoat = ""
+use_gravity = false
+metadata/_custom_type_script = "uid://34kmkndar7qb"

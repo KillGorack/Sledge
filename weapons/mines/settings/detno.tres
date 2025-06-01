@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="MineSettings" load_steps=7 format=3 uid="uid://dbm32m6ijqxq6"]
+
+[ext_resource type="PackedScene" uid="uid://bo0ui3x4ykhn8" path="res://decals/crater.tscn" id="1_k0jdt"]
+[ext_resource type="Script" uid="uid://br1d2ta7ioxt8" path="res://weapons/mines/_scripts/MineSettings.gd" id="1_s7ahp"]
+[ext_resource type="PackedScene" uid="uid://clb6j2x8kc6iq" path="res://particles/sparks/sparks_red.tscn" id="2_hwkn7"]
+[ext_resource type="AudioStream" uid="uid://dmadehd4htypq" path="res://sounds/up.wav" id="3_hwkn7"]
+[ext_resource type="Texture2D" uid="uid://0pba7mcnbx6d" path="res://weapons/mines/icons/mine_red.png" id="3_k0jdt"]
+[ext_resource type="PackedScene" uid="uid://cdasae2yopch7" path="res://weapons/mines/scenes/mine_red.tscn" id="4_k0jdt"]
+
+[resource]
+script = ExtResource("1_s7ahp")
+mine_name = "Detno Mine"
+mine_icon = ExtResource("3_k0jdt")
+level_req = 0
+max_count = 50
+scan_time = 0.2
+cool_down = 0.1
+count_capacity = 50
+count_actual = 50
+mine_prefab = ExtResource("4_k0jdt")
+explosion_prefab = ExtResource("2_hwkn7")
+crater_prefab = ExtResource("1_k0jdt")
+hit_points = 10000.0
+explosive_force = 45.0
+explosive_force_distance = 5.0
+freeze_timer = 0.0
+lay_sound = ExtResource("3_hwkn7")
+unfreeze = false
+triggerable = false
+activation_range = 1.0
+life_span = 900.0
+friendly_fire = true
+metadata/_custom_type_script = "uid://br1d2ta7ioxt8"

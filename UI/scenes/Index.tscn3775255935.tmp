@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvtyko5ojxihp"]
+
+[ext_resource type="Script" uid="uid://cy36kha8hdrh7" path="res://UI/_scripts/index.gd" id="1_nqqff"]
+[ext_resource type="Texture2D" uid="uid://tok7vv1bcutw" path="res://UI/splash/Symmetry.png" id="1_ohvpi"]
+[ext_resource type="Texture2D" uid="uid://dotkvi01v31ib" path="res://UI/images/CP_Back_light.png" id="3_k76bh"]
+[ext_resource type="Texture2D" uid="uid://crpdcajocfl6f" path="res://UI/images/SledgeTitle.png" id="4_k76bh"]
+
+[node name="Index" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nqqff")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="AmbientMusic" type="AudioStreamPlayer" parent="."]
+
+[node name="txtr_title" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 490.0
+offset_bottom = 171.0
+texture = ExtResource("4_k76bh")
+stretch_mode = 4
+
+[node name="txtr_bacground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ohvpi")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="btn_quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -145.0
+offset_top = -41.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Quit"
+
+[node name="txtr_login_group" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -100.0
+offset_right = 261.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_k76bh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="txtr_login_group"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.5
+offset_top = -94.0
+offset_right = 250.5
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="txtr_login_group/VBoxContainer"]
+layout_mode = 2
+text = "Login"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="txtr_login_group/VBoxContainer"]
+layout_mode = 2
+
+[node name="lbl_username" type="Label" parent="txtr_login_group/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Login"
+
+[node name="txt_username" type="LineEdit" parent="txtr_login_group/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="txtr_login_group/VBoxContainer"]
+layout_mode = 2
+
+[node name="lbl_password" type="Label" parent="txtr_login_group/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Login"
+
+[node name="txt_password" type="LineEdit" parent="txtr_login_group/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="btn_login" type="Button" parent="txtr_login_group/VBoxContainer"]
+layout_mode = 2
+text = "Login"

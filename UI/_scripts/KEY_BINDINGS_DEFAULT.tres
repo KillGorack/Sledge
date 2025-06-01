@@ -1,0 +1,170 @@
+[gd_resource type="Resource" script_class="KeyBindSettings" load_steps=27 format=3 uid="uid://54yyhwp2qhka"]
+
+[ext_resource type="Script" uid="uid://cqbv68wg1dpos" path="res://UI/_scripts/KeyBindSettings.gd" id="1_jnbkg"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_w66nf"]
+resource_name = "Capture recon"
+device = -1
+keycode = 4194337
+
+[sub_resource type="InputEventKey" id="InputEventKey_nplv0"]
+resource_name = "Fire weapon"
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_bmhx4"]
+resource_name = "Hide hud"
+device = -1
+keycode = 4194338
+
+[sub_resource type="InputEventKey" id="InputEventKey_cpow1"]
+resource_name = "Reverse forces"
+device = -1
+keycode = 4194325
+
+[sub_resource type="InputEventKey" id="InputEventKey_vvi52"]
+resource_name = "Activate mine(s)"
+device = -1
+keycode = 80
+unicode = 112
+
+[sub_resource type="InputEventKey" id="InputEventKey_felxw"]
+resource_name = "Look down"
+device = -1
+keycode = 83
+unicode = 115
+
+[sub_resource type="InputEventKey" id="InputEventKey_mw07q"]
+resource_name = "Look left"
+device = -1
+keycode = 65
+unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_eu3bx"]
+resource_name = "Look right"
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_ysehx"]
+resource_name = "Look up"
+device = -1
+keycode = 87
+unicode = 119
+
+[sub_resource type="InputEventKey" id="InputEventKey_yuqhj"]
+resource_name = "Enter recon station"
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_uvy00"]
+resource_name = "Game Mode"
+device = -1
+keycode = 4194333
+
+[sub_resource type="InputEventKey" id="InputEventKey_q17fc"]
+resource_name = "Help menu"
+device = -1
+keycode = 4194332
+
+[sub_resource type="InputEventKey" id="InputEventKey_3o4at"]
+resource_name = "Exit arena"
+device = -1
+alt_pressed = true
+keycode = 81
+
+[sub_resource type="InputEventKey" id="InputEventKey_rcbd1"]
+resource_name = "Paint target"
+device = -1
+keycode = 84
+unicode = 116
+
+[sub_resource type="InputEventKey" id="InputEventKey_t6uno"]
+resource_name = "Zoom radar"
+device = -1
+keycode = 90
+unicode = 122
+
+[sub_resource type="InputEventKey" id="InputEventKey_f2kc0"]
+resource_name = "Screen capture"
+device = -1
+keycode = 4194343
+
+[sub_resource type="InputEventKey" id="InputEventKey_2fjkw"]
+resource_name = "Move in reverse"
+device = -1
+keycode = 4194322
+
+[sub_resource type="InputEventKey" id="InputEventKey_dvong"]
+resource_name = "Turn left"
+device = -1
+keycode = 4194319
+
+[sub_resource type="InputEventKey" id="InputEventKey_17u6n"]
+resource_name = "Recenter view"
+device = -1
+keycode = 88
+unicode = 120
+
+[sub_resource type="InputEventKey" id="InputEventKey_e510g"]
+resource_name = "Turn right"
+device = -1
+keycode = 4194321
+
+[sub_resource type="InputEventKey" id="InputEventKey_8bq77"]
+resource_name = "Precise aim"
+device = -1
+keycode = 4194325
+
+[sub_resource type="InputEventKey" id="InputEventKey_vw8ha"]
+resource_name = "Move forward"
+device = -1
+keycode = 4194320
+
+[sub_resource type="InputEventKey" id="InputEventKey_tx7xy"]
+resource_name = "Unpaint target"
+device = -1
+shift_pressed = true
+keycode = 84
+unicode = 84
+
+[sub_resource type="InputEventKey" id="InputEventKey_ngvav"]
+resource_name = "Rockets / Unturtle"
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="InputEventKey" id="InputEventKey_6te2g"]
+resource_name = "Change weapon"
+device = -1
+keycode = 4194306
+
+[resource]
+script = ExtResource("1_jnbkg")
+game_mode = SubResource("InputEventKey_uvy00")
+ui_down = SubResource("InputEventKey_2fjkw")
+ui_up = SubResource("InputEventKey_vw8ha")
+ui_left = SubResource("InputEventKey_dvong")
+ui_right = SubResource("InputEventKey_e510g")
+camera_left = SubResource("InputEventKey_mw07q")
+camera_right = SubResource("InputEventKey_eu3bx")
+camera_down = SubResource("InputEventKey_felxw")
+camera_up = SubResource("InputEventKey_ysehx")
+ui_recenter = SubResource("InputEventKey_17u6n")
+ui_shift = SubResource("InputEventKey_8bq77")
+unturtle = SubResource("InputEventKey_ngvav")
+FireWeapon = SubResource("InputEventKey_nplv0")
+weapon_change = SubResource("InputEventKey_6te2g")
+enter_recon = SubResource("InputEventKey_yuqhj")
+Reverso = SubResource("InputEventKey_cpow1")
+CaptureCon = SubResource("InputEventKey_w66nf")
+halp = SubResource("InputEventKey_q17fc")
+HideHud = SubResource("InputEventKey_bmhx4")
+radar_zoom = SubResource("InputEventKey_t6uno")
+main_menu = SubResource("InputEventKey_3o4at")
+take_screen_capture = SubResource("InputEventKey_f2kc0")
+paint_target = SubResource("InputEventKey_rcbd1")
+unpaint_target = SubResource("InputEventKey_tx7xy")
+activate_mine = SubResource("InputEventKey_vvi52")
+metadata/_custom_type_script = "uid://cqbv68wg1dpos"

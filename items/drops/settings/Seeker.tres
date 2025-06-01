@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="LootSettings" load_steps=4 format=3 uid="uid://cwbahd4awg6f2"]
+
+[ext_resource type="Texture2D" uid="uid://cfnhak32goemb" path="res://items/drops/icons/Seeker.png" id="1_fhd1d"]
+[ext_resource type="AudioStream" uid="uid://dmadehd4htypq" path="res://sounds/up.wav" id="2_pnlvb"]
+[ext_resource type="Script" uid="uid://btk0u0qpvrdfq" path="res://items/drops/_scripts/lootSettings.gd" id="3_qqv3s"]
+
+[resource]
+script = ExtResource("3_qqv3s")
+loot_type = 7
+loot_target = 0
+loot_name = "Seeker"
+loot_icon = ExtResource("1_fhd1d")
+loot_param_increase = 1.0
+loot_drop_rate = 0.1
+loot_life = 60.0
+loot_temp_effect = true
+loot_duration = 60.0
+loot_sound = ExtResource("2_pnlvb")
+loot_level = 1
+metadata/_custom_type_script = "uid://btk0u0qpvrdfq"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="LootSettings" load_steps=4 format=3 uid="uid://rtws42dtpabt"]
+
+[ext_resource type="Script" uid="uid://btk0u0qpvrdfq" path="res://items/drops/_scripts/lootSettings.gd" id="1_g7hok"]
+[ext_resource type="Texture2D" uid="uid://mk56ucsvupbn" path="res://items/drops/icons/EPOC_MAX.png" id="1_mlkya"]
+[ext_resource type="AudioStream" uid="uid://dmadehd4htypq" path="res://sounds/up.wav" id="2_wtj3q"]
+
+[resource]
+script = ExtResource("1_g7hok")
+loot_type = 5
+loot_target = 2
+loot_name = "Epoc Maximizer"
+loot_icon = ExtResource("1_mlkya")
+loot_param_increase = 6.0
+loot_drop_rate = 0.1
+loot_life = 60.0
+loot_temp_effect = true
+loot_duration = 60.0
+loot_sound = ExtResource("2_wtj3q")
+loot_level = 1
+metadata/_custom_type_script = "uid://btk0u0qpvrdfq"

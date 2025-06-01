@@ -1,0 +1,102 @@
+[gd_scene load_steps=14 format=4 uid="uid://cqgpw3mh6031h"]
+
+[ext_resource type="Script" uid="uid://d08x2ehcufg3q" path="res://items/recon/_scripts/recon_station.gd" id="1_i7arr"]
+[ext_resource type="Texture2D" uid="uid://bh607fo8l2ot2" path="res://materials/_textures/mosaic_tile/Mosaic_diffuseOriginal.bmp" id="1_iobbg"]
+[ext_resource type="AudioStream" uid="uid://dmadehd4htypq" path="res://sounds/up.wav" id="2_1a06i"]
+[ext_resource type="Texture2D" uid="uid://cqr0qyb1kgh2l" path="res://materials/_textures/mosaic_tile/Mosaic_normal.bmp" id="2_i7arr"]
+[ext_resource type="PackedScene" uid="uid://cb4t3if3mb7w7" path="res://items/recon/scenes/recon_capture_device.tscn" id="2_s6cmk"]
+[ext_resource type="Texture2D" uid="uid://gcn04kg41d1k" path="res://materials/_textures/mosaic_tile/Mosaic_emmision.bmp" id="3_81gtn"]
+[ext_resource type="Material" uid="uid://dje6cr8koqoly" path="res://materials/Shields/Shield.tres" id="7_wteou"]
+[ext_resource type="Script" uid="uid://b2b1qfxulwicj" path="res://weapons/Weapons/_scripts/Twirl.gd" id="7_wtflp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q7xu0"]
+size = Vector3(1.2, 0.25, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gfo44"]
+resource_name = "Sandwich_Block"
+vertex_color_use_as_albedo = true
+emission_enabled = true
+normal_enabled = true
+normal_scale = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gqogl"]
+_surfaces = [{
+"aabb": AABB(-0.05, 0, -0.1, 0.1, 0.2, 0.2),
+"format": 34359742465,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAAACAAQAAwAAAAUABAAFAAAABQAGAAMAAQADAAYABAAHAAUABwAEAAIABQAHAAYABwACAAgAAQAGAAkABgAHAAoABwAIAAoACwAJAAYACwAGAAoAAQAJAAwACQALAAwAAgABAAwACgAMAAsADQAIAAIACAANAAoADQACAAwADAAKAA0A"),
+"name": "Sandwich_Block",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("zcxMPc3MTD7NzEw9zcxMPc3MzD3NzEy9zcxMPc3MzD3NzEw9zcxMPc3MTD7NzEy9zcxMvc3MTD7NzEw9zcxMvc3MTD7NzEy9zcxMvc3MzD3NzEy9zcxMvc3MzD3NzEw9zcxMvc3MzD3NzMw9zcxMPc3MzD3NzMy9zcxMvQAAAAAAAAAAzcxMvc3MzD3NzMy9zcxMPQAAAAAAAAAAzcxMPc3MzD3NzMw9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_op7gn"]
+resource_name = "Scene"
+_surfaces = [{
+"aabb": AABB(-0.05, 0, -0.1, 0.1, 0.2, 0.2),
+"attribute_data": PackedByteArray("AACAPgAAQDwAAEA/AAADPwAAgD4AAAM/AABAPwAAQDwAAAA/AAB9PwAAgD8AAAM/AAAAAAAAAz8AAEA/AAADPwAAgD4AAAM/AAAAPwAAfT8AAIA/AAADPwAAAAAAAAM/AABAPwAAQDwAAIA+AABAPAAAQD8AAAAAAACAPgAAAAAAAEA/AAAAPwAAgD4AAAA/AABAPwCAAD8AAIA+AIAAPwAAQD8AAIE+AACAPgAAgT4AAEA/AAAAAAAAQD8AAAA/AACAPgAAAAAAAIA+AAAAPwAAQD8AAIA+AABAPwAAQD8AAIA+AACAPgAAgD4AAEA/AABAPwAAAD8AAEA/AAAAAAAAgD4AAAA/AACAPgAAAAAAAEA/AAD/PgAAgD4AAP8+AABAPwAAfj4AAIA+AAB+Pv7/fz4AAAA/AABAPwAAAD8AAIA+AAAAAAAAQD8AAAAA"),
+"format": 34359742487,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAgABAAQAAQAFAAQABgACAAQABwAIAAkACgAHAAkACAALAAkADAAIAAcADQAIAAwADgAPABAAEQAQAA8AEgATABQAFQAUABMAFgAXABgAGQAYABcAGgAbABwAHQAcABsAHgAfACAAIQAgAB8AIgAjACQAJQAkACMAJgAnACgAKQAoACcA"),
+"material": SubResource("StandardMaterial3D_gfo44"),
+"name": "Sandwich_Block",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 42,
+"vertex_data": PackedByteArray("zcxMPc3MTD7NzEw9zcxMPc3MzD3NzEy9zcxMPc3MzD3NzEw9zcxMPc3MTD7NzEy9zcxMPQAAAAAAAAAAzcxMPc3MzD3NzMy9zcxMPc3MzD3NzMw9zcxMvc3MzD3NzEy9zcxMvc3MzD3NzEw9zcxMvQAAAAAAAAAAzcxMvc3MzD3NzMy9zcxMvc3MzD3NzMw9zcxMvc3MTD7NzEy9zcxMvc3MTD7NzEw9zcxMPQAAAAAAAAAAzcxMvQAAAAAAAAAAzcxMPc3MzD3NzMw9zcxMvc3MzD3NzMw9zcxMPc3MzD3NzMw9zcxMvc3MzD3NzMw9zcxMPc3MzD3NzEw9zcxMvc3MzD3NzEw9zcxMPc3MTD7NzEw9zcxMPc3MzD3NzEw9zcxMvc3MTD7NzEw9zcxMvc3MzD3NzEw9zcxMPc3MTD7NzEy9zcxMPc3MTD7NzEw9zcxMvc3MTD7NzEy9zcxMvc3MTD7NzEw9zcxMPc3MzD3NzEy9zcxMPc3MTD7NzEy9zcxMvc3MzD3NzEy9zcxMvc3MTD7NzEy9zcxMPc3MzD3NzEy9zcxMvc3MzD3NzEy9zcxMPc3MzD3NzMy9zcxMvc3MzD3NzMy9zcxMPc3MzD3NzMy9zcxMvc3MzD3NzMy9zcxMPQAAAAAAAAAAzcxMvQAAAAAAAAAA////f/////////9//////////3//////////f/////////9//////////3//////////f/////8AAP9///8AAAAA/3///wAAAAD/f///AAAAAP9///8AAAAA/3///wAAAAD/f///AAAAAP9///8AAP9//z////8//3//P////z//f/8/////P/9//z////8//3///////7//f///////v/9///////+//3///////7//f/9/////v/9//3////+//3//f////7//f/9/////v/9///////+//3///////7//f///////v/9///////+//////////z//////////P/////////8//////////z//f///////v/9///////+//3///////7//f///////v/+/AAAAAP8//78AAAAA/z//vwAAAAD/P/+/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_gqogl")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wteou"]
+radius = 0.05
+
+[node name="Recon_station" type="Area3D" node_paths=PackedStringArray("decal_uncaptured", "decal_captured")]
+script = ExtResource("1_i7arr")
+reload_sound = ExtResource("2_1a06i")
+capture_device = ExtResource("2_s6cmk")
+decal_uncaptured = NodePath("Uncapptured_Decal")
+decal_captured = NodePath("Capptured_Decal")
+capture_time = 15.0
+increment_amount = 0.001
+
+[node name="Trigger_Area" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+shape = SubResource("BoxShape3D_q7xu0")
+
+[node name="Capptured_Decal" type="Decal" parent="."]
+visible = false
+size = Vector3(1.2, 0.2, 1.2)
+texture_albedo = ExtResource("1_iobbg")
+texture_normal = ExtResource("2_i7arr")
+texture_emission = ExtResource("1_iobbg")
+
+[node name="Uncapptured_Decal" type="Decal" parent="."]
+visible = false
+size = Vector3(1.2, 0.2, 1.2)
+texture_albedo = ExtResource("3_81gtn")
+texture_normal = ExtResource("2_i7arr")
+
+[node name="Recon Marker" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 2, 0)
+material_override = ExtResource("7_wteou")
+mesh = SubResource("ArrayMesh_op7gn")
+skeleton = NodePath("")
+script = ExtResource("7_wtflp")
+enable_x = false
+enable_z = false
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0)
+spot_angle = 40.0
+
+[node name="ForDetectionOnly" type="StaticBody3D" parent="." groups=["Recon_Uncaptured"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0182343, 0)
+collision_layer = 2147483648
+
+[node name="Collider" type="CollisionShape3D" parent="ForDetectionOnly"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0247192, 0)
+shape = SubResource("SphereShape3D_wteou")

@@ -1,0 +1,23 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://ll1axicn510f"]
+
+[ext_resource type="Texture2D" uid="uid://b7o3jytmwu54u" path="res://materials/_textures/Deco Block/Deco_Block_B_muted_diffuse.png" id="1_lwone"]
+[ext_resource type="Texture2D" uid="uid://bpjrewicmjquv" path="res://materials/_textures/Deco Block/Deco_Block_B_ao.bmp" id="2_ywh1v"]
+[ext_resource type="Texture2D" uid="uid://byqtw3vhaxpq6" path="res://materials/_textures/Deco Block/Deco_Block_B_height.bmp" id="3_wdtrc"]
+[ext_resource type="Texture2D" uid="uid://b2ru3n7mtcapw" path="res://materials/_textures/Deco Block/Deco_Block_B_metallic.bmp" id="4_ce0xl"]
+[ext_resource type="Texture2D" uid="uid://doahna3s44hrb" path="res://materials/_textures/Deco Block/Deco_Block_B_normal.bmp" id="5_k5uy3"]
+[ext_resource type="Texture2D" uid="uid://6ra5xpfld7ib" path="res://materials/_textures/Deco Block/Deco_Block_B_smoothness.bmp" id="6_bufjp"]
+
+[resource]
+albedo_texture = ExtResource("1_lwone")
+metallic = 1.0
+metallic_texture = ExtResource("4_ce0xl")
+roughness = 0.57
+roughness_texture = ExtResource("6_bufjp")
+normal_enabled = true
+normal_scale = -1.0
+normal_texture = ExtResource("5_k5uy3")
+ao_enabled = true
+ao_texture = ExtResource("2_ywh1v")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("3_wdtrc")

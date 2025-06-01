@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="CraftSettings" load_steps=4 format=3 uid="uid://c1jq67mkdfbhr"]
+
+[ext_resource type="PackedScene" uid="uid://bi8k7dg6l3q3p" path="res://crafts/scenes/Morrígan_Colliders.tscn" id="1_6fwsk"]
+[ext_resource type="Texture2D" uid="uid://cjhtq0u57mah7" path="res://crafts/icons/default_craft_icon.png" id="2_3naf6"]
+[ext_resource type="Script" uid="uid://vwe0meoxswgd" path="res://crafts/_scripts/craftSettings.gd" id="3_cxr18"]
+
+[resource]
+script = ExtResource("3_cxr18")
+craft_name = "Morrigan"
+craft_image = ExtResource("2_3naf6")
+craft_lore = "A true glass cannon, this craft delivers an immense punch but is fragile in direct combat. Its low defensive capabilities leave it vulnerable to even light enemy fire, making survival dependent on its evasive techniques. Equipped with advanced cloaking systems and radar-disrupting technology, it vanishes from sight, slipping through enemy scans with ease. Its small hitbox further reduces its chances of being targeted, making it a deadly assassin when striking from the shadows. Precision, stealth, and overwhelming firepower define its role on the battlefield."
+craft_collision_scene = ExtResource("1_6fwsk")
+max_speed = 6.0
+acceleration = 400.0
+deceleration = 100.0
+turn_speed = 3.0
+turn_acceleration = 12.0
+turn_deceleration = 25.0
+speed_threshold = 0.01
+right_side_up_threshold = 0.6
+unturtle_threshold = 0.3
+unturtle_force = 100.0
+thruster_force = 800.0
+rotation_speed = 25.0
+lasers = true
+missiles = false
+mines = true
+look_sensitivity = 3
+recenter_speed = 10
+fine_aim_multiplier = 0.1
+mass = 50.0
+cg = Vector3(0, -0.25, -0.25)
+power_capacty = 100.0
+power_gain_rate = 10.0
+max_effect_distance = 25.0
+regeneration_delay = 5.0
+regeneration_rate = 10.0
+shields = 700.0
+armor = 100.0
+life = 100.0
+metadata/_custom_type_script = "uid://vwe0meoxswgd"

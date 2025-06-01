@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LevelSettings" load_steps=4 format=3 uid="uid://d6fpp6640m1"]
+
+[ext_resource type="Texture2D" uid="uid://b2kf4ff7mctg7" path="res://levels/icons/maulgrounds.png" id="1_f5nli"]
+[ext_resource type="PackedScene" uid="uid://b4o4agnebiq8v" path="res://levels/scenes/MaulGrounds.tscn" id="2_f5nli"]
+[ext_resource type="Script" uid="uid://c3cq2gvev2upo" path="res://levels/_scripts/levelSettings.gd" id="3_csxsx"]
+
+[resource]
+script = ExtResource("3_csxsx")
+level_name = "MaulkGrounds"
+level_image = ExtResource("1_f5nli")
+level_scene = ExtResource("2_f5nli")
+max_npc = 10
+npc_spawn_rate = 20
+creative_space = false
+metadata/_custom_type_script = "uid://c3cq2gvev2upo"

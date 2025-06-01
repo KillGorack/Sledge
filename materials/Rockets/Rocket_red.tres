@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ccsvcsiyon87"]
+
+[ext_resource type="Texture2D" uid="uid://bmc5ql8rrpq7i" path="res://materials/_textures/Rockets/RocketsPalletteRed.png" id="1_aej5r"]
+
+[resource]
+albedo_texture = ExtResource("1_aej5r")
+emission_enabled = true
+emission_texture = ExtResource("1_aej5r")

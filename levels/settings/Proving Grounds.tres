@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelSettings" load_steps=4 format=3 uid="uid://dvct1ac40fvm8"]
+
+[ext_resource type="Script" uid="uid://c3cq2gvev2upo" path="res://levels/_scripts/levelSettings.gd" id="1_52h63"]
+[ext_resource type="Texture2D" uid="uid://yp7sxn51rqfk" path="res://levels/icons/provinggrounds.png" id="1_i66bl"]
+[ext_resource type="PackedScene" uid="uid://blx3l0sdtdqbx" path="res://levels/scenes/proving_grounds.tscn" id="2_i66bl"]
+
+[resource]
+script = ExtResource("1_52h63")
+level_name = "Proving Grounds"
+level_image = ExtResource("1_i66bl")
+level_scene = ExtResource("2_i66bl")
+max_npc = 20
+creative_space = false
+metadata/_custom_type_script = "uid://c3cq2gvev2upo"

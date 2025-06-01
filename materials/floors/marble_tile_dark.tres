@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://d2rkgl3656wie"]
+
+[ext_resource type="Texture2D" uid="uid://ys7sm5phhrus" path="res://materials/_textures/marble_tile/Marble_Tile_DESAT_diffuseOriginal.png" id="1_cre4v"]
+[ext_resource type="Texture2D" uid="uid://c586fk6dx0was" path="res://materials/_textures/marble_tile/Marble_Tile_ao.bmp" id="2_fjvjc"]
+[ext_resource type="Texture2D" uid="uid://gf75c18btav0" path="res://materials/_textures/marble_tile/Marble_Tile_height.bmp" id="3_q43d3"]
+[ext_resource type="Texture2D" uid="uid://07nwyrwilf37" path="res://materials/_textures/marble_tile/Marble_Tile_metallic.bmp" id="4_fxtfl"]
+[ext_resource type="Texture2D" uid="uid://c0jbd7pejxaa4" path="res://materials/_textures/marble_tile/Marble_Tile_normal.bmp" id="5_5tpio"]
+[ext_resource type="Texture2D" uid="uid://cf61tavhchagy" path="res://materials/_textures/marble_tile/Marble_Tile_smoothness.bmp" id="6_jcgx7"]
+
+[resource]
+albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
+albedo_texture = ExtResource("1_cre4v")
+metallic = 1.0
+metallic_texture = ExtResource("4_fxtfl")
+roughness_texture = ExtResource("6_jcgx7")
+normal_enabled = true
+normal_scale = -2.0
+normal_texture = ExtResource("5_5tpio")
+ao_enabled = true
+ao_texture = ExtResource("2_fjvjc")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_q43d3")

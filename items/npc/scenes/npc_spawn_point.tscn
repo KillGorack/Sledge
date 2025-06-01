@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=4 uid="uid://2acd25mbe4eb"]
+
+[ext_resource type="Texture2D" uid="uid://dajeg8t2s3q8t" path="res://materials/_textures/marble_tile/Marble_Tile_diffuseOriginal.bmp" id="1_2shya"]
+[ext_resource type="Texture2D" uid="uid://c0jbd7pejxaa4" path="res://materials/_textures/marble_tile/Marble_Tile_normal.bmp" id="2_orq35"]
+[ext_resource type="Script" uid="uid://hscnruy4ahgq" path="res://items/npc/_scripts/spawner.gd" id="3_orq35"]
+[ext_resource type="PackedScene" uid="uid://cibax6jxmjt7w" path="res://items/npc/scenes/aegis.tscn" id="4_kksnn"]
+[ext_resource type="Material" uid="uid://cp5y6pm8d6v3i" path="res://materials/base_colors/Digicamo_green.tres" id="5_n073g"]
+[ext_resource type="Material" uid="uid://d0p80la1ek0n5" path="res://materials/base_colors/Digicamo_white.tres" id="5_y0n3u"]
+[ext_resource type="Material" uid="uid://froq6nkvyqcq" path="res://materials/base_colors/Digicamo_golden.tres" id="7_n073g"]
+[ext_resource type="Material" uid="uid://dje6cr8koqoly" path="res://materials/Shields/Shield.tres" id="8_w36gy"]
+[ext_resource type="Script" uid="uid://b2b1qfxulwicj" path="res://weapons/Weapons/_scripts/Twirl.gd" id="9_tyehi"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_n073g"]
+size = Vector3(0.2, 0.2, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gfo44"]
+resource_name = "Sandwich_Block"
+vertex_color_use_as_albedo = true
+emission_enabled = true
+normal_enabled = true
+normal_scale = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gqogl"]
+_surfaces = [{
+"aabb": AABB(-0.05, 0, -0.1, 0.1, 0.2, 0.2),
+"format": 34359742465,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAAACAAQAAwAAAAUABAAFAAAABQAGAAMAAQADAAYABAAHAAUABwAEAAIABQAHAAYABwACAAgAAQAGAAkABgAHAAoABwAIAAoACwAJAAYACwAGAAoAAQAJAAwACQALAAwAAgABAAwACgAMAAsADQAIAAIACAANAAoADQACAAwADAAKAA0A"),
+"name": "Sandwich_Block",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("zcxMPc3MTD7NzEw9zcxMPc3MzD3NzEy9zcxMPc3MzD3NzEw9zcxMPc3MTD7NzEy9zcxMvc3MTD7NzEw9zcxMvc3MTD7NzEy9zcxMvc3MzD3NzEy9zcxMvc3MzD3NzEw9zcxMvc3MzD3NzMw9zcxMPc3MzD3NzMy9zcxMvQAAAAAAAAAAzcxMvc3MzD3NzMy9zcxMPQAAAAAAAAAAzcxMPc3MzD3NzMw9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0yqov"]
+resource_name = "Scene"
+_surfaces = [{
+"aabb": AABB(-0.05, 0, -0.1, 0.1, 0.2, 0.2),
+"attribute_data": PackedByteArray("AACAPgAAQDwAAEA/AAADPwAAgD4AAAM/AABAPwAAQDwAAAA/AAB9PwAAgD8AAAM/AAAAAAAAAz8AAEA/AAADPwAAgD4AAAM/AAAAPwAAfT8AAIA/AAADPwAAAAAAAAM/AABAPwAAQDwAAIA+AABAPAAAQD8AAAAAAACAPgAAAAAAAEA/AAAAPwAAgD4AAAA/AABAPwCAAD8AAIA+AIAAPwAAQD8AAIE+AACAPgAAgT4AAEA/AAAAAAAAQD8AAAA/AACAPgAAAAAAAIA+AAAAPwAAQD8AAIA+AABAPwAAQD8AAIA+AACAPgAAgD4AAEA/AABAPwAAAD8AAEA/AAAAAAAAgD4AAAA/AACAPgAAAAAAAEA/AAD/PgAAgD4AAP8+AABAPwAAfj4AAIA+AAB+Pv7/fz4AAAA/AABAPwAAAD8AAIA+AAAAAAAAQD8AAAAA"),
+"format": 34359742487,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAgABAAQAAQAFAAQABgACAAQABwAIAAkACgAHAAkACAALAAkADAAIAAcADQAIAAwADgAPABAAEQAQAA8AEgATABQAFQAUABMAFgAXABgAGQAYABcAGgAbABwAHQAcABsAHgAfACAAIQAgAB8AIgAjACQAJQAkACMAJgAnACgAKQAoACcA"),
+"material": SubResource("StandardMaterial3D_gfo44"),
+"name": "Sandwich_Block",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 42,
+"vertex_data": PackedByteArray("zcxMPc3MTD7NzEw9zcxMPc3MzD3NzEy9zcxMPc3MzD3NzEw9zcxMPc3MTD7NzEy9zcxMPQAAAAAAAAAAzcxMPc3MzD3NzMy9zcxMPc3MzD3NzMw9zcxMvc3MzD3NzEy9zcxMvc3MzD3NzEw9zcxMvQAAAAAAAAAAzcxMvc3MzD3NzMy9zcxMvc3MzD3NzMw9zcxMvc3MTD7NzEy9zcxMvc3MTD7NzEw9zcxMPQAAAAAAAAAAzcxMvQAAAAAAAAAAzcxMPc3MzD3NzMw9zcxMvc3MzD3NzMw9zcxMPc3MzD3NzMw9zcxMvc3MzD3NzMw9zcxMPc3MzD3NzEw9zcxMvc3MzD3NzEw9zcxMPc3MTD7NzEw9zcxMPc3MzD3NzEw9zcxMvc3MTD7NzEw9zcxMvc3MzD3NzEw9zcxMPc3MTD7NzEy9zcxMPc3MTD7NzEw9zcxMvc3MTD7NzEy9zcxMvc3MTD7NzEw9zcxMPc3MzD3NzEy9zcxMPc3MTD7NzEy9zcxMvc3MzD3NzEy9zcxMvc3MTD7NzEy9zcxMPc3MzD3NzEy9zcxMvc3MzD3NzEy9zcxMPc3MzD3NzMy9zcxMvc3MzD3NzMy9zcxMPc3MzD3NzMy9zcxMvc3MzD3NzMy9zcxMPQAAAAAAAAAAzcxMvQAAAAAAAAAA////f/////////9//////////3//////////f/////////9//////////3//////////f/////8AAP9///8AAAAA/3///wAAAAD/f///AAAAAP9///8AAAAA/3///wAAAAD/f///AAAAAP9///8AAP9//z////8//3//P////z//f/8/////P/9//z////8//3///////7//f///////v/9///////+//3///////7//f/9/////v/9//3////+//3//f////7//f/9/////v/9///////+//3///////7//f///////v/9///////+//////////z//////////P/////////8//////////z//f///////v/9///////+//3///////7//f///////v/+/AAAAAP8//78AAAAA/z//vwAAAAD/P/+/AAAAAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_gqogl")
+
+[node name="NPCSpawnPoint" type="Node3D" groups=["Spawner"]]
+
+[node name="Pad" type="Decal" parent="."]
+size = Vector3(1, 0.2, 1)
+texture_albedo = ExtResource("1_2shya")
+texture_normal = ExtResource("2_orq35")
+cull_mask = 2
+
+[node name="SpawnNode" type="Node3D" parent="." groups=["Spawner"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("3_orq35")
+npc_scenes = Array[PackedScene]([ExtResource("4_kksnn")])
+friendly_material = ExtResource("5_n073g")
+enemy_material = ExtResource("5_y0n3u")
+golden_material = ExtResource("7_n073g")
+
+[node name="SpawnDirection" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.00967237, -0.385064)
+material_override = ExtResource("7_n073g")
+mesh = SubResource("PrismMesh_n073g")
+
+[node name="Recon Marker" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
+material_override = ExtResource("8_w36gy")
+mesh = SubResource("ArrayMesh_0yqov")
+skeleton = NodePath("")
+script = ExtResource("9_tyehi")
+enable_x = false
+enable_z = false

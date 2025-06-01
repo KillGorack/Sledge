@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://vh6v70x8oc7r"]
+
+[ext_resource type="Texture2D" uid="uid://c6r4jn4rvfxcw" path="res://materials/_textures/mosaic/Mosaic_C_diffuse_Alpha.png" id="1_n0a1k"]
+[ext_resource type="Texture2D" uid="uid://be7o6heumucgp" path="res://materials/_textures/mosaic/Mosaic_C_emit.png" id="2_l061k"]
+[ext_resource type="Texture2D" uid="uid://cfnllfv5n3bq3" path="res://materials/_textures/mosaic/Mosaic_C_metallic.png" id="3_mjl7a"]
+[ext_resource type="Texture2D" uid="uid://drbphfec8r0ms" path="res://materials/_textures/mosaic/Mosaic_C_normal.png" id="4_gd7nc"]
+[ext_resource type="Texture2D" uid="uid://bm8rod4jud1vr" path="res://materials/_textures/mosaic/Mosaic_C_smoothness.png" id="5_m5ocp"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_n0a1k")
+metallic = 1.0
+metallic_texture = ExtResource("3_mjl7a")
+roughness = 0.08
+roughness_texture = ExtResource("5_m5ocp")
+emission_enabled = true
+emission_energy_multiplier = 0.2
+emission_texture = ExtResource("2_l061k")
+normal_enabled = true
+normal_scale = -1.0
+normal_texture = ExtResource("4_gd7nc")

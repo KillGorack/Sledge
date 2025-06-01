@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelSettings" load_steps=4 format=3 uid="uid://crv4exxx1cq14"]
+
+[ext_resource type="Texture2D" uid="uid://bo0n5q8wlygth" path="res://levels/icons/whompus.png" id="1_byxyy"]
+[ext_resource type="PackedScene" uid="uid://blx3l0sdtdqbx" path="res://levels/scenes/proving_grounds.tscn" id="2_s5l16"]
+[ext_resource type="Script" uid="uid://c3cq2gvev2upo" path="res://levels/_scripts/levelSettings.gd" id="3_0rvmr"]
+
+[resource]
+script = ExtResource("3_0rvmr")
+level_name = "Whompus"
+level_image = ExtResource("1_byxyy")
+level_scene = ExtResource("2_s5l16")
+max_npc = 20
+creative_space = false
+metadata/_custom_type_script = "uid://c3cq2gvev2upo"

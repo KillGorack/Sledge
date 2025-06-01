@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="MineSettings" load_steps=6 format=3 uid="uid://2h0bqk3l5qm5"]
+
+[ext_resource type="Texture2D" uid="uid://d24wlexe24h6g" path="res://weapons/mines/icons/mine_blue.png" id="1_oinam"]
+[ext_resource type="PackedScene" uid="uid://bo0ui3x4ykhn8" path="res://decals/crater.tscn" id="1_pc254"]
+[ext_resource type="Script" uid="uid://br1d2ta7ioxt8" path="res://weapons/mines/_scripts/MineSettings.gd" id="1_w0jht"]
+[ext_resource type="PackedScene" uid="uid://c5qj8cw2ysldo" path="res://weapons/mines/scenes/mine_blue.tscn" id="2_b8lpv"]
+[ext_resource type="PackedScene" uid="uid://irskr2hfbfsx" path="res://particles/sparks/sparks_blue.tscn" id="2_udjrh"]
+
+[resource]
+script = ExtResource("1_w0jht")
+mine_name = "Mahnattan mine"
+mine_icon = ExtResource("1_oinam")
+level_req = 25
+max_count = 5
+scan_time = 0.2
+cool_down = 0.5
+count_capacity = 5
+count_actual = 5
+mine_prefab = ExtResource("2_b8lpv")
+explosion_prefab = ExtResource("2_udjrh")
+crater_prefab = ExtResource("1_pc254")
+hit_points = 0.0
+explosive_force = 125.0
+explosive_force_distance = 25.0
+freeze_timer = 10.0
+unfreeze = false
+triggerable = true
+activation_range = 1.0
+life_span = 900.0
+friendly_fire = false
+metadata/_custom_type_script = "uid://br1d2ta7ioxt8"

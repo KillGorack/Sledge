@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="CraftSettings" load_steps=4 format=3 uid="uid://d4k3qpj2ry12x"]
+
+[ext_resource type="Texture2D" uid="uid://cjhtq0u57mah7" path="res://crafts/icons/default_craft_icon.png" id="1_lstdv"]
+[ext_resource type="Script" uid="uid://vwe0meoxswgd" path="res://crafts/_scripts/craftSettings.gd" id="1_oo8se"]
+[ext_resource type="PackedScene" uid="uid://c4jmg8peffg6c" path="res://crafts/scenes/Taranis_Colliders.tscn" id="1_y6180"]
+
+[resource]
+script = ExtResource("1_oo8se")
+craft_name = "Taranis"
+craft_image = ExtResource("1_lstdv")
+craft_lore = "A walking fortress, this craft is built to endure. Slow and deliberate in movement, it trades speed for sheer resilience, soaking up damage that would cripple lighter units. Its reinforced armor and reinforced shielding allow it to shrug off enemy fire, making it the frontline bulwark that draws attention away from more fragile allies. While lacking agility, it compensates with devastating firepower, unleashing heavy ordnance that can break formations and suppress opposition. Designed to take the heat and keep pushing forward, it’s the unshakable force that holds the battlefield together."
+craft_collision_scene = ExtResource("1_y6180")
+target_audio_pitch = 0.0
+max_speed = 4.0
+acceleration = 400.0
+deceleration = 100.0
+turn_speed = 3.0
+turn_acceleration = 12.0
+turn_deceleration = 25.0
+speed_threshold = 0.01
+right_side_up_threshold = 0.6
+unturtle_threshold = 0.3
+unturtle_force = 100.0
+thruster_force = 800.0
+rotation_speed = 25.0
+lasers = true
+missiles = true
+mines = false
+look_sensitivity = 3
+recenter_speed = 10
+fine_aim_multiplier = 0.1
+mass = 50.0
+cg = Vector3(0, -0.25, -0.25)
+power_capacty = 100.0
+power_gain_rate = 10.0
+max_effect_distance = 25.0
+regeneration_delay = 5.0
+regeneration_rate = 10.0
+shields = 100.0
+armor = 800.0
+life = 100.0
+metadata/_custom_type_script = "uid://vwe0meoxswgd"

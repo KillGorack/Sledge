@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="CraftSettings" load_steps=4 format=3 uid="uid://02f5l0dqfse1"]
+
+[ext_resource type="Script" uid="uid://vwe0meoxswgd" path="res://crafts/_scripts/craftSettings.gd" id="1_h6427"]
+[ext_resource type="PackedScene" uid="uid://brihsduu3matx" path="res://crafts/scenes/Paladin_Colliders.tscn" id="1_nybjs"]
+[ext_resource type="Texture2D" uid="uid://bxxlsiou66tcq" path="res://crafts/icons/paladin.png" id="2_nybjs"]
+
+[resource]
+script = ExtResource("1_h6427")
+craft_name = "Paladin"
+craft_image = ExtResource("2_nybjs")
+craft_lore = "The backbone of any fleet, this versatile craft excels in adaptability. A true jack-of-all-trades, it is capable of wielding a wide range of weapons, seamlessly switching between missile strikes, mines, and energy-based attacks as the situation demands. With balanced stats across movement, defense, and offense, it performs reliably in almost any combat scenario. While it lacks the extreme specialization of other crafts, its ability to engage in various tactics—whether holding the line, pushing forward, or supporting allies—makes it invaluable. Dependable, durable, and flexible, it thrives where adaptability is key."
+craft_collision_scene = ExtResource("1_nybjs")
+max_speed = 5.0
+acceleration = 400.0
+deceleration = 100.0
+turn_speed = 3.0
+turn_acceleration = 12.0
+turn_deceleration = 25.0
+speed_threshold = 0.01
+right_side_up_threshold = 0.6
+unturtle_threshold = 0.3
+unturtle_force = 100.0
+thruster_force = 800.0
+rotation_speed = 25.0
+lasers = true
+missiles = true
+mines = true
+look_sensitivity = 3
+recenter_speed = 10
+fine_aim_multiplier = 0.1
+mass = 50.0
+cg = Vector3(0, -0.25, -0.25)
+power_capacty = 100.0
+power_gain_rate = 10.0
+max_effect_distance = 25.0
+regeneration_delay = 5.0
+regeneration_rate = 10.0
+shields = 300.0
+armor = 500.0
+life = 100.0
+metadata/_custom_type_script = "uid://vwe0meoxswgd"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=8 format=3 uid="uid://2acd25mbe4eb"]
+
+[ext_resource type="Texture2D" uid="uid://dajeg8t2s3q8t" path="res://materials/_textures/marble_tile/Marble_Tile_diffuseOriginal.bmp" id="1_2shya"]
+[ext_resource type="Texture2D" uid="uid://c0jbd7pejxaa4" path="res://materials/_textures/marble_tile/Marble_Tile_normal.bmp" id="2_orq35"]
+[ext_resource type="Script" uid="uid://hscnruy4ahgq" path="res://items/npc/_scripts/spawner.gd" id="3_orq35"]
+[ext_resource type="PackedScene" uid="uid://cibax6jxmjt7w" path="res://items/npc/scenes/aegis.tscn" id="4_kksnn"]
+[ext_resource type="Material" uid="uid://d0p80la1ek0n5" path="res://materials/base_colors/Digicamo_white.tres" id="5_y0n3u"]
+[ext_resource type="Material" uid="uid://0w0uhsptux11" path="res://materials/base_colors/Digicamo_red.tres" id="6_n073g"]
+[ext_resource type="Material" uid="uid://froq6nkvyqcq" path="res://materials/base_colors/Digicamo_golden.tres" id="7_n073g"]
+
+[node name="NPCSpawnPoint" type="Node3D"]
+
+[node name="Pad" type="Decal" parent="."]
+size = Vector3(1, 0.2, 1)
+texture_albedo = ExtResource("1_2shya")
+texture_normal = ExtResource("2_orq35")
+
+[node name="SpawnNode" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("3_orq35")
+npc_scenes = Array[PackedScene]([ExtResource("4_kksnn")])
+TimeInSeconds = 3.0
+MAX_NPC_COUNT = 50
+friendly_material = ExtResource("5_y0n3u")
+enemy_material = ExtResource("6_n073g")
+golden_material = ExtResource("7_n073g")

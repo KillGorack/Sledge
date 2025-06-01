@@ -1,0 +1,80 @@
+[gd_scene load_steps=14 format=3 uid="uid://ddr4bhikbria4"]
+
+[ext_resource type="Material" uid="uid://ccm7kcg7sersv" path="res://materials/Shields/Fresnel.tres" id="1_20xvf"]
+[ext_resource type="Script" uid="uid://dq5f4n8e4qn4t" path="res://items/drops/_scripts/LootHandler.gd" id="1_jqmgf"]
+[ext_resource type="Material" uid="uid://b7s1n2em27g2j" path="res://items/drops/Materials/Default.tres" id="2_20xvf"]
+[ext_resource type="Script" uid="uid://umopr6ai2l3x" path="res://items/drops/scenes/Orient_to_world.gd" id="5_613di"]
+[ext_resource type="Material" uid="uid://dxj33pu5a1vxf" path="res://materials/base_colors/BeamOfLight.tres" id="5_pyvrl"]
+[ext_resource type="Material" uid="uid://benf0ujengq" path="res://materials/base_colors/BeamOfLight_.tres" id="6_pyvrl"]
+[ext_resource type="PackedScene" uid="uid://dg5s68bpisgrw" path="res://particles/smoke/evil_cloud.tscn" id="7_p3vkb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_20xvf"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jqmgf"]
+radius = 0.1
+
+[sub_resource type="QuadMesh" id="QuadMesh_fepvx"]
+size = Vector2(0.141, 0.141)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jlbn4"]
+radius = 0.125
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j232p"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 100.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p3vkb"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 100.0
+
+[node name="DefaultLoot" type="RigidBody3D" groups=["Loot"]]
+collision_layer = 2147483648
+collision_mask = 1023
+script = ExtResource("1_jqmgf")
+
+[node name="Sphere" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_20xvf")
+mesh = SubResource("SphereMesh_20xvf")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_jqmgf")
+
+[node name="Icon" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_20xvf")
+mesh = SubResource("QuadMesh_fepvx")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_jlbn4")
+
+[node name="Flair" type="Node3D" parent="."]
+visible = false
+script = ExtResource("5_613di")
+
+[node name="Outer" type="MeshInstance3D" parent="Flair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.9, 0)
+material_override = ExtResource("5_pyvrl")
+mesh = SubResource("CylinderMesh_j232p")
+skeleton = NodePath("../..")
+script = ExtResource("5_613di")
+
+[node name="Inner" type="MeshInstance3D" parent="Flair/Outer"]
+material_override = ExtResource("6_pyvrl")
+mesh = SubResource("CylinderMesh_p3vkb")
+skeleton = NodePath("../../..")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Flair"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9, 0)
+light_color = Color(3, 0, 0, 1)
+light_energy = 16.0
+spot_range = 10.0
+spot_angle = 3.0
+
+[node name="Smoke" parent="Flair" instance=ExtResource("7_p3vkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)

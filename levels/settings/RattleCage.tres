@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelSettings" load_steps=4 format=3 uid="uid://nqs436lq1fbf"]
+
+[ext_resource type="Texture2D" uid="uid://cr10hn03c8x3r" path="res://levels/icons/ratlecage.png" id="1_wk5o7"]
+[ext_resource type="PackedScene" uid="uid://blx3l0sdtdqbx" path="res://levels/scenes/proving_grounds.tscn" id="2_37be4"]
+[ext_resource type="Script" uid="uid://c3cq2gvev2upo" path="res://levels/_scripts/levelSettings.gd" id="3_2kggm"]
+
+[resource]
+script = ExtResource("3_2kggm")
+level_name = "RattleCage"
+level_image = ExtResource("1_wk5o7")
+level_scene = ExtResource("2_37be4")
+max_npc = 20
+creative_space = false
+metadata/_custom_type_script = "uid://c3cq2gvev2upo"

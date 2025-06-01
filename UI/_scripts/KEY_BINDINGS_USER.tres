@@ -1,0 +1,145 @@
+[gd_resource type="Resource" script_class="KeyBindSettings" load_steps=27 format=3 uid="uid://bhaysrxjoiv4f"]
+
+[ext_resource type="Script" uid="uid://cqbv68wg1dpos" path="res://UI/_scripts/KeyBindSettings.gd" id="1_id52x"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_w66nf"]
+device = -1
+keycode = 4194337
+
+[sub_resource type="InputEventKey" id="InputEventKey_nplv0"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_bmhx4"]
+device = -1
+keycode = 4194338
+
+[sub_resource type="InputEventKey" id="InputEventKey_cpow1"]
+device = -1
+keycode = 4194325
+
+[sub_resource type="InputEventKey" id="InputEventKey_vvi52"]
+device = -1
+keycode = 80
+unicode = 112
+
+[sub_resource type="InputEventKey" id="InputEventKey_felxw"]
+device = -1
+keycode = 83
+unicode = 115
+
+[sub_resource type="InputEventKey" id="InputEventKey_mw07q"]
+device = -1
+keycode = 65
+unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_eu3bx"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_ysehx"]
+device = -1
+keycode = 87
+unicode = 119
+
+[sub_resource type="InputEventKey" id="InputEventKey_yuqhj"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_uvy00"]
+device = -1
+keycode = 4194333
+
+[sub_resource type="InputEventKey" id="InputEventKey_q17fc"]
+device = -1
+keycode = 4194332
+
+[sub_resource type="InputEventKey" id="InputEventKey_3o4at"]
+device = -1
+alt_pressed = true
+keycode = 81
+
+[sub_resource type="InputEventKey" id="InputEventKey_rcbd1"]
+device = -1
+keycode = 84
+unicode = 116
+
+[sub_resource type="InputEventKey" id="InputEventKey_t6uno"]
+device = -1
+keycode = 90
+unicode = 122
+
+[sub_resource type="InputEventKey" id="InputEventKey_f2kc0"]
+device = -1
+keycode = 4194343
+
+[sub_resource type="InputEventKey" id="InputEventKey_2fjkw"]
+device = -1
+keycode = 4194322
+
+[sub_resource type="InputEventKey" id="InputEventKey_dvong"]
+device = -1
+keycode = 4194319
+
+[sub_resource type="InputEventKey" id="InputEventKey_17u6n"]
+device = -1
+keycode = 88
+unicode = 120
+
+[sub_resource type="InputEventKey" id="InputEventKey_e510g"]
+device = -1
+keycode = 4194321
+
+[sub_resource type="InputEventKey" id="InputEventKey_8bq77"]
+device = -1
+keycode = 4194325
+
+[sub_resource type="InputEventKey" id="InputEventKey_vw8ha"]
+device = -1
+keycode = 4194320
+
+[sub_resource type="InputEventKey" id="InputEventKey_tx7xy"]
+device = -1
+shift_pressed = true
+keycode = 84
+unicode = 84
+
+[sub_resource type="InputEventKey" id="InputEventKey_ngvav"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="InputEventKey" id="InputEventKey_6te2g"]
+device = -1
+keycode = 4194306
+
+[resource]
+script = ExtResource("1_id52x")
+game_mode = SubResource("InputEventKey_uvy00")
+ui_down = SubResource("InputEventKey_2fjkw")
+ui_up = SubResource("InputEventKey_vw8ha")
+ui_left = SubResource("InputEventKey_dvong")
+ui_right = SubResource("InputEventKey_e510g")
+camera_left = SubResource("InputEventKey_mw07q")
+camera_right = SubResource("InputEventKey_eu3bx")
+camera_down = SubResource("InputEventKey_felxw")
+camera_up = SubResource("InputEventKey_ysehx")
+ui_recenter = SubResource("InputEventKey_17u6n")
+ui_shift = SubResource("InputEventKey_8bq77")
+unturtle = SubResource("InputEventKey_ngvav")
+FireWeapon = SubResource("InputEventKey_nplv0")
+weapon_change = SubResource("InputEventKey_6te2g")
+enter_recon = SubResource("InputEventKey_yuqhj")
+Reverso = SubResource("InputEventKey_cpow1")
+CaptureCon = SubResource("InputEventKey_w66nf")
+halp = SubResource("InputEventKey_q17fc")
+HideHud = SubResource("InputEventKey_bmhx4")
+radar_zoom = SubResource("InputEventKey_t6uno")
+main_menu = SubResource("InputEventKey_3o4at")
+take_screen_capture = SubResource("InputEventKey_f2kc0")
+paint_target = SubResource("InputEventKey_rcbd1")
+unpaint_target = SubResource("InputEventKey_tx7xy")
+activate_mine = SubResource("InputEventKey_vvi52")
+metadata/_custom_type_script = "uid://cqbv68wg1dpos"

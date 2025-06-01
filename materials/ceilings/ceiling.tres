@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://cf7v7qr6k8fdo"]
+
+[ext_resource type="Texture2D" uid="uid://upbh0pytesk0" path="res://materials/_textures/ceiling/Ceiling Plain_diffuseOriginal.bmp" id="1_5ifn8"]
+[ext_resource type="Texture2D" uid="uid://crmy21mopthcf" path="res://materials/_textures/ceiling/Ceiling Plain_ao.bmp" id="2_062mb"]
+[ext_resource type="Texture2D" uid="uid://b5dyu8eytf5p3" path="res://materials/_textures/ceiling/Ceiling Plain_height.bmp" id="3_nt4l4"]
+[ext_resource type="Texture2D" uid="uid://07a7t5veuxlo" path="res://materials/_textures/ceiling/Ceiling Plain_metallic.bmp" id="4_ann7d"]
+[ext_resource type="Texture2D" uid="uid://bgh8ig8cv8f4y" path="res://materials/_textures/ceiling/Ceiling Plain_normal.bmp" id="5_gbhxy"]
+[ext_resource type="Texture2D" uid="uid://x33rd5ysa051" path="res://materials/_textures/ceiling/Ceiling Plain_smoothness.bmp" id="6_obnmy"]
+
+[resource]
+albedo_texture = ExtResource("1_5ifn8")
+metallic_texture = ExtResource("4_ann7d")
+roughness_texture = ExtResource("6_obnmy")
+normal_enabled = true
+normal_scale = -0.25
+normal_texture = ExtResource("5_gbhxy")
+ao_enabled = true
+ao_texture = ExtResource("2_062mb")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("3_nt4l4")

@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bo5jrtmcw50qs"]
+
+[ext_resource type="Texture2D" uid="uid://dthpvlathhmkm" path="res://materials/_textures/brick_house/Brick_House_muted.bmp" id="1_2nv1d"]
+[ext_resource type="Texture2D" uid="uid://b8vqxojfqdiwt" path="res://materials/_textures/brick_house/Brick_House_ao.bmp" id="2_8q3ny"]
+[ext_resource type="Texture2D" uid="uid://bky4jgwqf1aqe" path="res://materials/_textures/brick_house/Brick_House_height.bmp" id="3_cmk7q"]
+[ext_resource type="Texture2D" uid="uid://cimid7rbqk22s" path="res://materials/_textures/brick_house/Brick_House_normal.bmp" id="4_jkwg2"]
+
+[resource]
+albedo_texture = ExtResource("1_2nv1d")
+normal_enabled = true
+normal_scale = -0.2
+normal_texture = ExtResource("4_jkwg2")
+anisotropy_flowmap = ExtResource("2_8q3ny")
+ao_enabled = true
+ao_texture = ExtResource("2_8q3ny")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_cmk7q")

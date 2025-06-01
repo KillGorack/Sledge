@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="WeaponSettings" load_steps=3 format=3 uid="uid://c5yqt837p2q1g"]
+
+[ext_resource type="Script" uid="uid://34kmkndar7qb" path="res://weapons/Weapons/_scripts/WeaponSettings.gd" id="1_wfdtn"]
+[ext_resource type="Texture2D" uid="uid://dfj0fkhs1d6pl" path="res://weapons/Weapons/icons/Judas.png" id="2_wfdtn"]
+
+[resource]
+script = ExtResource("1_wfdtn")
+weapon_type = 3
+weapon_name = "Traitor missile"
+weapon_icon = ExtResource("2_wfdtn")
+level_req = 1
+sizing_scale = 1
+hit_points = 25.0
+crit_chance = 0.2
+crit_multiplier = 6.0
+cool_down = 0.5
+power_consumption = 0.0
+projectile_count_capacity = 250
+projectile_count_actual = 75
+projectile_pierce_count = 0
+projectile_ricochet_count = 0
+bounce_count = 0
+freeze_timer = 0.0
+unfreeze = true
+projectile_force = 0.0
+bi_directional = false
+explosive_force = 75.0
+explosive_force_distance = 5.0
+body_collection_max = 125
+targeting_system = false
+targeting_system_require_marker = true
+target_rotation_speed = 0.0
+target_system_scan_radius = 40.0
+projectile_count = 1
+projectile_spacing = 0.0
+projectile_start_angle = 0.0
+projectile_recoil = 0.0
+projectile_range = 100.0
+projectile_speed = 40.0
+projectile_spin = 0.0
+launch_offset = 0.0
+projectile_fire_delay = 0.0
+projectile_destruction_delay = 0.0
+friendly_fire = false
+turncoat = ""
+use_gravity = false
+metadata/_custom_type_script = "uid://34kmkndar7qb"

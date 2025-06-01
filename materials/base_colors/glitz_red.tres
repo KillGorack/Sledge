@@ -1,0 +1,29 @@
+[gd_resource type="StandardMaterial3D" load_steps=8 format=3 uid="uid://d1vp2r1ve8tod"]
+
+[ext_resource type="Texture2D" uid="uid://bntme27an6y0m" path="res://materials/_textures/Glitz/Glitz Red.bmp" id="1_pqq8g"]
+[ext_resource type="Texture2D" uid="uid://tk7n46428hdl" path="res://materials/_textures/Glitz/Glitz_ao.bmp" id="2_tqipp"]
+[ext_resource type="Texture2D" uid="uid://dno5r1kff12he" path="res://materials/_textures/Glitz/Glitz_emmission.bmp" id="3_ln0e8"]
+[ext_resource type="Texture2D" uid="uid://d1uvejhp64v31" path="res://materials/_textures/Glitz/Glitz_height.bmp" id="4_ytdxt"]
+[ext_resource type="Texture2D" uid="uid://b8efnwvsrgdip" path="res://materials/_textures/Glitz/Glitz_metallic.bmp" id="5_gvwiu"]
+[ext_resource type="Texture2D" uid="uid://dl18fo55potkb" path="res://materials/_textures/Glitz/Glitz_normal.bmp" id="6_q8m2f"]
+[ext_resource type="Texture2D" uid="uid://bqpw2v487pmq6" path="res://materials/_textures/Glitz/Glitz_smoothness.bmp" id="7_pxd0h"]
+
+[resource]
+albedo_texture = ExtResource("1_pqq8g")
+metallic = 1.0
+metallic_specular = 0.81
+metallic_texture = ExtResource("5_gvwiu")
+roughness_texture = ExtResource("7_pxd0h")
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 1.25
+emission_operator = 1
+emission_texture = ExtResource("3_ln0e8")
+normal_enabled = true
+normal_scale = -5.0
+normal_texture = ExtResource("6_q8m2f")
+ao_enabled = true
+ao_texture = ExtResource("2_tqipp")
+heightmap_enabled = true
+heightmap_texture = ExtResource("4_ytdxt")
+backlight_texture = ExtResource("3_ln0e8")

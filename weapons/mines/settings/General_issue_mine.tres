@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="MineSettings" load_steps=6 format=3 uid="uid://cba5kxxfngldi"]
+
+[ext_resource type="Texture2D" uid="uid://4o70pa06slpx" path="res://weapons/mines/icons/mine_green.png" id="1_1lwi5"]
+[ext_resource type="PackedScene" uid="uid://3tavw3q1w3e4" path="res://weapons/mines/scenes/mine_green.tscn" id="1_3um63"]
+[ext_resource type="Script" uid="uid://br1d2ta7ioxt8" path="res://weapons/mines/_scripts/MineSettings.gd" id="1_aawcs"]
+[ext_resource type="PackedScene" uid="uid://bo0ui3x4ykhn8" path="res://decals/crater.tscn" id="1_slay4"]
+[ext_resource type="PackedScene" uid="uid://crx2wss4xv5p" path="res://particles/sparks/sparks_green.tscn" id="2_77kev"]
+
+[resource]
+script = ExtResource("1_aawcs")
+mine_name = "General issue mine"
+mine_icon = ExtResource("1_1lwi5")
+level_req = 1
+max_count = 1
+scan_time = 0.2
+cool_down = 0.5
+count_capacity = 1
+count_actual = 1
+mine_prefab = ExtResource("1_3um63")
+explosion_prefab = ExtResource("2_77kev")
+crater_prefab = ExtResource("1_slay4")
+hit_points = 50.0
+explosive_force = 25.0
+explosive_force_distance = 5.0
+freeze_timer = 0.0
+unfreeze = false
+triggerable = false
+activation_range = 1.0
+life_span = 900.0
+friendly_fire = false
+metadata/_custom_type_script = "uid://br1d2ta7ioxt8"

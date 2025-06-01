@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://b5m6ws8fhnda1"]
+
+[ext_resource type="Shader" uid="uid://o3uut242jp8y" path="res://materials/_shaders/scroller.gdshader" id="1_26seb"]
+[ext_resource type="Texture2D" uid="uid://nd66fkhgetjf" path="res://materials/_textures/Water/Water_diffuseOriginal.bmp" id="2_25n81"]
+[ext_resource type="Texture2D" uid="uid://c2vqvl3ib0gsy" path="res://materials/_textures/Water/Water_height.bmp" id="3_y0a8b"]
+[ext_resource type="Texture2D" uid="uid://bkhp1mo5itfa" path="res://materials/_textures/Water/Water_normal.bmp" id="4_vtbtr"]
+[ext_resource type="Texture2D" uid="uid://2r303p0mk7ji" path="res://materials/_textures/Water/Water_smoothness.bmp" id="5_mbli0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_26seb")
+shader_parameter/albedo_texture = ExtResource("2_25n81")
+shader_parameter/normal_texture = ExtResource("4_vtbtr")
+shader_parameter/height_texture = ExtResource("3_y0a8b")
+shader_parameter/roughness_texture = ExtResource("5_mbli0")
+shader_parameter/scroll_speed1 = Vector2(0, 0.4)
+shader_parameter/scroll_speed2 = Vector2(0.1, 0.2)
+shader_parameter/blend_factor = 0.5

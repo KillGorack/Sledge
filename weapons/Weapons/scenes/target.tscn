@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvg1xndyw5s0x"]
+
+[ext_resource type="Script" uid="uid://l2lppt3lcsfj" path="res://_globals/_gc.gd" id="1_nkcvp"]
+[ext_resource type="Texture2D" uid="uid://cfnhak32goemb" path="res://items/drops/icons/Seeker.png" id="2_nkcvp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nkcvp"]
+radius = 0.05
+
+[node name="Target" type="Node3D" groups=["Target_Beacon"]]
+script = ExtResource("1_nkcvp")
+duration = 60.0
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+size = Vector3(0.5, 0.5, 0.5)
+texture_albedo = ExtResource("2_nkcvp")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.433251)
+
+[node name="ForDetectionOnly" type="StaticBody3D" parent="." groups=["Target_Beacon"]]
+collision_layer = 2147483648
+
+[node name="Collider" type="CollisionShape3D" parent="ForDetectionOnly"]
+shape = SubResource("SphereShape3D_nkcvp")

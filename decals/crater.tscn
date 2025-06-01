@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo0ui3x4ykhn8"]
+
+[ext_resource type="Script" uid="uid://l2lppt3lcsfj" path="res://_globals/_gc.gd" id="1_utcwv"]
+[ext_resource type="Texture2D" uid="uid://e4ni6kbb48u2" path="res://materials/_textures/Hit_marks/explosion.png" id="2_utcwv"]
+
+[node name="Cracked" type="Node3D"]
+script = ExtResource("1_utcwv")
+duration = 1.0
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+size = Vector3(1, 0.2, 1)
+texture_albedo = ExtResource("2_utcwv")

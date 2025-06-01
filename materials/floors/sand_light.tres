@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://br4mx3fhijbn3"]
+
+[ext_resource type="Texture2D" uid="uid://b4vomy6cu6e6i" path="res://materials/_textures/sand/LightSand_diffuse.bmp" id="1_hb5u4"]
+[ext_resource type="Texture2D" uid="uid://djkgmwtll8y2v" path="res://materials/_textures/sand/DarkSand_ao.bmp" id="2_86qem"]
+[ext_resource type="Texture2D" uid="uid://bj52371l807cj" path="res://materials/_textures/sand/DarkSand_height.bmp" id="3_n8pxt"]
+[ext_resource type="Texture2D" uid="uid://2gfl2r780dak" path="res://materials/_textures/sand/DarkSand_normal.bmp" id="4_tnigf"]
+
+[resource]
+albedo_texture = ExtResource("1_hb5u4")
+normal_enabled = true
+normal_scale = -0.01
+normal_texture = ExtResource("4_tnigf")
+ao_enabled = true
+ao_texture = ExtResource("2_86qem")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_n8pxt")

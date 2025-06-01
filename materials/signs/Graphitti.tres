@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://da5uuohhfn88t"]
+
+[ext_resource type="Texture2D" uid="uid://wmqckwglx5c2" path="res://materials/_textures/Signs/Graphitti.png" id="1_3nn6o"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_3nn6o")
+metallic = 0.66
+metallic_specular = 1.0
+roughness = 0.37
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_texture = ExtResource("1_3nn6o")
