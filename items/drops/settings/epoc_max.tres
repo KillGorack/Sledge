@@ -8,6 +8,7 @@
 script = ExtResource("1_g7hok")
 loot_type = 5
 loot_target = 2
+loot_math = 1
 loot_name = "Epoc Maximizer"
 loot_icon = ExtResource("1_mlkya")
 loot_param_increase = 6.0

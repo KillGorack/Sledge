@@ -1,9 +1,9 @@
 [gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://ctrgi57mjemqe"]
 
-[ext_resource type="Texture2D" uid="uid://br2o13bipp5wy" path="res://materials/_textures/Water/others_0020_color_1k.jpg" id="1_dhweh"]
-[ext_resource type="Texture2D" uid="uid://d4k8wrt0v5ayh" path="res://materials/_textures/Water/others_0020_ao_1k.jpg" id="2_igmqt"]
-[ext_resource type="Texture2D" uid="uid://cg2ke48ix5ror" path="res://materials/_textures/Water/others_0020_height_1k.png" id="3_mkfk2"]
-[ext_resource type="Texture2D" uid="uid://b037ngrrcfgwh" path="res://materials/_textures/Water/xx_normal.bmp" id="4_tv4y1"]
+[ext_resource type="Texture2D" uid="uid://nd66fkhgetjf" path="res://materials/_textures/Water/Water_diffuseOriginal.bmp" id="1_dhweh"]
+[ext_resource type="Texture2D" uid="uid://dvfjed0qntcp3" path="res://materials/_textures/Water/Water_ao.bmp" id="2_igmqt"]
+[ext_resource type="Texture2D" uid="uid://c2vqvl3ib0gsy" path="res://materials/_textures/Water/Water_height.bmp" id="3_mkfk2"]
+[ext_resource type="Texture2D" path="res://materials/_textures/Water/xx_normal.bmp" id="4_tv4y1"]
 
 [resource]
 albedo_texture = ExtResource("1_dhweh")

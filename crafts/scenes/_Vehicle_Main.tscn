@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dtw2ryuq7qccr"]
+[gd_scene load_steps=47 format=3 uid="uid://dtw2ryuq7qccr"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://deru0wsiqkst8" path="res://physics/Physics_Player.tres" id="1_i385w"]
 [ext_resource type="Script" uid="uid://yb1i0a0y66rt" path="res://crafts/_scripts/movement.gd" id="2_7q1yc"]
@@ -6,33 +6,31 @@
 [ext_resource type="Script" uid="uid://dtrpt8cs6e8my" path="res://crafts/_scripts/health.gd" id="3_oyk35"]
 [ext_resource type="Script" uid="uid://d1bi718txrp68" path="res://crafts/_scripts/hud_load_out.gd" id="4_3kdrp"]
 [ext_resource type="Script" uid="uid://cnnibedva1das" path="res://crafts/scenes/power_node.gd" id="5_f4kjo"]
-[ext_resource type="Resource" uid="uid://b81ye6ku6fkri" path="res://weapons/Weapons/settings/Player/Laser Epoc I.tres" id="5_kq7js"]
-[ext_resource type="Resource" uid="uid://c3vsg1qxxphtm" path="res://weapons/Weapons/settings/Player/Laser Epoc II.tres" id="6_36rey"]
+[ext_resource type="Resource" uid="uid://b81ye6ku6fkri" path="res://weapons/Weapons/settings/Player/Primary/Laser Epoc I.tres" id="5_kq7js"]
+[ext_resource type="Resource" uid="uid://c3vsg1qxxphtm" path="res://weapons/Weapons/settings/Player/Primary/Laser Epoc II.tres" id="6_36rey"]
 [ext_resource type="Script" uid="uid://coaxxnt1ixodw" path="res://crafts/_scripts/weapons.gd" id="6_b3syv"]
 [ext_resource type="Script" uid="uid://3xfu46xouwtr" path="res://weapons/mines/_scripts/mine_layer.gd" id="7_13tq5"]
 [ext_resource type="AudioStream" uid="uid://bwfy6ingfuh6w" path="res://sounds/Engine_Sounds/vehicle.mp3" id="7_47n7s"]
-[ext_resource type="Resource" uid="uid://b216wfbjy07kt" path="res://weapons/Weapons/settings/Player/Laser Epoc III.tres" id="7_xs0lb"]
-[ext_resource type="Resource" uid="uid://cbsq5o18qxf7s" path="res://weapons/Weapons/settings/Player/Concussion.tres" id="8_18gg5"]
-[ext_resource type="Resource" uid="uid://dnycohsen20am" path="res://weapons/Weapons/settings/Player/Laszer Epoc VI.tres" id="8_36rey"]
+[ext_resource type="Resource" uid="uid://b216wfbjy07kt" path="res://weapons/Weapons/settings/Player/Primary/Laser Epoc III.tres" id="7_xs0lb"]
+[ext_resource type="Resource" uid="uid://cbsq5o18qxf7s" path="res://weapons/Weapons/settings/Player/Secondary/01_Concussion.tres" id="8_18gg5"]
+[ext_resource type="Resource" uid="uid://dnycohsen20am" path="res://weapons/Weapons/settings/Player/Primary/Laszer Epoc VI.tres" id="8_36rey"]
 [ext_resource type="Script" uid="uid://bg1jt1tycss7a" path="res://crafts/_scripts/turret.gd" id="8_b3syv"]
-[ext_resource type="Resource" uid="uid://08uoet60fxri" path="res://weapons/Weapons/settings/Player/Rail gun.tres" id="9_18gg5"]
-[ext_resource type="Resource" uid="uid://dc2u5ownbgxgn" path="res://weapons/Weapons/settings/Player/Detno.tres" id="9_qy8du"]
+[ext_resource type="Resource" uid="uid://08uoet60fxri" path="res://weapons/Weapons/settings/Player/Primary/Rail gun.tres" id="9_18gg5"]
+[ext_resource type="Resource" uid="uid://dc2u5ownbgxgn" path="res://weapons/Weapons/settings/Player/Secondary/02_Detno.tres" id="9_qy8du"]
 [ext_resource type="Script" uid="uid://b55vvu107vcdx" path="res://crafts/_scripts/shoot.gd" id="9_udstk"]
 [ext_resource type="Resource" uid="uid://dbm32m6ijqxq6" path="res://weapons/mines/settings/detno.tres" id="10_7i1d4"]
 [ext_resource type="Script" uid="uid://btaj1tkgqd8td" path="res://crafts/scenes/radar_detection.gd" id="10_ygnyq"]
 [ext_resource type="Resource" uid="uid://2h0bqk3l5qm5" path="res://weapons/mines/settings/Manhattan.tres" id="11_x4vel"]
-[ext_resource type="Resource" uid="uid://do5a4ht3q81vj" path="res://weapons/Weapons/settings/Player/Repulsor.tres" id="11_xs0lb"]
+[ext_resource type="Resource" uid="uid://do5a4ht3q81vj" path="res://weapons/Weapons/settings/Player/Secondary/Repulsor.tres" id="11_xs0lb"]
 [ext_resource type="PackedScene" uid="uid://dvg1xndyw5s0x" path="res://weapons/Weapons/scenes/target.tscn" id="12_x3mei"]
-[ext_resource type="Resource" uid="uid://daesup7ye7rs5" path="res://weapons/Weapons/settings/Player/Howitzer.tres" id="13_qy8du"]
-[ext_resource type="Resource" uid="uid://c5yqt837p2q1g" path="res://weapons/Weapons/settings/Player/Judas missile.tres" id="14_7i1d4"]
-[ext_resource type="Resource" uid="uid://s1hwjygfu4es" path="res://weapons/Weapons/settings/Player/Dekeneticifier.tres" id="15_x4vel"]
+[ext_resource type="Resource" uid="uid://s1hwjygfu4es" path="res://weapons/Weapons/settings/Player/Secondary/Dekeneticifier.tres" id="15_x4vel"]
 [ext_resource type="Material" uid="uid://cexmtab463ixe" path="res://materials/_shaders/texture_rect_scroll.tres" id="18_6p3s6"]
 [ext_resource type="Resource" uid="uid://dtdwlw4non2v" path="res://crafts/settings/aegis.tres" id="18_wntiw"]
 [ext_resource type="Resource" uid="uid://b4fqomw6p4nuw" path="res://crafts/settings/gryff.tres" id="19_xl0w8"]
 [ext_resource type="Resource" uid="uid://c1jq67mkdfbhr" path="res://crafts/settings/morrigan.tres" id="20_5g0l5"]
 [ext_resource type="Resource" uid="uid://02f5l0dqfse1" path="res://crafts/settings/paladin.tres" id="21_oyk35"]
 [ext_resource type="Resource" uid="uid://d4k3qpj2ry12x" path="res://crafts/settings/taranis.tres" id="22_47n7s"]
-[ext_resource type="Resource" uid="uid://bngghqua1pcwd" path="res://weapons/Weapons/settings/Player/Guided.tres" id="23_jfeuh"]
+[ext_resource type="Resource" uid="uid://bngghqua1pcwd" path="res://weapons/Weapons/settings/Player/Secondary/03_Arcstrike.tres" id="23_jfeuh"]
 [ext_resource type="Resource" uid="uid://cba5kxxfngldi" path="res://weapons/mines/settings/General_issue_mine.tres" id="23_vc6ja"]
 [ext_resource type="Texture2D" uid="uid://dlxlseslsf4hk" path="res://UI/images/space.jpg" id="24_wntiw"]
 [ext_resource type="Script" uid="uid://cqlplatgelxtm" path="res://crafts/_scripts/cross_hairs.gd" id="30_aima4"]
@@ -146,7 +144,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_3kdrp")
 LaserSettings = Array[Resource]([ExtResource("5_kq7js"), ExtResource("6_36rey"), ExtResource("7_xs0lb"), ExtResource("8_36rey"), ExtResource("9_18gg5")])
-MissileSettings = Array[Resource]([ExtResource("8_18gg5"), ExtResource("9_qy8du"), ExtResource("11_xs0lb"), ExtResource("13_qy8du"), ExtResource("14_7i1d4"), ExtResource("15_x4vel"), ExtResource("23_jfeuh")])
+MissileSettings = Array[Resource]([ExtResource("8_18gg5"), ExtResource("9_qy8du"), ExtResource("23_jfeuh"), ExtResource("11_xs0lb"), ExtResource("15_x4vel")])
 mineSettings = Array[Resource]([ExtResource("23_vc6ja"), ExtResource("10_7i1d4"), ExtResource("11_x4vel")])
 craftSettings = Array[Resource]([ExtResource("18_wntiw"), ExtResource("19_xl0w8"), ExtResource("20_5g0l5"), ExtResource("21_oyk35"), ExtResource("22_47n7s")])
 

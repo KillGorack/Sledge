@@ -6,8 +6,13 @@ enum LootType { Health, Power, Weapon, Mine, Shield, Epoc, Ricochet, Seeker, Cri
 
 enum LootTarget { Missile, Laser, Both, Neither }
 @export var loot_target: LootTarget = LootTarget.Missile
-@export var loot_name: String = "Default loot"
 
+enum LootMath { ADD, SET, MULTIPLY }
+@export var loot_math: LootMath = LootMath.ADD
+
+
+
+@export var loot_name: String = "Default loot"
 @export var loot_icon: Texture2D
 @export var loot_param_increase: float = 0.0
 @export var loot_drop_rate: float = 0.0

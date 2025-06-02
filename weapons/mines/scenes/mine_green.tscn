@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://3tavw3q1w3e4"]
+[gd_scene load_steps=12 format=4 uid="uid://3tavw3q1w3e4"]
 
 [ext_resource type="Material" uid="uid://cp5y6pm8d6v3i" path="res://materials/base_colors/Digicamo_green.tres" id="1_54y3w"]
 [ext_resource type="Script" uid="uid://dsiu8i0tj6ref" path="res://weapons/mines/_scripts/mineHandler.gd" id="2_2phsx"]
+[ext_resource type="Material" uid="uid://bo6r46d0p6jc2" path="res://materials/effects/KIT.tres" id="3_78nt3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jm2a7"]
-radius = 0.125
+radius = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1k1xi"]
 resource_name = "defaultMat"
@@ -51,6 +52,44 @@ shadow_mesh = SubResource("ArrayMesh_dyjg4")
 [sub_resource type="SphereShape3D" id="SphereShape3D_54y3w"]
 radius = 0.05
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_786d0"]
+resource_name = "defaultMat"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.957641, 0.957641, 0.957641, 1)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7rj0i"]
+_surfaces = [{
+"aabb": AABB(-0.05, 0, -0.173205, 0.2, 0.015658, 0.173205),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAgAEAAAAAQAFAAMABgAAAAQABwADAAUABAAIAAYABQAJAAcACgAGAAgACwAHAAkACQAKAAsACAALAAoA"),
+"name": "defaultMat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("zczMPTVFgDynXDG+AAAAgDVFgDynXDG+AAAAgAAAAACnXDG+zcxMvQAAAADqXLG9zczMPQAAAACnXDG+zcxMvTVFgDzqXLG9mpkZPjVFgDzqXLG9AAAAgAAAAAAAAAAAmpkZPgAAAADqXLG9AAAAgDVFgDwAAAAAzczMPTVFgDwAAAAAzczMPQAAAAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_i425l"]
+resource_name = "Scene2"
+_surfaces = [{
+"aabb": AABB(-0.05, 0, -0.173205, 0.2, 0.015658, 0.173205),
+"attribute_data": PackedByteArray("xg1VP6RB7T78oH8/pEHtPvygfz9Jywk/xg1VP0nLCT+aiCo/JELtPsAbVT8kQu0+wBtVP4jLCT+aiCo/iMsJP+rA/z6uQu0+tHMqP65C7T60cyo/zcsJP+rA/z7Nywk/UHyqPpZC7T62ov8+lkLtPrai/z7Eywk/UHyqPsTLCT8Sjyo+gELtPgZuqj6AQu0+Bm6qPrzLCT8Sjyo+vMsJPwDAmTmAQu0+epkqPoBC7T56mSo+tssJPwDAmTm2ywk/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_786d0"),
+"name": "defaultMat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("zczMPTVFgDynXDG+AAAAgDVFgDynXDG+AAAAgAAAAACnXDG+zczMPQAAAACnXDG+mpkZPjVFgDzqXLG9zczMPTVFgDynXDG+zczMPQAAAACnXDG+mpkZPgAAAADqXLG9zczMPTVFgDwAAAAAmpkZPjVFgDzqXLG9mpkZPgAAAADqXLG9zczMPQAAAAAAAAAAAAAAgDVFgDwAAAAAzczMPTVFgDwAAAAAzczMPQAAAAAAAAAAAAAAgAAAAAAAAAAAzcxMvTVFgDzqXLG9AAAAgDVFgDwAAAAAAAAAgAAAAAAAAAAAzcxMvQAAAADqXLG9AAAAgDVFgDynXDG+zcxMvTVFgDzqXLG9zcxMvQAAAADqXLG9AAAAgAAAAACnXDG+/////wAA/7//////AAD/v/////8AAP+//////wAA/7///9muAACS6P//2a4AAJLo///ZrgAAkuj//9muAACS6CXR/3///5LoJdH/f///kugl0f9///+S6CXR/3///5Lo/3//f////7//f/9/////v/9//3////+//3//f////7/ZLv9/2a7/v9ku/3/Zrv+/2S7/f9mu/7/ZLv9/2a7/vwAA2a4lUf+/AADZriVR/78AANmuJVH/vwAA2a4lUf+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_7rj0i")
+
 [node name="mine" type="Area3D" groups=["Mine_Friendly"]]
 collision_layer = 8
 collision_mask = 114
@@ -73,3 +112,9 @@ script = ExtResource("2_2phsx")
 [node name="Collider" type="CollisionShape3D" parent="ForDetectionOnly"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0247192, 0)
 shape = SubResource("SphereShape3D_54y3w")
+
+[node name="AnimatedEdge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.01, 0, 0, 0, 1, 0, 0, 0, 1.01, -0.0501359, 9.16217e-05, 0.0871754)
+material_override = ExtResource("3_78nt3")
+mesh = SubResource("ArrayMesh_i425l")
+skeleton = NodePath("")

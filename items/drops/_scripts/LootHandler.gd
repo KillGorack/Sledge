@@ -4,6 +4,7 @@ extends RigidBody3D
 @onready var flair = $Flair
 var loot_settings: LootSettings
 
+#enum LootMath { ADD, SET, MULTIPLY }
 
 func apply_loot_settings(settings: LootSettings):
 	loot_settings = settings
@@ -62,8 +63,8 @@ func _on_body_entered(body):
 				if TurretNode:
 					var BarrelNode = TurretNode.get_node_or_null("Barrel")
 					if BarrelNode:
-						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "projectile_count", loot_settings.loot_duration, 2, "set", loot_settings.loot_icon)
-						
+						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "projectile_count", loot_settings.loot_duration, 2, loot_settings.loot_math, loot_settings.loot_icon)
+						BarrelNode.receive_powerup_param(0.125, "projectile_spacing", loot_settings.loot_duration, 2, 1)
 						
 						
 						
@@ -72,8 +73,8 @@ func _on_body_entered(body):
 				if TurretNode:
 					var BarrelNode = TurretNode.get_node_or_null("Barrel")
 					if BarrelNode:
-						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "crit_chance", loot_settings.loot_duration, 2, "set", loot_settings.loot_icon)
-						BarrelNode.receive_powerup_param(10, "crit_multiplier", loot_settings.loot_duration, 2, "set")
+						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "crit_chance", loot_settings.loot_duration, 2, loot_settings.loot_math, loot_settings.loot_icon)
+						BarrelNode.receive_powerup_param(10, "crit_multiplier", loot_settings.loot_duration, 2, 1)
 
 
 
@@ -82,12 +83,12 @@ func _on_body_entered(body):
 				if TurretNode:
 					var BarrelNode = TurretNode.get_node_or_null("Barrel")
 					if BarrelNode:
-						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "hit_points", loot_settings.loot_duration, 0, "Multiply", loot_settings.loot_icon)
-						BarrelNode.receive_powerup_param(100, "explosive_force", loot_settings.loot_duration, 0, "set")
-						BarrelNode.receive_powerup_param(5, "explosive_force_distance", loot_settings.loot_duration, 0, "set")
-						BarrelNode.receive_powerup_param(100, "body_collection_max", loot_settings.loot_duration, 0, "set")
-						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "crit_chance", loot_settings.loot_duration, 0, "set")
-						BarrelNode.receive_powerup_param(10, "crit_multiplier", loot_settings.loot_duration, 0, "set")
+						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "hit_points", loot_settings.loot_duration, 0, 2, loot_settings.loot_icon)
+						BarrelNode.receive_powerup_param(100, "explosive_force", loot_settings.loot_duration, 0, 1)
+						BarrelNode.receive_powerup_param(5, "explosive_force_distance", loot_settings.loot_duration, 0, 1)
+						BarrelNode.receive_powerup_param(100, "body_collection_max", loot_settings.loot_duration, 0, 1)
+						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "crit_chance", loot_settings.loot_duration, 0, 1)
+						BarrelNode.receive_powerup_param(10, "crit_multiplier", loot_settings.loot_duration, 0, 1)
 
 
 
@@ -98,7 +99,7 @@ func _on_body_entered(body):
 				if TurretNode:
 					var BarrelNode = TurretNode.get_node_or_null("Barrel")
 					if BarrelNode:
-						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "projectile_ricochet_count", loot_settings.loot_duration, 1, "add", loot_settings.loot_icon)
+						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "projectile_ricochet_count", loot_settings.loot_duration, 1, 0, loot_settings.loot_icon)
 						
 							
 			LootSettings.LootType.Seeker:
@@ -106,11 +107,11 @@ func _on_body_entered(body):
 				if TurretNode:
 					var BarrelNode = TurretNode.get_node_or_null("Barrel")
 					if BarrelNode:
-						BarrelNode.receive_powerup_param(1, "targeting_system", loot_settings.loot_duration, 1, "set", loot_settings.loot_icon)
-						BarrelNode.receive_powerup_param(12, "target_rotation_speed", loot_settings.loot_duration, 1, "set")
-						BarrelNode.receive_powerup_param(250, "target_system_scan_radius", loot_settings.loot_duration, 1, "set")
-						BarrelNode.receive_powerup_param(0, "targeting_system_require_marker", loot_settings.loot_duration, 1, "set")
-						BarrelNode.receive_powerup_param(0, "projectile_spin", loot_settings.loot_duration, 1, "set")
+						BarrelNode.receive_powerup_param(1, "targeting_system", loot_settings.loot_duration, 1, 1, loot_settings.loot_icon)
+						BarrelNode.receive_powerup_param(12, "target_rotation_speed", loot_settings.loot_duration, 1, 1)
+						BarrelNode.receive_powerup_param(250, "target_system_scan_radius", loot_settings.loot_duration, 1, 1)
+						BarrelNode.receive_powerup_param(0, "targeting_system_require_marker", loot_settings.loot_duration, 1, 1)
+						BarrelNode.receive_powerup_param(0, "projectile_spin", loot_settings.loot_duration, 1, 1)
 						
 						
 						
@@ -128,13 +129,13 @@ func _on_body_entered(body):
 				if TurretNode:
 					var BarrelNode = TurretNode.get_node_or_null("Barrel")
 					if BarrelNode:
-						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "cool_down", loot_settings.loot_duration, 2, "multipy")
-						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "projectile_speed", loot_settings.loot_duration, 2, "multipy")
+						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "cool_down", loot_settings.loot_duration, 2, 2)
+						BarrelNode.receive_powerup_param(loot_settings.loot_param_increase, "projectile_speed", loot_settings.loot_duration, 2, 2)
 				var movementNode = body.get_node_or_null("Movement")
 				if movementNode:
-					movementNode.receive_powerup_param(loot_settings, "max_speed", "multipy")
-					movementNode.receive_powerup_param(loot_settings, "acceleration", "multipy")
-					movementNode.receive_powerup_param(loot_settings, "turn_speed", "multipy")
+					movementNode.receive_powerup_param(loot_settings, "max_speed", 2)
+					movementNode.receive_powerup_param(loot_settings, "acceleration", 2)
+					movementNode.receive_powerup_param(loot_settings, "turn_speed", 2)
 			_:
 				pass
 				

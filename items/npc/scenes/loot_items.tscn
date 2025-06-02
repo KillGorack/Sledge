@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://drmgg4nxxjaxe"]
+[gd_scene load_steps=13 format=3 uid="uid://drmgg4nxxjaxe"]
 
 [ext_resource type="Script" uid="uid://bl506782y4d5n" path="res://items/npc/_scripts/loot_items.gd" id="1_hfcl6"]
 [ext_resource type="Script" uid="uid://btk0u0qpvrdfq" path="res://items/drops/_scripts/lootSettings.gd" id="2_ym6vn"]
@@ -11,7 +11,8 @@
 [ext_resource type="Resource" uid="uid://rtws42dtpabt" path="res://items/drops/settings/epoc_max.tres" id="9_1i4in"]
 [ext_resource type="Resource" uid="uid://cwbahd4awg6f2" path="res://items/drops/settings/Seeker.tres" id="10_68lav"]
 [ext_resource type="Resource" uid="uid://slxobf6ynkwf" path="res://items/drops/settings/BullDog.tres" id="11_ooj6s"]
+[ext_resource type="Resource" uid="uid://fhfcdv6glihg" path="res://items/drops/settings/epoc_plus_two.tres" id="12_obrsi"]
 
 [node name="LootItems" type="Node3D"]
 script = ExtResource("1_hfcl6")
-loot_resources = Array[ExtResource("2_ym6vn")]([ExtResource("3_ja73y"), ExtResource("4_1i4in"), ExtResource("5_68lav"), ExtResource("3_q2yok"), ExtResource("4_pf4ot"), ExtResource("8_ooj6s"), ExtResource("9_1i4in"), ExtResource("10_68lav"), ExtResource("11_ooj6s")])
+loot_resources = Array[ExtResource("2_ym6vn")]([ExtResource("3_ja73y"), ExtResource("4_1i4in"), ExtResource("5_68lav"), ExtResource("3_q2yok"), ExtResource("4_pf4ot"), ExtResource("8_ooj6s"), ExtResource("9_1i4in"), ExtResource("10_68lav"), ExtResource("11_ooj6s"), ExtResource("12_obrsi")])

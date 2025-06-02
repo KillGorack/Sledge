@@ -17,7 +17,7 @@ void fragment() {
     // Sample textures from two scrolling layers
     vec3 albedo_color1 = texture(albedo_texture, uv1).rgb;
     vec3 albedo_color2 = texture(albedo_texture, uv2).rgb;
-    
+
     vec3 normal_map1 = texture(normal_texture, uv1).rgb * 2.0 - 1.0;
     vec3 normal_map2 = texture(normal_texture, uv2).rgb * 2.0 - 1.0;
 

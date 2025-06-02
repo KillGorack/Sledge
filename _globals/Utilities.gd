@@ -1,6 +1,5 @@
 extends Node
 
-const MAX_PLAYERS = 25
 var audio_pool: Array = []
 var user_modes: Array = ["Undecided", "logged in", "Local user"]
 var user_mode_index: int = 0
@@ -9,17 +8,9 @@ var game_modes: Array = ["Battle Mode", "Mine Mode", "Creative Mode"]
 var game_mode_index: int = 0
 var game_mode: String = game_modes[game_mode_index]
 var user_space_access: bool = false
-signal game_mode_changed(new_value)
 
-const CREATIVES_PATH = "res://Creatives/Settings/" 
-var creative_resources = {}
-var messages = []
-var resource: float = 1
-
-signal messages_updated
-signal update_icon(icon: Texture2D, add_icon: bool)
-
-# Layer matrix. lean on this for everything.
+const CREATIVES_PATH = "res://Creatives/Settings/"
+const MAX_PLAYERS = 100
 const GROUP_LAYER_SCOPE = {
 	"NPC_Friendly": {"layer": 3, "layer_mask": [1, 2, 5, 6, 7], "target_groups" : ["NPC_Enemy", "Projectile_Enemy"]},
 	"NPC_Enemy": {"layer": 5, "layer_mask": [1, 2, 3, 4, 5,  7], "target_groups" : ["NPC_Friendly", "Projectile_Friendly"]},
@@ -31,6 +22,17 @@ const GROUP_LAYER_SCOPE = {
 	"Player": {"layer": 1, "layer_mask": [2, 3, 5, 6, 7], "target_groups" : ["NPC_Enemy", "Projectile_Enemy"]},
 	"World": {"layer": 2, "layer_mask": [1, 3, 4, 5, 6, 7], "target_groups" : []}
 }
+
+var creative_resources = {}
+var messages = []
+var resource: float = 1
+var npc_max_count: int = 70
+var npc_spawn_rate: float = 20.0
+
+signal messages_updated
+signal update_icon(icon: Texture2D, add_icon: bool)
+signal game_mode_changed(new_value)
+
 
 static func get_keys() -> Array:
 	return GROUP_LAYER_SCOPE.keys()

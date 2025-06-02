@@ -15,7 +15,8 @@ var set_boss: bool = true;
 
 func _ready():
 	originalTime = TimeInSeconds
-
+	MAX_NPC_COUNT = Utilities.npc_max_count
+	TimeInSeconds = Utilities.npc_spawn_rate
 
 func get_material(allegiance):
 	if allegiance == 0:

@@ -34,6 +34,10 @@ func load_selected_level():
 	var selected_index = optionLevels.get_selected_items()[0]
 	var selected_level = levelSettings[selected_index]
 	UserData.set_setting("Level", levelSettings[selected_index].duplicate(true))
+	
+	Utilities.npc_max_count = selected_level.max_npc
+	Utilities.npc_spawn_rate = selected_level.npc_spawn_rate
+	
 	level_instance = selected_level.level_scene.instantiate()
 	get_tree().root.add_child(level_instance)
 	var player_spawn = level_instance.find_child("Player_Spawn")

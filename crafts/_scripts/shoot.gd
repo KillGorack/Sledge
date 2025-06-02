@@ -11,42 +11,56 @@ extends MeshInstance3D
 
 var weaponArray: Array[Resource] = []
 var stellar_Deep_Copy: Array[Resource] = []
+
 var current_weapon_index: int = 0
 var shoot_timer = 0.0 
 var active_timers = {}
-
+var active_powerups: Dictionary = {}
 
 func _ready():
 	set_process_input(false)
 	Utilities.game_mode_changed.connect(_on_game_mode_changed)
 
+func receive_powerup_param(amount, setting_name: String, duration: float, target, method: int, icon: Texture2D = null):
+	if target == 0 or target == 2:
+		_apply_powerup_to_weapon(0, amount, setting_name, duration, method, icon)
+	if target == 1 or target == 2:
+		_apply_powerup_to_weapon(1, amount, setting_name, duration, method, icon)
+	update_ammo_display()
 
 
-func receive_powerup_param(amount, setting_name: String, duration: float, target, method: String, icon: Texture2D = null):
+func _apply_powerup_to_weapon(index: int, amount: float, setting_name: String, duration: float, method: int, icon: Texture2D):
+	var key = str(index) + "_" + setting_name
+	var setting_key = "primaryWeapon" if index == 0 else "secondaryWeapon"
+	var original = UserData.UserSettingsStellar[setting_key].get(setting_name)
+	if active_powerups.has(key):
+		var old = active_powerups[key]
+		_revert_setting(setting_name, old.original, index, old.icon)
+		active_powerups.erase(key)
+	active_powerups[key] = {
+		"count": 1,
+		"original": original,
+		"icon": icon,
+		"total_amount": amount
+	}
+	var weapon = weaponArray[index]
+	match method:
+		0:
+			weapon.set(setting_name, original + amount)
+		1:
+			weapon.set(setting_name, amount)
+		2:
+			weapon.set(setting_name, original * amount)
+	UserData.UserSettings[setting_key] = weapon
+	_reversion_timer(setting_name, original, index, duration, key)
+
 	if icon:
 		Utilities.add_icon(icon, true)
-	amount = float(amount) 
-	if target == 0 || target == 2:
-		var originala = UserData.UserSettingsStellar["primaryWeapon"].get(setting_name)
-		reversion_timer(setting_name, originala, 0, duration, icon)
-		if method == "add":
-			weaponArray[0].set(setting_name, originala + amount)
-		elif method == "multiply":
-			weaponArray[0].set(setting_name, originala * amount)
-		elif method == "set":
-			weaponArray[0].set(setting_name, amount)
-		UserData.UserSettings["primaryWeapon"] = weaponArray[0]
-	if target == 1 || target == 2:
-		var originalb = UserData.UserSettingsStellar["secondaryWeapon"].get(setting_name)
-		reversion_timer(setting_name, originalb, 1, duration, icon)
-		if method == "add":
-			weaponArray[1].set(setting_name, originalb + amount)
-		elif method == "multiply":
-			weaponArray[1].set(setting_name, originalb * amount)
-		elif method == "set":
-			weaponArray[1].set(setting_name, amount)
-		UserData.UserSettings["secondaryWeapon"] = weaponArray[1]
-	update_ammo_display()
+
+
+
+
+
 
 
 
@@ -65,21 +79,60 @@ func _revert_setting(setting_name: String, value: float, target, icon: Texture2D
 
 
 
-func reversion_timer(setting_name, original_Value, target, duration, icon: Texture2D):
-	var key = str(target) + "_" + setting_name
+func _reversion_timer(setting_name: String, original_value, index: int, duration: float, key: String) -> void:
+	await get_tree().create_timer(duration).timeout
+
+	if not active_powerups.has(key):
+		return
+
+	active_powerups[key].count -= 1
+
+	if active_powerups[key].count <= 0:
+		var setting_key = "primaryWeapon" if index == 0 else "secondaryWeapon"
+		var weapon = weaponArray[index]
+		weapon.set(setting_name, active_powerups[key].original)
+		UserData.UserSettings[setting_key] = weapon
+		Utilities.add_icon(active_powerups[key].icon, false)  # Make sure you have this method implemented
+		active_powerups.erase(key)
+
+
+
+
+	
+func _on_powerup_expire(setting_name: String, original_value: float, index: int, key: String):
+	if not active_powerups.has(key):
+		return
+	active_powerups[key].count -= 1
+	if active_powerups[key].count <= 0:
+		var weapon = weaponArray[index]
+		weapon.set(setting_name, original_value)
+		var setting_key: String
+		if index == 0:
+			setting_key = "primaryWeapon"
+		else:
+			setting_key = "secondaryWeapon"
+		UserData.UserSettings[setting_key] = weapon
+		var icon = active_powerups[key].icon
+		if icon:
+			Utilities.add_icon(icon, false)
+		active_powerups.erase(key)
 	if active_timers.has(key):
 		active_timers[key].queue_free()
 		active_timers.erase(key)
-	var timer = Timer.new()
-	timer.wait_time = duration
-	timer.one_shot = true
-	timer.connect("timeout", Callable(self, "_revert_setting").bind(setting_name, original_Value, target, icon))
-	add_child(timer)
-	timer.start()
-	active_timers[key] = timer
+	update_ammo_display()
 
-	
-	
+
+func clear_all_powerups():
+	for key in active_powerups.keys():
+		var icon = active_powerups[key].icon
+		if icon:
+			Utilities.add_icon(icon, false)
+		if active_timers.has(key):
+			active_timers[key].queue_free()
+	active_powerups.clear()
+	active_timers.clear()
+	load_weapons()
+
 	
 	
 func receive_powerup(amount):

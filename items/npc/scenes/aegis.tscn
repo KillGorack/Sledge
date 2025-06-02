@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dbaeuapcaeiom" path="res://particles/explosions/explosion_default.tscn" id="5_ce1pb"]
 [ext_resource type="Material" uid="uid://d0p80la1ek0n5" path="res://materials/base_colors/Digicamo_white.tres" id="7_biawm"]
 [ext_resource type="Script" uid="uid://b38ltef4hsj5t" path="res://items/npc/_scripts/NPC_Shoot.gd" id="8_3mfkn"]
-[ext_resource type="Resource" uid="uid://c3vsg1qxxphtm" path="res://weapons/Weapons/settings/Player/Laser Epoc II.tres" id="9_gko68"]
+[ext_resource type="Resource" uid="uid://c3vsg1qxxphtm" path="res://weapons/Weapons/settings/Player/Primary/Laser Epoc II.tres" id="9_gko68"]
 [ext_resource type="PackedScene" uid="uid://drmgg4nxxjaxe" path="res://items/npc/scenes/loot_items.tscn" id="10_pwoe4"]
 [ext_resource type="PackedScene" uid="uid://dgih6ojblijcb" path="res://particles/smoke/smoke.tscn" id="12_gko68"]
 
@@ -446,7 +446,7 @@ target_position = Vector3(0, -0.6, 0)
 collision_mask = 2
 
 [node name="MarkerCast" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, -100)
+target_position = Vector3(0, 0, -200)
 collision_mask = 131
 
 [node name="Collider" type="CollisionShape3D" parent="."]

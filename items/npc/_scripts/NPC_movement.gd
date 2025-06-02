@@ -10,8 +10,9 @@ extends RigidBody3D
 @export var marker_raycast: RayCast3D
 @export var physics_material: PhysicsMaterial
 @export var detection_range: float = 20.0
-var player_distance: float = 0.0
 @export var damage_multiplier: float = 0.5
+
+@onready var turret_node = $Turret
 
 var freezeBit: bool = false
 var is_grounded: bool = false
@@ -24,8 +25,9 @@ var last_markers: Array[StaticBody3D] = []
 var target_marker: StaticBody3D = null
 var last_position: Vector3
 var stuck_timer: Timer
-@onready var turret_node = $Turret
-
+var should_correct_transform: bool = false
+var corrected_transform: Transform3D
+var player_distance: float = 0.0
 var visible_markers: Array[StaticBody3D] = []
 var marker_refresh_timer = 0.0
 
@@ -53,6 +55,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if should_correct_transform:
+		global_transform = corrected_transform
+		should_correct_transform = false
 	is_grounded = ground_raycast and ground_raycast.is_colliding()
 	if is_grounded && not stop_forces:
 		if player_distance < detection_range and can_see_object(player):
@@ -69,7 +74,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		_set_friction(0)
 	last_position = global_transform.origin
-
+	marker_refresh_timer -= delta
 
 
 
@@ -85,10 +90,10 @@ func _check_if_stuck() -> void:
 		target_marker = choose_marker()
 	var up_vector = global_transform.basis.y
 	if up_vector.dot(Vector3.UP) < 0.9:
-		var corrected_transform = global_transform
+		corrected_transform = global_transform
 		corrected_transform.origin.y += 2.0
 		corrected_transform.basis = Basis()
-		global_transform = corrected_transform
+		should_correct_transform = true
 
 
 
@@ -185,7 +190,6 @@ func _find_player() -> void:
 
 func _find_markers() -> void:
 	var found_markers = get_tree().get_nodes_in_group("Markers")
-	markers = []
 	for node in found_markers:
 		if node is StaticBody3D:
 			markers.append(node)
