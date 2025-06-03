@@ -8,13 +8,14 @@
 script = ExtResource("1_8xgwk")
 loot_type = 0
 loot_target = 3
+loot_math = 0
 loot_name = "Infusion"
 loot_icon = ExtResource("1_m0ti5")
 loot_param_increase = 25.0
 loot_drop_rate = 1.0
 loot_life = 60.0
 loot_temp_effect = true
-loot_duration = 60.0
+loot_duration = 20.0
 loot_sound = ExtResource("2_jh048")
 loot_level = 1
 metadata/_custom_type_script = "uid://btk0u0qpvrdfq"

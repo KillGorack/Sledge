@@ -5,5 +5,5 @@ extends Node3D
 func _ready():
 	pass
 
-func get_level_settings()
-	preturn
+func get_level_settings():
+	pass

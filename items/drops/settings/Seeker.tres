@@ -8,10 +8,11 @@
 script = ExtResource("3_qqv3s")
 loot_type = 7
 loot_target = 0
+loot_math = 0
 loot_name = "Seeker"
 loot_icon = ExtResource("1_fhd1d")
 loot_param_increase = 1.0
-loot_drop_rate = 0.1
+loot_drop_rate = 0.5
 loot_life = 60.0
 loot_temp_effect = true
 loot_duration = 60.0
