@@ -41,7 +41,7 @@ func adjust_power_based_on_distance(delta: float) -> void:
 	currentPower = clamp(currentPower + total_power_gain, 0, craft_settings.power_capacity)
 	var shouldActivateIcon = total_power_gain > 0
 	if shouldActivateIcon != lastIconState:
-		Utilities.add_icon(power_feed_icon, shouldActivateIcon)
+		Utilities.update_hud_icon(power_feed_icon, shouldActivateIcon)
 		lastIconState = shouldActivateIcon
 
 func spendPower(consumed: float):

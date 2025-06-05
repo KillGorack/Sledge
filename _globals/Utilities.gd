@@ -63,7 +63,7 @@ func addMessage(message: String):
 
 
 
-func add_icon(icon: Texture2D, addIcon: bool) -> void:
+func update_hud_icon(icon: Texture2D, addIcon: bool) -> void:
 	emit_signal("update_icon", icon, addIcon)
 
 

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LootSettings" load_steps=4 format=3 uid="uid://fhfcdv6glihg"]
 
-[ext_resource type="Texture2D" uid="uid://bntvju8j6vpv1" path="res://items/drops/icons/10137456.png" id="1_5tvpq"]
+[ext_resource type="Texture2D" uid="uid://bntvju8j6vpv1" path="res://items/drops/icons/Plus_two.png" id="1_5tvpq"]
 [ext_resource type="AudioStream" uid="uid://dmadehd4htypq" path="res://sounds/up.wav" id="2_8y4bl"]
 [ext_resource type="Script" uid="uid://btk0u0qpvrdfq" path="res://items/drops/_scripts/lootSettings.gd" id="3_k8nxn"]
 
@@ -9,7 +9,7 @@ script = ExtResource("3_k8nxn")
 loot_type = 5
 loot_target = 2
 loot_math = 0
-loot_name = "Epoc II"
+loot_name = "Epoc Upgrade"
 loot_icon = ExtResource("1_5tvpq")
 loot_param_increase = 2.0
 loot_drop_rate = 0.9

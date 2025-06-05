@@ -217,5 +217,5 @@ func _on_regeneration_timeout() -> void:
 
 func set_on_repair_pad(value: bool) -> void:
 	var icon_texture = load("res://UI/Icons/recon_station.png") as Texture2D
-	Utilities.add_icon(icon_texture, value)
+	Utilities.update_hud_icon(icon_texture, value)
 	on_repair_pad = value

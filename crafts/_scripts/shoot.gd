@@ -16,58 +16,11 @@ var current_weapon_index: int = 0
 var shoot_timer = 0.0 
 var active_timers = {}
 var active_powerups: Dictionary = {}
+var active_powerup_timers: Dictionary = {}
 
 func _ready():
 	set_process_input(false)
 	Utilities.game_mode_changed.connect(_on_game_mode_changed)
-
-
-
-
-func _apply_powerup_to_weapon(index: int, amount: float, setting_name: String, duration: float, method: int, icon: Texture2D = null):
-	var key = str(index) + "_" + setting_name
-	var setting_key = "primaryWeapon" if index == 0 else "secondaryWeapon"
-	var original = UserData.UserSettingsStellar[setting_key].get(setting_name)
-	if active_powerups.has(key):
-		active_powerups.erase(key)
-		_revert_setting(setting_name, UserData.UserSettingsStellar[setting_key].get(setting_name), index, icon)
-	active_powerups[key] = {
-		"setting": setting_name,
-		"weapon": index,
-		"icon": icon,
-	}
-	await get_tree().process_frame
-	if icon:
-		Utilities.add_icon(icon, true)
-	var weapon = weaponArray[index]
-	match method:
-		0:
-			weapon.set(setting_name, original + amount)
-		1:
-			weapon.set(setting_name, amount)
-		2:
-			weapon.set(setting_name, original * amount)
-	UserData.UserSettings[setting_key] = weapon
-	_reversion_timer(setting_name, original, index, duration, key, icon)
-
-func _revert_setting(setting_name: String, value: float, target, icon: Texture2D):
-	if icon:
-		Utilities.add_icon(icon, false)
-	if target == 0 || target == 2:
-		UserData.UserSettings["primaryWeapon"].set(setting_name, UserData.UserSettingsStellar["primaryWeapon"].get(setting_name))
-		weaponArray[0] = UserData.UserSettings["primaryWeapon"]
-	if target == 1 || target == 2:
-		UserData.UserSettings["secondaryWeapon"].set(setting_name, UserData.UserSettingsStellar["secondaryWeapon"].get(setting_name))
-		weaponArray[1] = UserData.UserSettings["secondaryWeapon"]
-	update_ammo_display()
-
-func _reversion_timer(setting_name: String, original_value, index: int, duration: float, key: String, icon: Texture2D = null) -> void:
-	await get_tree().create_timer(duration).timeout
-	var setting_key = "primaryWeapon" if index == 0 else "secondaryWeapon"
-	_revert_setting(setting_name, UserData.UserSettingsStellar[setting_key].get(setting_name), index, icon)
-	active_powerups.erase(key)
-
-
 
 
 func receive_powerup_param(amount, setting_name: String, duration: float, target, method: int, icon: Texture2D = null):
@@ -76,6 +29,81 @@ func receive_powerup_param(amount, setting_name: String, duration: float, target
 	if target == 1 or target == 2:
 		_apply_powerup_to_weapon(1, amount, setting_name, duration, method, icon)
 	update_ammo_display()
+
+func _apply_powerup_to_weapon(index: int, amount: float, setting_name: String, duration: float, method: int, icon: Texture2D = null):
+	var key = str(index) + "_" + setting_name
+	if active_powerups.has(key):
+		var old_icon = null
+		if active_powerup_timers.has(key):
+			old_icon = active_powerup_timers[key].get("icon", null)
+		_revert_setting(setting_name, index, old_icon, key)
+		if active_powerup_timers.has(key):
+			var prev = active_powerup_timers[key]
+			if prev.has("timer"):
+				prev["timer"].queue_free()
+			active_powerup_timers.erase(key)
+	await get_tree().process_frame
+	var setting_key = "primaryWeapon" if index == 0 else "secondaryWeapon"
+	var original = UserData.UserSettingsStellar[setting_key].get(setting_name)
+	active_powerups[key] = {
+		"setting": setting_name,
+		"weapon": index,
+		"icon": icon,
+	}
+	if icon:
+		Utilities.update_hud_icon(icon, true)
+	match method:
+		0:
+			UserData.UserSettings[setting_key].set(setting_name, original + amount)
+		1:
+			UserData.UserSettings[setting_key].set(setting_name, amount)
+		2:
+			UserData.UserSettings[setting_key].set(setting_name, original * amount)
+	weaponArray = [
+		UserData.UserSettings["primaryWeapon"].duplicate(true),
+		UserData.UserSettings["secondaryWeapon"].duplicate(true)
+	]
+	_reversion_timer(setting_name, index, duration, key, icon)
+
+func _revert_setting(setting_name: String, target, icon: Texture2D, key):
+	active_powerups.erase(key)
+	if icon:
+		Utilities.update_hud_icon(icon, false)
+	if target == 0 || target == 2:
+		UserData.UserSettings["primaryWeapon"].set(setting_name, UserData.UserSettingsStellar["primaryWeapon"].get(setting_name))
+		weaponArray[0] = UserData.UserSettings["primaryWeapon"]
+	if target == 1 || target == 2:
+		UserData.UserSettings["secondaryWeapon"].set(setting_name, UserData.UserSettingsStellar["secondaryWeapon"].get(setting_name))
+		weaponArray[1] = UserData.UserSettings["secondaryWeapon"]
+	update_ammo_display()
+
+func _reversion_timer(setting_name: String, index: int, duration: float, key: String, icon: Texture2D = null) -> void:
+	var timer := Timer.new()
+	timer.one_shot = true
+	timer.wait_time = duration
+	add_child(timer)
+	timer.start()
+	active_powerup_timers[key] = {
+		"timer": timer,
+		"icon": icon
+	}
+	await timer.timeout
+	if not is_instance_valid(self):
+		return
+	if active_powerups.has(key):
+		var stored_icon = null
+		if active_powerup_timers.has(key):
+			stored_icon = active_powerup_timers[key].get("icon", null)
+		_revert_setting(setting_name, index, stored_icon, key)
+	active_powerup_timers.erase(key)
+	timer.queue_free()
+
+
+	
+	
+
+
+
 
 	
 

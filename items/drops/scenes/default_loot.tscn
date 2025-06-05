@@ -24,12 +24,12 @@ radius = 0.125
 [sub_resource type="CylinderMesh" id="CylinderMesh_j232p"]
 top_radius = 0.1
 bottom_radius = 0.1
-height = 100.0
+height = 9.25
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_p3vkb"]
 top_radius = 0.05
 bottom_radius = 0.05
-height = 100.0
+height = 9.25
 
 [node name="DefaultLoot" type="RigidBody3D" groups=["Loot"]]
 collision_layer = 2147483648
@@ -58,16 +58,17 @@ visible = false
 script = ExtResource("5_613di")
 
 [node name="Outer" type="MeshInstance3D" parent="Flair"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 material_override = ExtResource("5_pyvrl")
 mesh = SubResource("CylinderMesh_j232p")
 skeleton = NodePath("../..")
 script = ExtResource("5_613di")
 
-[node name="Inner" type="MeshInstance3D" parent="Flair/Outer"]
+[node name="Inner" type="MeshInstance3D" parent="Flair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 material_override = ExtResource("6_pyvrl")
 mesh = SubResource("CylinderMesh_p3vkb")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../..")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Flair"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9, 0)

@@ -76,8 +76,7 @@ func _physics_process(delta):
 				barrel.rotation.y = 0
 				barrel.rotation.z = 0
 				if shoot_timer <= 0 and Utilities.game_mode_index != 2:
-					#shoot_projectile()
-					pass
+					shoot_projectile()
 	else:
 		reset_turret_and_barrel(delta)
 
