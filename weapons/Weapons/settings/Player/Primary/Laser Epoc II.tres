@@ -11,6 +11,7 @@
 script = ExtResource("1_1pm83")
 weapon_type = 0
 weapon_name = "Directed Energy Epoc II"
+weapon_lore = "Accelerated fire rate. Higher IAS, but reduced range starts forcing closer engagements for maximum effectiveness."
 weapon_icon = ExtResource("2_x4h3c")
 level_req = 0
 sizing_scale = 1

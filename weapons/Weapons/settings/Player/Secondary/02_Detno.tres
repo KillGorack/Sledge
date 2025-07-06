@@ -12,6 +12,7 @@
 script = ExtResource("1_3unkv")
 weapon_type = 3
 weapon_name = "Detno missile"
+weapon_lore = "A belligerent warhead, built for one purpose: maximum destruction. Unleashing unrestrained havoc, it detonates with overwhelming force, tearing through anything unfortunate enough to be in its path. Collateral damage isn’t a side effect—it’s a guarantee. Tactical restraint? Optional."
 weapon_icon = ExtResource("7_sjbyc")
 level_req = 1
 sizing_scale = 1

@@ -23,6 +23,14 @@ extends Control
 @onready var lbl_missile = $WeaponChooser/MarginContainer/VBoxContainer/lbl_missile
 @onready var lbl_mine = $WeaponChooser/MarginContainer/VBoxContainer/lbl_mines
 
+
+@onready var txt_pri_title = $pnl_lore/MarginContainer/VBoxContainer/txt_pri_title
+@onready var txt_pri_lore = $pnl_lore/MarginContainer/VBoxContainer/txt_pri_lore
+@onready var txt_sec_title = $pnl_lore/MarginContainer/VBoxContainer/txt_sec_title
+@onready var txt_sec_lore = $pnl_lore/MarginContainer/VBoxContainer/txt_sec_lore
+
+
+
 var current_craft_index: int = 0
 
 func _ready() -> void:
@@ -33,15 +41,43 @@ func _ready() -> void:
 	optionSpecials.custom_minimum_size.y = oh
 	populate_dropdowns()
 	update_craft_display()
+	optionLasers.item_selected.connect(_on_laser_selected)
+	optionMissiles.item_selected.connect(_on_missile_selected)
 	craftPrevious.pressed.connect(_on_previous_pressed)
 	craftNext.pressed.connect(_on_next_pressed)
 	enter_level.pressed.connect(_on_enter_level)
-	
+
+func _on_laser_selected(index: int):
+	var selected_laser = LaserSettings[index]
+	txt_pri_title.text = selected_laser.weapon_name
+	txt_pri_lore.text = selected_laser.weapon_lore
+
+func _on_missile_selected(index: int):
+	var selected_missile = MissileSettings[index]
+	txt_sec_title.text = selected_missile.weapon_name
+	txt_sec_lore.text = selected_missile.weapon_lore
+
+
+
 
 func populate_dropdowns():
 	_populate_option(optionLasers, LaserSettings, "weapon_name", "weapon_icon")
 	_populate_option(optionMissiles, MissileSettings, "weapon_name", "weapon_icon")
 	_populate_option(optionMines, mineSettings, "mine_name", "mine_icon")
+
+	# Auto-select the first item in each dropdown
+	if not LaserSettings.is_empty():
+		optionLasers.select(0)
+		_on_laser_selected(0) # Ensure lore updates immediately
+
+	if not MissileSettings.is_empty():
+		optionMissiles.select(0)
+		_on_missile_selected(0)
+
+	if not mineSettings.is_empty():
+		optionMines.select(0)
+
+
 
 func _populate_option(option_list, settings, name_property, icon_property):
 	option_list.clear()

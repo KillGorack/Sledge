@@ -30,7 +30,7 @@
 [ext_resource type="Resource" uid="uid://c1jq67mkdfbhr" path="res://crafts/settings/morrigan.tres" id="20_5g0l5"]
 [ext_resource type="Resource" uid="uid://02f5l0dqfse1" path="res://crafts/settings/paladin.tres" id="21_oyk35"]
 [ext_resource type="Resource" uid="uid://d4k3qpj2ry12x" path="res://crafts/settings/taranis.tres" id="22_47n7s"]
-[ext_resource type="Resource" uid="uid://bngghqua1pcwd" path="res://weapons/Weapons/settings/Player/Secondary/03_Arcstrike.tres" id="23_jfeuh"]
+[ext_resource type="Resource" uid="uid://bngghqua1pcwd" path="res://weapons/Weapons/settings/Player/Secondary/Shaper.tres" id="23_jfeuh"]
 [ext_resource type="Resource" uid="uid://cba5kxxfngldi" path="res://weapons/mines/settings/General_issue_mine.tres" id="23_vc6ja"]
 [ext_resource type="Texture2D" uid="uid://dlxlseslsf4hk" path="res://UI/images/space.jpg" id="24_wntiw"]
 [ext_resource type="Script" uid="uid://cqlplatgelxtm" path="res://crafts/_scripts/cross_hairs.gd" id="30_aima4"]
@@ -135,7 +135,6 @@ collision_mask = 1022
 collision_mask = 2
 
 [node name="Hud_loadOut" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -268,6 +267,53 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 autowrap_mode = 3
 
+[node name="pnl_lore" type="PanelContainer" parent="Hud_loadOut"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_bottom = -120.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Hud_loadOut/pnl_lore"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud_loadOut/pnl_lore/MarginContainer"]
+layout_mode = 2
+
+[node name="txt_pri_title" type="LineEdit" parent="Hud_loadOut/pnl_lore/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="txt_pri_lore" type="TextEdit" parent="Hud_loadOut/pnl_lore/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+wrap_mode = 1
+
+[node name="HSeparator" type="HSeparator" parent="Hud_loadOut/pnl_lore/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="txt_sec_title" type="LineEdit" parent="Hud_loadOut/pnl_lore/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="txt_sec_lore" type="TextEdit" parent="Hud_loadOut/pnl_lore/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+wrap_mode = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Hud_loadOut/pnl_lore/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="btn_enter_game" type="Button" parent="Hud_loadOut"]
 layout_mode = 1
 anchors_preset = 3
@@ -284,6 +330,7 @@ grow_vertical = 0
 text = "Enter level"
 
 [node name="Hud_inGame" type="Control" parent="." node_paths=PackedStringArray("score_label", "falls_label", "vanquishes_label", "level_label", "p_bar", "r_bar")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

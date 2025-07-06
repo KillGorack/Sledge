@@ -12,6 +12,7 @@
 script = ExtResource("1_2y6lp")
 weapon_type = 3
 weapon_name = "Entropy Lock"
+weapon_lore = "A physics-nullifying warhead designed to obliterate all motion on impact. Rather than freezing in a conventional sense, it shuts down velocity, inertia, and force itself, leaving targets stranded in a state of pure suspension. Time doesn't stop—but momentum does."
 weapon_icon = ExtResource("2_2y6lp")
 level_req = 1
 sizing_scale = 1

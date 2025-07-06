@@ -121,6 +121,8 @@ func _update_target() -> void:
 
 
 func forward_movement(_delta: float) -> void:
+	if freezeBit:
+		return
 	var forward_force = transform.basis.z * -force
 	apply_central_force(forward_force)
 	if linear_velocity.length() > max_speed:
@@ -131,6 +133,8 @@ func forward_movement(_delta: float) -> void:
 
 
 func turn_towards_object(delta: float, target: Node) -> void:
+	if freezeBit:
+		return
 	var direction_to_object = (target.global_transform.origin - global_transform.origin).normalized()
 	var target_rotation = atan2(-direction_to_object.x, -direction_to_object.z)
 	var current_rotation = rotation.y

@@ -83,9 +83,9 @@ shape = SubResource("SphereShape3D_n5qrt")
 
 [node name="Twirl" type="Node3D" parent="."]
 script = ExtResource("4_n5qrt")
-spin_speed = 0.0
+spin_speed = 54.0
 enable_x = false
-enable_z = false
+enable_y = false
 
 [node name="Trail3D" type="MeshInstance3D" parent="Twirl"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, 0.184)

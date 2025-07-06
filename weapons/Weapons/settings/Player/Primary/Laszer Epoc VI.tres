@@ -10,6 +10,7 @@
 script = ExtResource("1_lacnt")
 weapon_type = 0
 weapon_name = "Coherent Energy Beam Epoc VI"
+weapon_lore = "Brutally efficient at point-blank range. Maximum attack speed, but at extreme energy cost and strictly close-range effectiveness—the perfect tool for those who get in close and make every shot count."
 weapon_icon = ExtResource("2_njump")
 level_req = 1
 sizing_scale = 1

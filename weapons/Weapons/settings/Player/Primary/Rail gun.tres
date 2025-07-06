@@ -7,6 +7,7 @@
 script = ExtResource("1_7wqyu")
 weapon_type = 0
 weapon_name = "Linear Electromagnetic Accelerator"
+weapon_lore = "Linear Electromagnetic Accelerator A precision-driven rail weapon, harnessing pure electromagnetic force to propel high-velocity projectiles at devastating speeds. Its charge-up period is the cost of its raw impact, demanding perfect timing before unleashing a high-energy strike that tears through armor and obstacles alike."
 weapon_icon = ExtResource("2_80yr7")
 level_req = 1
 sizing_scale = 1

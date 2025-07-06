@@ -11,6 +11,7 @@
 script = ExtResource("1_mg4kn")
 weapon_type = 0
 weapon_name = "Directed Energy Epoc I"
+weapon_lore = "Reliable precision. Moderate attack speed with balanced range, making it effective in most scenarios without overtaxing energy reserves."
 weapon_icon = ExtResource("2_dgbef")
 level_req = 0
 sizing_scale = 1

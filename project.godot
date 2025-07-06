@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Sledge 1"
+config/name="Sledge"
 run/main_scene="uid://cvtyko5ojxihp"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://c5m1jfuxctpag"
 
 [autoload]
 

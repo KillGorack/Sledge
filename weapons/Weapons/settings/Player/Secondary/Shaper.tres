@@ -12,7 +12,8 @@
 [resource]
 script = ExtResource("7_e3gsu")
 weapon_type = 3
-weapon_name = "Arcstrike missile"
+weapon_name = "Shaper missile"
+weapon_lore = "A precision warhead designed to pierce defenses and deliver focused devastation. Its directed explosive force ensures maximum damage exactly where it’s needed, making it a go-to solution for hardened targets and fortified positions. No wasted energy. No unnecessary blast spread. Just pure, calculated destruction."
 weapon_icon = ExtResource("8_gxu23")
 level_req = 1
 sizing_scale = 1

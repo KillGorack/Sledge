@@ -13,6 +13,7 @@ enum WeaponType { Default, Force, Pierce, Explosive, Bounce }
 @export var weapon_type: WeaponType = WeaponType.Default
 
 @export var weapon_name: String = "Default Weapon"
+@export var weapon_lore: String = ""
 @export var weapon_icon: Texture
 @export var level_req: int = 1
 @export var sizing_scale: int = 1

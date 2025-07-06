@@ -13,6 +13,7 @@
 script = ExtResource("1_6r81e")
 weapon_type = 3
 weapon_name = "Concussion missile"
+weapon_lore = "A low-tier explosive projectile designed for impact shock and area disruption. Delivers a controlled blast, making it useful for softening enemy defenses or staggering targets without excessive collateral damage. While lacking advanced payloads, it’s a dependable choice for standard engagement scenarios."
 weapon_icon = ExtResource("2_kiwn2")
 level_req = 1
 sizing_scale = 1

@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="WeaponSettings" load_steps=9 format=3 uid="uid://bry1u612clsck"]
+
+[ext_resource type="PackedScene" uid="uid://bo0ui3x4ykhn8" path="res://decals/crater.tscn" id="1_beqdq"]
+[ext_resource type="AudioStream" uid="uid://crmqp3a2shfp7" path="res://sounds/Weapons/crit.wav" id="2_bcoa3"]
+[ext_resource type="PackedScene" uid="uid://crx2wss4xv5p" path="res://particles/sparks/sparks_green.tscn" id="3_18mq0"]
+[ext_resource type="AudioStream" uid="uid://cl7s3b0dseip7" path="res://sounds/Weapons/hit.wav" id="4_7u3v3"]
+[ext_resource type="AudioStream" uid="uid://qhqnqo5sniag" path="res://sounds/Weapons/Launch.mp3" id="5_xcqjm"]
+[ext_resource type="PackedScene" uid="uid://bf4f2o12mld16" path="res://weapons/Weapons/scenes/rocket_green.tscn" id="6_1yl5i"]
+[ext_resource type="Script" uid="uid://34kmkndar7qb" path="res://weapons/Weapons/_scripts/WeaponSettings.gd" id="7_6vfma"]
+[ext_resource type="Texture2D" uid="uid://qutelkvv70on" path="res://weapons/Weapons/icons/concussion.png" id="8_2xhot"]
+
+[resource]
+script = ExtResource("7_6vfma")
+weapon_type = 3
+weapon_name = "Mjolnir's dred"
+weapon_lore = "pure physical damage weapon that can navagate around obstacles, to find and destroy targets. When you think it's done it comes back for senconds."
+weapon_icon = ExtResource("8_2xhot")
+level_req = 55
+sizing_scale = 1
+hit_points = 275.0
+crit_chance = 0.15
+crit_multiplier = 3.0
+cool_down = 0.5
+projectile_prefab = ExtResource("6_1yl5i")
+explosion_prefab = ExtResource("3_18mq0")
+bullet_hole_prefab = ExtResource("1_beqdq")
+launch_sound = ExtResource("5_xcqjm")
+hit_sound = ExtResource("4_7u3v3")
+crit_sound = ExtResource("2_bcoa3")
+power_consumption = 0.0
+projectile_count_capacity = 250
+projectile_count_actual = 250
+projectile_pierce_count = 0
+projectile_ricochet_count = 5
+bounce_count = 0
+freeze_timer = 1.5
+unfreeze = true
+projectile_force = 0.0
+bi_directional = false
+explosive_force = 75.0
+explosive_force_distance = 5.0
+body_collection_max = 25
+targeting_system = true
+targeting_system_require_marker = false
+target_rotation_speed = 12.0
+target_system_scan_radius = 40.0
+projectile_count = 1
+projectile_spacing = 0.0
+projectile_start_angle = 0.0
+projectile_recoil = 0.0
+projectile_range = 256.0
+projectile_speed = 25.0
+projectile_spin = 0.0
+launch_offset = 0.0
+projectile_fire_delay = 0.0
+projectile_destruction_delay = 0.0
+friendly_fire = false
+turncoat = ""
+use_gravity = false
+metadata/_custom_type_script = "uid://34kmkndar7qb"

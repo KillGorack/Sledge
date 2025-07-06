@@ -12,6 +12,7 @@
 script = ExtResource("1_xfvnf")
 weapon_type = 0
 weapon_name = "Repulsor missile"
+weapon_lore = "A pure force-projecting warhead, designed to launch enemies into oblivion with sheer kinetic energy. No explosion, no heat—just an unrelenting impact that sends targets flying toward their inevitable demise. Whether hurling foes off cliffs or straight into danger, this missile turns the battlefield into a physics playground."
 weapon_icon = ExtResource("2_hlqr5")
 level_req = 1
 sizing_scale = 1

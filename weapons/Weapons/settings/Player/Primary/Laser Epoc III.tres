@@ -10,6 +10,7 @@
 script = ExtResource("1_nnmg7")
 weapon_type = 0
 weapon_name = "Directed Energy Epoc III"
+weapon_lore = "Close-quarters dominance. Rapid bursts, demanding substantial power—no longer viable at long range but devastating in tighter combat zones."
 weapon_icon = ExtResource("2_i7i56")
 level_req = 0
 sizing_scale = 1
