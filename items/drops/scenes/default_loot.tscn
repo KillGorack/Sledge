@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddr4bhikbria4"]
+[gd_scene load_steps=15 format=3 uid="uid://ddr4bhikbria4"]
 
 [ext_resource type="Material" uid="uid://ccm7kcg7sersv" path="res://materials/Shields/Fresnel.tres" id="1_20xvf"]
+[ext_resource type="PhysicsMaterial" uid="uid://gmcvyorusctw" path="res://physics/Physics_Plaything.tres" id="1_j232p"]
 [ext_resource type="Script" uid="uid://dq5f4n8e4qn4t" path="res://items/drops/_scripts/LootHandler.gd" id="1_jqmgf"]
 [ext_resource type="Material" uid="uid://b7s1n2em27g2j" path="res://items/drops/Materials/Default.tres" id="2_20xvf"]
 [ext_resource type="Script" uid="uid://umopr6ai2l3x" path="res://items/drops/scenes/Orient_to_world.gd" id="5_613di"]
@@ -8,12 +9,12 @@
 [ext_resource type="Material" uid="uid://benf0ujengq" path="res://materials/base_colors/BeamOfLight_.tres" id="6_pyvrl"]
 [ext_resource type="PackedScene" uid="uid://dg5s68bpisgrw" path="res://particles/smoke/evil_cloud.tscn" id="7_p3vkb"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_jqmgf"]
+radius = 0.1
+
 [sub_resource type="SphereMesh" id="SphereMesh_20xvf"]
 radius = 0.1
 height = 0.2
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_jqmgf"]
-radius = 0.1
 
 [sub_resource type="QuadMesh" id="QuadMesh_fepvx"]
 size = Vector2(0.141, 0.141)
@@ -34,14 +35,17 @@ height = 9.25
 [node name="DefaultLoot" type="RigidBody3D" groups=["Loot"]]
 collision_layer = 2147483648
 collision_mask = 1023
+physics_material_override = ExtResource("1_j232p")
+continuous_cd = true
+max_contacts_reported = 1
 script = ExtResource("1_jqmgf")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_jqmgf")
 
 [node name="Sphere" type="MeshInstance3D" parent="."]
 material_override = ExtResource("1_20xvf")
 mesh = SubResource("SphereMesh_20xvf")
-
-[node name="Collider" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_jqmgf")
 
 [node name="Icon" type="MeshInstance3D" parent="."]
 material_override = ExtResource("2_20xvf")

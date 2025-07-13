@@ -128,6 +128,7 @@ max_value = 0.0
 value = -30.0
 
 [node name="pnl_login_group" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

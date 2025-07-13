@@ -97,7 +97,7 @@ func shoot_projectile():
 		var angle_step = 360.0 / current_weapon_settings.projectile_count
 		for i in range(current_weapon_settings.projectile_count):
 			var angle = deg_to_rad(current_weapon_settings.projectile_start_angle + i * angle_step)
-			var direction = barrel.global_transform.basis.z.normalized()
+			var direction = -barrel.global_transform.basis.z.normalized()
 			var right = barrel.global_transform.basis.x.normalized()
 			var up = barrel.global_transform.basis.y.normalized()
 			var offset = (right * cos(angle) + up * sin(angle)) * current_weapon_settings.projectile_spacing

@@ -68,6 +68,7 @@ func _on_mine_selected(index: int):
 
 
 func populate_dropdowns():
+
 	_populate_option(optionLasers, LaserSettings, "weapon_name", "weapon_icon", "level_req")
 	_populate_option(optionMissiles, MissileSettings, "weapon_name", "weapon_icon", "level_req")
 	_populate_option(optionMines, mineSettings, "mine_name", "mine_icon", "level_req")
@@ -89,11 +90,9 @@ func _populate_option(option_list, settings, name_property, icon_property, level
 	option_list.clear()
 	for i in range(settings.size()):
 		var item = settings[i]
-		if(item.get(level_req) <= UserData.user_level):
+		if(item.get(level_req) <= UserData.game_level):
 			option_list.add_item(item.get(name_property))
 			option_list.set_item_icon(i, item.get(icon_property))
-
-
 
 
 
