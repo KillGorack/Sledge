@@ -17,6 +17,12 @@ var access: String
 var level_progress: float
 var file_path: String = ""
 
+# New variables for local/online mode management
+var is_online_mode: bool = false
+var local_username: String = "LocalPlayer"
+var last_sync_timestamp: int = 0
+var has_unsaved_changes: bool = false
+
 var UserSettings = {
 	"primaryWeapon" : null,
 	"secondaryWeapon" : null,
@@ -53,7 +59,86 @@ func _ready():
 	if FileAccess.file_exists(file_path):
 		load_user_data()
 	else:
+		# Initialize with default local user data
+		initialize_local_user()
 		save_user_data()
+
+func initialize_local_user():
+	"""Initialize a local user with default values"""
+	user_id = 0  # Local users have ID 0
+	username = local_username
+	email = ""
+	enabled = true
+	user_key = ""
+	freshness = ""
+	user_level = 1
+	phone = ""
+	game_score = 0
+	game_falls = 0
+	game_vanquishes = 0
+	game_level = 1
+	access = "local"
+	level_progress = 0.0
+	is_online_mode = false
+	last_sync_timestamp = int(Time.get_unix_time_from_system())
+
+func switch_to_online_mode(online_data: Dictionary):
+	"""Switch from local to online mode, potentially merging data"""
+	var local_score = game_score
+	var local_vanquishes = game_vanquishes
+	var local_falls = game_falls
+	var local_level = user_level
+	
+	# Load online data
+	populate_user_data(online_data)
+	is_online_mode = true
+	
+	# Merge logic: keep the higher values
+	if local_score > game_score:
+		game_score = local_score
+		has_unsaved_changes = true
+	if local_vanquishes > game_vanquishes:
+		game_vanquishes = local_vanquishes
+		has_unsaved_changes = true
+	if local_falls < game_falls:  # Lower falls is better
+		game_falls = local_falls
+		has_unsaved_changes = true
+	if local_level > user_level:
+		user_level = local_level
+		has_unsaved_changes = true
+	
+	calculate_level()
+	save_user_data()
+
+func switch_to_local_mode():
+	"""Switch to local mode"""
+	is_online_mode = false
+	if username == "":
+		username = local_username
+	access = "local"
+	save_user_data()
+
+func get_current_data_as_dict() -> Dictionary:
+	"""Get current user data as dictionary for backup/sync purposes"""
+	return {
+		"user_id": user_id,
+		"username": username,
+		"email": email,
+		"enabled": enabled,
+		"user_key": user_key,
+		"freshness": freshness,
+		"user_level": user_level,
+		"phone": phone,
+		"game_score": game_score,
+		"game_falls": game_falls,
+		"game_vanquishes": game_vanquishes,
+		"game_level": game_level,
+		"access": access,
+		"level_progress": level_progress,
+		"is_online_mode": is_online_mode,
+		"local_username": local_username,
+		"last_sync_timestamp": last_sync_timestamp
+	}
 
 
 func get_setting(key: String):
@@ -87,6 +172,11 @@ func populate_user_data(data: Dictionary):
 	game_level = data.get("game_level", 0)
 	access = data.get("access", "")
 	level_progress = data.get("level_progress", 0.0)
+	
+	# Handle new local/online mode fields
+	is_online_mode = data.get("is_online_mode", false)
+	local_username = data.get("local_username", "LocalPlayer")
+	last_sync_timestamp = data.get("last_sync_timestamp", int(Time.get_unix_time_from_system()))
 
 
 
@@ -118,7 +208,10 @@ func getJSON() -> String:
 		"game_falls": game_falls,
 		"game_vanquishes": game_vanquishes,
 		"game_level": game_level,
-		"level_progress": level_progress
+		"level_progress": level_progress,
+		"is_online_mode": is_online_mode,
+		"local_username": local_username,
+		"last_sync_timestamp": last_sync_timestamp
 	}
 	var jsonString = JSON.stringify(data_dict)
 	return jsonString
@@ -182,4 +275,60 @@ func save_user_data():
 
 func gut_check_userloadout():
 	pass
+
+func can_upgrade_to_online() -> bool:
+	"""Check if local user has progress worth merging online"""
+	return not is_online_mode and (game_score > 0 or game_vanquishes > 0 or user_level > 1)
+
+func get_local_progress_summary() -> String:
+	"""Get a summary of local progress for display"""
+	if not can_upgrade_to_online():
+		return "No local progress to merge"
 	
+	return "Local Progress: Level %d, Score %d, Vanquishes %d" % [user_level, game_score, game_vanquishes]
+
+func reset_to_new_local_user():
+	"""Reset all user data to a fresh local user - for testing purposes"""
+	print("Resetting to new local user...")
+	
+	# Clear all user data
+	user_id = 0
+	username = "LocalPlayer"
+	email = ""
+	enabled = true
+	user_key = ""
+	freshness = ""
+	user_level = 1
+	phone = ""
+	game_score = 0
+	game_falls = 0
+	game_vanquishes = 0
+	game_level = 1
+	access = "local"
+	level_progress = 0.0
+	is_online_mode = false
+	local_username = "LocalPlayer"
+	last_sync_timestamp = int(Time.get_unix_time_from_system())
+	has_unsaved_changes = false
+	
+	# Clear user settings
+	UserSettings = {
+		"primaryWeapon" : null,
+		"secondaryWeapon" : null,
+		"Mines" : null,
+		"Craft" : null,
+		"Level" : null,
+		"specials" : []
+	}
+	UserSettingsStellar = {
+		"primaryWeapon" : null,
+		"secondaryWeapon" : null,
+		"Mines" : null,
+		"Craft" : null,
+		"Level" : null,
+		"specials" : []
+	}
+	
+	# Save the reset data
+	save_user_data()
+	print("Reset complete - now a fresh local user")

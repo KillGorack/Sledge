@@ -10,8 +10,9 @@
 script = ExtResource("1_aawcs")
 mine_name = "General issue mine"
 mine_icon = ExtResource("1_1lwi5")
-level_req = 1
+level_req = 0
 max_count = 1
+mine_lore = "GI-Mine.. your run of the mill general use mine. Set it and forget it."
 scan_time = 0.2
 cool_down = 0.5
 count_capacity = 1

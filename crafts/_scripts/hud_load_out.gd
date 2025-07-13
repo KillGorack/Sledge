@@ -28,7 +28,8 @@ extends Control
 @onready var txt_pri_lore = $pnl_lore/MarginContainer/VBoxContainer/txt_pri_lore
 @onready var txt_sec_title = $pnl_lore/MarginContainer/VBoxContainer/txt_sec_title
 @onready var txt_sec_lore = $pnl_lore/MarginContainer/VBoxContainer/txt_sec_lore
-
+@onready var txt_mine_title = $pnl_lore/MarginContainer/VBoxContainer/txt_mine_title
+@onready var txt_mine_lore = $pnl_lore/MarginContainer/VBoxContainer/txt_mine_lore
 
 
 var current_craft_index: int = 0
@@ -43,9 +44,11 @@ func _ready() -> void:
 	update_craft_display()
 	optionLasers.item_selected.connect(_on_laser_selected)
 	optionMissiles.item_selected.connect(_on_missile_selected)
+	optionMines.item_selected.connect(_on_mine_selected)
 	craftPrevious.pressed.connect(_on_previous_pressed)
 	craftNext.pressed.connect(_on_next_pressed)
 	enter_level.pressed.connect(_on_enter_level)
+	
 
 func _on_laser_selected(index: int):
 	var selected_laser = LaserSettings[index]
@@ -58,17 +61,20 @@ func _on_missile_selected(index: int):
 	txt_sec_lore.text = selected_missile.weapon_lore
 
 
+func _on_mine_selected(index: int):
+	var selected_mine = mineSettings[index]
+	txt_mine_title.text = selected_mine.mine_name
+	txt_mine_lore.text = selected_mine.mine_lore
 
 
 func populate_dropdowns():
-	_populate_option(optionLasers, LaserSettings, "weapon_name", "weapon_icon")
-	_populate_option(optionMissiles, MissileSettings, "weapon_name", "weapon_icon")
-	_populate_option(optionMines, mineSettings, "mine_name", "mine_icon")
+	_populate_option(optionLasers, LaserSettings, "weapon_name", "weapon_icon", "level_req")
+	_populate_option(optionMissiles, MissileSettings, "weapon_name", "weapon_icon", "level_req")
+	_populate_option(optionMines, mineSettings, "mine_name", "mine_icon", "level_req")
 
-	# Auto-select the first item in each dropdown
 	if not LaserSettings.is_empty():
 		optionLasers.select(0)
-		_on_laser_selected(0) # Ensure lore updates immediately
+		_on_laser_selected(0)
 
 	if not MissileSettings.is_empty():
 		optionMissiles.select(0)
@@ -76,15 +82,24 @@ func populate_dropdowns():
 
 	if not mineSettings.is_empty():
 		optionMines.select(0)
+		_on_mine_selected(0)
 
 
-
-func _populate_option(option_list, settings, name_property, icon_property):
+func _populate_option(option_list, settings, name_property, icon_property, level_req):
 	option_list.clear()
 	for i in range(settings.size()):
 		var item = settings[i]
-		option_list.add_item(item.get(name_property))
-		option_list.set_item_icon(i, item.get(icon_property))
+		if(item.get(level_req) <= UserData.user_level):
+			option_list.add_item(item.get(name_property))
+			option_list.set_item_icon(i, item.get(icon_property))
+
+
+
+
+
+
+
+		
 
 func update_craft_display():
 	if craftSettings.is_empty():

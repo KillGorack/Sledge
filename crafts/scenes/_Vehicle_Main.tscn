@@ -314,6 +314,16 @@ wrap_mode = 1
 [node name="HSeparator2" type="HSeparator" parent="Hud_loadOut/pnl_lore/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="txt_mine_title" type="LineEdit" parent="Hud_loadOut/pnl_lore/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="txt_mine_lore" type="TextEdit" parent="Hud_loadOut/pnl_lore/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+wrap_mode = 1
+
 [node name="btn_enter_game" type="Button" parent="Hud_loadOut"]
 layout_mode = 1
 anchors_preset = 3

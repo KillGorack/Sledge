@@ -10,6 +10,7 @@ extends Control
 @onready var username_field = $pnl_login_group/margin/vbox_login_form/hbox_username/txt_username
 @onready var password_field = $pnl_login_group/margin/vbox_login_form/hbox_password/txt_password
 @onready var login_button = $pnl_login_group/margin/vbox_login_form/btn_login
+@onready var btn_play_offline = get_node_or_null("pnl_login_group/margin/vbox_login_form/btn_play_offline")
 @onready var volume_slider = $sld_musicVolume
 @onready var welcome_label = $lbl_welcome
 @onready var load_group = $pnl_load_game
@@ -35,6 +36,8 @@ func _ready():
 	login_button.connect("pressed", Callable(self, "_on_login"))
 	register_button.connect("pressed", Callable(self, "_on_register"))
 	btn_settings.connect("pressed", Callable(self, "_on_settings"))
+	if btn_play_offline:
+		btn_play_offline.connect("pressed", Callable(self, "_on_play_offline"))
 	http_request.connect("request_completed", Callable(self, "_on_request_completed"))
 	volume_slider.value = music_player.volume_db
 	volume_slider.connect("value_changed", Callable(self, "_on_volume_slider_value_changed"))
@@ -50,6 +53,17 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		_on_login()
+	
+	# Temporary testing: Press F12 to reset to new local user
+	if event is InputEventKey and event.pressed and 1 == 2:
+		if event.keycode == KEY_F12:
+			print("F12 pressed - resetting to new local user")
+			UserData.reset_to_new_local_user()
+			welcome_label.text = "Reset to new local user (F12)"
+			LOGGED_IN = false
+			login_group.show()
+			load_group.hide()
+
 
 func _on_settings():
 	pnl_settings.visible = true
@@ -114,11 +128,18 @@ func _on_request_completed(_result, response_code, _headers, body):
 			if user_data.data.access == "granted":
 				login_attempts = 0
 				is_cooldown = false
-				UserData.populate_user_data(user_data.data)
-				welcome_label.text = ""
+				
+				# If we were in local mode, merge the data
+				if not UserData.is_online_mode:
+					UserData.switch_to_online_mode(user_data.data)
+					welcome_label.text = "Welcome! Local progress merged with online account."
+				else:
+					UserData.populate_user_data(user_data.data)
+					UserData.is_online_mode = true
+					welcome_label.text = "Welcome, login successful!"
+				
 				login_group.hide()
 				load_group.show()
-				welcome_label.text = "Welcome, login successful!"
 				load_group.populate_user_info()
 				Utilities.user_mode_index = 1
 				LOGGED_IN = true
@@ -165,7 +186,26 @@ func _on_volume_slider_value_changed(value):
 	music_player.volume_db = value
 
 
-
+func _on_play_offline():
+	"""Handle offline play - load local user data and proceed to game"""
+	if LOGGED_IN:
+		return
+	
+	# Switch to local mode
+	UserData.switch_to_local_mode()
+	
+	# Check if we need to prompt for local username
+	if UserData.username == "" or UserData.username == "LocalPlayer":
+		# Could add a simple input dialog here, or just use default
+		UserData.username = "LocalPlayer"
+	
+	welcome_label.text = "Playing offline as: " + UserData.username
+	login_group.hide()
+	load_group.show()
+	load_group.populate_user_info()
+	Utilities.user_mode_index = 0  # 0 for local, 1 for online
+	LOGGED_IN = true
+	
 
 
 func encode_dict_string(data: Dictionary) -> String:
@@ -182,3 +222,21 @@ func encode_dict_string(data: Dictionary) -> String:
 ## Game exit point
 func _on_close() -> void:
 	get_tree().quit()
+
+
+# Add method to save progress during gameplay
+func save_progress():
+	"""Save current progress - locally always, and to server if online"""
+	UserData.save_user_data()
+	
+	# If online and has unsaved changes, could sync to server here
+	if UserData.is_online_mode and UserData.has_unsaved_changes:
+		# Could implement server sync here
+		pass
+
+# Add method to show current mode status
+func get_mode_status() -> String:
+	if UserData.is_online_mode:
+		return "Online Mode - Progress synced to server"
+	else:
+		return "Offline Mode - Progress saved locally"

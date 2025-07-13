@@ -11,8 +11,9 @@
 script = ExtResource("1_s7ahp")
 mine_name = "Detno Mine"
 mine_icon = ExtResource("3_k0jdt")
-level_req = 0
+level_req = 15
 max_count = 50
+mine_lore = "Mine wuitl a little more oomph.. while a friendly cant activate it.. it can be damaged by it."
 scan_time = 0.2
 cool_down = 0.1
 count_capacity = 50

@@ -64,6 +64,7 @@ cull_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("3_orq35")
 npc_scenes = Array[PackedScene]([ExtResource("4_kksnn")])
+MAX_NPC_COUNT = 100
 friendly_material = ExtResource("5_n073g")
 enemy_material = ExtResource("5_y0n3u")
 golden_material = ExtResource("7_n073g")

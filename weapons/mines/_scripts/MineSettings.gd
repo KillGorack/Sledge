@@ -5,6 +5,7 @@ class_name MineSettings
 @export var mine_icon: Texture
 @export var level_req: int = 1
 @export var max_count: int = 1
+@export var mine_lore: String = ""
 
 @export var scan_time: float = 0.2
 @export var cool_down: float = 0.5

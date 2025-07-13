@@ -12,6 +12,7 @@ mine_name = "Mahnattan mine"
 mine_icon = ExtResource("1_oinam")
 level_req = 25
 max_count = 5
+mine_lore = "An experi xperiment in physics going all the way to the quantum"
 scan_time = 0.2
 cool_down = 0.5
 count_capacity = 5

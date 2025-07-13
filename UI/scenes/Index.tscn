@@ -128,7 +128,6 @@ max_value = 0.0
 value = -30.0
 
 [node name="pnl_login_group" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -192,6 +191,10 @@ layout_mode = 2
 [node name="btn_login" type="Button" parent="pnl_login_group/margin/vbox_login_form"]
 layout_mode = 2
 text = "Login"
+
+[node name="btn_play_offline" type="Button" parent="pnl_login_group/margin/vbox_login_form"]
+layout_mode = 2
+text = "Play offline (No login required)"
 
 [node name="pnl_load_game" type="PanelContainer" parent="."]
 visible = false

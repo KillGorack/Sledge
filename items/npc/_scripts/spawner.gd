@@ -14,9 +14,22 @@ var set_defaults: bool = false
 var set_boss: bool = true;
 
 func _ready():
+	var usr_lvl: int =  UserData.user_level
 	originalTime = TimeInSeconds
 	MAX_NPC_COUNT = Utilities.npc_max_count
 	TimeInSeconds = Utilities.npc_spawn_rate
+
+	var level_factor = float(usr_lvl) / 100.0
+	level_factor = clamp(level_factor, 0.1, 1.0)
+	var spawn_multiplier = lerp(10.0, 1.0, level_factor)
+	TimeInSeconds *= spawn_multiplier
+	originalTime = TimeInSeconds
+	
+	var npc_multiplier = lerp(0.1, 1.0, level_factor)
+	MAX_NPC_COUNT = int(MAX_NPC_COUNT * npc_multiplier)
+
+	
+
 
 func get_material(allegiance):
 	if allegiance == 0:
