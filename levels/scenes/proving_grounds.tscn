@@ -1,8 +1,8 @@
-[gd_scene load_steps=162 format=4 uid="uid://blx3l0sdtdqbx"]
+[gd_scene load_steps=159 format=4 uid="uid://blx3l0sdtdqbx"]
 
 [ext_resource type="Material" uid="uid://c4gujew4rsw2p" path="res://materials/walls/brick_house.tres" id="1_164cy"]
 [ext_resource type="Material" uid="uid://b3s3r00h0fxas" path="res://materials/ceilings/ceiling_lighted.tres" id="1_bt07o"]
-[ext_resource type="Texture2D" uid="uid://12qewjd448ox" path="res://materials/_textures/skyboxes/AllSkyFree_Sky_AnotherPlanet_Equirect.png" id="1_jafd0"]
+[ext_resource type="Environment" uid="uid://wagfr5iq52gj" path="res://materials/environments/noise_sky.tres" id="1_hqs0w"]
 [ext_resource type="Material" uid="uid://br4mx3fhijbn3" path="res://materials/floors/sand_light.tres" id="1_uo5ft"]
 [ext_resource type="Material" uid="uid://b1k11s87c0qp2" path="res://materials/floors/sand_dark.tres" id="1_x2ohl"]
 [ext_resource type="Material" uid="uid://bo5jrtmcw50qs" path="res://materials/walls/brick_house_muted.tres" id="2_4q2xf"]
@@ -28,25 +28,6 @@
 [ext_resource type="Material" uid="uid://cktiqc5jty7oh" path="res://materials/Shields/Force_Field_Red.tres" id="21_eopwm"]
 [ext_resource type="PackedScene" uid="uid://cqgpw3mh6031h" path="res://items/recon/scenes/recon_station.tscn" id="25_snxii"]
 [ext_resource type="PackedScene" uid="uid://2acd25mbe4eb" path="res://items/npc/scenes/npc_spawn_point.tscn" id="25_tic1h"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xayqk"]
-panorama = ExtResource("1_jafd0")
-
-[sub_resource type="Sky" id="Sky_eopwm"]
-sky_material = SubResource("PanoramaSkyMaterial_xayqk")
-
-[sub_resource type="Environment" id="Environment_liqyf"]
-background_mode = 2
-sky = SubResource("Sky_eopwm")
-tonemap_mode = 2
-ssao_enabled = true
-glow_enabled = true
-glow_bloom = 1.0
-glow_hdr_threshold = 4.0
-glow_hdr_scale = 4.0
-glow_hdr_luminance_cap = 256.0
-glow_map_strength = 1.0
-volumetric_fog_density = 0.02
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0rhg"]
 resource_name = "PhysicalMaterial3DsMax"
@@ -1544,11 +1525,13 @@ radius = 0.1
 [node name="Proving grounds" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_liqyf")
+environment = ExtResource("1_hqs0w")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 58.3228, 15.3627)
-light_energy = 0.3
+visible = false
+light_bake_mode = 1
+directional_shadow_mode = 1
 
 [node name="Geometry" type="Node3D" parent="."]
 

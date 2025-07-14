@@ -1,0 +1,116 @@
+[gd_resource type="Environment" load_steps=6 format=3 uid="uid://wagfr5iq52gj"]
+
+[ext_resource type="Texture2D" uid="uid://di8pohaol6iy1" path="res://materials/Shields/Standard_Noise.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dranwfmhmgbel" path="res://decals/Sun_sun.png" id="2_2vf3n"]
+
+[sub_resource type="Shader" id="Shader_1"]
+code = "shader_type sky;
+
+uniform vec3 sky_top_color : source_color = vec3(0.385, 0.454, 0.55);
+uniform vec3 sky_horizon_color : source_color = vec3(0.646, 0.655, 0.67);
+uniform vec3 ground_color : source_color = vec3(0.2, 0.169, 0.133);
+uniform float sun_angle : hint_range(0.0, 180.0) = 45.0;
+uniform float cloud_density : hint_range(0.0, 1.0) = 0.5;
+uniform float cloud_speed_1 : hint_range(0.0, 2.0) = 0.1;
+uniform float cloud_speed_2 : hint_range(0.0, 2.0) = 0.07;
+uniform vec2 cloud_dir_1 = vec2(1.0, 1.0);
+uniform vec2 cloud_dir_2 = vec2(-1.0, 1.0);
+uniform float cloud_aspect : hint_range(0.2, 2.0) = 1.0;
+uniform vec3 cloud_color_1 : source_color = vec3(0.8, 0.9, 1.0);
+uniform vec3 cloud_color_2 : source_color = vec3(1.0, 0.9, 0.8);
+uniform sampler2D noise_texture;
+uniform sampler2D sun_texture;
+
+
+vec3 get_sky_color(vec3 dir) {
+    float horizon_factor = clamp(dir.y, -1.0, 1.0);
+    float blend = smoothstep(-0.1, 0.2, horizon_factor);
+    vec3 base_color = mix(ground_color, mix(sky_horizon_color, sky_top_color, blend), blend);
+
+    float safe_y = max(dir.y + 0.5, 0.01);
+    vec2 cloud_uv1 = dir.xz / safe_y * 1.0; // cloud scale here
+    cloud_uv1.x *= cloud_aspect;
+    cloud_uv1 += TIME * cloud_speed_1 * cloud_dir_1;
+    float noise1 = texture(noise_texture, cloud_uv1).r;
+    float cloud_mask1 = smoothstep(1.0 - cloud_density, 1.0, noise1);
+
+    vec2 cloud_uv2 = dir.xz / safe_y * 1.0; // cloud scale here
+    cloud_uv2.x *= cloud_aspect;
+    cloud_uv2 += TIME * cloud_speed_2 * cloud_dir_2;
+    float noise2 = texture(noise_texture, cloud_uv2).r;
+    float cloud_mask2 = smoothstep(1.0 - cloud_density, 1.0, noise2);
+
+    // Tint each cloud layer by its color
+    vec3 cloud_tint_1 = mix(base_color, cloud_color_1, cloud_mask1 * 0.6);
+    vec3 cloud_tint_2 = mix(base_color, cloud_color_2, cloud_mask2 * 0.6);
+
+    // Blend both cloud layers
+    vec3 final_color = max(cloud_tint_1, cloud_tint_2);
+
+    // Sun disk
+    vec3 sun_direction = vec3(0.9, 0.9, 0.0);
+    vec3 sun_color = vec3(1.0, 0.95, 0.8);
+    float sun_size = 0.001;
+    float sun_dot = dot(normalize(dir), normalize(sun_direction));
+    float sun_mask = smoothstep(sun_size, sun_size * 0.5, 1.0 - sun_dot);
+    final_color = mix(final_color, sun_color, sun_mask);
+
+    return final_color;
+}
+
+void sky() {
+    vec3 dir = normalize(EYEDIR);
+
+    if (dir.y > 0.0) {
+        COLOR = get_sky_color(dir);
+    } else {
+        COLOR = ground_color;
+    }
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
+shader = SubResource("Shader_1")
+shader_parameter/sky_top_color = Color(0.202812, 0.248452, 0.311925, 1)
+shader_parameter/sky_horizon_color = Color(0.203922, 0.247059, 0.313726, 1)
+shader_parameter/ground_color = Color(0.203922, 0.247059, 0.313726, 1)
+shader_parameter/sun_angle = 65.0
+shader_parameter/cloud_density = 0.686
+shader_parameter/cloud_speed_1 = 0.05
+shader_parameter/cloud_speed_2 = 0.05
+shader_parameter/cloud_dir_1 = Vector2(1, 0)
+shader_parameter/cloud_dir_2 = Vector2(-1, 1)
+shader_parameter/cloud_aspect = 0.2
+shader_parameter/cloud_color_1 = Color(0.858984, 0.467967, 0.874325, 1)
+shader_parameter/cloud_color_2 = Color(0.625704, 0.2951, 0.932582, 1)
+shader_parameter/noise_texture = ExtResource("1")
+shader_parameter/sun_texture = ExtResource("2_2vf3n")
+
+[sub_resource type="Sky" id="Sky_1"]
+sky_material = SubResource("ShaderMaterial_1")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 1.25
+sky = SubResource("Sky_1")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+reflected_light_source = 2
+tonemap_mode = 3
+sdfgi_enabled = true
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 3.26
+glow_strength = 1.35
+glow_mix = 0.1
+glow_bloom = 1.0
+glow_blend_mode = 4
+glow_hdr_threshold = 4.0
+glow_hdr_scale = 4.0
+glow_hdr_luminance_cap = 256.0
+glow_map_strength = 1.0
+volumetric_fog_density = 0.01
+adjustment_enabled = true
+adjustment_brightness = 1.47
+adjustment_saturation = 1.24
