@@ -17,6 +17,7 @@ var shoot_timer = 0.0
 var active_timers = {}
 var active_powerups: Dictionary = {}
 var active_powerup_timers: Dictionary = {}
+var start_angles = [0, 0, -30, 45, 45, 0]
 
 func _ready():
 	set_process_input(false)
@@ -190,8 +191,15 @@ func fire_weapon():
 	var right = camera3D.global_transform.basis.x.normalized()
 	var up = camera3D.global_transform.basis.y.normalized()
 	var angle_step = 360.0 / weapon_settings.projectile_count
+
+
+	var count = weapon_settings.projectile_count
+	var start_angle = 0
+	if (count - 1) < start_angles.size():
+		start_angle = start_angles[count - 1]
+
 	for i in range(weapon_settings.projectile_count):
-		var angle = deg_to_rad(weapon_settings.projectile_start_angle + (i * angle_step))
+		var angle = deg_to_rad(start_angle + (i * angle_step))
 		var offset = (right * cos(angle) + up * sin(angle)) * weapon_settings.projectile_spacing
 		var spawn_position = camera3D.global_position + offset + (direction * weapon_settings.launch_offset)
 		var projectile_instance = projectile_scene.instantiate()
